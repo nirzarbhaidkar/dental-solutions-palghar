@@ -2,10 +2,12 @@ import { useState, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { Calendar, MapPin, Phone, Clock, ChevronRight, Star, ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 // Data
 const blogPosts = [
   {
+    id: "tips-for-maintaining-optimal-oral-health",
     title: "Tips for Maintaining Optimal Oral Health",
     excerpt: "Learn the best practices for keeping your teeth and gums healthy with these expert tips.",
     category: "Oral Health",
@@ -14,6 +16,7 @@ const blogPosts = [
     date: "March 15, 2024"
   },
   {
+    id: "understanding-different-types-of-braces",
     title: "Understanding Different Types of Braces",
     excerpt: "A comprehensive guide to different orthodontic options available for teeth straightening.",
     category: "Orthodontics",
@@ -22,6 +25,7 @@ const blogPosts = [
     date: "March 12, 2024"
   },
   {
+    id: "importance-of-regular-dental-checkups",
     title: "The Importance of Regular Dental Check-ups",
     excerpt: "Why you shouldn't skip your regular dental visits and what to expect during check-ups.",
     category: "Preventive Care",
@@ -405,36 +409,35 @@ const Index = () => {
                 viewport={{ once: true }}
                 className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group"
               >
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                  />
-                  <div className="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm">
-                    {post.category}
+                <Link to={`/blog/${post.id}`}>
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                    <div className="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm">
+                      {post.category}
+                    </div>
                   </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center text-sm text-gray-500 mb-3">
-                    <span>{post.date}</span>
-                    <span className="mx-2">•</span>
-                    <span>{post.readTime}</span>
+                  <div className="p-6">
+                    <div className="flex items-center text-sm text-gray-500 mb-3">
+                      <span>{post.date}</span>
+                      <span className="mx-2">•</span>
+                      <span>{post.readTime}</span>
+                    </div>
+                    <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                      {post.title}
+                    </h3>
+                    <p className="text-gray-600 mb-4">
+                      {post.excerpt}
+                    </p>
+                    <span className="text-primary inline-flex items-center group-hover:translate-x-2 transition-transform">
+                      Read More <ChevronRight className="ml-1 h-4 w-4" />
+                    </span>
                   </div>
-                  <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
-                    {post.title}
-                  </h3>
-                  <p className="text-gray-600 mb-4">
-                    {post.excerpt}
-                  </p>
-                  <Button 
-                    variant="link" 
-                    className="text-primary p-0 group-hover:translate-x-2 transition-transform"
-                  >
-                    Read More <ChevronRight className="ml-1 h-4 w-4" />
-                  </Button>
-                </div>
+                </Link>
               </motion.div>
             ))}
           </div>
