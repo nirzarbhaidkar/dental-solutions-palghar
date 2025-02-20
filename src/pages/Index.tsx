@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Calendar, MapPin, Phone, Clock, ChevronRight, Star, ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import AppointmentBooking from "@/components/AppointmentBooking";
 
 // Data
 const blogPosts = [
@@ -194,6 +195,25 @@ const Index = () => {
               Learn More <ChevronRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
+        </div>
+      </section>
+
+      {/* Appointment Booking Section */}
+      <section className="py-16 bg-muted/50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-accent px-4 py-1 rounded-full text-sm font-medium mb-4">
+              Book an Appointment
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Schedule Your Visit
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Book your dental appointment online at your convenience. Choose your preferred dentist and time slot.
+            </p>
+          </div>
+
+          <AppointmentBooking />
         </div>
       </section>
 
