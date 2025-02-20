@@ -1,11 +1,11 @@
-
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Calendar, MapPin, Phone, Clock, ChevronRight } from "lucide-react";
+import { Calendar, MapPin, Phone, Clock, ChevronRight, Star, ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Index = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const services = [
     {
@@ -24,6 +24,80 @@ const Index = () => {
       image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80",
     },
   ];
+
+  const testimonials = [
+    {
+      name: "Priya Sharma",
+      text: "The team at Dental Solutions transformed my smile completely. The care and professionalism were outstanding!",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80",
+    },
+    {
+      name: "Rahul Patel",
+      text: "Best dental experience ever! Dr. Shah made my root canal procedure completely painless. Highly recommended!",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80",
+    },
+    {
+      name: "Meera Desai",
+      text: "Incredibly satisfied with my dental implants. The whole team is very caring and professional.",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80",
+    },
+  ];
+
+  const team = [
+    {
+      name: "Dr. Amit Shah",
+      role: "Senior Dentist & Implantologist",
+      experience: "15+ years experience",
+      specialization: "Dental Implants & Cosmetic Dentistry",
+      image: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&q=80",
+    },
+    {
+      name: "Dr. Priya Mehta",
+      role: "Orthodontist",
+      experience: "12+ years experience",
+      specialization: "Braces & Clear Aligners",
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80",
+    },
+    {
+      name: "Dr. Raj Patel",
+      role: "Pediatric Dentist",
+      experience: "10+ years experience",
+      specialization: "Children's Dentistry",
+      image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80",
+    },
+  ];
+
+  const treatments = [
+    {
+      name: "Dental Implants",
+      description: "Permanent solution for missing teeth with natural-looking results",
+      beforeImage: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80",
+      afterImage: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80",
+    },
+    {
+      name: "Smile Makeover",
+      description: "Complete transformation of your smile using various cosmetic procedures",
+      beforeImage: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80",
+      afterImage: "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&q=80",
+    },
+    {
+      name: "Invisible Braces",
+      description: "Straighten your teeth discreetly with clear aligners",
+      beforeImage: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80",
+      afterImage: "https://images.unsplash.com/photo-1581582090823-ea0672118be5?auto=format&fit=crop&q=80",
+    },
+  ];
+
+  const nextTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -132,6 +206,152 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Team Section */}
+      <section id="team" className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-accent px-4 py-1 rounded-full text-sm font-medium mb-4">
+              Our Expert Team
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Meet Our Dental Professionals
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Our experienced team of dental professionals is committed to providing you with the highest quality care.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {team.map((member, index) => (
+              <div 
+                key={index}
+                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+              >
+                <div className="relative h-64">
+                  <img 
+                    src={member.image} 
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-1">{member.name}</h3>
+                  <p className="text-primary font-medium mb-2">{member.role}</p>
+                  <p className="text-gray-600 mb-2">{member.experience}</p>
+                  <p className="text-gray-600">{member.specialization}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-16 bg-muted">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-accent px-4 py-1 rounded-full text-sm font-medium mb-4">
+              Patient Reviews
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              What Our Patients Say
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Read about the experiences of our satisfied patients and their transformative dental journeys.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto relative">
+            <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+              <div className="flex flex-col md:flex-row items-center gap-8">
+                <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden">
+                  <img 
+                    src={testimonials[currentTestimonial].image} 
+                    alt={testimonials[currentTestimonial].name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex-1 text-center md:text-left">
+                  <div className="flex justify-center md:justify-start items-center mb-4">
+                    {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 fill-primary text-primary" />
+                    ))}
+                  </div>
+                  <p className="text-gray-600 text-lg mb-4">"{testimonials[currentTestimonial].text}"</p>
+                  <p className="font-semibold text-lg">{testimonials[currentTestimonial].name}</p>
+                </div>
+              </div>
+            </div>
+
+            <button 
+              onClick={prevTestimonial}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white rounded-full p-2 shadow-lg hover:bg-gray-50 transition-colors"
+            >
+              <ChevronLeft className="w-6 h-6 text-gray-600" />
+            </button>
+            <button 
+              onClick={nextTestimonial}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white rounded-full p-2 shadow-lg hover:bg-gray-50 transition-colors"
+            >
+              <ChevronRight className="w-6 h-6 text-gray-600" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Treatment Gallery */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-accent px-4 py-1 rounded-full text-sm font-medium mb-4">
+              Our Work
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Treatment Gallery
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Explore our collection of successful dental transformations and the amazing results we've achieved.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {treatments.map((treatment, index) => (
+              <div 
+                key={index}
+                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+              >
+                <div className="grid grid-cols-2 gap-2 p-2">
+                  <div className="relative h-40">
+                    <img 
+                      src={treatment.beforeImage} 
+                      alt={`${treatment.name} Before`}
+                      className="w-full h-full object-cover rounded-lg"
+                    />
+                    <span className="absolute bottom-2 left-2 bg-black/50 text-white px-2 py-1 text-sm rounded">
+                      Before
+                    </span>
+                  </div>
+                  <div className="relative h-40">
+                    <img 
+                      src={treatment.afterImage} 
+                      alt={`${treatment.name} After`}
+                      className="w-full h-full object-cover rounded-lg"
+                    />
+                    <span className="absolute bottom-2 left-2 bg-black/50 text-white px-2 py-1 text-sm rounded">
+                      After
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2">{treatment.name}</h3>
+                  <p className="text-gray-600">{treatment.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section id="contact" className="py-16">
         <div className="container mx-auto px-4">
@@ -229,7 +449,7 @@ const Index = () => {
                 <a href="#" className="text-gray-400 hover:text-white transition-colors">
                   <span className="sr-only">Instagram</span>
                   <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" />
+                    <path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.045-1.064.218-1.504.344-1.857.182-.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" />
                   </svg>
                 </a>
               </div>
