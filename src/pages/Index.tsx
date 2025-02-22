@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, MapPin, Phone, Clock, ChevronRight } from "lucide-react";
@@ -217,7 +218,7 @@ const Index = () => {
 
           <div className="rounded-2xl overflow-hidden shadow-lg">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3757.9783288243707!2d72.76459931491454!3d19.686699986738436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be71c7a24124e3d%3A0x8e7a0b2f8a3557c5!2sPalghar%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1645518555555!5m2!1sen!2sin!4v1645518555555!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3756.426978290518!2d72.76597319999999!3d19.694437699999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be71cdd80189c71%3A0x249440e72a30c6bb!2sDental%20Solutions!5e0!3m2!1sen!2sin!4v1740194859355!5m2!1sen!2sin"
               width="100%"
               height="450"
               style={{ border: 0 }}
