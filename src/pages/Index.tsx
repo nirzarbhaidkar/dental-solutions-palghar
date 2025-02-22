@@ -23,6 +23,36 @@ const Index = () => {
       description: "Achieve the perfect alignment with our orthodontic solutions",
       image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80",
     },
+    {
+      title: "Dental Implants",
+      description: "Permanent solutions for missing teeth with natural-looking results",
+      image: "https://images.unsplash.com/photo-1579083390476-901d43d22fef?auto=format&fit=crop&q=80",
+    },
+    {
+      title: "Root Canal Treatment",
+      description: "Advanced endodontic care to save damaged teeth",
+      image: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&q=80",
+    },
+    {
+      title: "Teeth Whitening",
+      description: "Professional teeth whitening for a brighter smile",
+      image: "https://images.unsplash.com/photo-1499789853431-fcbf274f57b9?auto=format&fit=crop&q=80",
+    },
+    {
+      title: "Pediatric Dentistry",
+      description: "Specialized dental care for children in a friendly environment",
+      image: "https://images.unsplash.com/photo-1581349485608-9469926a8e5e?auto=format&fit=crop&q=80",
+    },
+    {
+      title: "Periodontal Treatment",
+      description: "Comprehensive gum care and disease prevention",
+      image: "https://images.unsplash.com/photo-1571772996211-2f02c9727629?auto=format&fit=crop&q=80",
+    },
+    {
+      title: "Emergency Dental Care",
+      description: "24/7 emergency dental services when you need them most",
+      image: "https://images.unsplash.com/photo-1585647347483-22b66260dfff?auto=format&fit=crop&q=80",
+    },
   ];
 
   return (
@@ -81,11 +111,18 @@ const Index = () => {
             Experience world-class dental care with our team of experienced professionals. Your smile deserves the best.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up">
-            <Button className="bg-primary text-white hover:bg-primary/90 px-8 py-6 text-lg">
-              Book an Appointment
+            <Button 
+              className="bg-primary text-white hover:bg-primary/90 px-8 py-6 text-lg"
+              onClick={() => window.open("https://wa.me/+911234567890", "_blank")}
+            >
+              Book Appointment on WhatsApp
             </Button>
-            <Button variant="outline" className="px-8 py-6 text-lg">
-              Learn More <ChevronRight className="ml-2 h-4 w-4" />
+            <Button 
+              variant="outline" 
+              className="px-8 py-6 text-lg"
+              onClick={() => window.open("tel:+911234567890")}
+            >
+              Call Now <Phone className="ml-2 h-4 w-4" />
             </Button>
           </div>
         </div>
