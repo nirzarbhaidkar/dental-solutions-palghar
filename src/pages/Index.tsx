@@ -175,14 +175,14 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up">
             <Button 
               className="bg-primary text-white hover:bg-primary/90 px-8 py-6 text-lg"
-              onClick={() => window.open("https://wa.me/+911234567890", "_blank")}
+              onClick={() => window.open(" https://wa.me/918600892884?text=Hello%2C%20I%E2%80%99d%20like%20to%20book%20an%20appointment%20at%20Dental%20Solutions%20Palghar.%20Please%20let%20me%20know%20the%20available%20slots.%20Thank%20you!", "_blank")}
             >
               Book Appointment on WhatsApp
             </Button>
             <Button 
               variant="outline" 
               className="px-8 py-6 text-lg"
-              onClick={() => window.open("tel:+911234567890")}
+              onClick={() => window.open("tel:+918600892884")}
             >
               Call Now <Phone className="ml-2 h-4 w-4" />
             </Button>
