@@ -332,7 +332,7 @@ const Index = () => {
             <div>
               <h4 className="text-xl font-bold mb-4">Dental Solutions</h4>
               <p className="text-gray-400">
-                Providing quality dental care and creating beautiful smiles in Palghar.
+                Dental Solutions Palghar is a leading dental clinic committed to providing high-quality oral healthcare with a patient-first approach. Equipped with state-of-the-art technology and a team of experienced dentists, we offer comprehensive treatments, including cosmetic dentistry, orthodontics, dental implants, and preventive care. Our goal is to ensure a comfortable and stress-free experience while helping patients achieve healthy, beautiful smiles. Visit us for personalized and affordable dental care in Palghar.
               </p>
             </div>
             <div>
