@@ -144,7 +144,13 @@ const Index = () => {
             <a href="#about" className="text-gray-700 hover:text-primary transition-colors">About</a>
             <a href="#team" className="text-gray-700 hover:text-primary transition-colors">Team</a>
             <a href="#contact" className="text-gray-700 hover:text-primary transition-colors">Contact</a>
-            <Button className="bg-primary text-white hover:bg-primary/90 w-full">Book Appointment</Button>
+            
+            <Button 
+                className="bg-primary text-white hover:bg-primary/90 w-full"
+                 onClick={() => window.open("https://wa.me/918600892884?text=Hello%2C%20I%E2%80%99d%20like%20to%20book%20an%20appointment%20at%20Dental%20Solutions%20Palghar.%20Please%20let%20me%20know%20the%20available%20slots.%20Thank%20you!")}
+                >
+                  Book Appointment
+                </Button>
           </div>
         </div>
       )}
