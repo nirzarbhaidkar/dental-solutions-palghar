@@ -19,7 +19,7 @@ const Index = () => {
     },
     {
       title: "Trusted by Families for",
-      highlight: "Over 15 Years",
+      highlight: "Over 11 Years",
     },
     {
       title: "Comfortable Care for Your",
