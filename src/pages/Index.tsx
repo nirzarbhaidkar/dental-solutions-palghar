@@ -44,14 +44,14 @@ const Index = () => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      !function(f:any,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode?.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
+      (function(f:any,b,e,v,n,t,s) {
+        if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode?.insertBefore(t,s)})(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
       window.fbq('init', '1358034681882804');
       window.fbq('track', 'PageView');
 
@@ -70,47 +70,47 @@ const Index = () => {
     {
       title: "General Dentistry",
       description: "Comprehensive dental care for the whole family",
-      image: "/services/general-dentistry.jpg"
+      image: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
     },
     {
       title: "Cosmetic Dentistry",
       description: "Transform your smile with our expert cosmetic services",
-      image: "/services/cosmetic-dentistry.jpg"
+      image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
     },
     {
       title: "Orthodontics",
       description: "Achieve the perfect alignment with our orthodontic solutions",
-      image: "/services/orthodontics.jpg"
+      image: "https://images.unsplash.com/photo-1601677416307-0ff00131080c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
     },
     {
       title: "Dental Implants",
       description: "Permanent solutions for missing teeth with natural-looking results",
-      image: "/services/dental-implants.jpg"
+      image: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
     },
     {
       title: "Root Canal Treatment",
       description: "Advanced endodontic care to save damaged teeth",
-      image: "/services/root-canal.jpg"
+      image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80"
     },
     {
       title: "Teeth Whitening",
       description: "Professional teeth whitening for a brighter smile",
-      image: "/services/teeth-whitening.jpg"
+      image: "https://images.unsplash.com/photo-1581585504807-45d83ec342ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1025&q=80"
     },
     {
       title: "Pediatric Dentistry",
       description: "Specialized dental care for children in a friendly environment",
-      image: "/services/pediatric-dentistry.jpg"
+      image: "https://images.unsplash.com/photo-1620775997779-a3c3185b1f46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1213&q=80"
     },
     {
       title: "Periodontal Treatment",
       description: "Comprehensive gum care and disease prevention",
-      image: "/services/periodontal.jpg"
+      image: "https://images.unsplash.com/photo-1609840112990-4265448268d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
     },
     {
       title: "Emergency Dental Care",
       description: "24/7 emergency dental services when you need them most",
-      image: "/services/emergency-care.jpg"
+      image: "https://images.unsplash.com/photo-1609840113929-788581663412?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
     }
   ];
 
@@ -346,40 +346,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="contact" className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
-            <div className="p-8 md:p-12 bg-primary text-white">
-              <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-              <div className="space-y-6">
-                <div className="flex items-center">
-                  <MapPin className="h-6 w-6 mr-4" />
-                  <p>123 Palghar Main Road, Palghar, Maharashtra 401404</p>
-                </div>
-                <div className="flex items-center">
-                  <Phone className="h-6 w-6 mr-4" />
-                  <p>+91 8600892884</p>
-                </div>
-                <div className="flex items-center">
-                  <Clock className="h-6 w-6 mr-4" />
-                  <div>
-                    <p>Monday - Saturday: 9:00 AM - 7:00 PM</p>
-                    <p>Sunday: Closed</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-4 mt-6">
-                  <a href="https://www.facebook.com/DentalSolutionsPalghar" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
-                    <Facebook className="h-8 w-8" />
-                  </a>
-                  <a href="https://www.instagram.com/the_dental_solutions/" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
-                    <Instagram className="h-8 w-8" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Removed contact information block as requested */}
 
       <footer className="bg-gray-900 text-white py-12">
         <div className="container mx-auto px-4">
