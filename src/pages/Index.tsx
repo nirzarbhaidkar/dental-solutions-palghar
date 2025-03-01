@@ -1,12 +1,12 @@
-
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, MapPin, Phone, Clock, ChevronRight } from "lucide-react";
+import { Calendar, MapPin, Phone, Clock, ChevronRight, Facebook, Instagram, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Index = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [currentHeadlineIndex, setCurrentHeadlineIndex] = useState(0);
+  const [activeQuestion, setActiveQuestion] = useState<number | null>(null);
 
   const headlines = [
     {
@@ -58,8 +58,6 @@ const Index = () => {
     document.body.appendChild(noscript);
   }, []);
 
-
-
   const services = [
     {
       title: "General Dentistry",
@@ -107,6 +105,41 @@ const Index = () => {
       image: "/services/emergency-care.jpg"
     }
   ];
+
+  const faqs = [
+    {
+      question: "What services do you offer?",
+      answer: "We offer a comprehensive range of dental services including general dentistry, cosmetic procedures, orthodontics, dental implants, root canal treatments, teeth whitening, pediatric dentistry, periodontal treatments, and emergency dental care."
+    },
+    {
+      question: "How often should I visit the dentist?",
+      answer: "We recommend visiting the dentist every 6 months for routine check-ups and cleanings. However, some patients may need more frequent visits depending on their oral health needs."
+    },
+    {
+      question: "What should I do in case of a dental emergency?",
+      answer: "In case of a dental emergency, contact us immediately at +91 8600892884. We offer emergency services to address urgent dental issues promptly."
+    },
+    {
+      question: "Do you accept insurance?",
+      answer: "Yes, we accept most major dental insurance plans. Please contact our office for specific information regarding your coverage."
+    },
+    {
+      question: "How can I book an appointment?",
+      answer: "You can book an appointment by calling us at +91 8600892884 or through WhatsApp at the same number. You can also visit our clinic in person."
+    },
+    {
+      question: "What are your operating hours?",
+      answer: "We are open Monday through Saturday from 9:00 AM to 7:00 PM. We are closed on Sundays."
+    }
+  ];
+
+  const toggleQuestion = (index: number) => {
+    if (activeQuestion === index) {
+      setActiveQuestion(null);
+    } else {
+      setActiveQuestion(index);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -261,65 +294,79 @@ const Index = () => {
         </div>
       </section>
 
+      <section id="faqs" className="py-16 bg-muted">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-accent px-4 py-1 rounded-full text-sm font-medium mb-4">
+              FAQs
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Find answers to common questions about our dental services and procedures.
+            </p>
+          </div>
+
+          <div className="max-w-3xl mx-auto">
+            {faqs.map((faq, index) => (
+              <div 
+                key={index} 
+                className="mb-4 bg-white rounded-xl overflow-hidden shadow"
+              >
+                <button
+                  className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
+                  onClick={() => toggleQuestion(index)}
+                >
+                  <h3 className="text-lg font-medium">{faq.question}</h3>
+                  <HelpCircle
+                    className={`h-5 w-5 transition-transform duration-200 ${
+                      activeQuestion === index ? 'rotate-180 text-primary' : 'text-gray-500'
+                    }`}
+                  />
+                </button>
+                <div
+                  className={`px-6 overflow-hidden transition-all duration-300 ease-in-out ${
+                    activeQuestion === index ? 'max-h-96 pb-6' : 'max-h-0'
+                  }`}
+                >
+                  <p className="text-gray-600">{faq.answer}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="contact" className="py-16">
         <div className="container mx-auto px-4">
           <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="p-8 md:p-12 bg-primary text-white">
-                <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-                <div className="space-y-6">
-                  <div className="flex items-center">
-                    <MapPin className="h-6 w-6 mr-4" />
-                    <p>123 Palghar Main Road, Palghar, Maharashtra 401404</p>
-                  </div>
-                  <div className="flex items-center">
-                    <Phone className="h-6 w-6 mr-4" />
-                    <p>+91 123 456 7890</p>
-                  </div>
-                  <div className="flex items-center">
-                    <Clock className="h-6 w-6 mr-4" />
-                    <div>
-                      <p>Monday - Saturday: 9:00 AM - 7:00 PM</p>
-                      <p>Sunday: Closed</p>
-                    </div>
+            <div className="p-8 md:p-12 bg-primary text-white">
+              <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
+              <div className="space-y-6">
+                <div className="flex items-center">
+                  <MapPin className="h-6 w-6 mr-4" />
+                  <p>123 Palghar Main Road, Palghar, Maharashtra 401404</p>
+                </div>
+                <div className="flex items-center">
+                  <Phone className="h-6 w-6 mr-4" />
+                  <p>+91 8600892884</p>
+                </div>
+                <div className="flex items-center">
+                  <Clock className="h-6 w-6 mr-4" />
+                  <div>
+                    <p>Monday - Saturday: 9:00 AM - 7:00 PM</p>
+                    <p>Sunday: Closed</p>
                   </div>
                 </div>
-              </div>
-              <div className="p-8 md:p-12">
-                <h3 className="text-2xl font-bold mb-6">Book an Appointment</h3>
-                <form className="space-y-4">
-                  <div>
-                    <input
-                      type="text"
-                      placeholder="Your Name"
-                      className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20"
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="email"
-                      placeholder="Email Address"
-                      className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20"
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="tel"
-                      placeholder="Phone Number"
-                      className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20"
-                    />
-                  </div>
-                  <div>
-                    <textarea
-                      placeholder="Message"
-                      rows={4}
-                      className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20"
-                    ></textarea>
-                  </div>
-                  <Button className="w-full bg-primary text-white hover:bg-primary/90">
-                    Send Message
-                  </Button>
-                </form>
+                <div className="flex items-center space-x-4 mt-6">
+                  <a href="https://www.facebook.com/DentalSolutionsPalghar" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+                    <Facebook className="h-8 w-8" />
+                  </a>
+                  <a href="https://www.instagram.com/the_dental_solutions/" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+                    <Instagram className="h-8 w-8" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
