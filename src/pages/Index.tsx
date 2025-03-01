@@ -2,6 +2,7 @@ import { useState, useEffect, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, MapPin, Phone, Clock, ChevronRight, Facebook, Instagram, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 declare global {
   interface Window {
@@ -168,7 +169,8 @@ const Index = () => {
   const navItems = [
     { label: "Services", href: "#services" },
     { label: "Location", href: "#location" },
-    { label: "FAQs", href: "#faqs" }
+    { label: "FAQs", href: "#faqs" },
+    { label: "Blog", href: "/blog" }
   ];
 
   return (
@@ -182,13 +184,23 @@ const Index = () => {
             
             <div className="hidden md:flex items-center space-x-8">
               {navItems.map((item, index) => (
-                <a 
-                  key={index}
-                  href={item.href} 
-                  className="text-gray-700 hover:text-primary transition-colors"
-                >
-                  {item.label}
-                </a>
+                item.href.startsWith('#') ? (
+                  <a 
+                    key={index}
+                    href={item.href} 
+                    className="text-gray-700 hover:text-primary transition-colors"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link 
+                    key={index}
+                    to={item.href} 
+                    className="text-gray-700 hover:text-primary transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                )
               ))}
               <Button 
                 className="bg-primary text-white hover:bg-primary/90"
@@ -215,14 +227,25 @@ const Index = () => {
         <div className="fixed inset-0 bg-white z-40 pt-16 md:hidden">
           <div className="flex flex-col space-y-4 p-4">
             {navItems.map((item, index) => (
-              <a 
-                key={index}
-                href={item.href} 
-                className="text-gray-700 hover:text-primary transition-colors"
-                onClick={() => setIsNavOpen(false)}
-              >
-                {item.label}
-              </a>
+              item.href.startsWith('#') ? (
+                <a 
+                  key={index}
+                  href={item.href} 
+                  className="text-gray-700 hover:text-primary transition-colors"
+                  onClick={() => setIsNavOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link 
+                  key={index}
+                  to={item.href} 
+                  className="text-gray-700 hover:text-primary transition-colors"
+                  onClick={() => setIsNavOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              )
             ))}
             <Button 
               className="bg-primary text-white hover:bg-primary/90 w-full"
@@ -388,6 +411,136 @@ const Index = () => {
         </div>
       </section>
 
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-accent px-4 py-1 rounded-full text-sm font-medium mb-4">
+              From Our Blog
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Dental Health Insights
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Explore our collection of articles for tips and information on maintaining your oral health.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all">
+              <Link to="/blog/importance-of-regular-dental-checkups" className="block">
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                    alt="Dental Checkup"
+                    className="w-full h-full object-cover transition-transform hover:scale-105 duration-300"
+                  />
+                  <div className="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 m-2 rounded">
+                    Preventive Care
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center text-sm text-gray-500 mb-2">
+                    <Calendar className="h-4 w-4 mr-1" />
+                    <span>July 10, 2023</span>
+                    <span className="mx-2">•</span>
+                    <Clock className="h-4 w-4 mr-1" />
+                    <span>5 min read</span>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2 hover:text-primary transition-colors">The Importance of Regular Dental Check-ups</h3>
+                  <p className="text-gray-600 mb-4">Learn why regular dental visits are crucial for maintaining good oral health and preventing serious dental issues.</p>
+                  <div className="flex items-center text-primary font-medium">
+                    Read more <ChevronRight className="ml-1 h-4 w-4" />
+                  </div>
+                </div>
+              </Link>
+            </div>
+
+            <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all">
+              <Link to="/blog/tips-for-maintaining-healthy-gums" className="block">
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                    alt="Healthy Gums"
+                    className="w-full h-full object-cover transition-transform hover:scale-105 duration-300"
+                  />
+                  <div className="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 m-2 rounded">
+                    Oral Hygiene
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center text-sm text-gray-500 mb-2">
+                    <Calendar className="h-4 w-4 mr-1" />
+                    <span>August 5, 2023</span>
+                    <span className="mx-2">•</span>
+                    <Clock className="h-4 w-4 mr-1" />
+                    <span>4 min read</span>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2 hover:text-primary transition-colors">Tips for Maintaining Healthy Gums</h3>
+                  <p className="text-gray-600 mb-4">Discover effective strategies to keep your gums healthy and prevent periodontal disease with these expert tips.</p>
+                  <div className="flex items-center text-primary font-medium">
+                    Read more <ChevronRight className="ml-1 h-4 w-4" />
+                  </div>
+                </div>
+              </Link>
+            </div>
+
+            <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all">
+              <Link to="/blog/childrens-dental-health" className="block">
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                    alt="Children's Dental Health"
+                    className="w-full h-full object-cover transition-transform hover:scale-105 duration-300"
+                  />
+                  <div className="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 m-2 rounded">
+                    Pediatric Dentistry
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center text-sm text-gray-500 mb-2">
+                    <Calendar className="h-4 w-4 mr-1" />
+                    <span>October 8, 2023</span>
+                    <span className="mx-2">•</span>
+                    <Clock className="h-4 w-4 mr-1" />
+                    <span>6 min read</span>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2 hover:text-primary transition-colors">Children's Dental Health: Starting Good Habits Early</h3>
+                  <p className="text-gray-600 mb-4">Learn how to instill good dental habits in children from an early age to ensure lifelong oral health.</p>
+                  <div className="flex items-center text-primary font-medium">
+                    Read more <ChevronRight className="ml-1 h-4 w-4" />
+                  </div>
+                </div>
+              </Link>
+            </div>
+          </div>
+
+          <div className="mt-10 text-center">
+            <Link to="/blog">
+              <Button variant="outline" className="mt-4">
+                View All Blog Posts <ChevronRight className="ml-1 h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-muted">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Improve Your Dental Health?</h2>
+            <p className="text-gray-600 mb-8">
+              Schedule an appointment with our experienced dental professionals today and take the first step towards a healthier smile.
+            </p>
+            <Button 
+              className="bg-primary text-white hover:bg-primary/90 px-8 py-6 text-lg"
+              onClick={() => window.open("https://wa.me/918600892884?text=Hello%2C%20I%E2%80%99d%20like%20to%20book%20an%20appointment%20at%20Dental%20Solutions%20Palghar.%20Please%20let%20me%20know%20the%20available%20slots.%20Thank%20you!", "_blank")}
+            >
+              Book Your Appointment Now
+            </Button>
+          </div>
+        </div>
+      </section>
+
       <footer className="bg-gray-900 text-white py-12">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -402,9 +555,15 @@ const Index = () => {
               <ul className="space-y-2">
                 {navItems.map((item, index) => (
                   <li key={index}>
-                    <a href={item.href} className="text-gray-400 hover:text-white transition-colors">
-                      {item.label}
-                    </a>
+                    {item.href.startsWith('#') ? (
+                      <a href={item.href} className="text-gray-400 hover:text-white transition-colors">
+                        {item.label}
+                      </a>
+                    ) : (
+                      <Link to={item.href} className="text-gray-400 hover:text-white transition-colors">
+                        {item.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
