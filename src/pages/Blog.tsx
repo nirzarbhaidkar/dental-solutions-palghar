@@ -1,7 +1,8 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Calendar, ChevronRight, Clock } from "lucide-react";
+import { Calendar, ChevronRight, Clock, MessageSquare } from "lucide-react";
 import { motion } from "framer-motion";
 import { blogPosts } from "../data/blogPosts";
 
@@ -15,6 +16,10 @@ const Blog = () => {
     { label: "FAQs", href: "/#faqs" },
     { label: "Blog", href: "/blog" }
   ];
+
+  const handleWhatsAppClick = () => {
+    window.open("https://wa.me/918600892884?text=Hello%2C%20I%E2%80%99d%20like%20to%20book%20an%20appointment%20at%20Dental%20Solutions%20Palghar.%20Please%20let%20me%20know%20the%20available%20slots.%20Thank%20you!", "_blank");
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -37,7 +42,7 @@ const Blog = () => {
               ))}
               <Button 
                 className="bg-primary text-white hover:bg-primary/90"
-                onClick={() => window.open("https://wa.me/918600892884?text=Hello%2C%20I%E2%80%99d%20like%20to%20book%20an%20appointment%20at%20Dental%20Solutions%20Palghar.%20Please%20let%20me%20know%20the%20available%20slots.%20Thank%20you!", "_blank")}
+                onClick={handleWhatsAppClick}
               >
                 Book Appointment
               </Button>
@@ -72,7 +77,7 @@ const Blog = () => {
             <Button 
               className="bg-primary text-white hover:bg-primary/90 w-full"
               onClick={() => {
-                window.open("https://wa.me/918600892884?text=Hello%2C%20I%E2%80%99d%20like%20to%20book%20an%20appointment%20at%20Dental%20Solutions%20Palghar.%20Please%20let%20me%20know%20the%20available%20slots.%20Thank%20you!", "_blank");
+                handleWhatsAppClick();
                 setIsNavOpen(false);
               }}
             >
@@ -86,11 +91,11 @@ const Blog = () => {
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <span className="inline-block bg-accent px-4 py-1 rounded-full text-sm font-medium mb-4 animate-fade-in">
-              Our Dental Blog
+              Dental Clinic Near Me in Palghar
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Dental Health Insights</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Dental Health Insights from the Best Dentist Near Me</h1>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Explore our collection of articles on dental care, treatments, and tips for maintaining a healthy smile.
+              Explore our collection of articles on dental services, treatments, and tips for maintaining a healthy smile from the leading dentist in Palghar. Learn about teeth whitening, dental implants, orthodontist care, and services for kids dentist near me.
             </p>
           </div>
 
@@ -133,18 +138,31 @@ const Blog = () => {
             ))}
           </div>
 
-          <div className="mt-16 text-center">
-            <div className="max-w-2xl mx-auto bg-muted p-8 rounded-xl">
-              <h2 className="text-2xl font-bold mb-4">Ready to Improve Your Dental Health?</h2>
-              <p className="text-gray-600 mb-6">
-                Schedule an appointment with our experienced dental professionals today and take the first step towards a healthier smile.
-              </p>
-              <Button 
-                className="bg-primary text-white hover:bg-primary/90 px-8 py-6 text-lg"
-                onClick={() => window.open("https://wa.me/918600892884?text=Hello%2C%20I%E2%80%99d%20like%20to%20book%20an%20appointment%20at%20Dental%20Solutions%20Palghar.%20Please%20let%20me%20know%20the%20available%20slots.%20Thank%20you!", "_blank")}
-              >
-                Book Your Appointment Now
-              </Button>
+          <div className="mt-16">
+            <div className="bg-muted p-8 rounded-xl">
+              <div className="md:flex items-center justify-between">
+                <div className="md:w-2/3 mb-6 md:mb-0 md:pr-8">
+                  <h2 className="text-2xl font-bold mb-4">Looking for the Best Dental Services in Palghar?</h2>
+                  <p className="text-gray-600 mb-6">
+                    Our dental clinic near me offers comprehensive dental care including teeth cleaning, teeth whitening near me, dental implants, and services from a pediatric dentist near me. Whether you need a cheap dentist near me for basic care or specialized orthodontist services, we have you covered.
+                  </p>
+                  <div className="space-y-2 mb-4">
+                    <p className="flex items-center"><span className="text-primary mr-2">✓</span> Best dentist near me in Palghar</p>
+                    <p className="flex items-center"><span className="text-primary mr-2">✓</span> Professional teeth whitening services</p>
+                    <p className="flex items-center"><span className="text-primary mr-2">✓</span> Affordable dental implants near me</p>
+                    <p className="flex items-center"><span className="text-primary mr-2">✓</span> Kids dentist near me with gentle care</p>
+                  </div>
+                </div>
+                <div className="md:w-1/3 text-center">
+                  <Button 
+                    className="bg-green-600 hover:bg-green-700 text-white px-8 py-6 text-lg w-full md:w-auto flex items-center justify-center"
+                    onClick={handleWhatsAppClick}
+                  >
+                    <MessageSquare className="mr-2 h-5 w-5" />
+                    Book Your Appointment Now
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

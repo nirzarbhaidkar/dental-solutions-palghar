@@ -1,6 +1,7 @@
+
 import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Calendar, Clock, ArrowLeft, ChevronRight, Facebook, Instagram, Phone as PhoneIcon, MapPin as MapPinIcon } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, ChevronRight, Facebook, Instagram, Phone as PhoneIcon, MapPin as MapPinIcon, MessageSquare } from "lucide-react";
 import { blogPosts } from "../data/blogPosts";
 
 const BlogPost = () => {
@@ -24,6 +25,10 @@ const BlogPost = () => {
       </div>
     );
   }
+
+  const handleWhatsAppClick = () => {
+    window.open("https://wa.me/918600892884?text=Hello%2C%20I%20read%20your%20article%20about%20" + encodeURIComponent(post.title) + "%20and%20I'd%20like%20to%20book%20an%20appointment%20at%20Dental%20Solutions%20Palghar.%20Please%20let%20me%20know%20the%20available%20slots.%20Thank%20you!", "_blank");
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -53,7 +58,49 @@ const BlogPost = () => {
           </div>
           <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
           <img src={post.image} alt={post.title} className="w-full rounded-xl mb-8" />
-          <p className="text-gray-700 leading-relaxed">{post.content}</p>
+          <p className="text-gray-700 leading-relaxed mb-8">{post.content}</p>
+          
+          {/* WhatsApp CTA Section */}
+          <div className="bg-primary/10 rounded-xl p-6 mb-8">
+            <h3 className="text-2xl font-semibold mb-3">Need a Dentist Near Me in Palghar?</h3>
+            <p className="mb-4">Our dental clinic near me provides comprehensive dental services including teeth cleaning, teeth whitening, dental implants, and pediatric dentistry. Book an appointment with the best dentist in Palghar today!</p>
+            <Button 
+              onClick={handleWhatsAppClick}
+              className="bg-green-600 hover:bg-green-700 text-white flex items-center justify-center w-full md:w-auto"
+            >
+              <MessageSquare className="mr-2 h-5 w-5" />
+              Book Appointment on WhatsApp
+            </Button>
+          </div>
+
+          {/* Related Posts Section */}
+          <div className="mt-12">
+            <h3 className="text-2xl font-semibold mb-4">Related Dental Services</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {blogPosts
+                .filter(relatedPost => relatedPost.id !== post.id)
+                .slice(0, 2)
+                .map(relatedPost => (
+                  <Link key={relatedPost.id} to={`/blog/${relatedPost.slug}`} className="block group">
+                    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all">
+                      <div className="h-40 overflow-hidden">
+                        <img 
+                          src={relatedPost.image} 
+                          alt={relatedPost.title}
+                          className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-300"
+                        />
+                      </div>
+                      <div className="p-4">
+                        <h4 className="font-semibold mb-2 group-hover:text-primary transition-colors">{relatedPost.title}</h4>
+                        <div className="flex items-center text-primary font-medium">
+                          Read more <ChevronRight className="ml-1 h-4 w-4" />
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+            </div>
+          </div>
         </div>
       </div>
       
