@@ -40,7 +40,7 @@ const Index = () => {
     {
       title: "General Dentistry",
       description: "Comprehensive dental care for the whole family",
-      image: "https://images.unsplash.com/photo-1606265752635-777a7a31ac99?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
+      image: "public/general-dentistry.jpg"
     },
     {
       title: "Cosmetic Dentistry",
