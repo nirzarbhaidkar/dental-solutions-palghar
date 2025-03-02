@@ -1,6 +1,6 @@
 import { useState, useEffect, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, MapPin, Phone, Clock, ChevronRight, Facebook, Instagram, HelpCircle } from "lucide-react";
+import { Calendar, MapPin, Phone, Clock, ChevronRight, Facebook, Instagram, HelpCircle, Star, User, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -87,47 +87,47 @@ const Index = () => {
     {
       title: "General Dentistry",
       description: "Comprehensive dental care for the whole family",
-      image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+      image: "https://images.unsplash.com/photo-1606265752635-777a7a31ac99?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
     },
     {
       title: "Cosmetic Dentistry",
       description: "Transform your smile with our expert cosmetic services",
-      image: "https://images.unsplash.com/photo-1606265752635-777a7a31ac99?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+      image: "https://images.unsplash.com/photo-1609840112990-4265448268d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
     },
     {
       title: "Orthodontics",
       description: "Achieve the perfect alignment with our orthodontic solutions",
-      image: "https://images.unsplash.com/photo-1498603053065-f836678de3a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+      image: "https://images.unsplash.com/photo-1616099892194-33be7683e319?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
     },
     {
       title: "Dental Implants",
       description: "Permanent solutions for missing teeth with natural-looking results",
-      image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80"
+      image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
     },
     {
       title: "Root Canal Treatment",
       description: "Advanced endodontic care to save damaged teeth",
-      image: "https://images.unsplash.com/photo-1609840112990-4265448268d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+      image: "https://images.unsplash.com/photo-1587825045005-c9ce5b4c49be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
     },
     {
       title: "Teeth Whitening",
       description: "Professional teeth whitening for a brighter smile",
-      image: "https://images.unsplash.com/photo-1581585504807-45d83ec342ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1025&q=80"
+      image: "https://images.unsplash.com/photo-1600170384787-dbdd13189e71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
     },
     {
       title: "Pediatric Dentistry",
       description: "Specialized dental care for children in a friendly environment",
-      image: "https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+      image: "https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
     },
     {
       title: "Periodontal Treatment",
       description: "Comprehensive gum care and disease prevention",
-      image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+      image: "https://images.unsplash.com/photo-1607962037942-c21d337d1cbd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
     },
     {
       title: "Emergency Dental Care",
       description: "24/7 emergency dental services when you need them most",
-      image: "https://images.unsplash.com/photo-1606811841661-5d5c4d0d1a3c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+      image: "https://images.unsplash.com/photo-1609840112990-4265448268d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
     }
   ];
 
@@ -158,17 +158,37 @@ const Index = () => {
     }
   ];
 
-  const toggleQuestion = (index: number) => {
-    if (activeQuestion === index) {
-      setActiveQuestion(null);
-    } else {
-      setActiveQuestion(index);
+  const testimonials = [
+    {
+      name: "Priya Sharma",
+      text: "I've been a patient at Dental Solutions for over 5 years. Dr. Patel and his team are simply the best! They make every visit comfortable and actually enjoyable. My family and I wouldn't go anywhere else.",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      name: "Rahul Gupta",
+      text: "After struggling with dental anxiety for years, I finally found a clinic where I feel at ease. The staff is patient and understanding, and Dr. Patel takes time to explain everything thoroughly. Highly recommend!",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      name: "Meera Joshi",
+      text: "I had a dental emergency and Dental Solutions accommodated me immediately. The care was exceptional, and they followed up the next day to check on me. That's the kind of personalized service that keeps me coming back.",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      name: "Vikram Patel",
+      text: "The orthodontic treatment I received at Dental Solutions transformed my smile completely. The team is professional, the facility is immaculate, and the results exceeded my expectations. Worth every penny!",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
     }
-  };
+  ];
 
   const navItems = [
     { label: "Services", href: "#services" },
     { label: "Location", href: "#location" },
+    { label: "Testimonials", href: "#testimonials" },
     { label: "FAQs", href: "#faqs" },
     { label: "Blog", href: "/blog" }
   ];
@@ -202,6 +222,15 @@ const Index = () => {
                   </Link>
                 )
               ))}
+              <a
+                href="https://www.facebook.com/DentalSolutionsPalghar"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-700 hover:text-primary transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook size={20} />
+              </a>
               <Button 
                 className="bg-primary text-white hover:bg-primary/90"
                 onClick={() => window.open("https://wa.me/918600892884?text=Hello%2C%20I%E2%80%99d%20like%20to%20book%20an%20appointment%20at%20Dental%20Solutions%20Palghar.%20Please%20let%20me%20know%20the%20available%20slots.%20Thank%20you!", "_blank")}
@@ -247,6 +276,17 @@ const Index = () => {
                 </Link>
               )
             ))}
+            <div className="flex items-center space-x-4">
+              <a
+                href="https://www.facebook.com/DentalSolutionsPalghar"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-700 hover:text-primary transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook size={20} />
+              </a>
+            </div>
             <Button 
               className="bg-primary text-white hover:bg-primary/90 w-full"
               onClick={() => {
@@ -363,6 +403,54 @@ const Index = () => {
               referrerPolicy="no-referrer-when-downgrade"
               className="w-full"
             ></iframe>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" className="py-16 bg-muted">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-accent px-4 py-1 rounded-full text-sm font-medium mb-4">
+              Patient Testimonials
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              What Our Patients Say
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Don't just take our word for it. Read what our patients have to say about their experience at Dental Solutions.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <div 
+                key={index}
+                className="bg-white rounded-2xl shadow-lg p-8 relative"
+              >
+                <Quote className="absolute top-6 left-6 text-primary/20 h-12 w-12" />
+                <div className="relative z-10">
+                  <div className="flex mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+                    ))}
+                  </div>
+                  <p className="text-gray-700 italic mb-6">"{testimonial.text}"</p>
+                  <div className="flex items-center">
+                    <div className="h-12 w-12 rounded-full overflow-hidden mr-4">
+                      <img 
+                        src={testimonial.image} 
+                        alt={testimonial.name}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold">{testimonial.name}</h4>
+                      <p className="text-sm text-gray-500">Verified Patient</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
