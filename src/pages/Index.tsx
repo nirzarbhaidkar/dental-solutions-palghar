@@ -335,7 +335,7 @@ const Index = () => {
               Book Appointment on WhatsApp
             </Button>
             <Button 
-              variant="outline" 
+              variant="green" 
               className="px-8 py-6 text-lg"
               onClick={() => window.open("tel:+918600892884")}
             >
