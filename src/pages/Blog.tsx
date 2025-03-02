@@ -1,9 +1,9 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Calendar, ChevronRight, Clock } from "lucide-react";
 import { motion } from "framer-motion";
+import { blogPosts } from "../data/blogPosts";
 
 const Blog = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -14,69 +14,6 @@ const Blog = () => {
     { label: "Location", href: "/#location" },
     { label: "FAQs", href: "/#faqs" },
     { label: "Blog", href: "/blog" }
-  ];
-
-  const blogPosts = [
-    {
-      id: "1",
-      title: "The Importance of Regular Dental Check-ups",
-      excerpt: "Learn why regular dental visits are crucial for maintaining good oral health and preventing serious dental issues.",
-      date: "July 10, 2023",
-      readTime: "5 min read",
-      slug: "importance-of-regular-dental-checkups",
-      category: "Preventive Care",
-      image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-    },
-    {
-      id: "2",
-      title: "Tips for Maintaining Healthy Gums",
-      excerpt: "Discover effective strategies to keep your gums healthy and prevent periodontal disease with these expert tips.",
-      date: "August 5, 2023",
-      readTime: "4 min read",
-      slug: "tips-for-maintaining-healthy-gums",
-      category: "Oral Hygiene",
-      image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-    },
-    {
-      id: "3",
-      title: "Understanding Dental Implants: A Comprehensive Guide",
-      excerpt: "Everything you need to know about dental implants, from the procedure to aftercare and benefits.",
-      date: "September 12, 2023",
-      readTime: "7 min read",
-      slug: "understanding-dental-implants",
-      category: "Restorative Dentistry",
-      image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80",
-    },
-    {
-      id: "4",
-      title: "Children's Dental Health: Starting Good Habits Early",
-      excerpt: "Learn how to instill good dental habits in children from an early age to ensure lifelong oral health.",
-      date: "October 8, 2023",
-      readTime: "6 min read",
-      slug: "childrens-dental-health",
-      category: "Pediatric Dentistry",
-      image: "https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-    },
-    {
-      id: "5",
-      title: "Teeth Whitening: Professional vs. At-Home Options",
-      excerpt: "Compare professional teeth whitening treatments with at-home options to find what's best for your smile.",
-      date: "November 15, 2023",
-      readTime: "5 min read",
-      slug: "teeth-whitening-options",
-      category: "Cosmetic Dentistry",
-      image: "https://images.unsplash.com/photo-1581585504807-45d83ec342ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1025&q=80",
-    },
-    {
-      id: "6",
-      title: "What to Expect During a Root Canal Treatment",
-      excerpt: "Demystifying the root canal procedure: what happens during treatment and why it's not as scary as you think.",
-      date: "December 3, 2023",
-      readTime: "6 min read",
-      slug: "what-to-expect-during-root-canal",
-      category: "Endodontics",
-      image: "https://images.unsplash.com/photo-1609840112990-4265448268d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-    }
   ];
 
   return (
