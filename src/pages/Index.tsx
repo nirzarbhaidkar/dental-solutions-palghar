@@ -1,7 +1,6 @@
-
 import { useState, useEffect, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, MapPin, Phone, Clock, ChevronRight, Facebook, Instagram, HelpCircle, Star, User, Quote } from "lucide-react";
+import { Calendar, MapPin, Phone, Clock, ChevronRight, Facebook, Instagram, HelpCircle, Star, User, Quote, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -674,7 +673,7 @@ const Index = () => {
                 <div className="flex items-start">
                   <MapPin className="h-5 w-5 mr-3 text-primary shrink-0 mt-0.5" />
                   <p className="text-gray-400">
-                    Shop 1,2,3 Sainath Tower, St Antony Rd, near Khadak Road, Bhadrakh Building, Palghar, Maharashtra 401404
+                    Shop number 5,6, Apoorva Apartments, Mahim Rd, next to Chetna Classes, next to National College, Shri Ram Nagar, Vishnu Nagar, Palghar, Maharashtra 401404
                   </p>
                 </div>
                 <div className="flex items-center">
@@ -701,6 +700,15 @@ const Index = () => {
                     aria-label="Instagram"
                   >
                     <Instagram className="h-6 w-6" />
+                  </a>
+                  <a
+                    href="https://x.com/dentalsoluti0ns"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-white transition-colors"
+                    aria-label="Twitter"
+                  >
+                    <Twitter className="h-6 w-6" />
                   </a>
                 </div>
               </div>
