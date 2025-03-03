@@ -99,7 +99,7 @@ const Index = () => {
     },
     {
       question: "Do you accept insurance?",
-      answer: "Yes, we accept most major dental insurance plans. Please contact our office for specific information regarding your coverage."
+      answer: "Yes, we provide bills that can be claimed on any mediclaim insurance"
     },
     {
       question: "How can I book an appointment?",
@@ -107,31 +107,31 @@ const Index = () => {
     },
     {
       question: "What are your operating hours?",
-      answer: "We are open Monday through Saturday from 9:00 AM to 7:00 PM. We are closed on Sundays."
+      answer: "We are open Monday through Saturday from 9:30 am–2 pm and 5–9 pm. We are closed on Sundays."
     }
   ];
 
   const testimonials = [
     {
-      name: "Priya Sharma",
-      text: "I've been a patient at Dental Solutions for over 5 years. Dr. Patel and his team are simply the best! They make every visit comfortable and actually enjoyable. My family and I wouldn't go anywhere else.",
+      name: "Nupur Nerkar",
+      text: "I had my root canal treatment done at Dental Solutions Palghar. Had a very smooth experience. The doctors explained the procedure very well. I am happy with the experience. My kid also underwent his dental procedure here. Dr Radha is really good with kids.",
       rating: 5,
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
     },
     {
-      name: "Rahul Gupta",
+      name: "Sugriv Chaursia",
       text: "After struggling with dental anxiety for years, I finally found a clinic where I feel at ease. The staff is patient and understanding, and Dr. Patel takes time to explain everything thoroughly. Highly recommend!",
       rating: 5,
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
     },
     {
-      name: "Meera Joshi",
+      name: "Aadii Jagtap",
       text: "I had a dental emergency and Dental Solutions accommodated me immediately. The care was exceptional, and they followed up the next day to check on me. That's the kind of personalized service that keeps me coming back.",
       rating: 5,
       image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
     },
     {
-      name: "Vikram Patel",
+      name: "Namrata Pailwan",
       text: "The orthodontic treatment I received at Dental Solutions transformed my smile completely. The team is professional, the facility is immaculate, and the results exceeded my expectations. Worth every penny!",
       rating: 5,
       image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
@@ -203,7 +203,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
-              <span className="text-2xl font-semibold text-primary">Dental Solutions</span>
+              <span className="text-2xl font-semibold text-primary">Dental Solutions Palghar</span>
             </div>
             
             <div className="hidden md:flex items-center space-x-8">
@@ -421,7 +421,7 @@ const Index = () => {
               What Our Patients Say
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Don't just take our word for it. Read what our patients have to say about their experience at Dental Solutions.
+              Don't just take our word for it. Read what our patients have to say about their experience at Dental Solutions. 4.9/5 with over 300+ reviews. 
             </p>
           </div>
 
@@ -716,7 +716,7 @@ const Index = () => {
           </div>
           <div className="mt-8 pt-8 border-t border-gray-800">
             <p className="text-center text-gray-500 text-sm">
-              © {new Date().getFullYear()} Dental Solutions Palghar. All rights reserved.
+              © {new Date().getFullYear()} Dental Solutions Palghar. All rights reserved. Designed by Nirzar Marketing Solutions. 
             </p>
           </div>
         </div>
