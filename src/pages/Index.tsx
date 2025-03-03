@@ -40,47 +40,47 @@ const Index = () => {
     {
       title: "General Dentistry",
       description: "Comprehensive dental care for the whole family",
-      image: "https://github.com/nirzarbhaidkar/dental-solutions-palghar/blob/main/public/general-dentistry.jpg"
+      image: "/services/general-dentistry.jpg"
     },
     {
       title: "Cosmetic Dentistry",
       description: "Transform your smile with our expert cosmetic services",
-      image: "https://plus.unsplash.com/premium_photo-1674998790004-1c08a997011c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      image: "/services/cosmetic-dentistry.jpg"
     },
     {
       title: "Orthodontics",
       description: "Achieve the perfect alignment with our orthodontic solutions",
-      image: "https://images.unsplash.com/photo-1616099892194-33be7683e319?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
+      image: "/services/orthodontics.jpg"
     },
     {
       title: "Dental Implants",
       description: "Permanent solutions for missing teeth with natural-looking results",
-      image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
+      image: "/services/dental-implants.jpg"
     },
     {
       title: "Root Canal Treatment",
       description: "Advanced endodontic care to save damaged teeth",
-      image: "https://images.unsplash.com/photo-1587825045005-c9ce5b4c49be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
+      image: "/services/root-canal.jpg"
     },
     {
       title: "Teeth Whitening",
       description: "Professional teeth whitening for a brighter smile",
-      image: "https://images.unsplash.com/photo-1600170384787-dbdd13189e71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
+      image: "/services/teeth-whitening.jpg"
     },
     {
       title: "Pediatric Dentistry",
       description: "Specialized dental care for children in a friendly environment",
-      image: "https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
+      image: "/services/pediatric-dentistry.jpg"
     },
     {
       title: "Periodontal Treatment",
       description: "Comprehensive gum care and disease prevention",
-      image: "https://images.unsplash.com/photo-1607962037942-c21d337d1cbd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
+      image: "/services/periodontal.jpg"
     },
     {
       title: "Emergency Dental Care",
       description: "24/7 emergency dental services when you need them most",
-      image: "https://images.unsplash.com/photo-1609840112990-4265448268d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
+      image: "/services/emergency-dental.jpg"
     }
   ];
 
@@ -147,7 +147,7 @@ const Index = () => {
   ];
 
   const toggleQuestion = (index: number) => {
-    console.log("Toggle question", index);
+    setActiveQuestion(activeQuestion === index ? null : index);
   };
 
   useEffect(() => {
@@ -647,40 +647,3 @@ const Index = () => {
               <ul className="space-y-2">
                 {navItems.map((item, index) => (
                   <li key={index}>
-                    {item.href.startsWith('#') ? (
-                      <a href={item.href} className="text-gray-400 hover:text-white transition-colors">
-                        {item.label}
-                      </a>
-                    ) : (
-                      <Link to={item.href} className="text-gray-400 hover:text-white transition-colors">
-                        {item.label}
-                      </Link>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-xl font-bold mb-4">Connect With Us</h4>
-              <div className="flex space-x-4">
-                <a href="https://www.facebook.com/DentalSolutionsPalghar" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" aria-label="Facebook">
-                  <Facebook size={24} />
-                </a>
-                <a href="https://www.instagram.com/the_dental_solutions/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" aria-label="Instagram">
-                  <Instagram size={24} />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-            <p className="text-gray-400">
-              © {new Date().getFullYear()} Dental Solutions Palghar. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
-    </div>
-  );
-};
-
-export default Index;
