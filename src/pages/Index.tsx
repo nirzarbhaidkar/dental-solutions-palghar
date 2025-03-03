@@ -107,7 +107,7 @@ const Index = () => {
     },
     {
       question: "What are your operating hours?",
-      answer: "We are open Monday through Saturday from 9:00 AM to 7:00 PM. We are closed on Sundays."
+      answer: "We are open Monday through Saturday from 9:30 AM to 2:00 PM and 5:00 PM to 9:00 PM. We are closed on Sundays."
     }
   ];
 
@@ -681,6 +681,21 @@ const Index = () => {
                   <a href="tel:+918600892884" className="text-gray-400 hover:text-white transition-colors">
                     +91 8600892884
                   </a>
+                </div>
+                <div className="flex items-start">
+                  <Clock className="h-5 w-5 mr-3 text-primary shrink-0 mt-0.5" />
+                  <div className="text-gray-400">
+                    <p className="font-medium">Hours:</p>
+                    <ul className="space-y-1 mt-1">
+                      <li>Monday: 9:30 am–2 pm, 5–9 pm</li>
+                      <li>Tuesday: 9:30 am–2 pm, 5–9 pm</li>
+                      <li>Wednesday: 9:30 am–2 pm, 5–9 pm</li>
+                      <li>Thursday: 9:30 am–2 pm, 5–9 pm</li>
+                      <li>Friday: 9:30 am–2 pm, 5–9 pm</li>
+                      <li>Saturday: 9:30 am–2 pm, 5–9 pm</li>
+                      <li>Sunday: Closed</li>
+                    </ul>
+                  </div>
                 </div>
                 <div className="flex items-center space-x-4 mt-4">
                   <a
