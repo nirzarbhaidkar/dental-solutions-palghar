@@ -1,3 +1,4 @@
+<lov-code>
 import { useState, useEffect, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, MapPin, Phone, Clock, ChevronRight, Facebook, Instagram, HelpCircle, Star, User, Quote } from "lucide-react";
@@ -481,7 +482,10 @@ const Index = () => {
               >
                 <button
                   className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
-                  onClick={() => toggleQuestion(index)}
+                  onClick={() => {
+                    console.log("Toggle question", index);
+                    toggleQuestion(index);
+                  }}
                 >
                   <h3 className="text-lg font-medium">{faq.question}</h3>
                   <HelpCircle
@@ -490,13 +494,11 @@ const Index = () => {
                     }`}
                   />
                 </button>
-                <div
-                  className={`px-6 overflow-hidden transition-all duration-300 ease-in-out ${
-                    activeQuestion === index ? 'max-h-96 pb-6' : 'max-h-0'
-                  }`}
-                >
-                  <p className="text-gray-600">{faq.answer}</p>
-                </div>
+                {activeQuestion === index && (
+                  <div className="px-6 pb-6">
+                    <p className="text-gray-600">{faq.answer}</p>
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -648,71 +650,4 @@ const Index = () => {
                 {navItems.map((item, index) => (
                   <li key={index}>
                     {item.href.startsWith('#') ? (
-                      <a 
-                        href={item.href} 
-                        className="text-gray-400 hover:text-white transition-colors"
-                      >
-                        {item.label}
-                      </a>
-                    ) : (
-                      <Link 
-                        to={item.href} 
-                        className="text-gray-400 hover:text-white transition-colors"
-                      >
-                        {item.label}
-                      </Link>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-xl font-bold mb-4">Contact Us</h4>
-              <div className="space-y-3">
-                <div className="flex items-start">
-                  <MapPin className="h-5 w-5 mr-3 text-primary shrink-0 mt-0.5" />
-                  <p className="text-gray-400">
-                    Shop 1,2,3 Sainath Tower, St Antony Rd, near Khadak Road, Bhadrakh Building, Palghar, Maharashtra 401404
-                  </p>
-                </div>
-                <div className="flex items-center">
-                  <Phone className="h-5 w-5 mr-3 text-primary" />
-                  <a href="tel:+918600892884" className="text-gray-400 hover:text-white transition-colors">
-                    +91 8600892884
-                  </a>
-                </div>
-                <div className="flex items-center space-x-4 mt-4">
-                  <a
-                    href="https://www.facebook.com/DentalSolutionsPalghar"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-white transition-colors"
-                    aria-label="Facebook"
-                  >
-                    <Facebook className="h-6 w-6" />
-                  </a>
-                  <a
-                    href="https://www.instagram.com/dentalsolutionspalghar"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-white transition-colors"
-                    aria-label="Instagram"
-                  >
-                    <Instagram className="h-6 w-6" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="mt-8 pt-8 border-t border-gray-800">
-            <p className="text-center text-gray-500 text-sm">
-              © {new Date().getFullYear()} Dental Solutions Palghar. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
-    </div>
-  );
-};
-
-export default Index;
+                      <a
