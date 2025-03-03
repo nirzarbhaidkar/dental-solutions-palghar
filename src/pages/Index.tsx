@@ -1,3 +1,4 @@
+<lov-code>
 import { useState, useEffect, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, MapPin, Phone, Clock, ChevronRight, Facebook, Instagram, HelpCircle, Star, User, Quote } from "lucide-react";
@@ -646,4 +647,4 @@ const Index = () => {
               <h4 className="text-xl font-bold mb-4">Quick Links</h4>
               <ul className="space-y-2">
                 {navItems.map((item, index) => (
-                  <li key={index}>
+                  <li key={
