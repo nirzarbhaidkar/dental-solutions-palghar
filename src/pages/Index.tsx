@@ -1,3 +1,4 @@
+
 import { useState, useEffect, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, MapPin, Phone, Clock, ChevronRight, Facebook, Instagram, HelpCircle, Star, User, Quote, Twitter } from "lucide-react";
@@ -637,12 +638,29 @@ const Index = () => {
       <footer className="bg-gray-900 text-white py-12">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <h4 className="text-xl font-bold mb-4">Dental Solutions</h4>
-              <p className="text-gray-400">
+            <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700 transform transition-all duration-300 hover:shadow-[0_0_15px_rgba(15,160,206,0.3)] hover:border-primary/50">
+              <div className="flex items-center mb-4">
+                <div className="h-10 w-1 bg-primary mr-3 rounded-full"></div>
+                <h4 className="text-xl font-bold">Dental Solutions</h4>
+              </div>
+              <p className="text-gray-400 leading-relaxed">
                 Dental Solutions Palghar is a leading dental clinic committed to providing high-quality oral healthcare with a patient-first approach. Equipped with state-of-the-art technology and a team of experienced dentists, we offer comprehensive treatments, including cosmetic dentistry, orthodontics, dental implants, and preventive care.
               </p>
+              <div className="mt-6 pt-6 border-t border-gray-700/50">
+                <p className="text-gray-300 text-sm italic">
+                  "Your smile deserves the best care."
+                </p>
+                <div className="flex items-center mt-4 space-x-2">
+                  <div className="flex">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 text-yellow-500 fill-yellow-500" />
+                    ))}
+                  </div>
+                  <span className="text-sm text-gray-400">5.0 rating from our patients</span>
+                </div>
+              </div>
             </div>
+            
             <div>
               <h4 className="text-xl font-bold mb-4">Quick Links</h4>
               <ul className="space-y-2">
@@ -651,15 +669,17 @@ const Index = () => {
                     {item.href.startsWith('#') ? (
                       <a 
                         href={item.href} 
-                        className="text-gray-400 hover:text-white transition-colors"
+                        className="text-gray-400 hover:text-white transition-colors flex items-center"
                       >
+                        <ChevronRight className="h-4 w-4 mr-2 text-primary" />
                         {item.label}
                       </a>
                     ) : (
                       <Link 
                         to={item.href} 
-                        className="text-gray-400 hover:text-white transition-colors"
+                        className="text-gray-400 hover:text-white transition-colors flex items-center"
                       >
+                        <ChevronRight className="h-4 w-4 mr-2 text-primary" />
                         {item.label}
                       </Link>
                     )}
@@ -667,6 +687,7 @@ const Index = () => {
                 ))}
               </ul>
             </div>
+            
             <div>
               <h4 className="text-xl font-bold mb-4">Contact Us</h4>
               <div className="space-y-3">
