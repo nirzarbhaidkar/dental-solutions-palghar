@@ -23,7 +23,7 @@ const ChatBot: React.FC = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
-  // Initialize session ID and welcome message
+  // Initialize session ID and load conversation if exists
   useEffect(() => {
     // Generate or retrieve session ID from local storage
     const storedSessionId = localStorage.getItem("chatSessionId");
@@ -35,14 +35,64 @@ const ChatBot: React.FC = () => {
     
     setSessionId(newSessionId);
     
-    // Add welcome message
-    setMessages([
-      {
-        id: uuidv4(),
-        content: "Welcome to Dental Solutions Palghar! How can I assist you today?",
-        isBot: true,
-      },
-    ]);
+    // Load existing conversation if available
+    const loadExistingConversation = async () => {
+      try {
+        // Find existing conversation for this session
+        const { data: conversationData, error: conversationError } = await supabase
+          .from('chat_conversations')
+          .select('id')
+          .eq('session_id', newSessionId)
+          .order('created_at', { ascending: false })
+          .limit(1);
+          
+        if (conversationError) throw conversationError;
+        
+        if (conversationData && conversationData.length > 0) {
+          const existingConversationId = conversationData[0].id;
+          setConversationId(existingConversationId);
+          
+          // Load messages for this conversation
+          const { data: messagesData, error: messagesError } = await supabase
+            .from('chat_messages')
+            .select('*')
+            .eq('conversation_id', existingConversationId)
+            .order('created_at', { ascending: true });
+            
+          if (messagesError) throw messagesError;
+          
+          if (messagesData && messagesData.length > 0) {
+            setMessages(messagesData.map(msg => ({
+              id: msg.id,
+              content: msg.content,
+              isBot: msg.is_bot
+            })));
+            return;
+          }
+        }
+        
+        // If no conversation exists or no messages, show welcome message
+        setMessages([
+          {
+            id: uuidv4(),
+            content: "Welcome to Dental Solutions Palghar! How can I assist you today?",
+            isBot: true,
+          },
+        ]);
+      } catch (error) {
+        console.error("Error loading conversation:", error);
+        // Show welcome message in case of error
+        setMessages([
+          {
+            id: uuidv4(),
+            content: "Welcome to Dental Solutions Palghar! How can I assist you today?",
+            isBot: true,
+          },
+        ]);
+      }
+    };
+    
+    loadExistingConversation();
   }, []);
 
   // Scroll to bottom of chat when messages update
@@ -54,6 +104,46 @@ const ChatBot: React.FC = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const saveMessage = async (newMessage: Message, isUserMessage: boolean) => {
+    try {
+      // Create conversation if it doesn't exist
+      if (!conversationId) {
+        const { data, error } = await supabase
+          .from('chat_conversations')
+          .insert({
+            session_id: sessionId,
+            user_id: null, // Can be updated later if user logs in
+            user_name: null // Can be updated later if user provides name
+          })
+          .select('id')
+          .single();
+          
+        if (error) throw error;
+        setConversationId(data.id);
+        
+        // Save message with new conversation ID
+        await supabase
+          .from('chat_messages')
+          .insert({
+            conversation_id: data.id,
+            content: newMessage.content,
+            is_bot: !isUserMessage
+          });
+      } else {
+        // Save message with existing conversation ID
+        await supabase
+          .from('chat_messages')
+          .insert({
+            conversation_id: conversationId,
+            content: newMessage.content,
+            is_bot: !isUserMessage
+          });
+      }
+    } catch (error) {
+      console.error("Error saving message:", error);
+    }
+  };
+
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!message.trim()) return;
@@ -63,10 +153,16 @@ const ChatBot: React.FC = () => {
     
     // Add user message to chat
     const userMessageId = uuidv4();
-    setMessages((prev) => [
-      ...prev,
-      { id: userMessageId, content: userMessage, isBot: false },
-    ]);
+    const userMessageObj = {
+      id: userMessageId,
+      content: userMessage,
+      isBot: false
+    };
+    
+    setMessages((prev) => [...prev, userMessageObj]);
+    
+    // Save user message to database
+    saveMessage(userMessageObj, true);
     
     setIsLoading(true);
     
@@ -90,10 +186,16 @@ const ChatBot: React.FC = () => {
       }
       
       // Add bot response to chat
-      setMessages((prev) => [
-        ...prev,
-        { id: uuidv4(), content: response.data.response, isBot: true },
-      ]);
+      const botMessageObj = {
+        id: uuidv4(),
+        content: response.data.response,
+        isBot: true
+      };
+      
+      setMessages((prev) => [...prev, botMessageObj]);
+      
+      // Save bot message to database
+      saveMessage(botMessageObj, false);
     } catch (error) {
       console.error("Error sending message:", error);
       toast({
