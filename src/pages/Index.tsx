@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, MapPin, Phone, Clock, ChevronRight, Facebook, Instagram, HelpCircle, Star, User, Quote, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import ChatBot from "@/components/ChatBot";
 
 declare global {
   interface Window {
@@ -832,6 +833,8 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      <ChatBot />
     </div>
   );
 };
