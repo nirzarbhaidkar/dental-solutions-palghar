@@ -1,3 +1,4 @@
+
 import { useState, useEffect, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, MapPin, Phone, Clock, ChevronRight, Facebook, Instagram, HelpCircle, Star, User, Quote, Twitter } from "lucide-react";
@@ -636,7 +637,7 @@ const Index = () => {
 
       <footer className="bg-gray-900 text-white py-12">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <h4 className="text-xl font-bold mb-4">Dental Solutions</h4>
               <p className="text-gray-400">
@@ -710,6 +711,45 @@ const Index = () => {
                   >
                     <Twitter className="h-6 w-6" />
                   </a>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h4 className="text-xl font-bold mb-4">Our Hours</h4>
+              <div className="space-y-2">
+                <div className="flex items-center">
+                  <Clock className="h-5 w-5 mr-3 text-primary" />
+                  <span className="text-gray-400">Opening Hours</span>
+                </div>
+                <div className="ml-8 space-y-1.5">
+                  <div className="flex justify-between text-gray-400">
+                    <span>Monday</span>
+                    <span>9:30 am–2 pm, 5–9 pm</span>
+                  </div>
+                  <div className="flex justify-between text-gray-400">
+                    <span>Tuesday</span>
+                    <span>9:30 am–2 pm, 5–9 pm</span>
+                  </div>
+                  <div className="flex justify-between text-gray-400">
+                    <span>Wednesday</span>
+                    <span>9:30 am–2 pm, 5–9 pm</span>
+                  </div>
+                  <div className="flex justify-between text-gray-400">
+                    <span>Thursday</span>
+                    <span>9:30 am–2 pm, 5–9 pm</span>
+                  </div>
+                  <div className="flex justify-between text-gray-400">
+                    <span>Friday</span>
+                    <span>9:30 am–2 pm, 5–9 pm</span>
+                  </div>
+                  <div className="flex justify-between text-gray-400">
+                    <span>Saturday</span>
+                    <span>9:30 am–2 pm, 5–9 pm</span>
+                  </div>
+                  <div className="flex justify-between text-gray-400">
+                    <span>Sunday</span>
+                    <span className="text-gray-500">Closed</span>
+                  </div>
                 </div>
               </div>
             </div>
