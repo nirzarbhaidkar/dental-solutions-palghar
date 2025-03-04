@@ -1,4 +1,3 @@
-
 import { useState, useEffect, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, MapPin, Phone, Clock, ChevronRight, Facebook, Instagram, HelpCircle, Star, User, Quote, Twitter } from "lucide-react";
@@ -17,6 +16,8 @@ const Index = () => {
   const [currentHeadlineIndex, setCurrentHeadlineIndex] = useState(0);
   const [activeQuestion, setActiveQuestion] = useState<number | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentTime, setCurrentTime] = useState(new Date());
 
   const headlines = [
     {
@@ -157,6 +158,61 @@ const Index = () => {
     }, 4000);
 
     return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const timeInterval = setInterval(() => {
+      const now = new Date();
+      setCurrentTime(now);
+      
+      const day = now.getDay(); // 0 is Sunday, 1 is Monday, etc.
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      const currentTimeInMinutes = hours * 60 + minutes;
+      
+      // Clinic is closed on Sundays (day 0)
+      if (day === 0) {
+        setIsOpen(false);
+        return;
+      }
+      
+      // Morning hours: 9:30 AM - 2:00 PM (570 - 840 minutes)
+      const morningStart = 9 * 60 + 30; // 9:30 AM in minutes
+      const morningEnd = 14 * 60; // 2:00 PM in minutes
+      
+      // Evening hours: 5:00 PM - 9:00 PM (1020 - 1260 minutes)
+      const eveningStart = 17 * 60; // 5:00 PM in minutes
+      const eveningEnd = 21 * 60; // 9:00 PM in minutes
+      
+      // Check if current time falls within operating hours
+      setIsOpen(
+        (currentTimeInMinutes >= morningStart && currentTimeInMinutes < morningEnd) ||
+        (currentTimeInMinutes >= eveningStart && currentTimeInMinutes < eveningEnd)
+      );
+    }, 60000); // Update every minute
+    
+    // Initial check when component mounts
+    const now = new Date();
+    const day = now.getDay();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const currentTimeInMinutes = hours * 60 + minutes;
+    
+    if (day === 0) {
+      setIsOpen(false);
+    } else {
+      const morningStart = 9 * 60 + 30;
+      const morningEnd = 14 * 60;
+      const eveningStart = 17 * 60;
+      const eveningEnd = 21 * 60;
+      
+      setIsOpen(
+        (currentTimeInMinutes >= morningStart && currentTimeInMinutes < morningEnd) ||
+        (currentTimeInMinutes >= eveningStart && currentTimeInMinutes < eveningEnd)
+      );
+    }
+    
+    return () => clearInterval(timeInterval);
   }, []);
 
   useEffect(() => {
@@ -668,6 +724,60 @@ const Index = () => {
                 ))}
               </ul>
             </div>
+
+            <div>
+              <h4 className="text-xl font-bold mb-4">Opening Hours</h4>
+              <div className="space-y-4">
+                <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium" 
+                     style={{ 
+                       backgroundColor: isOpen ? 'rgba(34, 197, 94, 0.2)' : 'rgba(239, 68, 68, 0.2)',
+                       color: isOpen ? 'rgb(34, 197, 94)' : 'rgb(239, 68, 68)'
+                     }}>
+                  <div className="w-2 h-2 rounded-full mr-2" 
+                       style={{ 
+                         backgroundColor: isOpen ? 'rgb(34, 197, 94)' : 'rgb(239, 68, 68)'
+                       }}>
+                  </div>
+                  <span>{isOpen ? 'Open Now' : 'Closed Now'}</span>
+                </div>
+                
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between items-center border-b border-gray-800 pb-2">
+                    <span className="text-gray-400 font-medium">Monday</span>
+                    <span className="text-gray-400">9:30 am–2 pm, 5–9 pm</span>
+                  </div>
+                  <div className="flex justify-between items-center border-b border-gray-800 pb-2">
+                    <span className="text-gray-400 font-medium">Tuesday</span>
+                    <span className="text-gray-400">9:30 am–2 pm, 5–9 pm</span>
+                  </div>
+                  <div className="flex justify-between items-center border-b border-gray-800 pb-2">
+                    <span className="text-gray-400 font-medium">Wednesday</span>
+                    <span className="text-gray-400">9:30 am–2 pm, 5–9 pm</span>
+                  </div>
+                  <div className="flex justify-between items-center border-b border-gray-800 pb-2">
+                    <span className="text-gray-400 font-medium">Thursday</span>
+                    <span className="text-gray-400">9:30 am–2 pm, 5–9 pm</span>
+                  </div>
+                  <div className="flex justify-between items-center border-b border-gray-800 pb-2">
+                    <span className="text-gray-400 font-medium">Friday</span>
+                    <span className="text-gray-400">9:30 am–2 pm, 5–9 pm</span>
+                  </div>
+                  <div className="flex justify-between items-center border-b border-gray-800 pb-2">
+                    <span className="text-gray-400 font-medium">Saturday</span>
+                    <span className="text-gray-400">9:30 am–2 pm, 5–9 pm</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-400 font-medium">Sunday</span>
+                    <span className="text-gray-500">Closed</span>
+                  </div>
+                </div>
+                
+                <div className="text-xs text-gray-500 mt-3">
+                  Last updated: {currentTime.toLocaleDateString()} at {currentTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+                </div>
+              </div>
+            </div>
+
             <div>
               <h4 className="text-xl font-bold mb-4">Contact Us</h4>
               <div className="space-y-3">
@@ -714,49 +824,10 @@ const Index = () => {
                 </div>
               </div>
             </div>
-            <div>
-              <h4 className="text-xl font-bold mb-4">Our Hours</h4>
-              <div className="space-y-2">
-                <div className="flex items-center">
-                  <Clock className="h-5 w-5 mr-3 text-primary" />
-                  <span className="text-gray-400">Opening Hours</span>
-                </div>
-                <div className="ml-8 space-y-1.5">
-                  <div className="flex justify-between text-gray-400">
-                    <span>Monday</span>
-                    <span>9:30 am–2 pm, 5–9 pm</span>
-                  </div>
-                  <div className="flex justify-between text-gray-400">
-                    <span>Tuesday</span>
-                    <span>9:30 am–2 pm, 5–9 pm</span>
-                  </div>
-                  <div className="flex justify-between text-gray-400">
-                    <span>Wednesday</span>
-                    <span>9:30 am–2 pm, 5–9 pm</span>
-                  </div>
-                  <div className="flex justify-between text-gray-400">
-                    <span>Thursday</span>
-                    <span>9:30 am–2 pm, 5–9 pm</span>
-                  </div>
-                  <div className="flex justify-between text-gray-400">
-                    <span>Friday</span>
-                    <span>9:30 am–2 pm, 5–9 pm</span>
-                  </div>
-                  <div className="flex justify-between text-gray-400">
-                    <span>Saturday</span>
-                    <span>9:30 am–2 pm, 5–9 pm</span>
-                  </div>
-                  <div className="flex justify-between text-gray-400">
-                    <span>Sunday</span>
-                    <span className="text-gray-500">Closed</span>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
           <div className="mt-8 pt-8 border-t border-gray-800">
             <p className="text-center text-gray-500 text-sm">
-              © {new Date().getFullYear()} Dental Solutions Palghar. All rights reserved. Designed by Nirzar Marketing Solutions. 
+              © {new Date().getFullYear()} Dental Solutions Palghar. All rights reserved. Designed by Nirzar Marketing Solutions.
             </p>
           </div>
         </div>
