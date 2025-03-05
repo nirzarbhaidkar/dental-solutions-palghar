@@ -49,11 +49,6 @@ export const prefetchWhenIdle = (url: string, type: 'image' | 'style' | 'script'
  */
 export const lazyImport = <T extends React.ComponentType<any>>(
   importFn: () => Promise<{ default: T }>
-): React.LazyExoticComponent<T> => {
-  return React.lazy(() => {
-    return importFn().catch((error) => {
-      console.error('Failed to load component:', error);
-      return { default: (() => <div>Failed to load component</div>) as unknown as T };
-    });
-  });
+) => {
+  return React.lazy(importFn);
 };
