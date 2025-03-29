@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Calendar, ChevronRight, Clock, MessageSquare } from "lucide-react";
 import { motion } from "framer-motion";
@@ -26,18 +27,18 @@ const Blog = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
-              <a href="/" className="text-2xl font-semibold text-primary">Dental Solutions</a>
+              <Link to="/" className="text-2xl font-semibold text-primary">Dental Solutions</Link>
             </div>
             
             <div className="hidden md:flex items-center space-x-8">
               {navItems.map((item, index) => (
-                <a 
+                <Link 
                   key={index}
-                  href={item.href} 
+                  to={item.href} 
                   className="text-gray-700 hover:text-primary transition-colors"
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
               <Button 
                 className="bg-primary text-white hover:bg-primary/90"
@@ -64,14 +65,14 @@ const Blog = () => {
         <div className="fixed inset-0 bg-white z-40 pt-16 md:hidden">
           <div className="flex flex-col space-y-4 p-4">
             {navItems.map((item, index) => (
-              <a 
+              <Link 
                 key={index}
-                href={item.href} 
+                to={item.href} 
                 className="text-gray-700 hover:text-primary transition-colors"
                 onClick={() => setIsNavOpen(false)}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
             <Button 
               className="bg-primary text-white hover:bg-primary/90 w-full"
@@ -107,7 +108,7 @@ const Blog = () => {
                 transition={{ duration: 0.5 }}
                 className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all"
               >
-                <a href={`/blog/${post.slug}`} className="block">
+                <Link to={`/blog/${post.slug}`} className="block">
                   <div className="relative h-48 overflow-hidden">
                     <img 
                       src={post.image} 
@@ -132,7 +133,7 @@ const Blog = () => {
                       Read more <ChevronRight className="ml-1 h-4 w-4" />
                     </div>
                   </div>
-                </a>
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -181,9 +182,9 @@ const Blog = () => {
               <ul className="space-y-2">
                 {navItems.map((item, index) => (
                   <li key={index}>
-                    <a href={item.href} className="text-gray-400 hover:text-white transition-colors">
+                    <Link to={item.href} className="text-gray-400 hover:text-white transition-colors">
                       {item.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
