@@ -1,9 +1,8 @@
-
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, MapPin, Phone, Clock, ChevronRight, Facebook, Instagram, HelpCircle, Star, User, Quote, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 declare global {
   interface Window {
@@ -13,7 +12,6 @@ declare global {
 }
 
 const Index = () => {
-  const navigate = useNavigate();
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [currentHeadlineIndex, setCurrentHeadlineIndex] = useState(0);
   const [activeQuestion, setActiveQuestion] = useState<number | null>(null);
@@ -276,13 +274,13 @@ const Index = () => {
                     {item.label}
                   </a>
                 ) : (
-                  <button 
+                  <Link 
                     key={index}
-                    onClick={() => navigate(item.href)}
+                    to={item.href} 
                     className="text-gray-700 hover:text-primary transition-colors"
                   >
                     {item.label}
-                  </button>
+                  </Link>
                 )
               ))}
               <a
@@ -329,16 +327,14 @@ const Index = () => {
                   {item.label}
                 </a>
               ) : (
-                <button 
+                <Link 
                   key={index}
-                  onClick={() => {
-                    navigate(item.href);
-                    setIsNavOpen(false);
-                  }}
-                  className="text-gray-700 hover:text-primary transition-colors text-left"
+                  to={item.href} 
+                  className="text-gray-700 hover:text-primary transition-colors"
+                  onClick={() => setIsNavOpen(false)}
                 >
                   {item.label}
-                </button>
+                </Link>
               )
             ))}
             <div className="flex items-center space-x-4">
@@ -581,7 +577,7 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all">
-              <div className="block cursor-pointer" onClick={() => navigate("/blog/importance-of-regular-dental-checkups")}>
+              <Link to="/blog/importance-of-regular-dental-checkups" className="block">
                 <div className="relative h-48 overflow-hidden">
                   <img 
                     src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
@@ -606,11 +602,11 @@ const Index = () => {
                     Read more <ChevronRight className="ml-1 h-4 w-4" />
                   </div>
                 </div>
-              </div>
+              </Link>
             </div>
 
             <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all">
-              <div className="block cursor-pointer" onClick={() => navigate("/blog/tips-for-maintaining-healthy-gums")}>
+              <Link to="/blog/tips-for-maintaining-healthy-gums" className="block">
                 <div className="relative h-48 overflow-hidden">
                   <img 
                     src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
@@ -635,11 +631,11 @@ const Index = () => {
                     Read more <ChevronRight className="ml-1 h-4 w-4" />
                   </div>
                 </div>
-              </div>
+              </Link>
             </div>
 
             <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all">
-              <div className="block cursor-pointer" onClick={() => navigate("/blog/childrens-dental-health")}>
+              <Link to="/blog/childrens-dental-health" className="block">
                 <div className="relative h-48 overflow-hidden">
                   <img 
                     src="https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
@@ -664,14 +660,16 @@ const Index = () => {
                     Read more <ChevronRight className="ml-1 h-4 w-4" />
                   </div>
                 </div>
-              </div>
+              </Link>
             </div>
           </div>
 
           <div className="mt-10 text-center">
-            <button onClick={() => navigate("/blog")} className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2">
-              View All Blog Posts <ChevronRight className="ml-1 h-4 w-4" />
-            </button>
+            <Link to="/blog">
+              <Button variant="outline" className="mt-4">
+                View All Blog Posts <ChevronRight className="ml-1 h-4 w-4" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -715,12 +713,12 @@ const Index = () => {
                         {item.label}
                       </a>
                     ) : (
-                      <button 
-                        onClick={() => navigate(item.href)}
-                        className="text-gray-400 hover:text-white transition-colors text-left"
+                      <Link 
+                        to={item.href} 
+                        className="text-gray-400 hover:text-white transition-colors"
                       >
                         {item.label}
-                      </button>
+                      </Link>
                     )}
                   </li>
                 ))}
