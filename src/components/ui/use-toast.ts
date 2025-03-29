@@ -1,5 +1,5 @@
 
 // This is a bridge file to prevent circular dependencies
-import { useToast, toast } from "@/hooks/use-toast";
+import { toast } from "sonner";
 
-export { useToast, toast };
+export { toast };
