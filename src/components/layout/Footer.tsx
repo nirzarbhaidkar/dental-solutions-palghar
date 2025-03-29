@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { MapPin, Phone, Facebook, Instagram, Twitter } from "lucide-react";
+import { MapPin, Phone, Facebook, Instagram, Twitter, Share } from "lucide-react";
 import { Link } from "react-router-dom";
 
 type NavItem = {
@@ -17,7 +17,8 @@ const Footer = () => {
     { label: "Location", href: "#location" },
     { label: "Testimonials", href: "#testimonials" },
     { label: "FAQs", href: "#faqs" },
-    { label: "Blog", href: "/blog" }
+    { label: "Blog", href: "/blog" },
+    { label: "Dental Health Quiz", href: "#quiz" }
   ];
 
   useEffect(() => {

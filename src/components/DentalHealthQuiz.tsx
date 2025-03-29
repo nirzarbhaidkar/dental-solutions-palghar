@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Check, ChevronRight, CircleCheck } from "lucide-react";
+import { Check, ChevronRight, CircleCheck, Share, Link } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 
 type Question = {
   id: number;
@@ -105,6 +107,26 @@ const DentalHealthQuiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [completed, setCompleted] = useState(false);
+  const [quizId, setQuizId] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Check if there's a quiz ID in the URL
+    const params = new URLSearchParams(window.location.search);
+    const quizIdParam = params.get('quizId');
+    
+    if (quizIdParam) {
+      try {
+        const decodedData = JSON.parse(atob(quizIdParam));
+        if (decodedData && decodedData.answers) {
+          setAnswers(decodedData.answers);
+          setCompleted(true);
+          setStarted(true);
+        }
+      } catch (error) {
+        console.error("Failed to parse quiz data:", error);
+      }
+    }
+  }, []);
 
   const handleAnswer = (questionId: number, value: string) => {
     setAnswers((prev) => ({
@@ -118,7 +140,18 @@ const DentalHealthQuiz = () => {
       setCurrentQuestion((prev) => prev + 1);
     } else {
       setCompleted(true);
+      // Generate a unique ID for this quiz result
+      generateQuizId();
     }
+  };
+
+  const generateQuizId = () => {
+    const quizData = {
+      answers,
+      timestamp: new Date().toISOString(),
+    };
+    const encoded = btoa(JSON.stringify(quizData));
+    setQuizId(encoded);
   };
 
   const calculateResult = () => {
@@ -139,10 +172,37 @@ const DentalHealthQuiz = () => {
     window.open(`https://wa.me/918600892884?text=${encodeURIComponent(message)}`, "_blank");
   };
 
+  const handleShareQuiz = () => {
+    if (!quizId) return;
+    
+    const shareUrl = `${window.location.origin}${window.location.pathname}?quizId=${quizId}#quiz`;
+    
+    if (navigator.share) {
+      navigator.share({
+        title: 'My Dental Health Quiz Results',
+        text: 'Check out my dental health quiz results from Dental Solutions Palghar!',
+        url: shareUrl,
+      }).catch((error) => console.log('Error sharing:', error));
+    } else {
+      navigator.clipboard.writeText(shareUrl).then(() => {
+        toast.success("Link copied to clipboard!");
+      }).catch((err) => {
+        console.error('Failed to copy: ', err);
+        toast.error("Failed to copy link");
+      });
+    }
+  };
+
   const handleReset = () => {
     setAnswers({});
     setCurrentQuestion(0);
     setCompleted(false);
+    setQuizId(null);
+    
+    // Remove the quiz ID from the URL
+    const url = new URL(window.location.href);
+    url.searchParams.delete('quizId');
+    window.history.replaceState({}, '', url.toString());
   };
 
   const currentQuestionData = questions[currentQuestion];
@@ -151,7 +211,7 @@ const DentalHealthQuiz = () => {
 
   if (!started) {
     return (
-      <Card className="w-full max-w-3xl mx-auto mt-12 mb-8 overflow-hidden shadow-lg border-0">
+      <Card className="w-full max-w-3xl mx-auto mt-12 mb-8 overflow-hidden shadow-lg border-0" id="quiz">
         <div className="bg-primary/10 p-6 text-center">
           <h2 className="text-2xl md:text-3xl font-bold">Find out if your teeth and gums are in top shape!</h2>
         </div>
@@ -170,7 +230,7 @@ const DentalHealthQuiz = () => {
   }
 
   return (
-    <Card className="w-full max-w-3xl mx-auto mt-12 mb-8 overflow-hidden shadow-lg border-0">
+    <Card className="w-full max-w-3xl mx-auto mt-12 mb-8 overflow-hidden shadow-lg border-0" id="quiz">
       {!completed ? (
         <>
           <div className="bg-primary/10 p-6">
@@ -268,17 +328,25 @@ const DentalHealthQuiz = () => {
               </ul>
             </div>
           </CardContent>
-          <CardFooter className="p-6 border-t flex flex-col sm:flex-row gap-4">
-            <Button 
-              onClick={handleReset} 
-              variant="outline"
-              className="w-full sm:w-auto"
-            >
-              Retake Quiz
-            </Button>
+          <CardFooter className="p-6 border-t flex flex-wrap gap-4 justify-between">
+            <div className="flex flex-wrap gap-4">
+              <Button 
+                onClick={handleReset} 
+                variant="outline"
+              >
+                Retake Quiz
+              </Button>
+              <Button 
+                onClick={handleShareQuiz}
+                variant="outline"
+                className="flex items-center gap-2"
+              >
+                <Share className="h-4 w-4" /> Share Results
+              </Button>
+            </div>
             <Button 
               onClick={handleWhatsAppClick}
-              className="w-full sm:w-auto bg-green-600 hover:bg-green-700"
+              className="bg-green-600 hover:bg-green-700"
             >
               {resultData?.actionText}
             </Button>
