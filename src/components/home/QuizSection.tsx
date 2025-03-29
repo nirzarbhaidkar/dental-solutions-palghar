@@ -10,12 +10,6 @@ const QuizSection = () => {
           <span className="inline-block bg-accent px-4 py-1 rounded-full text-sm font-medium mb-4">
             Dental Health Quiz
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            How Healthy Is Your Smile?
-          </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Take our quick quiz to assess your dental health and get personalized recommendations.
-          </p>
         </div>
         
         <DentalHealthQuiz />

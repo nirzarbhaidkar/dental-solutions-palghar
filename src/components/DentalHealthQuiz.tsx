@@ -1,7 +1,6 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Check, ChevronRight, CircleCheck } from "lucide-react";
@@ -157,8 +156,7 @@ const DentalHealthQuiz = () => {
     return (
       <Card className="w-full max-w-3xl mx-auto mt-12 mb-8 overflow-hidden shadow-lg border-0">
         <div className="bg-primary/10 p-6 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold">How Healthy Is Your Smile?</h2>
-          <p className="text-muted-foreground mt-2">Find out if your teeth and gums are in top shape!</p>
+          <h2 className="text-2xl md:text-3xl font-bold">Find out if your teeth and gums are in top shape!</h2>
         </div>
         <CardContent className="p-6 text-center">
           <p className="mb-4 text-lg">Take our quick 2-minute quiz to assess your dental health and get personalized recommendations.</p>
