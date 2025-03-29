@@ -21,6 +21,11 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/find-dentist-near-me" element={<Index />} />
+          <Route path="/best-dentist-palghar" element={<Index />} />
+          <Route path="/dental-clinic-near-me" element={<Index />} />
+          <Route path="/mouth-doctor-palghar" element={<Index />} />
+          <Route path="/x-ray-dental-services" element={<Index />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
