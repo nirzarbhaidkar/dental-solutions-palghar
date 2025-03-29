@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -157,7 +158,7 @@ const DentalQuiz = () => {
         <div className="flex justify-center">
           <Button 
             onClick={() => setShowQuiz(true)}
-            className="bg-primary text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-primary/90 transition-colors"
+            className="bg-default text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-default/90 transition-colors"
           >
             Start Quiz
           </Button>
@@ -171,7 +172,7 @@ const DentalQuiz = () => {
       <div className="bg-white rounded-xl shadow-lg p-8 my-10">
         <h2 className="text-2xl font-bold text-center mb-6">Your Results</h2>
         <div className="text-center mb-8">
-          <div className="text-5xl font-bold mb-4 text-primary">{score} / {quizQuestions.length}</div>
+          <div className="text-5xl font-bold mb-4 text-default">{score} / {quizQuestions.length}</div>
           <p className="text-lg">
             {score === quizQuestions.length 
               ? "Perfect! You're a dental health expert!" 
@@ -212,12 +213,12 @@ const DentalQuiz = () => {
                       className="mt-2"
                     >
                       <CollapsibleTrigger asChild>
-                        <Button variant="ghost" size="sm" className="p-0 h-auto text-primary flex items-center">
+                        <Button variant="ghost" size="sm" className="p-0 h-auto text-default flex items-center">
                           <HelpCircle size={14} className="mr-1" />
                           <span>Why?</span>
                         </Button>
                       </CollapsibleTrigger>
-                      <CollapsibleContent className="mt-2 text-sm text-gray-600 border-l-2 border-primary/20 pl-3">
+                      <CollapsibleContent className="mt-2 text-sm text-gray-600 border-l-2 border-default/20 pl-3">
                         {question.explanation}
                       </CollapsibleContent>
                     </Collapsible>
@@ -229,7 +230,7 @@ const DentalQuiz = () => {
         </div>
 
         <div className="flex justify-center">
-          <Button onClick={handleReset} className="bg-primary text-white px-6 py-2 rounded-lg">
+          <Button onClick={handleReset} className="bg-default text-white px-6 py-2 rounded-lg">
             Take Quiz Again
           </Button>
         </div>
@@ -285,7 +286,7 @@ const DentalQuiz = () => {
               key={index}
               size="sm"
               variant={getButtonVariant(index)}
-              className={`w-8 h-8 p-0 ${currentQuestion === index ? 'ring-2 ring-offset-2 ring-primary' : ''}`}
+              className={`w-8 h-8 p-0 ${currentQuestion === index ? 'ring-2 ring-offset-2 ring-default' : ''}`}
               onClick={() => setCurrentQuestion(index)}
             >
               {index + 1}
