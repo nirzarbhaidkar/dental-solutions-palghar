@@ -3,17 +3,17 @@ import React from "react";
 
 const Location = () => {
   return (
-    <section id="dental-clinic-palghar-location" className="py-16">
+    <section id="location" className="py-16">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <span className="inline-block bg-accent px-4 py-1 rounded-full text-sm font-medium mb-4">
-            Dental Clinic Near Me in Palghar
+            Our Location
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Visit the Best Dentist in Palghar
+            Visit Our Clinic
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Find Dental Solutions Palghar, the top-rated dental clinic near you. We offer teeth whitening, dental implants, and complete dental care services at affordable prices.
+            Find us easily with Google Maps directions to our dental clinic in Palghar.
           </p>
         </div>
 
@@ -27,17 +27,7 @@ const Location = () => {
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             className="w-full"
-            title="Dental Solutions Palghar Location - Dentist Near Me"
           ></iframe>
-        </div>
-        
-        <div className="mt-8 text-center">
-          <p className="text-gray-600">
-            <strong>Dental Solutions Palghar</strong><br />
-            Shop number 5,6, Apoorva Apartments, Mahim Rd, next to Chetna Classes<br />
-            Palghar, Maharashtra 401404<br />
-            <strong>Phone:</strong> <a href="tel:+918600892884" className="text-primary hover:underline">+91 8600 892 884</a>
-          </p>
         </div>
       </div>
     </section>
