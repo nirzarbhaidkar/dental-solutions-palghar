@@ -11,6 +11,7 @@ Disallow: /wp-content/plugins/
 Disallow: /wp-login.php
 Disallow: /temp/
 Disallow: /private/
+Disallow: /*.pdf$
 Disallow: /cgi-bin/
 Disallow: /tmp/
 
@@ -24,6 +25,10 @@ Allow: /*.jpg$
 Allow: /*.jpeg$
 Allow: /*.png$
 Allow: /*.webp$
+
+# Crawl delay directive for bots that honor it
+User-agent: *
+Crawl-delay: 1
 
 # Sitemap location
 Sitemap: https://dentalsolutionspalghar.com/sitemap.xml
