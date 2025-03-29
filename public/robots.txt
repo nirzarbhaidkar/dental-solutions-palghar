@@ -25,9 +25,18 @@ Allow: /*.jpeg$
 Allow: /*.png$
 Allow: /*.webp$
 
+# Google Bot specific directives
+User-agent: Googlebot
+Allow: /
+
+# Bing Bot specific directives
+User-agent: Bingbot
+Allow: /
+
 # Crawl delay directive for bots that honor it
 User-agent: *
 Crawl-delay: 1
 
-# Sitemap location
-Sitemap: /sitemap.xml
+# Sitemap locations (absolute URLs)
+Sitemap: https://dentalsolutionspalghar.com/sitemap.xml
+Sitemap: https://dentalsolutionspalghar.com/sitemap-index.xml

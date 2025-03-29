@@ -2,19 +2,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
-    <loc>/sitemaps/main-pages.xml</loc>
+    <loc>https://dentalsolutionspalghar.com/sitemaps/main-pages.xml</loc>
     <lastmod>2024-07-25</lastmod>
   </sitemap>
   <sitemap>
-    <loc>/sitemaps/services.xml</loc>
+    <loc>https://dentalsolutionspalghar.com/sitemaps/services.xml</loc>
     <lastmod>2024-07-25</lastmod>
   </sitemap>
   <sitemap>
-    <loc>/sitemaps/blog.xml</loc>
+    <loc>https://dentalsolutionspalghar.com/sitemaps/blog.xml</loc>
     <lastmod>2024-07-25</lastmod>
   </sitemap>
   <sitemap>
-    <loc>/sitemaps/location-pages.xml</loc>
+    <loc>https://dentalsolutionspalghar.com/sitemaps/location-pages.xml</loc>
     <lastmod>2024-07-25</lastmod>
   </sitemap>
 </sitemapindex>
