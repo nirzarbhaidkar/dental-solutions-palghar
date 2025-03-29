@@ -10,6 +10,7 @@ import BlogPreview from "@/components/home/BlogPreview";
 import CallToAction from "@/components/home/CallToAction";
 import Footer from "@/components/home/Footer";
 import FacebookPixel from "@/components/home/FacebookPixel";
+import SeoHelmet from "@/components/home/SeoHelmet";
 
 const Index = () => {
   useEffect(() => {
@@ -21,7 +22,8 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background" id="dental-solutions-palghar-main">
+      <SeoHelmet />
       <FacebookPixel />
       <Navbar />
       <Hero />

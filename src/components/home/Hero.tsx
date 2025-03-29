@@ -14,20 +14,20 @@ const Hero = () => {
 
   const headlines = [
     {
-      title: "Expert Dental Care for Your",
-      highlight: "Perfect Smile",
+      title: "Best Dentist in",
+      highlight: "Palghar",
     },
     {
-      title: "Advanced Technology for",
-      highlight: "Better Care",
+      title: "Top Dental Clinic",
+      highlight: "Near You",
     },
     {
-      title: "Trusted by Families for",
-      highlight: "Over 11 Years",
+      title: "Expert Dental Solutions for",
+      highlight: "Your Perfect Smile",
     },
     {
-      title: "Comfortable Care for Your",
-      highlight: "Dental Health",
+      title: "Affordable Teeth Whitening",
+      highlight: "& Dental Implants",
     },
   ];
 
@@ -40,10 +40,10 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="pt-32 pb-16 px-4">
+    <section className="pt-32 pb-16 px-4" id="dental-solutions-palghar-hero">
       <div className="container mx-auto text-center">
         <span className="inline-block bg-accent px-4 py-1 rounded-full text-sm font-medium mb-4 animate-fade-in">
-          Welcome to Dental Solutions Palghar
+          Welcome to Dental Solutions Palghar - Your Trusted Dentist Near Me
         </span>
         <div className="h-[120px] md:h-[144px] mb-6">
           <AnimatePresence mode="wait">
@@ -61,7 +61,7 @@ const Hero = () => {
           </AnimatePresence>
         </div>
         <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto mb-8 animate-fade-up">
-          Experience world-class dental care with our team of experienced professionals. Your smile deserves the best.
+          Experience world-class dental care at Dental Solutions, the premier dental clinic in Palghar. Our expert mouth doctors provide teeth whitening, dental implants, and complete oral care services.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up">
           <Button 
@@ -75,7 +75,7 @@ const Hero = () => {
             className="px-8 py-6 text-lg"
             onClick={() => window.open("tel:+918600892884")}
           >
-            Call Now <Phone className="ml-2 h-4 w-4" />
+            Call Dental Clinic Now <Phone className="ml-2 h-4 w-4" />
           </Button>
         </div>
       </div>
