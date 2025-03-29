@@ -1,12 +1,37 @@
 
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, ArrowLeft, ChevronRight, Facebook, Instagram, Phone as PhoneIcon, MapPin as MapPinIcon, MessageSquare } from "lucide-react";
 import { blogPosts } from "../data/blogPosts";
+import { useEffect } from "react";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
+  const navigate = useNavigate();
   const post = blogPosts.find((p) => p.slug === slug);
+
+  useEffect(() => {
+    // If post not found and we're not in development, redirect to 404
+    if (!post && process.env.NODE_ENV !== 'development') {
+      navigate('/404', { replace: true });
+    }
+    
+    // Update page title for SEO
+    if (post) {
+      document.title = `${post.title} | Dental Solutions Palghar`;
+      
+      // Add meta description for SEO
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute('content', post.excerpt);
+      } else {
+        const meta = document.createElement('meta');
+        meta.name = 'description';
+        meta.content = post.excerpt;
+        document.head.appendChild(meta);
+      }
+    }
+  }, [post, slug, navigate]);
 
   if (!post) {
     return (
@@ -15,11 +40,11 @@ const BlogPost = () => {
           <div className="text-center">
             <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
             <p className="text-gray-600">Sorry, the post you are looking for could not be found.</p>
-            <Link to="/blog">
+            <a href="/blog">
               <Button variant="outline" className="mt-4">
                 <ArrowLeft className="mr-2 h-4 w-4" /> Back to Blog
               </Button>
-            </Link>
+            </a>
           </div>
         </div>
       </div>
@@ -35,73 +60,83 @@ const BlogPost = () => {
       <nav className="bg-white shadow-sm">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
-            <Link to="/" className="text-2xl font-semibold text-primary">
+            <a href="/" className="text-2xl font-semibold text-primary">
               Dental Solutions
-            </Link>
-            <Link to="/blog">
+            </a>
+            <a href="/blog">
               <Button variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" /> Back to Blog
               </Button>
-            </Link>
+            </a>
           </div>
         </div>
       </nav>
 
       <div className="container mx-auto px-4 py-16">
-        <div className="mb-8">
-          <div className="flex items-center text-sm text-gray-500 mb-2">
-            <Calendar className="h-4 w-4 mr-1" />
-            <span>{post.date}</span>
-            <span className="mx-2">•</span>
-            <Clock className="h-4 w-4 mr-1" />
-            <span>{post.readTime}</span>
-          </div>
-          <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
-          <img src={post.image} alt={post.title} className="w-full rounded-xl mb-8" />
-          <p className="text-gray-700 leading-relaxed mb-8">{post.content}</p>
+        <article itemScope itemType="https://schema.org/BlogPosting">
+          <meta itemProp="datePublished" content={new Date(post.date).toISOString()} />
+          <meta itemProp="author" content="Dental Solutions Palghar" />
+          <meta itemProp="publisher" content="Dental Solutions Palghar" />
           
-          {/* WhatsApp CTA Section */}
-          <div className="bg-primary/10 rounded-xl p-6 mb-8">
-            <h3 className="text-2xl font-semibold mb-3">Need a Dentist Near Me in Palghar?</h3>
-            <p className="mb-4">Our dental clinic near me provides comprehensive dental services including teeth cleaning, teeth whitening, dental implants, and pediatric dentistry. Book an appointment with the best dentist in Palghar today!</p>
-            <Button 
-              onClick={handleWhatsAppClick}
-              className="bg-green-600 hover:bg-green-700 text-white flex items-center justify-center w-full md:w-auto"
-            >
-              <MessageSquare className="mr-2 h-5 w-5" />
-              Book Appointment on WhatsApp
-            </Button>
-          </div>
+          <div className="mb-8">
+            <div className="flex items-center text-sm text-gray-500 mb-2">
+              <Calendar className="h-4 w-4 mr-1" />
+              <span>{post.date}</span>
+              <span className="mx-2">•</span>
+              <Clock className="h-4 w-4 mr-1" />
+              <span>{post.readTime}</span>
+            </div>
+            <h1 className="text-4xl font-bold mb-4" itemProp="headline">{post.title}</h1>
+            <img src={post.image} alt={post.title} className="w-full rounded-xl mb-8" itemProp="image" />
+            <div className="text-gray-700 leading-relaxed mb-8" itemProp="articleBody">
+              {post.content.split('. ').map((sentence, index) => (
+                <p key={index} className="mb-4">{sentence}.</p>
+              ))}
+            </div>
+            
+            {/* WhatsApp CTA Section */}
+            <div className="bg-primary/10 rounded-xl p-6 mb-8">
+              <h3 className="text-2xl font-semibold mb-3">Need a Dentist Near Me in Palghar?</h3>
+              <p className="mb-4">Our dental clinic near me provides comprehensive dental services including teeth cleaning, teeth whitening, dental implants, and pediatric dentistry. Book an appointment with the best dentist in Palghar today!</p>
+              <Button 
+                onClick={handleWhatsAppClick}
+                className="bg-green-600 hover:bg-green-700 text-white flex items-center justify-center w-full md:w-auto"
+              >
+                <MessageSquare className="mr-2 h-5 w-5" />
+                Book Appointment on WhatsApp
+              </Button>
+            </div>
 
-          {/* Related Posts Section */}
-          <div className="mt-12">
-            <h3 className="text-2xl font-semibold mb-4">Related Dental Services</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {blogPosts
-                .filter(relatedPost => relatedPost.id !== post.id)
-                .slice(0, 2)
-                .map(relatedPost => (
-                  <Link key={relatedPost.id} to={`/blog/${relatedPost.slug}`} className="block group">
-                    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all">
-                      <div className="h-40 overflow-hidden">
-                        <img 
-                          src={relatedPost.image} 
-                          alt={relatedPost.title}
-                          className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-300"
-                        />
-                      </div>
-                      <div className="p-4">
-                        <h4 className="font-semibold mb-2 group-hover:text-primary transition-colors">{relatedPost.title}</h4>
-                        <div className="flex items-center text-primary font-medium">
-                          Read more <ChevronRight className="ml-1 h-4 w-4" />
+            {/* Related Posts Section */}
+            <div className="mt-12">
+              <h3 className="text-2xl font-semibold mb-4">Related Dental Services</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {blogPosts
+                  .filter(relatedPost => relatedPost.id !== post.id)
+                  .slice(0, 2)
+                  .map(relatedPost => (
+                    <a key={relatedPost.id} href={`/blog/${relatedPost.slug}`} className="block group">
+                      <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all">
+                        <div className="h-40 overflow-hidden">
+                          <img 
+                            src={relatedPost.image} 
+                            alt={relatedPost.title}
+                            className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-300"
+                          />
+                        </div>
+                        <div className="p-4">
+                          <h4 className="font-semibold mb-2 group-hover:text-primary transition-colors">{relatedPost.title}</h4>
+                          <div className="flex items-center text-primary font-medium">
+                            Read more <ChevronRight className="ml-1 h-4 w-4" />
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Link>
-                ))}
+                    </a>
+                  ))}
+              </div>
             </div>
           </div>
-        </div>
+        </article>
       </div>
       
       <footer className="bg-gray-900 text-white py-12">
@@ -138,19 +173,19 @@ const BlogPost = () => {
               <h4 className="text-xl font-bold mb-4">Explore More</h4>
               <ul className="space-y-2">
                 <li>
-                  <Link to="/" className="text-gray-400 hover:text-white transition-colors">
+                  <a href="/" className="text-gray-400 hover:text-white transition-colors">
                     Home
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link to="/services" className="text-gray-400 hover:text-white transition-colors">
+                  <a href="/services" className="text-gray-400 hover:text-white transition-colors">
                     Services
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link to="/blog" className="text-gray-400 hover:text-white transition-colors">
+                  <a href="/blog" className="text-gray-400 hover:text-white transition-colors">
                     Blog
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>
