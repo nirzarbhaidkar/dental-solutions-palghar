@@ -1,14 +1,16 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Calendar, ChevronRight, Clock, MessageSquare } from "lucide-react";
+import { Calendar, ChevronRight, Clock, MessageSquare, MapPin, Phone, Facebook, Instagram, Twitter } from "lucide-react";
 import { motion } from "framer-motion";
 import { blogPosts } from "../data/blogPosts";
 
 const Blog = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentTime, setCurrentTime] = useState(new Date());
   
   const navItems = [
     { label: "Services", href: "/#services" },
@@ -20,6 +22,76 @@ const Blog = () => {
   const handleWhatsAppClick = () => {
     window.open("https://wa.me/918600892884?text=Hello%2C%20I%E2%80%99d%20like%20to%20book%20an%20appointment%20at%20Dental%20Solutions%20Palghar.%20Please%20let%20me%20know%20the%20available%20slots.%20Thank%20you!", "_blank");
   };
+
+  useEffect(() => {
+    const timeInterval = setInterval(() => {
+      const now = new Date();
+      setCurrentTime(now);
+      
+      const day = now.getDay(); // 0 is Sunday, 1 is Monday, etc.
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      const currentTimeInMinutes = hours * 60 + minutes;
+      
+      // Clinic is closed on Sundays (day 0)
+      if (day === 0) {
+        setIsOpen(false);
+        return;
+      }
+      
+      // Morning hours: 9:30 AM - 2:00 PM (570 - 840 minutes)
+      const morningStart = 9 * 60 + 30; // 9:30 AM in minutes
+      const morningEnd = 14 * 60; // 2:00 PM in minutes
+      
+      // Evening hours: 5:00 PM - 9:00 PM (1020 - 1260 minutes)
+      const eveningStart = 17 * 60; // 5:00 PM in minutes
+      const eveningEnd = 21 * 60; // 9:00 PM in minutes
+      
+      // Check if current time falls within operating hours
+      setIsOpen(
+        (currentTimeInMinutes >= morningStart && currentTimeInMinutes < morningEnd) ||
+        (currentTimeInMinutes >= eveningStart && currentTimeInMinutes < eveningEnd)
+      );
+    }, 60000); // Update every minute
+    
+    // Initial check when component mounts
+    const now = new Date();
+    const day = now.getDay();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const currentTimeInMinutes = hours * 60 + minutes;
+    
+    if (day === 0) {
+      setIsOpen(false);
+    } else {
+      const morningStart = 9 * 60 + 30;
+      const morningEnd = 14 * 60;
+      const eveningStart = 17 * 60;
+      const eveningEnd = 21 * 60;
+      
+      setIsOpen(
+        (currentTimeInMinutes >= morningStart && currentTimeInMinutes < morningEnd) ||
+        (currentTimeInMinutes >= eveningStart && currentTimeInMinutes < eveningEnd)
+      );
+    }
+    
+    return () => clearInterval(timeInterval);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
@@ -250,7 +322,7 @@ const Blog = () => {
                 </div>
                 
                 <div className="text-xs text-gray-500 mt-3">
-                  Last updated: {new Date().toLocaleDateString()} at {new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+                  Last updated: {currentTime.toLocaleDateString()} at {currentTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
                 </div>
               </div>
             </div>
@@ -314,4 +386,3 @@ const Blog = () => {
 };
 
 export default Blog;
-
