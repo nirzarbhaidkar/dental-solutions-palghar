@@ -109,7 +109,7 @@ const Index = () => {
     },
     {
       question: "What are your operating hours?",
-      answer: "We are open Monday through Saturday from 9:30 am–2 pm and 5–9 pm. We are closed on Sundays."
+      answer: "We are open Monday through Saturday from 9:30 am–2 pm and 5–9 pm. We are closed on Sundays."
     }
   ];
 
@@ -117,26 +117,22 @@ const Index = () => {
     {
       name: "Nupur Nerkar",
       text: "I had my root canal treatment done at Dental Solutions Palghar. Had a very smooth experience. The doctors explained the procedure very well. I am happy with the experience. My kid also underwent his dental procedure here. Dr Radha is really good with kids.",
-      rating: 5,
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+      rating: 5
     },
     {
       name: "Sugriv Chaursia",
       text: "After struggling with dental anxiety for years, I finally found a clinic where I feel at ease. The staff is patient and understanding, and Dr. Patel takes time to explain everything thoroughly. Highly recommend!",
-      rating: 5,
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+      rating: 5
     },
     {
       name: "Aadii Jagtap",
       text: "I had a dental emergency and Dental Solutions accommodated me immediately. The care was exceptional, and they followed up the next day to check on me. That's the kind of personalized service that keeps me coming back.",
-      rating: 5,
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+      rating: 5
     },
     {
       name: "Namrata Pailwan",
       text: "The orthodontic treatment I received at Dental Solutions transformed my smile completely. The team is professional, the facility is immaculate, and the results exceeded my expectations. Worth every penny!",
-      rating: 5,
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+      rating: 5
     }
   ];
 
@@ -497,13 +493,6 @@ const Index = () => {
                   </div>
                   <p className="text-gray-700 italic mb-6">"{testimonial.text}"</p>
                   <div className="flex items-center">
-                    <div className="h-12 w-12 rounded-full overflow-hidden mr-4">
-                      <img 
-                        src={testimonial.image} 
-                        alt={testimonial.name}
-                        className="h-full w-full object-cover"
-                      />
-                    </div>
                     <div>
                       <h4 className="font-semibold">{testimonial.name}</h4>
                       <p className="text-sm text-gray-500">Verified Patient</p>
