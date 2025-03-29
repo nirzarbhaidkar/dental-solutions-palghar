@@ -1,6 +1,6 @@
 
 # Dental Solutions Palghar - Robots.txt
-# https://dentalsolutionspalghar.in
+# https://dentalsolutionspalghar.com
 
 User-agent: *
 Allow: /
@@ -11,7 +11,6 @@ Disallow: /wp-content/plugins/
 Disallow: /wp-login.php
 Disallow: /temp/
 Disallow: /private/
-Disallow: /*.pdf$
 Disallow: /cgi-bin/
 Disallow: /tmp/
 
@@ -26,9 +25,5 @@ Allow: /*.jpeg$
 Allow: /*.png$
 Allow: /*.webp$
 
-# Crawl delay directive for bots that honor it
-User-agent: *
-Crawl-delay: 1
-
 # Sitemap location
-Sitemap: https://dentalsolutionspalghar.in/sitemap.xml
+Sitemap: https://dentalsolutionspalghar.com/sitemap.xml
