@@ -37,5 +37,5 @@ Allow: /
 User-agent: *
 Crawl-delay: 1
 
-# Sitemap locations (absolute URLs)
+# Sitemap location (absolute URL)
 Sitemap: https://dentalsolutionspalghar.com/sitemap.xml
