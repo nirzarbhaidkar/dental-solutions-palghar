@@ -1,6 +1,6 @@
 
 # Dental Solutions Palghar - Robots.txt
-# https://dentalsolutionspalghar.com
+# https://dentalsolutionspalghar.in
 
 User-agent: *
 Allow: /
@@ -31,4 +31,4 @@ User-agent: *
 Crawl-delay: 1
 
 # Sitemap location
-Sitemap: https://dentalsolutionspalghar.com/sitemap.xml
+Sitemap: https://dentalsolutionspalghar.in/sitemap.xml
