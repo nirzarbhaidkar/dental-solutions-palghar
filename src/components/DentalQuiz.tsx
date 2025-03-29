@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -145,7 +144,7 @@ const DentalQuiz = () => {
       const isCorrect = selectedAnswers[questionIndex] === quizQuestions[questionIndex].correctAnswer;
       return isCorrect ? "green" : "destructive";
     }
-    return isQuestionAnswered(questionIndex) ? "primary" : "outline";
+    return isQuestionAnswered(questionIndex) ? "default" : "outline";
   };
 
   if (!showQuiz) {
