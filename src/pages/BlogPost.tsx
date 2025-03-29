@@ -1,6 +1,18 @@
+
 import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { 
+  ArrowLeft, 
+  Calendar, 
+  Clock, 
+  MessageSquare, 
+  ChevronRight, 
+  Facebook, 
+  Instagram, 
+  MapPin as MapPinIcon, 
+  Phone as PhoneIcon 
+} from "lucide-react";
 import { blogPosts } from "../data/blogPosts";
 
 const BlogPost = () => {
