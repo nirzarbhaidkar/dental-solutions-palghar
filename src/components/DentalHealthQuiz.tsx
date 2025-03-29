@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Check, ChevronRight, CircleCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -84,19 +83,19 @@ const results: Record<string, Result> = {
   A: {
     title: "Your smile is in great shape!",
     description: "Keep up your routine and consider a professional cleaning to maintain it.",
-    actionText: "Book a quick consultation",
+    actionText: "Book consultation",
     type: "good",
   },
   B: {
     title: "Your oral health is decent, but there's room for improvement.",
     description: "A professional check-up can help identify areas to focus on.",
-    actionText: "Schedule a visit today",
+    actionText: "Book consultation",
     type: "average",
   },
   C: {
     title: "Your dental health may need attention.",
     description: "Don't wait until it worsens—get expert advice on how to improve your dental health.",
-    actionText: "Claim a free consultation",
+    actionText: "Book consultation",
     type: "needsAttention",
   },
 };
@@ -106,7 +105,6 @@ const DentalHealthQuiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [completed, setCompleted] = useState(false);
-  const [agreedToContact, setAgreedToContact] = useState(false);
 
   const handleAnswer = (questionId: number, value: string) => {
     setAnswers((prev) => ({
@@ -145,7 +143,6 @@ const DentalHealthQuiz = () => {
     setAnswers({});
     setCurrentQuestion(0);
     setCompleted(false);
-    setAgreedToContact(false);
   };
 
   const currentQuestionData = questions[currentQuestion];
@@ -270,20 +267,6 @@ const DentalHealthQuiz = () => {
                 })}
               </ul>
             </div>
-            
-            <div className="flex items-start space-x-2 mb-6">
-              <Checkbox 
-                id="contact-consent" 
-                checked={agreedToContact}
-                onCheckedChange={(checked) => setAgreedToContact(checked as boolean)} 
-              />
-              <label 
-                htmlFor="contact-consent" 
-                className="text-sm cursor-pointer"
-              >
-                I consent to being contacted by Dental Solutions regarding my dental health. Your privacy is important to us and your information will not be shared.
-              </label>
-            </div>
           </CardContent>
           <CardFooter className="p-6 border-t flex flex-col sm:flex-row gap-4">
             <Button 
@@ -295,7 +278,6 @@ const DentalHealthQuiz = () => {
             </Button>
             <Button 
               onClick={handleWhatsAppClick}
-              disabled={!agreedToContact}
               className="w-full sm:w-auto bg-green-600 hover:bg-green-700"
             >
               {resultData?.actionText}
