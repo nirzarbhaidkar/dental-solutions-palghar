@@ -12,14 +12,6 @@ import Footer from "@/components/home/Footer";
 import FacebookPixel from "@/components/home/FacebookPixel";
 
 const Index = () => {
-  useEffect(() => {
-    // This ensures the page scrolls to top when component mounts
-    window.scrollTo(0, 0);
-    
-    // Log to help with debugging
-    console.log("Index component mounted");
-  }, []);
-
   return (
     <div className="min-h-screen bg-background">
       <FacebookPixel />
