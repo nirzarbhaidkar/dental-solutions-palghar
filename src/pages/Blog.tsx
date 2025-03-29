@@ -1,10 +1,9 @@
-
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Calendar, ChevronRight, Clock, MessageSquare } from "lucide-react";
 import { motion } from "framer-motion";
 import { blogPosts } from "../data/blogPosts";
+import DentalQuiz from "@/components/DentalQuiz";
 
 const Blog = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -27,18 +26,18 @@ const Blog = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
-              <Link to="/" className="text-2xl font-semibold text-primary">Dental Solutions</Link>
+              <a href="/" className="text-2xl font-semibold text-primary">Dental Solutions</a>
             </div>
             
             <div className="hidden md:flex items-center space-x-8">
               {navItems.map((item, index) => (
-                <Link 
+                <a 
                   key={index}
-                  to={item.href} 
+                  href={item.href} 
                   className="text-gray-700 hover:text-primary transition-colors"
                 >
                   {item.label}
-                </Link>
+                </a>
               ))}
               <Button 
                 className="bg-primary text-white hover:bg-primary/90"
@@ -65,14 +64,14 @@ const Blog = () => {
         <div className="fixed inset-0 bg-white z-40 pt-16 md:hidden">
           <div className="flex flex-col space-y-4 p-4">
             {navItems.map((item, index) => (
-              <Link 
+              <a 
                 key={index}
-                to={item.href} 
+                href={item.href} 
                 className="text-gray-700 hover:text-primary transition-colors"
                 onClick={() => setIsNavOpen(false)}
               >
                 {item.label}
-              </Link>
+              </a>
             ))}
             <Button 
               className="bg-primary text-white hover:bg-primary/90 w-full"
@@ -108,7 +107,7 @@ const Blog = () => {
                 transition={{ duration: 0.5 }}
                 className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all"
               >
-                <Link to={`/blog/${post.slug}`} className="block">
+                <a href={`/blog/${post.slug}`} className="block">
                   <div className="relative h-48 overflow-hidden">
                     <img 
                       src={post.image} 
@@ -133,9 +132,20 @@ const Blog = () => {
                       Read more <ChevronRight className="ml-1 h-4 w-4" />
                     </div>
                   </div>
-                </Link>
+                </a>
               </motion.div>
             ))}
+          </div>
+
+          <div className="mt-16">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold">Test Your Dental Knowledge</h2>
+              <p className="text-gray-600 mt-2">
+                How much do you know about dental health? Take our interactive quiz below!
+              </p>
+            </div>
+            
+            <DentalQuiz />
           </div>
 
           <div className="mt-16">
@@ -182,9 +192,9 @@ const Blog = () => {
               <ul className="space-y-2">
                 {navItems.map((item, index) => (
                   <li key={index}>
-                    <Link to={item.href} className="text-gray-400 hover:text-white transition-colors">
+                    <a href={item.href} className="text-gray-400 hover:text-white transition-colors">
                       {item.label}
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
