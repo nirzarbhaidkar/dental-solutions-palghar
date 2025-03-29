@@ -39,4 +39,3 @@ Crawl-delay: 1
 
 # Sitemap locations (absolute URLs)
 Sitemap: https://dentalsolutionspalghar.com/sitemap.xml
-Sitemap: https://dentalsolutionspalghar.com/sitemap-index.xml
