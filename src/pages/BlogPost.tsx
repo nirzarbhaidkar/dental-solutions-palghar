@@ -1,9 +1,9 @@
-
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, ArrowLeft, ChevronRight, Facebook, Instagram, Phone, MapPin, MessageSquare } from "lucide-react";
 import { blogPosts } from "../data/blogPosts";
+import DentalHealthQuiz from "@/components/DentalHealthQuiz";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -117,6 +117,11 @@ const BlogPost = () => {
           <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
           <img src={post.image} alt={post.title} className="w-full rounded-xl mb-8" />
           <p className="text-gray-700 leading-relaxed mb-8">{post.content}</p>
+          
+          {/* Dental Health Quiz */}
+          <div className="my-12">
+            <DentalHealthQuiz />
+          </div>
           
           {/* WhatsApp CTA Section */}
           <div className="bg-primary/10 rounded-xl p-6 mb-8">
