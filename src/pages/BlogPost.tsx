@@ -15,11 +15,11 @@ const BlogPost = () => {
           <div className="text-center">
             <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
             <p className="text-gray-600">Sorry, the post you are looking for could not be found.</p>
-            <a href="/blog">
+            <Link to="/blog">
               <Button variant="outline" className="mt-4">
                 <ArrowLeft className="mr-2 h-4 w-4" /> Back to Blog
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -35,14 +35,14 @@ const BlogPost = () => {
       <nav className="bg-white shadow-sm">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
-            <a href="/" className="text-2xl font-semibold text-primary">
+            <Link to="/" className="text-2xl font-semibold text-primary">
               Dental Solutions
-            </a>
-            <a href="/blog">
+            </Link>
+            <Link to="/blog">
               <Button variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" /> Back to Blog
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       </nav>
@@ -81,7 +81,7 @@ const BlogPost = () => {
                 .filter(relatedPost => relatedPost.id !== post.id)
                 .slice(0, 2)
                 .map(relatedPost => (
-                  <a key={relatedPost.id} href={`/blog/${relatedPost.slug}`} className="block group">
+                  <Link key={relatedPost.id} to={`/blog/${relatedPost.slug}`} className="block group">
                     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all">
                       <div className="h-40 overflow-hidden">
                         <img 
@@ -97,7 +97,7 @@ const BlogPost = () => {
                         </div>
                       </div>
                     </div>
-                  </a>
+                  </Link>
                 ))}
             </div>
           </div>
@@ -138,19 +138,19 @@ const BlogPost = () => {
               <h4 className="text-xl font-bold mb-4">Explore More</h4>
               <ul className="space-y-2">
                 <li>
-                  <a href="/" className="text-gray-400 hover:text-white transition-colors">
+                  <Link to="/" className="text-gray-400 hover:text-white transition-colors">
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/services" className="text-gray-400 hover:text-white transition-colors">
+                  <Link to="/services" className="text-gray-400 hover:text-white transition-colors">
                     Services
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/blog" className="text-gray-400 hover:text-white transition-colors">
+                  <Link to="/blog" className="text-gray-400 hover:text-white transition-colors">
                     Blog
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
