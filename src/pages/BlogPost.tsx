@@ -1,6 +1,8 @@
+
 import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { ArrowLeft, Calendar, Clock, MessageSquare, ChevronRight, Facebook, Instagram, MapPin, Phone } from "lucide-react";
 import { blogPosts } from "../data/blogPosts";
 
 const BlogPost = () => {
@@ -190,11 +192,11 @@ const BlogPost = () => {
               <h4 className="text-xl font-bold mb-4">Contact Us</h4>
               <div className="space-y-2 text-gray-400">
                 <p className="flex items-center">
-                  <MapPinIcon className="mr-2 h-5 w-5" />
+                  <MapPin className="mr-2 h-5 w-5" />
                   123 Dental Street, Palghar, Maharashtra
                 </p>
                 <p className="flex items-center">
-                  <PhoneIcon className="mr-2 h-5 w-5" />
+                  <Phone className="mr-2 h-5 w-5" />
                   +91 8600892884
                 </p>
               </div>
