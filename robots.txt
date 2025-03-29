@@ -26,6 +26,10 @@ Allow: /*.jpeg$
 Allow: /*.png$
 Allow: /*.webp$
 
+# Specific directives for other bots
+User-agent: Bingbot
+Crawl-delay: 2
+
 # Crawl delay directive for bots that honor it
 User-agent: *
 Crawl-delay: 1
