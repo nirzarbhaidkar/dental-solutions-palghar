@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, MapPin, Phone, Clock, ChevronRight, Facebook, Instagram, HelpCircle, Star, User, Quote, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import DentalHealthQuiz from "@/components/DentalHealthQuiz";
 
 declare global {
   interface Window {
@@ -435,7 +436,25 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="location" className="py-16">
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-8">
+            <span className="inline-block bg-accent px-4 py-1 rounded-full text-sm font-medium mb-4">
+              Dental Health Quiz
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              How Healthy Is Your Smile?
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Take our quick quiz to assess your dental health and get personalized recommendations.
+            </p>
+          </div>
+          
+          <DentalHealthQuiz />
+        </div>
+      </section>
+
+      <section id="location" className="py-16 bg-muted">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <span className="inline-block bg-accent px-4 py-1 rounded-full text-sm font-medium mb-4">
@@ -665,10 +684,15 @@ const Index = () => {
 
       <section className="py-16 bg-muted">
         <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Improve Your Dental Health?</h2>
+          <div className="text-center mb-16">
+            <span className="inline-block bg-accent px-4 py-1 rounded-full text-sm font-medium mb-4">
+              Ready to Improve Your Dental Health?
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Schedule an Appointment
+            </h2>
             <p className="text-gray-600 mb-8">
-              Schedule an appointment with our experienced dental professionals today and take the first step towards a healthier smile.
+              Take the first step towards a healthier smile by scheduling an appointment with our experienced dental professionals.
             </p>
             <Button 
               className="bg-primary text-white hover:bg-primary/90 px-8 py-6 text-lg"
