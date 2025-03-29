@@ -1,9 +1,7 @@
-
+import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Calendar, Clock, ArrowLeft, ChevronRight, Facebook, Instagram, Phone as PhoneIcon, MapPin as MapPinIcon, MessageSquare } from "lucide-react";
 import { blogPosts } from "../data/blogPosts";
-import { useEffect } from "react";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -11,25 +9,59 @@ const BlogPost = () => {
   const post = blogPosts.find((p) => p.slug === slug);
 
   useEffect(() => {
-    // If post not found and we're not in development, redirect to 404
     if (!post && process.env.NODE_ENV !== 'development') {
       navigate('/404', { replace: true });
     }
     
-    // Update page title for SEO
     if (post) {
-      document.title = `${post.title} | Dental Solutions Palghar`;
+      document.title = `${post.title} | Best Dentist in Palghar - Dental Solutions`;
       
-      // Add meta description for SEO
       const metaDescription = document.querySelector('meta[name="description"]');
       if (metaDescription) {
-        metaDescription.setAttribute('content', post.excerpt);
+        metaDescription.setAttribute('content', `${post.excerpt} Expert dental care in Palghar. Top-rated dentist near you offering comprehensive dental services.`);
       } else {
         const meta = document.createElement('meta');
         meta.name = 'description';
-        meta.content = post.excerpt;
+        meta.content = `${post.excerpt} Expert dental care in Palghar. Top-rated dentist near you offering comprehensive dental services.`;
         document.head.appendChild(meta);
       }
+
+      const schemaScript = document.createElement('script');
+      schemaScript.type = 'application/ld+json';
+      schemaScript.textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Dentist",
+        "name": "Dental Solutions Palghar",
+        "image": "https://dentalsolutionspalghar.in/og-image.jpg",
+        "url": `https://dentalsolutionspalghar.in/blog/${slug}`,
+        "telephone": "+918600892884",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "123 Dental Street",
+          "addressLocality": "Palghar",
+          "addressRegion": "Maharashtra",
+          "postalCode": "401404",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 19.6854,
+          "longitude": 72.7451
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+          ],
+          "opens": "09:00",
+          "closes": "20:00"
+        },
+        "sameAs": [
+          "https://www.facebook.com/DentalSolutionsPalghar",
+          "https://www.instagram.com/the_dental_solutions/"
+        ]
+      });
+      document.head.appendChild(schemaScript);
     }
   }, [post, slug, navigate]);
 
@@ -94,7 +126,6 @@ const BlogPost = () => {
               ))}
             </div>
             
-            {/* WhatsApp CTA Section */}
             <div className="bg-primary/10 rounded-xl p-6 mb-8">
               <h3 className="text-2xl font-semibold mb-3">Need a Dentist Near Me in Palghar?</h3>
               <p className="mb-4">Our dental clinic near me provides comprehensive dental services including teeth cleaning, teeth whitening, dental implants, and pediatric dentistry. Book an appointment with the best dentist in Palghar today!</p>
@@ -107,7 +138,6 @@ const BlogPost = () => {
               </Button>
             </div>
 
-            {/* Related Posts Section */}
             <div className="mt-12">
               <h3 className="text-2xl font-semibold mb-4">Related Dental Services</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
