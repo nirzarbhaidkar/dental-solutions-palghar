@@ -78,14 +78,15 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-12">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4">
+          <div className="md:max-w-xs">
             <h4 className="text-xl font-bold mb-4">Dental Solutions</h4>
             <p className="text-gray-400">
               Dental Solutions Palghar is a leading dental clinic committed to providing high-quality oral healthcare with a patient-first approach. Equipped with state-of-the-art technology and a team of experienced dentists, we offer comprehensive treatments, including cosmetic dentistry, orthodontics, dental implants, and preventive care.
             </p>
           </div>
-          <div>
+          
+          <div className="flex flex-col items-start justify-start">
             <h4 className="text-xl font-bold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               {navItems.map((item, index) => (
@@ -110,7 +111,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div>
+          <div className="flex flex-col items-start justify-start">
             <h4 className="text-xl font-bold mb-4">Opening Hours</h4>
             <div className="space-y-4">
               <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium" 
@@ -163,7 +164,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div>
+          <div className="flex flex-col items-start justify-start">
             <h4 className="text-xl font-bold mb-4">Contact Us</h4>
             <div className="space-y-3">
               <div className="flex items-start">
