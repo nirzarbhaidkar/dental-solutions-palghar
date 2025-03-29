@@ -1,9 +1,9 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Calendar, ChevronRight, Clock, MessageSquare } from "lucide-react";
 import { motion } from "framer-motion";
 import { blogPosts } from "../data/blogPosts";
+import DentalQuiz from "@/components/DentalQuiz";
 
 const Blog = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -135,6 +135,17 @@ const Blog = () => {
                 </a>
               </motion.div>
             ))}
+          </div>
+
+          <div className="mt-16">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold">Test Your Dental Knowledge</h2>
+              <p className="text-gray-600 mt-2">
+                How much do you know about dental health? Take our interactive quiz below!
+              </p>
+            </div>
+            
+            <DentalQuiz />
           </div>
 
           <div className="mt-16">
