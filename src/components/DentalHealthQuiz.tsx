@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
@@ -218,7 +217,6 @@ const DentalHealthQuiz = () => {
   const [quizId, setQuizId] = useState<string | null>(null);
 
   useEffect(() => {
-    // Check if there's a quiz ID in the URL
     const params = new URLSearchParams(window.location.search);
     const quizIdParam = params.get('quizId');
     
@@ -248,7 +246,6 @@ const DentalHealthQuiz = () => {
       setCurrentQuestion((prev) => prev + 1);
     } else {
       setCompleted(true);
-      // Generate a unique ID for this quiz result
       generateQuizId();
     }
   };
@@ -277,7 +274,6 @@ const DentalHealthQuiz = () => {
   const getPersonalizedRecommendations = (): Recommendation[] => {
     const personalizedRecs: Recommendation[] = [];
     
-    // Check each recommendation's relevance based on user's answers
     recommendations.forEach(rec => {
       const isRelevant = rec.relevantResponses.some(response => {
         return answers[response.questionId] === response.value;
@@ -324,7 +320,6 @@ const DentalHealthQuiz = () => {
     setCompleted(false);
     setQuizId(null);
     
-    // Remove the quiz ID from the URL
     const url = new URL(window.location.href);
     url.searchParams.delete('quizId');
     window.history.replaceState({}, '', url.toString());
@@ -413,11 +408,12 @@ const DentalHealthQuiz = () => {
               ))}
             </RadioGroup>
           </CardContent>
-          <CardFooter className="p-6 border-t flex justify-between">
+          <CardFooter className="p-6 border-t flex justify-between items-center">
             {currentQuestion > 0 ? (
               <Button 
                 variant="outline" 
                 onClick={() => setCurrentQuestion((prev) => prev - 1)}
+                className="px-4 py-2"
               >
                 Previous
               </Button>
@@ -428,9 +424,10 @@ const DentalHealthQuiz = () => {
               onClick={handleNext}
               disabled={!answers[currentQuestionData.id]}
               size="lg"
-              className="bg-accent hover:bg-accent/90 text-white"
+              className="bg-primary text-white hover:bg-primary/90 group flex items-center gap-2 px-6 py-3 text-base"
             >
               {currentQuestion === questions.length - 1 ? "See Results" : "Next"}
+              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Button>
           </CardFooter>
         </>
