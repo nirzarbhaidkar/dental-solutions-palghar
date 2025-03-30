@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
@@ -333,28 +334,38 @@ const DentalHealthQuiz = () => {
   if (!started) {
     return (
       <Card className="w-full max-w-3xl mx-auto mt-12 mb-8 overflow-hidden shadow-lg border-0 animate-fade-in" id="quiz">
-        <div className="bg-primary text-white p-6 text-center">
+        <div className="bg-gradient-to-r from-primary to-primary/80 text-white p-8 text-center">
           <h2 className="text-2xl md:text-3xl font-bold">Find out if your teeth and gums are in top shape!</h2>
+          <p className="mt-2 opacity-90">Take our 2-minute assessment for personalized dental care tips</p>
         </div>
         <CardContent className="p-8 text-center">
-          <p className="mb-6 text-lg">Take our quick 2-minute quiz to assess your dental health and get personalized recommendations.</p>
-          <ul className="text-left mb-6 mx-auto max-w-md">
-            <li className="flex items-center gap-2 mb-2">
-              <Check className="h-5 w-5 text-primary" /> 10 simple questions
+          <p className="mb-6 text-lg text-gray-700">Answer 10 quick questions to assess your dental health and get tailored recommendations.</p>
+          <ul className="text-left mb-8 mx-auto max-w-md bg-blue-50 p-5 rounded-xl">
+            <li className="flex items-center gap-3 mb-3">
+              <div className="bg-primary/10 p-2 rounded-full">
+                <Check className="h-5 w-5 text-primary" />
+              </div>
+              <span className="text-gray-700">10 simple questions</span>
             </li>
-            <li className="flex items-center gap-2 mb-2">
-              <Check className="h-5 w-5 text-primary" /> Personalized dental care tips
+            <li className="flex items-center gap-3 mb-3">
+              <div className="bg-primary/10 p-2 rounded-full">
+                <Check className="h-5 w-5 text-primary" />
+              </div>
+              <span className="text-gray-700">Personalized dental care tips</span>
             </li>
-            <li className="flex items-center gap-2">
-              <Check className="h-5 w-5 text-primary" /> Free professional recommendations
+            <li className="flex items-center gap-3">
+              <div className="bg-primary/10 p-2 rounded-full">
+                <Check className="h-5 w-5 text-primary" />
+              </div>
+              <span className="text-gray-700">Free professional recommendations</span>
             </li>
           </ul>
           <Button 
             onClick={() => setStarted(true)} 
-            className="mt-4 bg-accent hover:bg-accent/90 text-white group"
+            className="mt-4 bg-primary hover:bg-primary/90 text-white group px-6 py-3 text-base rounded-lg shadow-md transition-all duration-300 hover:shadow-lg"
             size="lg"
           >
-            Start Quiz <ArrowRight className="ml-1 group-hover:translate-x-1 transition-transform" />
+            Start Quiz <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
         </CardContent>
       </Card>
@@ -362,25 +373,25 @@ const DentalHealthQuiz = () => {
   }
 
   return (
-    <Card className="w-full max-w-3xl mx-auto mt-12 mb-8 overflow-hidden shadow-lg border-0" id="quiz">
+    <Card className="w-full max-w-3xl mx-auto mt-12 mb-8 overflow-hidden shadow-lg border-0 animate-fade-in" id="quiz">
       {!completed ? (
         <>
-          <div className="bg-primary text-white p-6">
-            <div className="flex justify-between items-center mb-2">
+          <div className="bg-gradient-to-r from-primary to-primary/80 text-white p-6">
+            <div className="flex justify-between items-center mb-3">
               <h2 className="text-xl font-bold">Dental Health Quiz</h2>
-              <span className="text-sm font-medium">
+              <span className="text-sm font-medium bg-white/20 px-3 py-1 rounded-full">
                 Question {currentQuestion + 1} of {questions.length}
               </span>
             </div>
-            <div className="w-full bg-white/20 h-2 rounded-full">
+            <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
               <div 
-                className="bg-white h-2 rounded-full transition-all" 
+                className="bg-white h-2.5 rounded-full transition-all duration-500" 
                 style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
               ></div>
             </div>
           </div>
-          <CardContent className="p-8">
-            <h3 className="text-xl font-semibold mb-6">{currentQuestionData.text}</h3>
+          <CardContent className="p-8 bg-gradient-to-b from-blue-50/50 to-white">
+            <h3 className="text-xl font-semibold mb-6 text-gray-800">{currentQuestionData.text}</h3>
             <RadioGroup 
               value={answers[currentQuestionData.id] || ""}
               onValueChange={(value) => handleAnswer(currentQuestionData.id, value)}
@@ -390,8 +401,8 @@ const DentalHealthQuiz = () => {
                 <div key={option.id} className={cn(
                   "flex items-center p-4 border-2 rounded-lg cursor-pointer transition-all",
                   answers[currentQuestionData.id] === option.value 
-                    ? "border-primary bg-primary/5" 
-                    : "border-gray-200 hover:border-primary/50"
+                    ? "border-primary bg-primary/5 shadow-md" 
+                    : "border-gray-200 hover:border-primary/30 hover:bg-blue-50/50"
                 )}>
                   <RadioGroupItem 
                     value={option.value} 
@@ -400,7 +411,7 @@ const DentalHealthQuiz = () => {
                   />
                   <label 
                     htmlFor={option.id} 
-                    className="text-base cursor-pointer flex-grow py-2 pl-3"
+                    className="text-base cursor-pointer flex-grow py-2 pl-3 text-gray-700"
                   >
                     {option.text}
                   </label>
@@ -408,12 +419,12 @@ const DentalHealthQuiz = () => {
               ))}
             </RadioGroup>
           </CardContent>
-          <CardFooter className="p-6 border-t flex justify-between items-center">
+          <CardFooter className="p-6 border-t bg-white flex justify-between items-center">
             {currentQuestion > 0 ? (
               <Button 
                 variant="outline" 
                 onClick={() => setCurrentQuestion((prev) => prev - 1)}
-                className="px-4 py-2"
+                className="px-4 py-2 border-gray-300 hover:bg-gray-50"
               >
                 Previous
               </Button>
@@ -424,7 +435,10 @@ const DentalHealthQuiz = () => {
               onClick={handleNext}
               disabled={!answers[currentQuestionData.id]}
               size="lg"
-              className="bg-primary text-white hover:bg-primary/90 group flex items-center gap-2 px-6 py-3 text-base"
+              className={cn(
+                "bg-primary text-white hover:bg-primary/90 group flex items-center gap-2 px-6 py-3 text-base rounded-lg shadow-md transition-all duration-300",
+                !answers[currentQuestionData.id] && "opacity-50"
+              )}
             >
               {currentQuestion === questions.length - 1 ? "See Results" : "Next"}
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -434,47 +448,50 @@ const DentalHealthQuiz = () => {
       ) : (
         <div className="animate-fade-in">
           <div className={cn(
-            "p-6 text-white",
-            resultData?.type === "good" ? "bg-green-600" : 
-            resultData?.type === "average" ? "bg-primary" : "bg-orange-600"
+            "p-8 text-white",
+            resultData?.type === "good" ? "bg-gradient-to-r from-green-600 to-green-500" : 
+            resultData?.type === "average" ? "bg-gradient-to-r from-primary to-blue-400" : 
+            "bg-gradient-to-r from-orange-600 to-orange-500"
           )}>
-            <div className="flex items-center gap-3">
-              <CircleCheck className="h-8 w-8" />
-              <h3 className="text-xl font-bold">Your Results</h3>
+            <div className="flex items-center gap-4 mb-4">
+              <div className="bg-white/20 p-3 rounded-full">
+                <CircleCheck className="h-8 w-8" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold">{resultData?.title}</h3>
+                <p className="text-white/90">{resultData?.description}</p>
+              </div>
             </div>
           </div>
-          <CardContent className="p-6">
-            <div className="text-center mb-6 pb-6 border-b">
-              <h3 className="text-2xl font-bold mb-2">{resultData?.title}</h3>
-              <p className="text-muted-foreground">{resultData?.description}</p>
-            </div>
-            
+          <CardContent className="p-8 bg-gradient-to-b from-blue-50/50 to-white">
             {personalizedRecommendations.length > 0 && (
               <div className="mb-8">
-                <h4 className="text-lg font-semibold mb-4">Your Personalized Recommendations:</h4>
-                <div className="space-y-4">
+                <h4 className="text-lg font-semibold mb-4 text-gray-800">Your Personalized Recommendations:</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {personalizedRecommendations.map((rec) => (
-                    <div key={rec.id} className="p-4 bg-primary/5 rounded-lg border border-primary/20">
-                      <h5 className="font-medium text-primary">{rec.title}</h5>
-                      <p className="text-sm text-muted-foreground mt-1">{rec.description}</p>
+                    <div key={rec.id} className="p-4 bg-white rounded-lg border border-primary/20 shadow-sm hover:shadow-md transition-all">
+                      <h5 className="font-medium text-primary text-lg mb-1">{rec.title}</h5>
+                      <p className="text-gray-600">{rec.description}</p>
                     </div>
                   ))}
                 </div>
               </div>
             )}
             
-            <div className="mb-6 p-4 bg-muted rounded-lg">
-              <h4 className="font-semibold mb-3">Your answers:</h4>
+            <div className="mb-6 p-5 bg-gray-50 rounded-xl border border-gray-100">
+              <h4 className="font-semibold mb-3 text-gray-800">Your answers:</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {Object.entries(answers).map(([questionId, answer]) => {
                   const question = questions.find(q => q.id === parseInt(questionId));
                   const option = question?.options.find(o => o.value === answer);
                   return (
-                    <div key={questionId} className="flex gap-2">
-                      <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <div key={questionId} className="flex gap-3 bg-white p-3 rounded-lg shadow-sm">
+                      <div className="bg-primary/10 p-1 rounded-full h-7 w-7 flex items-center justify-center mt-0.5">
+                        <Check className="h-4 w-4 text-primary flex-shrink-0" />
+                      </div>
                       <div>
-                        <p className="text-sm font-medium">{question?.text}</p>
-                        <p className="text-xs text-muted-foreground">{option?.text}</p>
+                        <p className="text-sm font-medium text-gray-800">{question?.text}</p>
+                        <p className="text-xs text-gray-500">{option?.text}</p>
                       </div>
                     </div>
                   );
@@ -482,18 +499,19 @@ const DentalHealthQuiz = () => {
               </div>
             </div>
           </CardContent>
-          <CardFooter className="p-6 border-t flex flex-wrap gap-4 justify-between">
+          <CardFooter className="p-6 border-t bg-white flex flex-wrap gap-4 justify-between">
             <div className="flex flex-wrap gap-4">
               <Button 
                 onClick={handleReset} 
                 variant="outline"
+                className="border-gray-300 hover:bg-gray-50"
               >
                 Retake Quiz
               </Button>
               <Button 
                 onClick={handleShareQuiz}
                 variant="outline"
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 border-primary/30 text-primary hover:bg-primary/5"
               >
                 <Share className="h-4 w-4" /> Share Results
               </Button>
@@ -501,7 +519,7 @@ const DentalHealthQuiz = () => {
             <Button 
               onClick={handleWhatsAppClick}
               className={cn(
-                "px-6",
+                "px-6 shadow-md hover:shadow-lg transition-all",
                 resultData?.type === "good" ? "bg-green-600 hover:bg-green-700" : 
                 resultData?.type === "average" ? "bg-primary hover:bg-primary/90" : 
                 "bg-orange-600 hover:bg-orange-700"
