@@ -1,5 +1,6 @@
 
 import { useEffect } from "react";
+import HeadContent from "@/components/HeadContent";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
@@ -20,6 +21,10 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <HeadContent 
+        title="Best Dentist in Palghar | Advanced Dental Clinic | Dental Solutions Palghar"
+        description="Looking for the best dentist in Palghar? Dental Solutions Palghar provides complete dental care including general dentistry, cosmetic treatments, orthodontics, dental implants, root canal, and emergency services at affordable prices."
+      />
       <FacebookPixel />
       <Header />
       <HeroSection />
