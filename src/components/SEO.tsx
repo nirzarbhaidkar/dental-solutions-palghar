@@ -8,6 +8,10 @@ interface SEOProps {
   image?: string;
   article?: boolean;
   keywords?: string;
+  canonicalUrl?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  authorName?: string;
 }
 
 const SEO = ({
@@ -15,11 +19,15 @@ const SEO = ({
   description = "Looking for the best dentist in Palghar? Dental Solutions Palghar provides complete dental care including general dentistry, cosmetic treatments, orthodontics, dental implants, root canal, and emergency services at affordable prices. Visit our top-rated dental clinic today!",
   image = "/og-image.jpg", 
   article = false,
-  keywords = "dentist in palghar, dental clinic near me, best dentist palghar, affordable dental services, teeth whitening palghar, root canal treatment palghar, dental implants palghar, orthodontist palghar, kids dentist palghar, emergency dental care palghar, teeth cleaning, dental bridges, dental crowns"
+  keywords = "dentist in palghar, dental clinic near me, best dentist palghar, affordable dental services, teeth whitening palghar, root canal treatment palghar, dental implants palghar, orthodontist palghar, kids dentist palghar, emergency dental care palghar, teeth cleaning, dental bridges, dental crowns",
+  canonicalUrl,
+  publishedTime,
+  modifiedTime,
+  authorName = "Dental Solutions Palghar"
 }: SEOProps) => {
   const { pathname } = useLocation();
   const siteUrl = "https://dentalsolutionspalghar.com";
-  const url = `${siteUrl}${pathname}`;
+  const url = canonicalUrl || `${siteUrl}${pathname}`;
 
   // Ensure image URL is absolute (starts with http or https)
   const absoluteImageUrl = image.startsWith('http') 
@@ -38,7 +46,8 @@ const SEO = ({
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
-      <meta name="author" content="Dental Solutions Palghar" />
+      <meta name="author" content={authorName} />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={article ? "article" : "website"} />
@@ -63,6 +72,17 @@ const SEO = ({
       <meta name="twitter:image" content={absoluteImageUrl} />
       <meta name="twitter:image:alt" content={imageAlt} />
       
+      {/* Article specific tags */}
+      {article && publishedTime && (
+        <meta property="article:published_time" content={publishedTime} />
+      )}
+      {article && modifiedTime && (
+        <meta property="article:modified_time" content={modifiedTime} />
+      )}
+      {article && authorName && (
+        <meta property="article:author" content={authorName} />
+      )}
+      
       {/* WhatsApp specific */}
       <meta property="og:image:secure_url" content={absoluteImageUrl} />
       
@@ -79,6 +99,11 @@ const SEO = ({
       <meta name="geo.placename" content="Palghar" />
       <meta name="geo.position" content="19.694437699999998;72.76597319999999" />
       <meta name="ICBM" content="19.694437699999998, 72.76597319999999" />
+      
+      {/* Additional Performance Tags */}
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link rel="preconnect" href="https://www.googletagmanager.com" />
+      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
     </Helmet>
   );
 };

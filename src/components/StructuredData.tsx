@@ -13,25 +13,16 @@ const StructuredData = () => {
           "@type": "Dentist",
           "name": "Dental Solutions Palghar",
           "alternateName": "Best Dental Clinic in Palghar",
-          "image": "/og-image.png",
-          "logo": "/og-image.png",
+          "image": "https://dentalsolutionspalghar.com/og-image.png",
+          "logo": "https://dentalsolutionspalghar.com/og-image.png",
           "url": "https://dentalsolutionspalghar.com",
           "telephone": "+918600892884",
           "email": "contact@dentalsolutionspalghar.com",
           "description": "Dental Solutions Palghar is the leading dental clinic in Palghar offering comprehensive dental care including general dentistry, cosmetic dentistry, orthodontics, dental implants, root canal treatment, teeth whitening, emergency dental care, and pediatric dentistry at affordable prices.",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Shop number 5,6, Apoorva Apartments, Mahim Rd, next to Chetna Classes",
-            "addressLocality": "Palghar",
-            "addressRegion": "Maharashtra",
-            "postalCode": "401404",
-            "addressCountry": "IN"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 19.694437699999998,
-            "longitude": 72.76597319999999
-          },
+          "slogan": "Your Smile, Our Priority",
+          "currenciesAccepted": "INR",
+          "paymentAccepted": "Cash, Credit Card, Debit Card, UPI",
+          "priceRange": "₹₹",
           "openingHoursSpecification": [
             {
               "@type": "OpeningHoursSpecification",
@@ -46,12 +37,26 @@ const StructuredData = () => {
               "closes": "21:00"
             }
           ],
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Shop number 5,6, Apoorva Apartments, Mahim Rd, next to Chetna Classes",
+            "addressLocality": "Palghar",
+            "addressRegion": "Maharashtra",
+            "postalCode": "401404",
+            "addressCountry": "IN"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 19.694437699999998,
+            "longitude": 72.76597319999999
+          },
+          "hasMap": "https://goo.gl/maps/YourGoogleMapsLink",
           "sameAs": [
             "https://www.facebook.com/DentalSolutionsPalghar",
-            "https://www.instagram.com/dentalsolutionspalghar"
+            "https://www.instagram.com/dentalsolutionspalghar",
+            "https://www.youtube.com/channel/YourYouTubeChannel",
+            "https://twitter.com/DentalPalghar"
           ],
-          "priceRange": "₹₹",
-          "hasMap": "https://goo.gl/maps/YourGoogleMapsLink",
           "department": [
             {
               "@type": "Dentist",
@@ -78,27 +83,44 @@ const StructuredData = () => {
             {
               "@type": "MedicalProcedure",
               "name": "Root Canal Treatment",
-              "description": "Procedure to remove infected pulp and preserve the damaged tooth."
+              "description": "Procedure to remove infected pulp and preserve the damaged tooth.",
+              "url": "https://dentalsolutionspalghar.com/services/root-canal"
             },
             {
               "@type": "MedicalProcedure",
               "name": "Dental Implants",
-              "description": "Artificial tooth roots placed to support restorations."
+              "description": "Artificial tooth roots placed to support restorations.",
+              "url": "https://dentalsolutionspalghar.com/services/dental-implants"
             },
             {
               "@type": "MedicalProcedure",
               "name": "Teeth Whitening",
-              "description": "Professional teeth bleaching for a brighter smile."
+              "description": "Professional teeth bleaching for a brighter smile.",
+              "url": "https://dentalsolutionspalghar.com/services/teeth-whitening"
             },
             {
               "@type": "MedicalProcedure",
               "name": "Orthodontic Treatment",
-              "description": "Corrective procedures for teeth alignment and jaw position."
+              "description": "Corrective procedures for teeth alignment and jaw position.",
+              "url": "https://dentalsolutionspalghar.com/services/orthodontics"
             },
             {
               "@type": "MedicalProcedure",
               "name": "Pediatric Dentistry",
-              "description": "Specialized dental care for children."
+              "description": "Specialized dental care for children.",
+              "url": "https://dentalsolutionspalghar.com/services/pediatric-dentistry"
+            },
+            {
+              "@type": "MedicalProcedure",
+              "name": "Emergency Dental Care",
+              "description": "Immediate dental care for urgent situations.",
+              "url": "https://dentalsolutionspalghar.com/services/emergency-dental"
+            },
+            {
+              "@type": "MedicalProcedure",
+              "name": "Periodontal Treatment",
+              "description": "Treatment for gum diseases and infections.",
+              "url": "https://dentalsolutionspalghar.com/services/periodontal"
             }
           ],
           "areaServed": [
@@ -122,7 +144,103 @@ const StructuredData = () => {
               "@type": "City",
               "name": "Kelve Road"
             }
+          ],
+          "amenityFeature": [
+            {
+              "@type": "LocationFeatureSpecification",
+              "name": "Parking",
+              "value": true
+            },
+            {
+              "@type": "LocationFeatureSpecification",
+              "name": "WiFi",
+              "value": true
+            },
+            {
+              "@type": "LocationFeatureSpecification",
+              "name": "Air Conditioning",
+              "value": true
+            },
+            {
+              "@type": "LocationFeatureSpecification",
+              "name": "Wheelchair Accessible",
+              "value": true
+            }
+          ],
+          "specialty": [
+            "General Dentistry", 
+            "Cosmetic Dentistry", 
+            "Orthodontics", 
+            "Implantology", 
+            "Endodontics", 
+            "Periodontics", 
+            "Pediatric Dentistry"
           ]
+        }
+        `}
+      </script>
+      
+      {/* BreadcrumbList structured data */}
+      <script type="application/ld+json">
+        {`
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://dentalsolutionspalghar.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Services",
+              "item": "https://dentalsolutionspalghar.com/services"
+            }
+          ]
+        }
+        `}
+      </script>
+      
+      {/* Medical Business structured data */}
+      <script type="application/ld+json">
+        {`
+        {
+          "@context": "https://schema.org",
+          "@type": "MedicalBusiness",
+          "name": "Dental Solutions Palghar",
+          "image": "https://dentalsolutionspalghar.com/og-image.png",
+          "url": "https://dentalsolutionspalghar.com",
+          "telephone": "+918600892884",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Shop number 5,6, Apoorva Apartments, Mahim Rd",
+            "addressLocality": "Palghar",
+            "addressRegion": "Maharashtra",
+            "postalCode": "401404",
+            "addressCountry": "IN"
+          },
+          "medicalSpecialty": ["Dentistry", "Orthodontics", "Endodontics"]
+        }
+        `}
+      </script>
+      
+      {/* WebSite structured data */}
+      <script type="application/ld+json">
+        {`
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "url": "https://dentalsolutionspalghar.com",
+          "name": "Dental Solutions Palghar",
+          "description": "Leading dental clinic in Palghar offering comprehensive dental care services.",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://dentalsolutionspalghar.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
         }
         `}
       </script>

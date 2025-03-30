@@ -1,5 +1,6 @@
 
 # Dental Solutions Palghar - Robots.txt
+# Last Updated: 2024-07-30
 
 User-agent: *
 Allow: /
@@ -14,6 +15,10 @@ Disallow: /*.pdf$
 Disallow: /cgi-bin/
 Disallow: /tmp/
 
+# Allow search engines to crawl JavaScript and CSS files
+Allow: /*.js$
+Allow: /*.css$
+
 # Allow Google Images to index images
 User-agent: Googlebot-Image
 Allow: /images/
@@ -24,14 +29,31 @@ Allow: /*.jpg$
 Allow: /*.jpeg$
 Allow: /*.png$
 Allow: /*.webp$
+Allow: /*.svg$
 
 # Google Bot specific directives
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 
 # Bing Bot specific directives
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
+
+# DuckDuckGo Bot
+User-agent: DuckDuckBot
+Allow: /
+
+# Yandex Bot
+User-agent: Yandex
+Allow: /
+Crawl-delay: 1
+
+# Baidu Bot
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
 
 # Crawl delay directive for bots that honor it
 User-agent: *

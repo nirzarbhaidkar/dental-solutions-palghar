@@ -1,5 +1,6 @@
 
 import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import HeadContent from "@/components/HeadContent";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -25,17 +26,29 @@ const Index = () => {
         title="Best Dentist in Palghar | Advanced Dental Clinic | Dental Solutions Palghar"
         description="Looking for the best dentist in Palghar? Dental Solutions Palghar provides complete dental care including general dentistry, cosmetic treatments, orthodontics, dental implants, root canal, and emergency services at affordable prices."
         image="https://dentalsolutionspalghar.com/og-image.jpg"
+        keywords="best dentist in palghar, dental clinic palghar, affordable dentist, teeth whitening, root canal treatment, dental implants, orthodontist, pediatric dentist, emergency dental care, dental x-ray, tooth extraction, dental bridges, dental crowns"
       />
       <FacebookPixel />
+      
+      {/* Additional SEO elements */}
+      <Helmet>
+        <link rel="alternate" hreflang="en-in" href="https://dentalsolutionspalghar.com" />
+        <link rel="alternate" hreflang="x-default" href="https://dentalsolutionspalghar.com" />
+        <meta name="google-site-verification" content="your-verification-code" />
+        <meta name="p:domain_verify" content="pinterest-verification-code" />
+      </Helmet>
+      
       <Header />
-      <HeroSection />
-      <ServicesSection />
-      <QuizSection />
-      <LocationSection />
-      <TestimonialsSection />
-      <FAQsSection />
-      <BlogSection />
-      <CtaSection />
+      <main id="main-content">
+        <HeroSection />
+        <ServicesSection />
+        <QuizSection />
+        <LocationSection />
+        <TestimonialsSection />
+        <FAQsSection />
+        <BlogSection />
+        <CtaSection />
+      </main>
       <Footer />
     </div>
   );
