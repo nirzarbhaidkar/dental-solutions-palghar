@@ -7,13 +7,13 @@ const QuizSection = () => {
     <section className="py-16 bg-white" id="quiz">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
-          <span className="inline-block bg-accent px-4 py-1 rounded-full text-sm font-medium mb-4">
-            Dental Health Quiz
+          <span className="inline-block bg-accent px-4 py-1 rounded-full text-sm font-medium text-white mb-4">
+            Dental Health Assessment
           </span>
           <h2 className="text-3xl font-bold text-primary mb-4">Test Your Dental Knowledge</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Take our quick dental health assessment to see how well you're caring for your teeth and gums.
-            Discover personalized tips for improving your oral health routine.
+            Take our comprehensive dental health assessment to see how well you're caring for your teeth and gums.
+            Get personalized recommendations based on your specific dental habits.
           </p>
         </div>
         
