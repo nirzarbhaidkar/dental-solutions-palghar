@@ -24,6 +24,7 @@ const Index = () => {
       <HeadContent 
         title="Best Dentist in Palghar | Advanced Dental Clinic | Dental Solutions Palghar"
         description="Looking for the best dentist in Palghar? Dental Solutions Palghar provides complete dental care including general dentistry, cosmetic treatments, orthodontics, dental implants, root canal, and emergency services at affordable prices."
+        image="https://dentalsolutionspalghar.com/og-image.jpg"
       />
       <FacebookPixel />
       <Header />

@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import HeadContent from "@/components/HeadContent";
 import Header from "@/components/layout/Header";
@@ -10,11 +11,18 @@ const Blog = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Get the featured blog post for OG image (first post)
+  const featuredPost = blogPosts[0];
+  const featuredImageUrl = featuredPost.image.startsWith('http') 
+    ? featuredPost.image 
+    : `https://dentalsolutionspalghar.com${featuredPost.image}`;
+
   return (
     <div className="min-h-screen bg-background">
       <HeadContent 
         title="Dental Health Blog | Tips & Advice | Dental Solutions Palghar"
         description="Read our blog for the latest dental health tips, treatment information, and oral care advice from the top dentists in Palghar."
+        image={featuredImageUrl}
         article={true}
       />
       <Header />

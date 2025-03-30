@@ -21,12 +21,16 @@ const SEO = ({
   const siteUrl = "https://dentalsolutionspalghar.com";
   const url = `${siteUrl}${pathname}`;
 
+  // Ensure image URL is absolute (starts with http or https)
+  const absoluteImageUrl = image.startsWith('http') 
+    ? image 
+    : `${siteUrl}${image}`;
+  
   // Default dimensions for the OG image
   const imageWidth = "1200";
   const imageHeight = "630";
   const imageType = "image/jpeg";
   const imageAlt = "Dental Solutions Palghar - Professional Dental Care";
-  const ogImageUrl = `${siteUrl}${image}`;
   
   return (
     <Helmet>
@@ -41,7 +45,7 @@ const SEO = ({
       <meta property="og:url" content={url} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={ogImageUrl} />
+      <meta property="og:image" content={absoluteImageUrl} />
       <meta property="og:image:width" content={imageWidth} />
       <meta property="og:image:height" content={imageHeight} />
       <meta property="og:image:type" content={imageType} />
@@ -51,14 +55,16 @@ const SEO = ({
       
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@dentalsolutionspalghar" />
+      <meta name="twitter:creator" content="@dentalsolutionspalghar" />
       <meta name="twitter:url" content={url} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={ogImageUrl} />
+      <meta name="twitter:image" content={absoluteImageUrl} />
       <meta name="twitter:image:alt" content={imageAlt} />
       
       {/* WhatsApp specific */}
-      <meta property="og:image:secure_url" content={ogImageUrl} />
+      <meta property="og:image:secure_url" content={absoluteImageUrl} />
       
       {/* Additional iOS and Android app banner meta tags */}
       <meta name="apple-itunes-app" content="app-id=yourAppStoreID, affiliate-data=yourAffiliateData, app-argument=yourAppArgument" />

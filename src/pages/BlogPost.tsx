@@ -2,7 +2,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Calendar, Clock, ArrowLeft, ChevronRight, Facebook, Instagram, Phone, MapPin, MessageSquare } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, ChevronRight, MessageSquare } from "lucide-react";
 import { blogPosts } from "../data/blogPosts";
 import DentalHealthQuiz from "@/components/DentalHealthQuiz";
 import HeadContent from "@/components/HeadContent";
@@ -104,12 +104,17 @@ const BlogPost = () => {
     ? `${post.content.substring(0, 157)}...` 
     : post.content;
 
+  // Ensure image URL is absolute for social sharing
+  const absoluteImageUrl = post.image.startsWith('http') 
+    ? post.image 
+    : `https://dentalsolutionspalghar.com${post.image}`;
+
   return (
     <div className="min-h-screen bg-background">
       <HeadContent 
         title={`${post.title} | Dental Solutions Palghar`}
         description={metaDescription}
-        image={post.image}
+        image={absoluteImageUrl}
         article={true}
         keywords={`dental health, oral care, ${post.category.toLowerCase()}, dentist palghar, dental clinic, ${post.title.toLowerCase()}`}
       />
