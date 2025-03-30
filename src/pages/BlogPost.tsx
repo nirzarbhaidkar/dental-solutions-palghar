@@ -1,9 +1,13 @@
+
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, ArrowLeft, ChevronRight, Facebook, Instagram, Phone, MapPin, MessageSquare } from "lucide-react";
 import { blogPosts } from "../data/blogPosts";
 import DentalHealthQuiz from "@/components/DentalHealthQuiz";
+import HeadContent from "@/components/HeadContent";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -16,6 +20,9 @@ const BlogPost = () => {
   };
 
   useEffect(() => {
+    // Scroll to the top when the component mounts
+    window.scrollTo(0, 0);
+    
     const timeInterval = setInterval(() => {
       const now = new Date();
       setCurrentTime(now);
@@ -73,6 +80,10 @@ const BlogPost = () => {
   if (!post) {
     return (
       <div className="min-h-screen bg-background">
+        <HeadContent 
+          title="Post Not Found | Dental Solutions Palghar"
+          description="The blog post you're looking for could not be found. Explore our other dental health articles and resources."
+        />
         <div className="container mx-auto px-4 py-16">
           <div className="text-center">
             <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
@@ -88,22 +99,21 @@ const BlogPost = () => {
     );
   }
 
+  // Generate a description from the first 160 characters of the content
+  const metaDescription = post.content.length > 160 
+    ? `${post.content.substring(0, 157)}...` 
+    : post.content;
+
   return (
     <div className="min-h-screen bg-background">
-      <nav className="bg-white shadow-sm">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
-            <Link to="/" className="text-2xl font-semibold text-primary">
-              Dental Solutions
-            </Link>
-            <Link to="/blog">
-              <Button variant="outline">
-                <ArrowLeft className="mr-2 h-4 w-4" /> Back to Blog
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <HeadContent 
+        title={`${post.title} | Dental Solutions Palghar`}
+        description={metaDescription}
+        image={post.image}
+        article={true}
+        keywords={`dental health, oral care, ${post.category.toLowerCase()}, dentist palghar, dental clinic, ${post.title.toLowerCase()}`}
+      />
+      <Header />
 
       <div className="container mx-auto px-4 py-16">
         <div className="mb-8">
@@ -167,85 +177,7 @@ const BlogPost = () => {
         </div>
       </div>
       
-      {/* Updated Footer to match Home and Blog pages */}
-      <footer className="bg-gray-900 text-white py-10 mt-10">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row md:justify-between mb-8">
-            <div className="mb-8 md:mb-0">
-              <h3 className="text-xl font-semibold mb-4">Dental Solutions</h3>
-              <p className="text-gray-400 mb-4 max-w-md">
-                We provide comprehensive dental care with a focus on patient comfort and the latest technology.
-              </p>
-              <div className="flex space-x-4">
-                <a
-                  href="https://facebook.com/dentalsolutionspalghar"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  <Facebook className="h-5 w-5" />
-                </a>
-                <a
-                  href="https://instagram.com/the_dental_solutions"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  <Instagram className="h-5 w-5" />
-                </a>
-              </div>
-            </div>
-            
-            <div className="mb-8 md:mb-0">
-              <h3 className="text-xl font-semibold mb-4">Contact Us</h3>
-              <div className="text-gray-400">
-                <p className="flex items-center mb-2">
-                  <MapPin className="h-5 w-5 mr-2 text-primary" />
-                  123 Dental Street, Palghar, Maharashtra
-                </p>
-                <p className="flex items-center mb-2">
-                  <Phone className="h-5 w-5 mr-2 text-primary" />
-                  +91 8600892884
-                </p>
-                <div className="flex items-center mt-4">
-                  <div className={`h-2 w-2 rounded-full mr-2 ${isOpen ? "bg-green-500" : "bg-red-500"}`}></div>
-                  <span className="text-sm">
-                    {isOpen ? "Open Now" : "Closed Now"}
-                  </span>
-                </div>
-                <p className="text-xs mt-1">
-                  Hours: Mon-Sat: 9:30AM-2PM, 5PM-9PM
-                </p>
-              </div>
-            </div>
-            
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Explore More</h3>
-              <ul className="text-gray-400">
-                <li className="mb-2">
-                  <Link to="/" className="hover:text-white transition-colors">
-                    Home
-                  </Link>
-                </li>
-                <li className="mb-2">
-                  <Link to="/#services" className="hover:text-white transition-colors">
-                    Services
-                  </Link>
-                </li>
-                <li className="mb-2">
-                  <Link to="/blog" className="hover:text-white transition-colors">
-                    Blog
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="border-t border-gray-800 pt-6 text-center text-gray-400 text-sm">
-            © {new Date().getFullYear()} Dental Solutions. All rights reserved.
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
