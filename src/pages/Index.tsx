@@ -21,7 +21,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50/20 to-white">
       <HeadContent 
         title="Best Dentist in Palghar | Advanced Dental Clinic | Dental Solutions Palghar"
         description="Looking for the best dentist in Palghar? Dental Solutions Palghar provides complete dental care including general dentistry, cosmetic treatments, orthodontics, dental implants, root canal, and emergency services at affordable prices."
@@ -32,8 +32,8 @@ const Index = () => {
       
       {/* Additional SEO elements */}
       <Helmet>
-        <link rel="alternate" hreflang="en-in" href="https://dentalsolutionspalghar.com" />
-        <link rel="alternate" hreflang="x-default" href="https://dentalsolutionspalghar.com" />
+        <link rel="alternate" hrefLang="en-in" href="https://dentalsolutionspalghar.com" />
+        <link rel="alternate" hrefLang="x-default" href="https://dentalsolutionspalghar.com" />
         <meta name="google-site-verification" content="your-verification-code" />
         <meta name="p:domain_verify" content="pinterest-verification-code" />
       </Helmet>
