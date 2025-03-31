@@ -63,8 +63,8 @@ const Blog = () => {
         <script type="application/ld+json">
           {JSON.stringify(blogPostStructuredData)}
         </script>
-        <link rel="alternate" hreflang="en-in" href="https://dentalsolutionspalghar.com/blog" />
-        <link rel="alternate" hreflang="x-default" href="https://dentalsolutionspalghar.com/blog" />
+        <link rel="alternate" hrefLang="en-in" href="https://dentalsolutionspalghar.com/blog" />
+        <link rel="alternate" hrefLang="x-default" href="https://dentalsolutionspalghar.com/blog" />
       </Helmet>
       
       <Header />
