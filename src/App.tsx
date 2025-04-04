@@ -28,6 +28,7 @@ const App = () => {
               <Route path="/mouth-doctor-palghar" element={<Index />} />
               <Route path="/x-ray-dental-services" element={<Index />} />
               <Route path="/nri-dental-care" element={<Index />} />
+              <Route path="/nri-dental-services" element={<Index />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
