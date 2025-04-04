@@ -12,6 +12,7 @@ import TestimonialsSection from "@/components/home/TestimonialsSection";
 import FAQsSection from "@/components/home/FAQsSection";
 import BlogSection from "@/components/home/BlogSection";
 import CtaSection from "@/components/home/CtaSection";
+import NRICornerSection from "@/components/home/NRICornerSection";
 import FacebookPixel from "@/components/FacebookPixel";
 
 const Index = () => {
@@ -42,6 +43,7 @@ const Index = () => {
       <main id="main-content">
         <HeroSection />
         <ServicesSection />
+        <NRICornerSection />
         <QuizSection />
         <LocationSection />
         <TestimonialsSection />
