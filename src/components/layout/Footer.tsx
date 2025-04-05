@@ -1,5 +1,4 @@
-
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { MapPin, Phone, Facebook, Instagram, Twitter, Share } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -214,7 +213,15 @@ const Footer = () => {
         </div>
         <div className="mt-8 pt-8 border-t border-gray-800">
           <p className="text-center text-gray-500 text-sm">
-            © {new Date().getFullYear()} Dental Solutions Palghar. All rights reserved. Designed by Nirzar Marketing Solutions.
+            © {new Date().getFullYear()} Dental Solutions Palghar. All rights reserved. Designed by{' '}
+            <a 
+              href="https://nirzar.in/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="underline hover:text-white transition-colors"
+            >
+              Nirzar Marketing Solutions
+            </a>
           </p>
         </div>
       </div>
