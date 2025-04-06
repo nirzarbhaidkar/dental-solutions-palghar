@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Building2, Users, Award, User, Tooth, MessageSquare } from "lucide-react";
+import { Building2, Users, Award, User, Stethoscope, MessageSquare } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const AchievementsSection = () => {
@@ -26,7 +26,7 @@ const AchievementsSection = () => {
       title: "Expert Staff"
     },
     {
-      icon: <Tooth className="h-12 w-12 text-primary" />,
+      icon: <Stethoscope className="h-12 w-12 text-primary" />,
       number: "5000+",
       title: "Implants Placed"
     },
