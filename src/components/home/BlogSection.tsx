@@ -1,9 +1,14 @@
 
-import { Calendar, Clock, ChevronRight } from "lucide-react";
+import { Calendar, Clock, ChevronRight, Tag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import { blogPosts } from "@/data/blogPosts";
 
 const BlogSection = () => {
+  // Get first 3 blog posts for homepage
+  const featuredPosts = blogPosts.slice(0, 3);
+  
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
@@ -20,97 +25,61 @@ const BlogSection = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all">
-            <Link to="/blog/importance-of-regular-dental-checkups" className="block">
-              <div className="relative h-48 overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
-                  alt="Dental Checkup"
-                  className="w-full h-full object-cover transition-transform hover:scale-105 duration-300"
-                />
-                <div className="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 m-2 rounded">
-                  Preventive Care
+          {featuredPosts.map((post, index) => (
+            <article key={post.slug} className="group animate-fade-up" style={{ animationDelay: `${index * 0.1}s` }}>
+              <Card className="h-full flex flex-col hover:shadow-lg transition-all duration-300 overflow-hidden border-none bg-white">
+                <div className="relative overflow-hidden">
+                  <Link to={`/blog/${post.slug}`}>
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </Link>
+                  {post.category && (
+                    <span className="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+                      {post.category}
+                    </span>
+                  )}
                 </div>
-              </div>
-              <div className="p-6">
-                <div className="flex items-center text-sm text-gray-500 mb-2">
-                  <Calendar className="h-4 w-4 mr-1" />
-                  <span>July 10, 2023</span>
-                  <span className="mx-2">•</span>
-                  <Clock className="h-4 w-4 mr-1" />
-                  <span>5 min read</span>
-                </div>
-                <h3 className="text-xl font-semibold mb-2 hover:text-primary transition-colors">The Importance of Regular Dental Check-ups</h3>
-                <p className="text-gray-600 mb-4">Learn why regular dental visits are crucial for maintaining good oral health and preventing serious dental issues.</p>
-                <div className="flex items-center text-primary font-medium">
-                  Read more <ChevronRight className="ml-1 h-4 w-4" />
-                </div>
-              </div>
-            </Link>
-          </div>
-
-          <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all">
-            <Link to="/blog/tips-for-maintaining-healthy-gums" className="block">
-              <div className="relative h-48 overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
-                  alt="Healthy Gums"
-                  className="w-full h-full object-cover transition-transform hover:scale-105 duration-300"
-                />
-                <div className="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 m-2 rounded">
-                  Oral Hygiene
-                </div>
-              </div>
-              <div className="p-6">
-                <div className="flex items-center text-sm text-gray-500 mb-2">
-                  <Calendar className="h-4 w-4 mr-1" />
-                  <span>August 5, 2023</span>
-                  <span className="mx-2">•</span>
-                  <Clock className="h-4 w-4 mr-1" />
-                  <span>4 min read</span>
-                </div>
-                <h3 className="text-xl font-semibold mb-2 hover:text-primary transition-colors">Tips for Maintaining Healthy Gums</h3>
-                <p className="text-gray-600 mb-4">Discover effective strategies to keep your gums healthy and prevent periodontal disease with these expert tips.</p>
-                <div className="flex items-center text-primary font-medium">
-                  Read more <ChevronRight className="ml-1 h-4 w-4" />
-                </div>
-              </div>
-            </Link>
-          </div>
-
-          <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all">
-            <Link to="/blog/childrens-dental-health" className="block">
-              <div className="relative h-48 overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
-                  alt="Children's Dental Health"
-                  className="w-full h-full object-cover transition-transform hover:scale-105 duration-300"
-                />
-                <div className="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 m-2 rounded">
-                  Pediatric Dentistry
-                </div>
-              </div>
-              <div className="p-6">
-                <div className="flex items-center text-sm text-gray-500 mb-2">
-                  <Calendar className="h-4 w-4 mr-1" />
-                  <span>October 8, 2023</span>
-                  <span className="mx-2">•</span>
-                  <Clock className="h-4 w-4 mr-1" />
-                  <span>6 min read</span>
-                </div>
-                <h3 className="text-xl font-semibold mb-2 hover:text-primary transition-colors">Children's Dental Health: Starting Good Habits Early</h3>
-                <p className="text-gray-600 mb-4">Learn how to instill good dental habits in children from an early age to ensure lifelong oral health.</p>
-                <div className="flex items-center text-primary font-medium">
-                  Read more <ChevronRight className="ml-1 h-4 w-4" />
-                </div>
-              </div>
-            </Link>
-          </div>
+                
+                <CardHeader className="pb-2">
+                  <div className="flex items-center text-sm text-gray-500 mb-1">
+                    <Calendar className="h-4 w-4 mr-1" />
+                    <span>July 10, 2023</span>
+                    <span className="mx-2">•</span>
+                    <Clock className="h-4 w-4 mr-1" />
+                    <span>5 min read</span>
+                  </div>
+                  <Link to={`/blog/${post.slug}`}>
+                    <h3 className="text-xl font-semibold text-gray-800 hover:text-primary transition-colors line-clamp-2">
+                      {post.title}
+                    </h3>
+                  </Link>
+                </CardHeader>
+                
+                <CardContent className="pb-4 flex-grow">
+                  <p className="text-gray-600 line-clamp-3">{post.excerpt}</p>
+                </CardContent>
+                
+                <CardFooter className="pt-0">
+                  <Link
+                    to={`/blog/${post.slug}`}
+                    className="inline-flex items-center text-primary font-medium hover:underline"
+                    aria-label={`Read more about ${post.title}`}
+                  >
+                    Read Article <ChevronRight className="ml-1 h-4 w-4" />
+                  </Link>
+                </CardFooter>
+              </Card>
+            </article>
+          ))}
         </div>
 
         <div className="mt-10 text-center">
           <Link to="/blog">
-            <Button variant="outline" className="mt-4">
+            <Button variant="outline" className="border-primary text-primary hover:bg-primary/10">
               View All Blog Posts <ChevronRight className="ml-1 h-4 w-4" />
             </Button>
           </Link>
