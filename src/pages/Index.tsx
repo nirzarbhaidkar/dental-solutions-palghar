@@ -13,6 +13,7 @@ import FAQsSection from "@/components/home/FAQsSection";
 import BlogSection from "@/components/home/BlogSection";
 import CtaSection from "@/components/home/CtaSection";
 import NRICornerSection from "@/components/home/NRICornerSection";
+import AchievementsSection from "@/components/home/AchievementsSection";
 import FacebookPixel from "@/components/FacebookPixel";
 
 const Index = () => {
@@ -42,6 +43,7 @@ const Index = () => {
       <Header />
       <main id="main-content">
         <HeroSection />
+        <AchievementsSection />
         <ServicesSection />
         <NRICornerSection />
         <QuizSection />
