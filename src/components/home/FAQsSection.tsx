@@ -1,6 +1,11 @@
 
 import React, { useState } from "react";
-import { HelpCircle } from "lucide-react";
+import { 
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger
+} from "@/components/ui/accordion";
 
 type FAQ = {
   question: string;
@@ -8,8 +13,6 @@ type FAQ = {
 };
 
 const FAQsSection = () => {
-  const [activeQuestion, setActiveQuestion] = useState<number | null>(null);
-
   const faqs: FAQ[] = [
     {
       question: "What services do you offer?",
@@ -37,52 +40,35 @@ const FAQsSection = () => {
     }
   ];
 
-  const toggleQuestion = (index: number) => {
-    setActiveQuestion(activeQuestion === index ? null : index);
-  };
-
   return (
-    <section id="faqs" className="py-16 bg-muted">
+    <section id="faqs" className="py-20 bg-muted">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <span className="inline-block bg-accent px-4 py-1 rounded-full text-sm font-medium mb-4">
             FAQs
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-700">
             Frequently Asked Questions
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Find answers to common questions about our dental services and procedures.
           </p>
+          <div className="h-1.5 w-32 bg-gradient-to-r from-primary to-blue-600 mx-auto mt-8 rounded-full"></div>
         </div>
 
-        <div className="max-w-3xl mx-auto">
-          {faqs.map((faq, index) => (
-            <div 
-              key={index} 
-              className="mb-4 bg-white rounded-xl overflow-hidden shadow"
-            >
-              <button
-                className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
-                onClick={() => {
-                  console.log("Toggle question", index);
-                  toggleQuestion(index);
-                }}
-              >
-                <h3 className="text-lg font-medium">{faq.question}</h3>
-                <HelpCircle
-                  className={`h-5 w-5 transition-transform duration-200 ${
-                    activeQuestion === index ? 'rotate-180 text-primary' : 'text-gray-500'
-                  }`}
-                />
-              </button>
-              {activeQuestion === index && (
-                <div className="px-6 pb-6">
-                  <p className="text-gray-600">{faq.answer}</p>
-                </div>
-              )}
-            </div>
-          ))}
+        <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg p-6 md:p-8">
+          <Accordion type="single" collapsible className="w-full">
+            {faqs.map((faq, index) => (
+              <AccordionItem key={index} value={`item-${index}`} className="border-b border-gray-200 last:border-0">
+                <AccordionTrigger className="text-lg font-medium py-4">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-600 pb-4">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </div>
     </section>

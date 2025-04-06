@@ -14,6 +14,7 @@ import BlogSection from "@/components/home/BlogSection";
 import CtaSection from "@/components/home/CtaSection";
 import NRICornerSection from "@/components/home/NRICornerSection";
 import AchievementsSection from "@/components/home/AchievementsSection";
+import CommunityImpactSection from "@/components/home/CommunityImpactSection";
 import FacebookPixel from "@/components/FacebookPixel";
 
 const Index = () => {
@@ -50,6 +51,7 @@ const Index = () => {
         <LocationSection />
         <TestimonialsSection />
         <FAQsSection />
+        <CommunityImpactSection />
         <BlogSection />
         <CtaSection />
       </main>
