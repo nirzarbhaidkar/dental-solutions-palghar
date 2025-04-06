@@ -1,23 +1,27 @@
+
 import React, { useState, useEffect } from "react";
 import { MapPin, Phone, Facebook, Instagram, Twitter, Share } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/context/LanguageContext";
 
 type NavItem = {
   label: string;
   href: string;
+  translationKey: string;
 };
 
 const Footer = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useLanguage();
 
   const navItems: NavItem[] = [
-    { label: "Services", href: "#services" },
-    { label: "Location", href: "#location" },
-    { label: "Testimonials", href: "#testimonials" },
-    { label: "FAQs", href: "#faqs" },
-    { label: "Blog", href: "/blog" },
-    { label: "Dental Health Quiz", href: "#quiz" }
+    { label: "Services", href: "#services", translationKey: "header.services" },
+    { label: "Location", href: "#location", translationKey: "header.location" },
+    { label: "Testimonials", href: "#testimonials", translationKey: "header.testimonials" },
+    { label: "FAQs", href: "#faqs", translationKey: "header.faqs" },
+    { label: "Blog", href: "/blog", translationKey: "header.blog" },
+    { label: "Dental Health Quiz", href: "#quiz", translationKey: "quiz.title" }
   ];
 
   useEffect(() => {
@@ -87,7 +91,7 @@ const Footer = () => {
           </div>
           
           <div className="flex flex-col items-start justify-start">
-            <h4 className="text-xl font-bold mb-4">Quick Links</h4>
+            <h4 className="text-xl font-bold mb-4">{t("footer.quickLinks")}</h4>
             <ul className="space-y-2">
               {navItems.map((item, index) => (
                 <li key={index}>
@@ -96,14 +100,14 @@ const Footer = () => {
                       href={item.href} 
                       className="text-gray-400 hover:text-white transition-colors"
                     >
-                      {item.label}
+                      {t(item.translationKey)}
                     </a>
                   ) : (
                     <Link 
                       to={item.href} 
                       className="text-gray-400 hover:text-white transition-colors"
                     >
-                      {item.label}
+                      {t(item.translationKey)}
                     </Link>
                   )}
                 </li>
@@ -112,7 +116,7 @@ const Footer = () => {
           </div>
 
           <div className="flex flex-col items-start justify-start">
-            <h4 className="text-xl font-bold mb-4">Opening Hours</h4>
+            <h4 className="text-xl font-bold mb-4">{t("footer.openingHours")}</h4>
             <div className="space-y-4">
               <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium" 
                    style={{ 
@@ -124,7 +128,7 @@ const Footer = () => {
                        backgroundColor: isOpen ? 'rgb(34, 197, 94)' : 'rgb(239, 68, 68)'
                      }}>
                 </div>
-                <span>{isOpen ? 'Open Now' : 'Closed Now'}</span>
+                <span>{isOpen ? t("footer.open") : t("footer.closed")}</span>
               </div>
               
               <div className="space-y-2 text-sm">
@@ -165,7 +169,7 @@ const Footer = () => {
           </div>
 
           <div className="flex flex-col items-start justify-start">
-            <h4 className="text-xl font-bold mb-4">Contact Us</h4>
+            <h4 className="text-xl font-bold mb-4">{t("footer.contactUs")}</h4>
             <div className="space-y-3">
               <div className="flex items-start">
                 <MapPin className="h-5 w-5 mr-3 text-primary shrink-0 mt-0.5" />

@@ -1,88 +1,79 @@
 
 import React from "react";
-import { HandHeart, Globe, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Users, Heart, Award } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const CommunityImpactSection = () => {
+  const { t } = useLanguage();
+  
   return (
-    <section className="py-20 bg-gradient-to-b from-muted to-white">
+    <section className="py-20 bg-gradient-to-br from-white via-blue-50/20 to-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <span className="inline-block bg-accent px-4 py-1 rounded-full text-sm font-medium mb-4">
-            Making A Difference
+            {t("communityImpact.title")}
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-700">
-            Community Impact
+            {t("communityImpact.title")}
           </h2>
-          <div className="h-1.5 w-32 bg-gradient-to-r from-primary to-blue-600 mx-auto mb-8 rounded-full"></div>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            {t("communityImpact.subtitle")}
+          </p>
+          <div className="h-1.5 w-32 bg-gradient-to-r from-primary to-blue-600 mx-auto mt-8 rounded-full"></div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <div className="order-2 lg:order-1">
-            <div className="bg-white p-8 rounded-2xl shadow-lg transform transition-all duration-300 hover:shadow-xl border border-gray-100">
-              <div className="flex items-start mb-6">
-                <div className="bg-gradient-to-br from-primary to-blue-600 p-3 rounded-full mr-4">
-                  <HandHeart className="h-7 w-7 text-white" />
-                </div>
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="flex flex-col space-y-6">
+            <p className="text-gray-600 text-lg">
+              {t("communityImpact.description")}
+            </p>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+              <div className="flex items-start space-x-3 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                <Users className="text-primary h-10 w-10 shrink-0" />
                 <div>
-                  <h3 className="text-xl font-bold mb-2">Serving The Underserved</h3>
-                  <p className="text-gray-600">
-                    Dr. Aniruddh Bhaidkar and his team have conducted over 50 dental camps 
-                    throughout the Palghar district, bringing essential oral healthcare to 
-                    tribal communities and those with limited access to dental services.
-                  </p>
+                  <h3 className="font-semibold mb-1">50+</h3>
+                  <p className="text-sm text-gray-600">Dental Camps</p>
                 </div>
               </div>
               
-              <div className="flex items-start mb-6">
-                <div className="bg-gradient-to-br from-primary to-blue-600 p-3 rounded-full mr-4">
-                  <Globe className="h-7 w-7 text-white" />
-                </div>
+              <div className="flex items-start space-x-3 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                <Heart className="text-primary h-10 w-10 shrink-0" />
                 <div>
-                  <h3 className="text-xl font-bold mb-2">Education Initiatives</h3>
-                  <p className="text-gray-600">
-                    Our team regularly visits schools and community centers to educate 
-                    children and adults about oral hygiene practices, preventive care, 
-                    and the importance of regular dental check-ups.
-                  </p>
+                  <h3 className="font-semibold mb-1">10,000+</h3>
+                  <p className="text-sm text-gray-600">People Treated</p>
                 </div>
               </div>
               
-              <div className="flex items-start">
-                <div className="bg-gradient-to-br from-primary to-blue-600 p-3 rounded-full mr-4">
-                  <Building2 className="h-7 w-7 text-white" />
-                </div>
+              <div className="flex items-start space-x-3 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                <Award className="text-primary h-10 w-10 shrink-0" />
                 <div>
-                  <h3 className="text-xl font-bold mb-2">Free Dental Care Programs</h3>
-                  <p className="text-gray-600">
-                    We believe that everyone deserves access to quality dental care. 
-                    Through our free dental programs, we've helped thousands of patients 
-                    receive treatments they otherwise could not afford.
-                  </p>
+                  <h3 className="font-semibold mb-1">15+</h3>
+                  <p className="text-sm text-gray-600">Tribal Villages Covered</p>
                 </div>
               </div>
             </div>
+            
+            <Button 
+              className="w-full sm:w-auto mt-4"
+              variant="outline"
+              onClick={() => window.open("https://wa.me/918600892884", "_blank")}
+            >
+              {t("communityImpact.learnMore")}
+            </Button>
           </div>
           
-          <div className="order-1 lg:order-2 bg-white p-8 rounded-2xl shadow-lg">
-            <h3 className="text-2xl font-bold mb-6 text-primary">
-              Our Commitment to Community Wellness
-            </h3>
-            <p className="text-gray-600 mb-6 text-lg">
-              Dr. Aniruddh Bhaidkar has been deeply committed to serving the community for over a decade. 
-              His passion for bringing quality dental care to everyone, especially the underserved, 
-              has resulted in initiatives that have touched thousands of lives across the Palghar district.
-            </p>
-            <p className="text-gray-600 mb-8 text-lg">
-              From organizing free dental checkups in remote villages to providing subsidized 
-              treatments for those in need, our efforts continue to make a meaningful difference 
-              in promoting oral health and overall well-being throughout the region.
-            </p>
-            <div className="flex justify-center">
-              <Button size="lg" className="rounded-full">
-                Join Our Next Community Camp
-              </Button>
+          <div className="relative">
+            <div className="rounded-xl overflow-hidden shadow-xl">
+              <img 
+                src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                alt="Dental camp" 
+                className="w-full h-auto rounded-xl"
+              />
             </div>
+            <div className="absolute -bottom-6 -right-6 w-24 h-24 rounded-xl bg-primary opacity-20 blur-xl"></div>
+            <div className="absolute -top-6 -left-6 w-24 h-24 rounded-xl bg-primary opacity-20 blur-xl"></div>
           </div>
         </div>
       </div>

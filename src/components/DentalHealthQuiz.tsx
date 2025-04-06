@@ -1,536 +1,291 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Check, ChevronRight, CircleCheck, Share, Link, ArrowRight } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { toast } from "sonner";
+import { useLanguage } from "@/context/LanguageContext";
 
 type Question = {
   id: number;
-  text: string;
+  text: {
+    en: string;
+    hi: string;
+    mr: string;
+  };
   options: Array<{
     id: string;
-    text: string;
-    value: "A" | "B" | "C";
+    text: {
+      en: string;
+      hi: string;
+      mr: string;
+    };
+    isCorrect: boolean;
   }>;
 };
 
-type ResultType = "good" | "average" | "needsAttention";
-
-type Result = {
-  title: string;
-  description: string;
-  actionText: string;
-  type: ResultType;
-};
-
-type Recommendation = {
-  id: string;
-  title: string;
-  description: string;
-  relevantResponses: Array<{questionId: number; value: string}>;
-};
-
-const questions: Question[] = [
+const quizQuestions: Question[] = [
   {
     id: 1,
-    text: "How often do you experience sensitivity to hot or cold foods?",
+    text: {
+      en: "How many times a day should you brush your teeth?",
+      hi: "आपको दिन में कितनी बार अपने दांतों को ब्रश करना चाहिए?",
+      mr: "दिवसातून किती वेळा दात घासावेत?"
+    },
     options: [
-      { id: "q1-a", text: "Never", value: "A" },
-      { id: "q1-b", text: "Occasionally", value: "B" },
-      { id: "q1-c", text: "Frequently", value: "C" },
-    ],
+      { id: "1a", text: { en: "Once", hi: "एक बार", mr: "एकदा" }, isCorrect: false },
+      { id: "1b", text: { en: "Twice", hi: "दो बार", mr: "दोनदा" }, isCorrect: true },
+      { id: "1c", text: { en: "After every meal", hi: "हर भोजन के बाद", mr: "प्रत्येक जेवणानंतर" }, isCorrect: false },
+      { id: "1d", text: { en: "Once a week", hi: "सप्ताह में एक बार", mr: "आठवड्यातून एकदा" }, isCorrect: false }
+    ]
   },
   {
     id: 2,
-    text: "How often do you visit a dentist for a check-up?",
+    text: {
+      en: "Which of the following is NOT a sign of gum disease?",
+      hi: "निम्नलिखित में से कौन मसूड़ों की बीमारी का लक्षण नहीं है?",
+      mr: "खालीलपैकी कोणते हिरड्यांच्या आजाराचे लक्षण नाही?"
+    },
     options: [
-      { id: "q2-a", text: "Every 6 months", value: "A" },
-      { id: "q2-b", text: "Once a year", value: "B" },
-      { id: "q2-c", text: "Only when I have a problem", value: "C" },
-    ],
+      { id: "2a", text: { en: "Bleeding gums", hi: "मसूड़ों से खून आना", mr: "हिरड्यांमधून रक्तस्त्राव" }, isCorrect: false },
+      { id: "2b", text: { en: "Sensitive teeth", hi: "संवेदनशील दांत", mr: "संवेदनशील दात" }, isCorrect: true },
+      { id: "2c", text: { en: "Bad breath", hi: "मुंह की दुर्गंध", mr: "तोंडाची दुर्गंधी" }, isCorrect: false },
+      { id: "2d", text: { en: "Receding gums", hi: "मसूड़ों का पीछे हटना", mr: "हिरड्या मागे जाणे" }, isCorrect: false }
+    ]
   },
   {
     id: 3,
-    text: "Do your gums bleed when brushing or flossing?",
+    text: {
+      en: "How often should you replace your toothbrush?",
+      hi: "आपको अपना टूथब्रश कितनी बार बदलना चाहिए?",
+      mr: "तुम्ही तुमचा टूथब्रश किती काळानंतर बदलावा?"
+    },
     options: [
-      { id: "q3-a", text: "No, never", value: "A" },
-      { id: "q3-b", text: "Sometimes", value: "B" },
-      { id: "q3-c", text: "Often", value: "C" },
-    ],
+      { id: "3a", text: { en: "Every 3-4 months", hi: "हर 3-4 महीने", mr: "दर 3-4 महिन्यांनी" }, isCorrect: true },
+      { id: "3b", text: { en: "Once a year", hi: "साल में एक बार", mr: "वर्षातून एकदा" }, isCorrect: false },
+      { id: "3c", text: { en: "Every month", hi: "हर महीने", mr: "दर महिन्याला" }, isCorrect: false },
+      { id: "3d", text: { en: "When it looks worn out", hi: "जब यह घिसा हुआ दिखे", mr: "जेव्हा ते खराब दिसते" }, isCorrect: false }
+    ]
   },
   {
     id: 4,
-    text: "Do you have persistent bad breath?",
+    text: {
+      en: "Which of these foods is best for your teeth?",
+      hi: "इनमें से कौन सा खाद्य पदार्थ आपके दांतों के लिए सबसे अच्छा है?",
+      mr: "यापैकी कोणते अन्न तुमच्या दातांसाठी सर्वोत्तम आहे?"
+    },
     options: [
-      { id: "q4-a", text: "No, never", value: "A" },
-      { id: "q4-b", text: "Occasionally", value: "B" },
-      { id: "q4-c", text: "Yes, even after brushing", value: "C" },
-    ],
+      { id: "4a", text: { en: "Candy", hi: "कैंडी", mr: "कॅंडी" }, isCorrect: false },
+      { id: "4b", text: { en: "Soft drinks", hi: "सॉफ्ट ड्रिंक्स", mr: "सॉफ्ट ड्रिंक्स" }, isCorrect: false },
+      { id: "4c", text: { en: "Cheese", hi: "पनीर", mr: "चीझ" }, isCorrect: true },
+      { id: "4d", text: { en: "Citrus fruits", hi: "खट्टे फल", mr: "आंबट फळे" }, isCorrect: false }
+    ]
   },
   {
     id: 5,
-    text: "Are you satisfied with the color of your teeth?",
+    text: {
+      en: "What is the main cause of tooth decay?",
+      hi: "दांतों के क्षय का मुख्य कारण क्या है?",
+      mr: "दात खराब होण्याचे मुख्य कारण काय आहे?"
+    },
     options: [
-      { id: "q5-a", text: "Yes, they look bright and white", value: "A" },
-      { id: "q5-b", text: "They could be whiter", value: "B" },
-      { id: "q5-c", text: "I wish they were much whiter", value: "C" },
-    ],
-  },
-  {
-    id: 6,
-    text: "Do you experience jaw pain, headaches, or teeth grinding?",
-    options: [
-      { id: "q6-a", text: "No", value: "A" },
-      { id: "q6-b", text: "Occasionally", value: "B" },
-      { id: "q6-c", text: "Yes, regularly", value: "C" },
-    ],
-  },
-  {
-    id: 7,
-    text: "How often do you brush your teeth?",
-    options: [
-      { id: "q7-a", text: "Twice a day or more", value: "A" },
-      { id: "q7-b", text: "Once a day", value: "B" },
-      { id: "q7-c", text: "Less than once a day", value: "C" },
-    ],
-  },
-  {
-    id: 8,
-    text: "Do you use dental floss or interdental brushes?",
-    options: [
-      { id: "q8-a", text: "Yes, daily", value: "A" },
-      { id: "q8-b", text: "Occasionally", value: "B" },
-      { id: "q8-c", text: "Rarely or never", value: "C" },
-    ],
-  },
-  {
-    id: 9,
-    text: "Do you smoke or use tobacco products?",
-    options: [
-      { id: "q9-a", text: "No, never", value: "A" },
-      { id: "q9-b", text: "Occasionally", value: "B" },
-      { id: "q9-c", text: "Yes, regularly", value: "C" },
-    ],
-  },
-  {
-    id: 10,
-    text: "How would you rate your diet in terms of sugar consumption?",
-    options: [
-      { id: "q10-a", text: "Low sugar diet", value: "A" },
-      { id: "q10-b", text: "Moderate sugar intake", value: "B" },
-      { id: "q10-c", text: "High sugar consumption", value: "C" },
-    ],
-  },
-];
-
-const results: Record<string, Result> = {
-  A: {
-    title: "Your smile is in great shape!",
-    description: "Keep up your routine and consider a professional cleaning to maintain it.",
-    actionText: "Book consultation",
-    type: "good",
-  },
-  B: {
-    title: "Your oral health is decent, but there's room for improvement.",
-    description: "A professional check-up can help identify areas to focus on.",
-    actionText: "Book consultation",
-    type: "average",
-  },
-  C: {
-    title: "Your dental health may need attention.",
-    description: "Don't wait until it worsens—get expert advice on how to improve your dental health.",
-    actionText: "Book consultation now",
-    type: "needsAttention",
-  },
-};
-
-const recommendations: Recommendation[] = [
-  {
-    id: "sensitivity",
-    title: "Tooth Sensitivity Solution",
-    description: "Try using toothpaste for sensitive teeth and consider a dental check-up to identify the cause.",
-    relevantResponses: [{questionId: 1, value: "B"}, {questionId: 1, value: "C"}]
-  },
-  {
-    id: "checkups",
-    title: "Regular Check-ups",
-    description: "Scheduling bi-annual dental check-ups can prevent many dental problems and save you from costly treatments later.",
-    relevantResponses: [{questionId: 2, value: "B"}, {questionId: 2, value: "C"}]
-  },
-  {
-    id: "bleeding-gums",
-    title: "Gum Care",
-    description: "Bleeding gums can be an early sign of gum disease. Improve your brushing technique and consider a dental cleaning.",
-    relevantResponses: [{questionId: 3, value: "B"}, {questionId: 3, value: "C"}]
-  },
-  {
-    id: "bad-breath",
-    title: "Fresh Breath Solution",
-    description: "Persistent bad breath may indicate underlying dental issues. A thorough dental cleaning and proper tongue cleaning can help.",
-    relevantResponses: [{questionId: 4, value: "B"}, {questionId: 4, value: "C"}]
-  },
-  {
-    id: "whitening",
-    title: "Teeth Whitening Options",
-    description: "Professional teeth whitening treatments can safely brighten your smile without damaging enamel.",
-    relevantResponses: [{questionId: 5, value: "B"}, {questionId: 5, value: "C"}]
-  },
-  {
-    id: "tmj",
-    title: "TMJ/Grinding Solution",
-    description: "Jaw pain and grinding may require a night guard or TMJ therapy. Book a consultation to evaluate your symptoms.",
-    relevantResponses: [{questionId: 6, value: "B"}, {questionId: 6, value: "C"}]
-  },
-  {
-    id: "brushing",
-    title: "Brushing Routine Improvement",
-    description: "Brushing twice a day with fluoride toothpaste is essential for preventing decay and gum disease.",
-    relevantResponses: [{questionId: 7, value: "B"}, {questionId: 7, value: "C"}]
-  },
-  {
-    id: "flossing",
-    title: "Interdental Cleaning",
-    description: "Flossing daily removes plaque from areas your toothbrush can't reach, preventing cavities between teeth.",
-    relevantResponses: [{questionId: 8, value: "B"}, {questionId: 8, value: "C"}]
-  },
-  {
-    id: "tobacco",
-    title: "Tobacco Use Impact",
-    description: "Tobacco products stain teeth, increase gum disease risk, and raise oral cancer risk. Consider cessation support.",
-    relevantResponses: [{questionId: 9, value: "B"}, {questionId: 9, value: "C"}]
-  },
-  {
-    id: "diet",
-    title: "Diet and Dental Health",
-    description: "Reducing sugar intake can significantly decrease your risk of cavities and improve overall dental health.",
-    relevantResponses: [{questionId: 10, value: "B"}, {questionId: 10, value: "C"}]
+      { id: "5a", text: { en: "Bacteria", hi: "बैक्टीरिया", mr: "बॅक्टेरिया" }, isCorrect: true },
+      { id: "5b", text: { en: "Cold weather", hi: "ठंडा मौसम", mr: "थंड हवामान" }, isCorrect: false },
+      { id: "5c", text: { en: "Drinking water", hi: "पानी पीना", mr: "पाणी पिणे" }, isCorrect: false },
+      { id: "5d", text: { en: "Lack of sleep", hi: "नींद की कमी", mr: "झोपेची कमी" }, isCorrect: false }
+    ]
   }
 ];
 
-const DentalHealthQuiz = () => {
-  const [started, setStarted] = useState(false);
+const DentalHealthQuiz: React.FC = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState<Record<number, string>>({});
-  const [completed, setCompleted] = useState(false);
-  const [quizId, setQuizId] = useState<string | null>(null);
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [score, setScore] = useState(0);
+  const [showResult, setShowResult] = useState(false);
+  const [answered, setAnswered] = useState(false);
+  const { language } = useLanguage();
 
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const quizIdParam = params.get('quizId');
-    
-    if (quizIdParam) {
-      try {
-        const decodedData = JSON.parse(atob(quizIdParam));
-        if (decodedData && decodedData.answers) {
-          setAnswers(decodedData.answers);
-          setCompleted(true);
-          setStarted(true);
-        }
-      } catch (error) {
-        console.error("Failed to parse quiz data:", error);
-      }
+  const handleOptionSelect = (optionId: string, isCorrect: boolean) => {
+    setSelectedOption(optionId);
+    setAnswered(true);
+    if (isCorrect) {
+      setScore(score + 1);
     }
-  }, []);
-
-  const handleAnswer = (questionId: number, value: string) => {
-    setAnswers((prev) => ({
-      ...prev,
-      [questionId]: value,
-    }));
   };
 
-  const handleNext = () => {
-    if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion((prev) => prev + 1);
+  const handleNextQuestion = () => {
+    if (currentQuestion < quizQuestions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+      setSelectedOption(null);
+      setAnswered(false);
     } else {
-      setCompleted(true);
-      generateQuizId();
+      setShowResult(true);
     }
   };
 
-  const generateQuizId = () => {
-    const quizData = {
-      answers,
-      timestamp: new Date().toISOString(),
-    };
-    const encoded = btoa(JSON.stringify(quizData));
-    setQuizId(encoded);
-  };
-
-  const calculateResult = () => {
-    const counts: Record<string, number> = { A: 0, B: 0, C: 0 };
-    
-    Object.values(answers).forEach((answer) => {
-      counts[answer] = (counts[answer] || 0) + 1;
-    });
-    
-    if (counts.A >= counts.B && counts.A >= counts.C) return "A";
-    if (counts.B >= counts.A && counts.B >= counts.C) return "B";
-    return "C";
-  };
-
-  const getPersonalizedRecommendations = (): Recommendation[] => {
-    const personalizedRecs: Recommendation[] = [];
-    
-    recommendations.forEach(rec => {
-      const isRelevant = rec.relevantResponses.some(response => {
-        return answers[response.questionId] === response.value;
-      });
-      
-      if (isRelevant) {
-        personalizedRecs.push(rec);
-      }
-    });
-    
-    return personalizedRecs;
-  };
-  
-  const handleWhatsAppClick = () => {
-    const result = calculateResult();
-    const message = `Hello, I just took your dental health quiz and got: "${results[result].title}" - I'd like to book an appointment at Dental Solutions Palghar.`;
-    window.open(`https://wa.me/918600892884?text=${encodeURIComponent(message)}`, "_blank");
-  };
-
-  const handleShareQuiz = () => {
-    if (!quizId) return;
-    
-    const shareUrl = `${window.location.origin}${window.location.pathname}?quizId=${quizId}#quiz`;
-    
-    if (navigator.share) {
-      navigator.share({
-        title: 'My Dental Health Quiz Results',
-        text: 'Check out my dental health quiz results from Dental Solutions Palghar!',
-        url: shareUrl,
-      }).catch((error) => console.log('Error sharing:', error));
-    } else {
-      navigator.clipboard.writeText(shareUrl).then(() => {
-        toast.success("Link copied to clipboard!");
-      }).catch((err) => {
-        console.error('Failed to copy: ', err);
-        toast.error("Failed to copy link");
-      });
-    }
-  };
-
-  const handleReset = () => {
-    setAnswers({});
+  const restartQuiz = () => {
     setCurrentQuestion(0);
-    setCompleted(false);
-    setQuizId(null);
-    
-    const url = new URL(window.location.href);
-    url.searchParams.delete('quizId');
-    window.history.replaceState({}, '', url.toString());
+    setSelectedOption(null);
+    setScore(0);
+    setShowResult(false);
+    setAnswered(false);
   };
 
-  const currentQuestionData = questions[currentQuestion];
-  const result = completed ? calculateResult() : null;
-  const resultData = result ? results[result] : null;
-  const personalizedRecommendations = completed ? getPersonalizedRecommendations() : [];
+  const getResultMessage = () => {
+    const percentage = (score / quizQuestions.length) * 100;
+    if (language === 'en') {
+      if (percentage === 100) return "Perfect! You have excellent dental knowledge!";
+      if (percentage >= 80) return "Great job! You know a lot about dental health!";
+      if (percentage >= 60) return "Good effort! You have decent dental knowledge.";
+      if (percentage >= 40) return "Not bad. There's room for improvement.";
+      return "Keep learning! Schedule a consultation to learn more about dental health.";
+    } else if (language === 'hi') {
+      if (percentage === 100) return "परफेक्ट! आपके पास उत्कृष्ट दंत ज्ञान है!";
+      if (percentage >= 80) return "बहुत बढ़िया! आप दंत स्वास्थ्य के बारे में बहुत कुछ जानते हैं!";
+      if (percentage >= 60) return "अच्छा प्रयास! आपके पास ठीक-ठाक दंत ज्ञान है।";
+      if (percentage >= 40) return "बुरा नहीं। सुधार की गुंजाइश है।";
+      return "सीखते रहें! दंत स्वास्थ्य के बारे में अधिक जानने के लिए परामर्श शेड्यूल करें।";
+    } else {
+      if (percentage === 100) return "परफेक्ट! तुमच्याकडे उत्कृष्ट दंत ज्ञान आहे!";
+      if (percentage >= 80) return "छान काम! तुम्हाला दंत आरोग्याबद्दल खूप माहिती आहे!";
+      if (percentage >= 60) return "चांगला प्रयत्न! तुमच्याकडे चांगले दंत ज्ञान आहे.";
+      if (percentage >= 40) return "वाईट नाही. सुधारणेची संधी आहे.";
+      return "शिकत रहा! दंत आरोग्याबद्दल अधिक जाणून घेण्यासाठी सल्लामसलत शेड्यूल करा.";
+    }
+  };
 
-  if (!started) {
+  // Translation mapping for button text
+  const buttonText = {
+    next: {
+      en: "Next Question",
+      hi: "अगला प्रश्न",
+      mr: "पुढील प्रश्न"
+    },
+    restart: {
+      en: "Restart Quiz",
+      hi: "क्विज पुनः आरंभ करें",
+      mr: "क्विझ पुन्हा सुरू करा"
+    },
+    appointment: {
+      en: "Book a Consultation",
+      hi: "परामर्श बुक करें",
+      mr: "सल्लामसलत बुक करा"
+    },
+    select: {
+      en: "Select an option",
+      hi: "एक विकल्प चुनें",
+      mr: "एक पर्याय निवडा"
+    }
+  };
+
+  // Result title translations
+  const resultTitle = {
+    en: "Quiz Results",
+    hi: "क्विज परिणाम",
+    mr: "क्विझ निकाल"
+  };
+
+  // Score message translations
+  const scoreMessage = {
+    en: "You scored",
+    hi: "आपका स्कोर",
+    mr: "तुमचे गुण"
+  };
+
+  // Out of message translations
+  const outOfMessage = {
+    en: "out of",
+    hi: "में से",
+    mr: "पैकी"
+  };
+
+  if (showResult) {
     return (
-      <Card className="w-full max-w-3xl mx-auto mt-12 mb-8 overflow-hidden shadow-lg border-0 animate-fade-in" id="quiz">
-        <div className="bg-gradient-to-r from-primary to-primary/80 text-white p-8 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold">Find out if your teeth and gums are in top shape!</h2>
-          <p className="mt-2 opacity-90">Take our 2-minute assessment for personalized dental care tips</p>
+      <div className="bg-white rounded-2xl shadow-lg p-8 max-w-3xl mx-auto">
+        <h3 className="text-2xl font-bold text-center mb-6">{resultTitle[language as keyof typeof resultTitle]}</h3>
+        <div className="text-center mb-8">
+          <div className="text-5xl font-bold text-primary">{score}/{quizQuestions.length}</div>
+          <p className="text-lg mt-2">
+            {scoreMessage[language as keyof typeof scoreMessage]} {score} {outOfMessage[language as keyof typeof outOfMessage]} {quizQuestions.length}
+          </p>
+          <p className="text-gray-600 mt-4">{getResultMessage()}</p>
         </div>
-        <CardContent className="p-8 text-center">
-          <p className="mb-6 text-lg text-gray-700">Answer 10 quick questions to assess your dental health and get tailored recommendations.</p>
-          <ul className="text-left mb-8 mx-auto max-w-md bg-blue-50 p-5 rounded-xl">
-            <li className="flex items-center gap-3 mb-3">
-              <div className="bg-primary/10 p-2 rounded-full">
-                <Check className="h-5 w-5 text-primary" />
-              </div>
-              <span className="text-gray-700">10 simple questions</span>
-            </li>
-            <li className="flex items-center gap-3 mb-3">
-              <div className="bg-primary/10 p-2 rounded-full">
-                <Check className="h-5 w-5 text-primary" />
-              </div>
-              <span className="text-gray-700">Personalized dental care tips</span>
-            </li>
-            <li className="flex items-center gap-3">
-              <div className="bg-primary/10 p-2 rounded-full">
-                <Check className="h-5 w-5 text-primary" />
-              </div>
-              <span className="text-gray-700">Free professional recommendations</span>
-            </li>
-          </ul>
-          <Button 
-            onClick={() => setStarted(true)} 
-            className="mt-4 bg-primary hover:bg-primary/90 text-white group px-6 py-3 text-base rounded-lg shadow-md transition-all duration-300 hover:shadow-lg"
-            size="lg"
-          >
-            Start Quiz <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button onClick={restartQuiz} variant="outline">
+            {buttonText.restart[language as keyof typeof buttonText.restart]}
           </Button>
-        </CardContent>
-      </Card>
+          <Button 
+            onClick={() => window.open("https://wa.me/918600892884?text=Hello%2C%20I%20just%20took%20the%20dental%20quiz%20on%20your%20website%20and%20scored%20" + score + "%20out%20of%20" + quizQuestions.length + ".%20I%27d%20like%20to%20book%20a%20consultation.%20Thank%20you!", "_blank")}
+          >
+            {buttonText.appointment[language as keyof typeof buttonText.appointment]}
+          </Button>
+        </div>
+      </div>
     );
   }
 
+  const question = quizQuestions[currentQuestion];
+
   return (
-    <Card className="w-full max-w-3xl mx-auto mt-12 mb-8 overflow-hidden shadow-lg border-0 animate-fade-in" id="quiz">
-      {!completed ? (
-        <>
-          <div className="bg-gradient-to-r from-primary to-primary/80 text-white p-6">
-            <div className="flex justify-between items-center mb-3">
-              <h2 className="text-xl font-bold">Dental Health Quiz</h2>
-              <span className="text-sm font-medium bg-white/20 px-3 py-1 rounded-full">
-                Question {currentQuestion + 1} of {questions.length}
-              </span>
-            </div>
-            <div className="w-full bg-white/20 h-2.5 rounded-full overflow-hidden">
-              <div 
-                className="bg-white h-2.5 rounded-full transition-all duration-500" 
-                style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
-              ></div>
-            </div>
-          </div>
-          <CardContent className="p-8 bg-gradient-to-b from-blue-50/50 to-white">
-            <h3 className="text-xl font-semibold mb-6 text-gray-800">{currentQuestionData.text}</h3>
-            <RadioGroup 
-              value={answers[currentQuestionData.id] || ""}
-              onValueChange={(value) => handleAnswer(currentQuestionData.id, value)}
-              className="space-y-4"
-            >
-              {currentQuestionData.options.map((option) => (
-                <div key={option.id} className={cn(
-                  "flex items-center p-4 border-2 rounded-lg cursor-pointer transition-all",
-                  answers[currentQuestionData.id] === option.value 
-                    ? "border-primary bg-primary/5 shadow-md" 
-                    : "border-gray-200 hover:border-primary/30 hover:bg-blue-50/50"
-                )}>
-                  <RadioGroupItem 
-                    value={option.value} 
-                    id={option.id}
-                    className="border-2"
-                  />
-                  <label 
-                    htmlFor={option.id} 
-                    className="text-base cursor-pointer flex-grow py-2 pl-3 text-gray-700"
-                  >
-                    {option.text}
-                  </label>
-                </div>
-              ))}
-            </RadioGroup>
-          </CardContent>
-          <CardFooter className="p-6 border-t bg-white flex justify-between items-center">
-            {currentQuestion > 0 ? (
-              <Button 
-                variant="outline" 
-                onClick={() => setCurrentQuestion((prev) => prev - 1)}
-                className="px-4 py-2 border-gray-300 hover:bg-gray-50"
-              >
-                Previous
-              </Button>
-            ) : (
-              <div></div>
-            )}
-            <Button 
-              onClick={handleNext}
-              disabled={!answers[currentQuestionData.id]}
-              size="lg"
-              className={cn(
-                "bg-primary text-white hover:bg-primary/90 group flex items-center gap-2 px-6 py-3 text-base rounded-lg shadow-md transition-all duration-300",
-                !answers[currentQuestionData.id] && "opacity-50"
-              )}
-            >
-              {currentQuestion === questions.length - 1 ? "See Results" : "Next"}
-              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </Button>
-          </CardFooter>
-        </>
-      ) : (
-        <div className="animate-fade-in">
-          <div className={cn(
-            "p-8 text-white",
-            resultData?.type === "good" ? "bg-gradient-to-r from-green-600 to-green-500" : 
-            resultData?.type === "average" ? "bg-gradient-to-r from-primary to-blue-400" : 
-            "bg-gradient-to-r from-orange-600 to-orange-500"
-          )}>
-            <div className="flex items-center gap-4 mb-4">
-              <div className="bg-white/20 p-3 rounded-full">
-                <CircleCheck className="h-8 w-8" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold">{resultData?.title}</h3>
-                <p className="text-white/90">{resultData?.description}</p>
-              </div>
-            </div>
-          </div>
-          <CardContent className="p-8 bg-gradient-to-b from-blue-50/50 to-white">
-            {personalizedRecommendations.length > 0 && (
-              <div className="mb-8">
-                <h4 className="text-lg font-semibold mb-4 text-gray-800">Your Personalized Recommendations:</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {personalizedRecommendations.map((rec) => (
-                    <div key={rec.id} className="p-4 bg-white rounded-lg border border-primary/20 shadow-sm hover:shadow-md transition-all">
-                      <h5 className="font-medium text-primary text-lg mb-1">{rec.title}</h5>
-                      <p className="text-gray-600">{rec.description}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-            
-            <div className="mb-6 p-5 bg-gray-50 rounded-xl border border-gray-100">
-              <h4 className="font-semibold mb-3 text-gray-800">Your answers:</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {Object.entries(answers).map(([questionId, answer]) => {
-                  const question = questions.find(q => q.id === parseInt(questionId));
-                  const option = question?.options.find(o => o.value === answer);
-                  return (
-                    <div key={questionId} className="flex gap-3 bg-white p-3 rounded-lg shadow-sm">
-                      <div className="bg-primary/10 p-1 rounded-full h-7 w-7 flex items-center justify-center mt-0.5">
-                        <Check className="h-4 w-4 text-primary flex-shrink-0" />
-                      </div>
-                      <div>
-                        <p className="text-sm font-medium text-gray-800">{question?.text}</p>
-                        <p className="text-xs text-gray-500">{option?.text}</p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </CardContent>
-          <CardFooter className="p-6 border-t bg-white flex flex-wrap gap-4 justify-between">
-            <div className="flex flex-wrap gap-4">
-              <Button 
-                onClick={handleReset} 
-                variant="outline"
-                className="border-gray-300 hover:bg-gray-50"
-              >
-                Retake Quiz
-              </Button>
-              <Button 
-                onClick={handleShareQuiz}
-                variant="outline"
-                className="flex items-center gap-2 border-primary/30 text-primary hover:bg-primary/5"
-              >
-                <Share className="h-4 w-4" /> Share Results
-              </Button>
-            </div>
-            <Button 
-              onClick={handleWhatsAppClick}
-              className={cn(
-                "px-6 shadow-md hover:shadow-lg transition-all",
-                resultData?.type === "good" ? "bg-green-600 hover:bg-green-700" : 
-                resultData?.type === "average" ? "bg-primary hover:bg-primary/90" : 
-                "bg-orange-600 hover:bg-orange-700"
-              )}
-            >
-              {resultData?.actionText}
-            </Button>
-          </CardFooter>
+    <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 max-w-3xl mx-auto">
+      <div className="mb-6">
+        <div className="flex justify-between items-center mb-2">
+          <span className="text-sm text-gray-500">
+            {language === 'en' ? 'Question' : language === 'hi' ? 'प्रश्न' : 'प्रश्न'} {currentQuestion + 1}/{quizQuestions.length}
+          </span>
+          <span className="text-sm text-gray-500">
+            {language === 'en' ? 'Score' : language === 'hi' ? 'स्कोर' : 'गुण'}: {score}
+          </span>
         </div>
-      )}
-    </Card>
+        <div className="h-2 w-full bg-gray-200 rounded-full">
+          <div 
+            className="h-full bg-primary rounded-full transition-all duration-300" 
+            style={{ width: `${((currentQuestion + 1) / quizQuestions.length) * 100}%` }}
+          ></div>
+        </div>
+      </div>
+
+      <h3 className="text-xl font-semibold mb-6">{question.text[language as keyof typeof question.text]}</h3>
+
+      <div className="space-y-3 mb-6">
+        {question.options.map((option) => (
+          <button
+            key={option.id}
+            className={`w-full p-4 rounded-lg border text-left transition-colors ${
+              selectedOption === option.id
+                ? option.isCorrect
+                  ? "bg-green-100 border-green-500 text-green-800"
+                  : "bg-red-100 border-red-500 text-red-800"
+                : "border-gray-200 hover:border-primary hover:bg-primary/5"
+            }`}
+            onClick={() => !answered && handleOptionSelect(option.id, option.isCorrect)}
+            disabled={answered}
+          >
+            {option.text[language as keyof typeof option.text]}
+            {answered && selectedOption === option.id && (
+              <span className="float-right">
+                {option.isCorrect ? (
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                )}
+              </span>
+            )}
+          </button>
+        ))}
+      </div>
+
+      <div className="flex justify-center">
+        <Button
+          onClick={handleNextQuestion}
+          disabled={!answered}
+          className={`w-full py-3 ${!answered ? 'opacity-50 cursor-not-allowed' : ''}`}
+        >
+          {!answered ? buttonText.select[language as keyof typeof buttonText.select] : buttonText.next[language as keyof typeof buttonText.next]}
+        </Button>
+      </div>
+    </div>
   );
 };
 
