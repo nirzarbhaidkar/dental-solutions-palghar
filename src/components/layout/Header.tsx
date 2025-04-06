@@ -95,14 +95,14 @@ const Header = () => {
       </div>
 
       {isNavOpen && (
-        <div className="fixed inset-0 bg-white z-40 pt-16 md:hidden">
-          <div className="flex flex-col space-y-4 p-4">
+        <div className="fixed inset-0 bg-white z-[100] pt-16 md:hidden overflow-y-auto">
+          <div className="flex flex-col space-y-6 p-6">
             {navItems.map((item, index) => (
               item.href.startsWith('#') ? (
                 <a 
                   key={index}
                   href={item.href} 
-                  className="text-gray-700 hover:text-primary transition-colors"
+                  className="text-lg font-medium text-gray-700 hover:text-primary transition-colors py-2"
                   onClick={() => setIsNavOpen(false)}
                 >
                   {item.label}
@@ -111,14 +111,14 @@ const Header = () => {
                 <Link 
                   key={index}
                   to={item.href} 
-                  className="text-gray-700 hover:text-primary transition-colors"
+                  className="text-lg font-medium text-gray-700 hover:text-primary transition-colors py-2"
                   onClick={() => setIsNavOpen(false)}
                 >
                   {item.label}
                 </Link>
               )
             ))}
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-4 py-2">
               <a
                 href="https://www.facebook.com/DentalSolutionsPalghar"
                 target="_blank"
@@ -126,18 +126,30 @@ const Header = () => {
                 className="text-gray-700 hover:text-primary transition-colors"
                 aria-label="Facebook"
               >
-                <Facebook size={20} />
+                <Facebook size={24} />
               </a>
             </div>
-            <Button 
-              className="bg-primary text-white hover:bg-primary/90 w-full"
-              onClick={() => {
-                window.open("https://wa.me/918600892884?text=Hello%2C%20I%E2%80%99d%20like%20to%20book%20an%20appointment%20at%20Dental%20Solutions%20Palghar.%20Please%20let%20me%20know%20the%20available%20slots.%20Thank%20you!", "_blank");
-                setIsNavOpen(false);
-              }}
-            >
-              Book Appointment on WhatsApp
-            </Button>
+            <div className="flex flex-col space-y-4 pt-4">
+              <Button 
+                className="bg-primary text-white hover:bg-primary/90 w-full py-6 text-lg"
+                onClick={() => {
+                  window.open("https://wa.me/918600892884?text=Hello%2C%20I%E2%80%99d%20like%20to%20book%20an%20appointment%20at%20Dental%20Solutions%20Palghar.%20Please%20let%20me%20know%20the%20available%20slots.%20Thank%20you!", "_blank");
+                  setIsNavOpen(false);
+                }}
+              >
+                Book Appointment on WhatsApp
+              </Button>
+              <Button 
+                variant="outline"
+                className="border-primary text-primary hover:bg-primary/10 w-full py-6 text-lg"
+                onClick={() => {
+                  window.open("tel:+918600892884");
+                  setIsNavOpen(false);
+                }}
+              >
+                Call Now
+              </Button>
+            </div>
           </div>
         </div>
       )}
