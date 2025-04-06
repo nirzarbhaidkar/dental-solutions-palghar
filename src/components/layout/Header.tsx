@@ -1,26 +1,54 @@
 
 import { useState, useEffect } from "react";
-import { Facebook } from "lucide-react";
+import { Facebook, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 type NavItem = {
   label: string;
   href: string;
+  isExternal?: boolean;
 };
 
 const Header = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   const navItems: NavItem[] = [
-    { label: "Services", href: "#services" },
-    { label: "NRI Corner", href: "#nri-corner" },
-    { label: "Location", href: "#location" },
-    { label: "Testimonials", href: "#testimonials" },
-    { label: "FAQs", href: "#faqs" },
+    { label: "Services", href: "/#services" },
+    { label: "NRI Corner", href: "/#nri-corner" },
+    { label: "Location", href: "/#location" },
+    { label: "Testimonials", href: "/#testimonials" },
+    { label: "FAQs", href: "/#faqs" },
     { label: "Blog", href: "/blog" }
   ];
+
+  // Handle anchor links with smooth scrolling
+  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    
+    // Close mobile menu if open
+    if (isNavOpen) {
+      setIsNavOpen(false);
+    }
+    
+    // If we're not on the homepage and trying to access an anchor, go to homepage first
+    if (location.pathname !== '/' && href.startsWith('/#')) {
+      window.location.href = href;
+      return;
+    }
+    
+    // Extract the anchor without the #
+    const anchor = href.replace('/#', '');
+    const element = document.getElementById(anchor);
+    
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      // Update URL without full page reload
+      window.history.pushState(null, '', href);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,15 +70,23 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <span className="text-2xl font-semibold text-primary">Dental Solutions Palghar</span>
+            <Link to="/" className="text-2xl font-semibold text-primary">Dental Solutions Palghar</Link>
           </div>
           
           <div className="hidden md:flex items-center space-x-8">
+            <Link 
+              to="/"
+              className="text-gray-700 hover:text-primary transition-colors flex items-center"
+              aria-label="Home"
+            >
+              <Home size={20} />
+            </Link>
             {navItems.map((item, index) => (
-              item.href.startsWith('#') ? (
+              item.href.includes('#') ? (
                 <a 
                   key={index}
-                  href={item.href} 
+                  href={item.href}
+                  onClick={(e) => handleAnchorClick(e, item.href)}
                   className="text-gray-700 hover:text-primary transition-colors"
                 >
                   {item.label}
@@ -97,13 +133,20 @@ const Header = () => {
       {isNavOpen && (
         <div className="fixed inset-0 bg-white z-[100] pt-16 md:hidden overflow-y-auto">
           <div className="flex flex-col space-y-6 p-6">
+            <Link 
+              to="/"
+              className="text-lg font-medium text-gray-700 hover:text-primary transition-colors py-2 flex items-center gap-2"
+              onClick={() => setIsNavOpen(false)}
+            >
+              <Home size={20} /> Home
+            </Link>
             {navItems.map((item, index) => (
-              item.href.startsWith('#') ? (
+              item.href.includes('#') ? (
                 <a 
                   key={index}
-                  href={item.href} 
+                  href={item.href}
                   className="text-lg font-medium text-gray-700 hover:text-primary transition-colors py-2"
-                  onClick={() => setIsNavOpen(false)}
+                  onClick={(e) => handleAnchorClick(e, item.href)}
                 >
                   {item.label}
                 </a>
