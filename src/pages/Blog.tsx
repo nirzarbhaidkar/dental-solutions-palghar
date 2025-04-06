@@ -13,18 +13,32 @@ import { Bookmark, Calendar, Clock, ChevronRight, Tag } from "lucide-react";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 import { Button } from "@/components/ui/button";
 
+// Define the BlogPost type based on the data structure
+interface BlogPost {
+  id: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  date: string;
+  readTime: string;
+  slug: string;
+  category: string;
+  image: string;
+  tags?: string[];
+}
+
 const Blog = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const { items: visiblePosts, hasMore, loading, loaderRef } = useInfiniteScroll({
-    initialItems: blogPosts,
+  const { items: visiblePosts, hasMore, loading, loaderRef } = useInfiniteScroll<BlogPost>({
+    initialItems: blogPosts as BlogPost[],
     itemsPerPage: 6,
   });
 
   // Get the featured blog post for OG image (first post)
-  const featuredPost = blogPosts[0];
+  const featuredPost = blogPosts[0] as BlogPost;
   const featuredImageUrl = featuredPost.image.startsWith('http') 
     ? featuredPost.image 
     : `https://dentalsolutionspalghar.com${featuredPost.image}`;
@@ -33,34 +47,37 @@ const Blog = () => {
   const blogPostStructuredData = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "itemListElement": blogPosts.map((post, index) => ({
-      "@type": "ListItem",
-      "position": index + 1,
-      "item": {
-        "@type": "BlogPosting",
-        "headline": post.title,
-        "description": post.excerpt,
-        "image": post.image.startsWith('http') ? post.image : `https://dentalsolutionspalghar.com${post.image}`,
-        "url": `https://dentalsolutionspalghar.com/blog/${post.slug}`,
-        "author": {
-          "@type": "Person",
-          "name": "Dental Solutions Palghar Team"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "Dental Solutions Palghar",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://dentalsolutionspalghar.com/og-image.jpg"
-          }
-        },
-        "datePublished": "2024-07-01T00:00:00+05:30"
-      }
-    }))
+    "itemListElement": blogPosts.map((post, index) => {
+      const typedPost = post as BlogPost;
+      return {
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": "BlogPosting",
+          "headline": typedPost.title,
+          "description": typedPost.excerpt,
+          "image": typedPost.image.startsWith('http') ? typedPost.image : `https://dentalsolutionspalghar.com${typedPost.image}`,
+          "url": `https://dentalsolutionspalghar.com/blog/${typedPost.slug}`,
+          "author": {
+            "@type": "Person",
+            "name": "Dental Solutions Palghar Team"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Dental Solutions Palghar",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://dentalsolutionspalghar.com/og-image.jpg"
+            }
+          },
+          "datePublished": "2024-07-01T00:00:00+05:30"
+        }
+      };
+    })
   };
 
   // Categories for filter (extract unique categories from blog posts)
-  const categories = [...new Set(blogPosts.map(post => post.category || "Uncategorized"))];
+  const categories = [...new Set(blogPosts.map(post => (post as BlogPost).category || "Uncategorized"))];
 
   return (
     <ScrollArea className="min-h-screen bg-gradient-to-br from-white via-blue-50/20 to-white">
@@ -116,10 +133,10 @@ const Blog = () => {
                   <div className="md:col-span-5 lg:col-span-4 p-6 flex flex-col justify-center">
                     <div className="mb-4 flex items-center text-sm text-gray-500">
                       <Calendar className="h-4 w-4 mr-1" />
-                      <span>July 10, 2023</span>
+                      <span>{featuredPost.date}</span>
                       <span className="mx-2">•</span>
                       <Clock className="h-4 w-4 mr-1" />
-                      <span>5 min read</span>
+                      <span>{featuredPost.readTime}</span>
                     </div>
                     <h2 className="text-2xl md:text-3xl font-bold mb-4 hover:text-primary transition-colors">
                       {featuredPost.title}
@@ -182,10 +199,10 @@ const Blog = () => {
                   <CardHeader className="pb-2">
                     <div className="flex items-center text-sm text-gray-500 mb-1">
                       <Calendar className="h-4 w-4 mr-1" />
-                      <span>July 10, 2023</span>
+                      <span>{post.date}</span>
                       <span className="mx-2">•</span>
                       <Clock className="h-4 w-4 mr-1" />
-                      <span>5 min read</span>
+                      <span>{post.readTime}</span>
                     </div>
                     <Link to={`/blog/${post.slug}`}>
                       <h2 className="text-xl font-semibold text-gray-800 hover:text-primary transition-colors line-clamp-2">

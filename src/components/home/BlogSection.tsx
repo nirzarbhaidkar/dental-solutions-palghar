@@ -5,9 +5,23 @@ import { Link } from "react-router-dom";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { blogPosts } from "@/data/blogPosts";
 
+// Define the BlogPost type to match the one in Blog.tsx
+interface BlogPost {
+  id: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  date: string;
+  readTime: string;
+  slug: string;
+  category: string;
+  image: string;
+  tags?: string[];
+}
+
 const BlogSection = () => {
   // Get first 3 blog posts for homepage
-  const featuredPosts = blogPosts.slice(0, 3);
+  const featuredPosts = blogPosts.slice(0, 3) as BlogPost[];
   
   return (
     <section className="py-16 bg-white">
@@ -47,10 +61,10 @@ const BlogSection = () => {
                 <CardHeader className="pb-2">
                   <div className="flex items-center text-sm text-gray-500 mb-1">
                     <Calendar className="h-4 w-4 mr-1" />
-                    <span>July 10, 2023</span>
+                    <span>{post.date}</span>
                     <span className="mx-2">•</span>
                     <Clock className="h-4 w-4 mr-1" />
-                    <span>5 min read</span>
+                    <span>{post.readTime}</span>
                   </div>
                   <Link to={`/blog/${post.slug}`}>
                     <h3 className="text-xl font-semibold text-gray-800 hover:text-primary transition-colors line-clamp-2">
