@@ -43,8 +43,8 @@ const Index = () => {
       <Header />
       <main id="main-content">
         <HeroSection />
-        <AchievementsSection />
         <ServicesSection />
+        <AchievementsSection />
         <NRICornerSection />
         <QuizSection />
         <LocationSection />
