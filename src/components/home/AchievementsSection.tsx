@@ -1,110 +1,138 @@
 
 import React, { useState, useEffect, useRef } from "react";
-import { useLanguage } from "@/context/LanguageContext";
+import { Building2, Users, Stethoscope, MessageSquare } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 
-type Achievement = {
-  value: number;
-  suffix: string;
-  label: string;
-  translationKey: string;
-};
-
-const achievements: Achievement[] = [
-  { value: 5000, suffix: "+", label: "Happy Patients", translationKey: "achievements.happyPatients" },
-  { value: 15, suffix: "+", label: "Years of Experience", translationKey: "achievements.experienceYears" },
-  { value: 10000, suffix: "+", label: "Dental Procedures", translationKey: "achievements.dentalProcedures" },
-  { value: 1000, suffix: "+", label: "Positive Reviews", translationKey: "achievements.positiveReviews" }
-];
-
-const AchievementsSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [counts, setCounts] = useState<number[]>(achievements.map(() => 0));
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const { t } = useLanguage();
+// Custom counter hook for number animation
+const useCounter = (end: number, duration: number = 2000) => {
+  const [count, setCount] = useState(0);
+  const countRef = useRef(null);
+  const [inView, setInView] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setInView(true);
           observer.disconnect();
         }
       },
       { threshold: 0.1 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (countRef.current) {
+      observer.observe(countRef.current);
     }
 
     return () => {
-      if (sectionRef.current) {
+      if (countRef.current) {
         observer.disconnect();
       }
     };
   }, []);
 
   useEffect(() => {
-    if (!isVisible) return;
+    if (!inView) return;
 
-    const intervals = achievements.map((achievement, index) => {
-      const duration = 2000; // 2 seconds for animation
-      const steps = 50; // Number of steps in the animation
-      const increment = achievement.value / steps;
-      let count = 0;
-
-      return setInterval(() => {
-        count += increment;
-        if (count >= achievement.value) {
-          count = achievement.value;
-          clearInterval(intervals[index]);
-        }
-
-        setCounts(prevCounts => {
-          const newCounts = [...prevCounts];
-          newCounts[index] = Math.floor(count);
-          return newCounts;
-        });
-      }, duration / steps);
-    });
-
-    return () => {
-      intervals.forEach(interval => clearInterval(interval));
+    let startTime: number;
+    let animationFrame: number;
+    
+    const startAnimation = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const currentCount = Math.floor(progress * end);
+      
+      setCount(currentCount);
+      
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(startAnimation);
+      } else {
+        setCount(end);
+      }
     };
-  }, [isVisible]);
+    
+    animationFrame = requestAnimationFrame(startAnimation);
+    
+    return () => {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+      }
+    };
+  }, [end, duration, inView]);
+
+  return { count, ref: countRef };
+};
+
+// Animation wrapper component
+const AnimatedNumber = ({ number, suffix = "+" }: { number: number; suffix?: string }) => {
+  const { count, ref } = useCounter(number);
+  
+  return (
+    <h3 ref={ref} className="text-4xl md:text-5xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">
+      {count}{suffix}
+    </h3>
+  );
+};
+
+const AchievementsSection = () => {
+  const achievements = [
+    {
+      icon: <Building2 className="h-14 w-14 text-primary" />,
+      number: 15,
+      title: "Years in Palghar",
+      suffix: "+"
+    },
+    {
+      icon: <Users className="h-14 w-14 text-primary" />,
+      number: 10000,
+      title: "Happy Patients",
+      suffix: "+"
+    },
+    {
+      icon: <Stethoscope className="h-14 w-14 text-primary" />,
+      number: 5000,
+      title: "Implants Placed",
+      suffix: "+"
+    },
+    {
+      icon: <MessageSquare className="h-14 w-14 text-primary" />,
+      number: 300,
+      title: "5-Star Reviews",
+      suffix: "+"
+    }
+  ];
 
   return (
-    <section 
-      ref={sectionRef}
-      className="py-20 bg-gradient-to-br from-white via-blue-50/20 to-white"
-    >
+    <section className="py-20 bg-gradient-to-b from-white via-blue-50 to-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <span className="inline-block bg-accent px-4 py-1 rounded-full text-sm font-medium mb-4">
-            {t("achievements.title")}
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-700">
-            {t("achievements.title")}
+        <div className="flex flex-col items-center text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-700">
+            Our Achievements
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            {t("achievements.subtitle")}
+          <p className="text-gray-600 max-w-3xl text-lg md:text-xl">
+            For over 15 years, Dental Solutions Palghar has been delivering exceptional dental care 
+            with state-of-the-art technology and a compassionate approach.
           </p>
-          <div className="h-1.5 w-32 bg-gradient-to-r from-primary to-blue-600 mx-auto mt-8 rounded-full"></div>
+          <div className="h-1.5 w-32 bg-gradient-to-r from-primary to-blue-600 mt-8 rounded-full"></div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {achievements.map((achievement, index) => (
-            <div 
-              key={index} 
-              className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-gray-100 hover:border-primary/10 text-center"
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
+          {achievements.map((item, index) => (
+            <Card 
+              key={index}
+              className="overflow-hidden transform hover:-translate-y-3 transition-all duration-300 shadow-lg hover:shadow-2xl border-0 bg-white rounded-2xl"
             >
-              <div className="text-4xl font-bold mb-2 text-primary">
-                {counts[index].toLocaleString()}{achievement.suffix}
-              </div>
-              <p className="text-gray-600">
-                {t(achievement.translationKey)}
-              </p>
-            </div>
+              <CardContent className="p-10 flex flex-col items-center text-center relative">
+                <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gradient-to-br from-primary to-blue-600 text-white p-5 rounded-full shadow-lg">
+                  {item.icon}
+                </div>
+                <div className="mt-16 mb-3">
+                  <AnimatedNumber number={item.number} suffix={item.suffix} />
+                </div>
+                <p className="text-gray-700 font-medium text-xl">{item.title}</p>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>
