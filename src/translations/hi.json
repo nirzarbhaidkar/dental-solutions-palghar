@@ -1,0 +1,59 @@
+
+{
+  "header.services": "सेवाएं",
+  "header.nriCorner": "एनआरआई कॉर्नर",
+  "header.location": "स्थान",
+  "header.testimonials": "ग्राहकों के विचार",
+  "header.faqs": "अक्सर पूछे जाने वाले प्रश्न",
+  "header.blog": "ब्लॉग",
+  "header.bookAppointment": "अपॉइंटमेंट बुक करें",
+  "header.callNow": "अभी कॉल करें",
+  
+  "hero.title": "आपकी मुस्कान, हमारा जुनून",
+  "hero.subtitle": "डेंटल सॉल्यूशंस पालघर में उन्नत दंत देखभाल का अनुभव करें",
+  "hero.bookAppointment": "अपॉइंटमेंट बुक करें",
+  "hero.learnMore": "अधिक जानें",
+  
+  "services.title": "हमारी सेवाएं",
+  "services.subtitle": "सभी उम्र के लिए व्यापक दंत देखभाल",
+  
+  "achievements.title": "हमारी उपलब्धियां",
+  "achievements.subtitle": "दंत देखभाल में उत्कृष्टता के लिए मान्यता प्राप्त",
+  "achievements.happyPatients": "संतुष्ट मरीज",
+  "achievements.experienceYears": "अनुभव के वर्ष",
+  "achievements.dentalProcedures": "दंत प्रक्रियाएं",
+  "achievements.positiveReviews": "सकारात्मक समीक्षाएं",
+  
+  "nriCorner.title": "एनआरआई कॉर्नर",
+  "nriCorner.subtitle": "अनिवासी भारतीयों के लिए गुणवत्तापूर्ण दंत देखभाल",
+  
+  "quiz.title": "दंत स्वास्थ्य क्विज",
+  "quiz.subtitle": "अपने दंत ज्ञान का परीक्षण करें",
+  
+  "location.title": "हमारा स्थान",
+  "location.subtitle": "हमारे क्लिनिक पर आएं",
+  
+  "testimonials.title": "मरीजों के प्रशंसापत्र",
+  "testimonials.subtitle": "हमारे मरीज क्या कहते हैं",
+  
+  "faqs.title": "अक्सर पूछे जाने वाले प्रश्न",
+  "faqs.subtitle": "हमारी दंत सेवाओं और प्रक्रियाओं के बारे में सामान्य प्रश्नों के उत्तर खोजें",
+  
+  "communityImpact.title": "सामुदायिक प्रभाव",
+  "communityImpact.subtitle": "पालघर में बदलाव ला रहे हैं",
+  "communityImpact.description": "डॉ. अनिरुद्ध भाईदकर समुदाय, विशेष रूप से वंचितों की सेवा करने के लिए गहराई से प्रतिबद्ध हैं। उन्होंने पालघर जिले में 50 से अधिक दंत शिविरों का आयोजन और नेतृत्व किया है, जिसमें आदिवासी आबादी और जरूरतमंदों को मुफ्त दंत देखभाल प्रदान की गई है। उनके प्रयास मौखिक स्वास्थ्य और कल्याण को बढ़ावा देने में एक सार्थक अंतर बनाते रहते हैं।",
+  "communityImpact.learnMore": "हमारे सामुदायिक कार्य के बारे में अधिक जानें",
+  
+  "blog.title": "नवीनतम ब्लॉग पोस्ट",
+  "blog.subtitle": "दंत टिप्स और अंतर्दृष्टि",
+  
+  "cta.title": "अपॉइंटमेंट शेड्यूल करें",
+  "cta.subtitle": "अपने दंत स्वास्थ्य को सुधारने के लिए तैयार हैं?",
+  "cta.button": "अभी अपना अपॉइंटमेंट बुक करें",
+  
+  "footer.quickLinks": "त्वरित लिंक",
+  "footer.openingHours": "खुलने का समय",
+  "footer.contactUs": "हमसे संपर्क करें",
+  "footer.open": "अभी खुला है",
+  "footer.closed": "अभी बंद है"
+}
