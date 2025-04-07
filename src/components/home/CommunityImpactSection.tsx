@@ -79,7 +79,11 @@ const CommunityImpactSection = () => {
               in promoting oral health and overall well-being throughout the region.
             </p>
             <div className="flex justify-center">
-              <Button size="lg" className="rounded-full">
+              <Button 
+                size="lg" 
+                className="rounded-full"
+                onClick={() => window.open("https://wa.me/918600892884?text=Hello%2C%20I%E2%80%99d%20like%20to%20join%20your%20next%20community%20dental%20camp.%20Please%20share%20details%20about%20upcoming%20events.%20Thank%20you!", "_blank")}
+              >
                 Join Our Next Community Camp
               </Button>
             </div>
