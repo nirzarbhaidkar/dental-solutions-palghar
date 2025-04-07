@@ -19,10 +19,6 @@ export default {
       },
     },
     extend: {
-      fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Playfair Display', 'serif'],
-      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -32,16 +28,6 @@ export default {
         primary: {
           DEFAULT: "#0FA0CE",
           foreground: "#FFFFFF",
-          50: "#E6F7FC",
-          100: "#C0EAF7",
-          200: "#94DBEF",
-          300: "#69CCE8",
-          400: "#3BBDE0",
-          500: "#0FA0CE",
-          600: "#0C80A5",
-          700: "#09607C",
-          800: "#064052",
-          900: "#032029",
         },
         secondary: {
           DEFAULT: "#E5DEFF",
@@ -93,29 +79,10 @@ export default {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
         },
-        "slide-in-right": {
-          "0%": { transform: "translateX(100%)" },
-          "100%": { transform: "translateX(0)" }
-        },
-        "slide-from-left": {
-          "0%": { transform: "translateX(-20px)", opacity: "0" },
-          "100%": { transform: "translateX(0)", opacity: "1" }
-        },
-        "slide-from-right": {
-          "0%": { transform: "translateX(20px)", opacity: "0" },
-          "100%": { transform: "translateX(0)", opacity: "1" }
-        },
       },
       animation: {
         "fade-up": "fade-up 0.5s ease-out",
         "fade-in": "fade-in 0.3s ease-out",
-        "slide-in-right": "slide-in-right 0.3s ease-out",
-        "slide-from-left": "slide-from-left 0.5s ease-out",
-        "slide-from-right": "slide-from-right 0.5s ease-out",
-      },
-      boxShadow: {
-        'soft': '0 4px 20px rgba(0, 0, 0, 0.08)',
-        'hover': '0 10px 40px rgba(0, 0, 0, 0.1)',
       },
     },
   },

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Facebook, Home, X, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -99,22 +98,20 @@ const Header = () => {
   }, [isNavOpen]);
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/98 backdrop-blur-sm shadow-soft' : 'bg-white/95 backdrop-blur-sm'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-md' : 'bg-white/90 backdrop-blur-sm shadow-sm'}`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className="text-2xl font-display font-bold text-primary">
-              Dental Solutions <span className="text-primary-700">Palghar</span>
-            </Link>
+            <Link to="/" className="text-2xl font-semibold text-primary">Dental Solutions Palghar</Link>
           </div>
           
           <div className="hidden md:flex items-center space-x-8">
             <Link 
               to="/"
-              className="text-gray-700 hover:text-primary transition-colors flex items-center group"
+              className="text-gray-700 hover:text-primary transition-colors flex items-center"
               aria-label="Home"
             >
-              <Home size={20} className="group-hover:scale-110 transition-transform" />
+              <Home size={20} />
             </Link>
             {navItems.map((item, index) => (
               item.href.includes('#') ? (
@@ -122,7 +119,7 @@ const Header = () => {
                   key={index}
                   href={item.href}
                   onClick={(e) => handleAnchorClick(e, item.href)}
-                  className="text-gray-700 hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary-400 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-bottom-right hover:after:origin-bottom-left"
+                  className="text-gray-700 hover:text-primary transition-colors"
                 >
                   {item.label}
                 </a>
@@ -130,7 +127,7 @@ const Header = () => {
                 <Link 
                   key={index}
                   to={item.href} 
-                  className="text-gray-700 hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary-400 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-bottom-right hover:after:origin-bottom-left"
+                  className="text-gray-700 hover:text-primary transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -143,10 +140,10 @@ const Header = () => {
               className="text-gray-700 hover:text-primary transition-colors"
               aria-label="Facebook"
             >
-              <Facebook size={20} className="hover:scale-110 transition-transform" />
+              <Facebook size={20} />
             </a>
             <Button 
-              className="bg-primary text-white hover:bg-primary-600 transition-colors shadow-sm hover:shadow-md"
+              className="bg-primary text-white hover:bg-primary/90"
               onClick={() => window.open("https://wa.me/918600892884?text=Hello%2C%20I%E2%80%99d%20like%20to%20book%20an%20appointment%20at%20Dental%20Solutions%20Palghar.%20Please%20let%20me%20know%20the%20available%20slots.%20Thank%20you!", "_blank")}
             >
               Book Appointment
