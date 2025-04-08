@@ -2,8 +2,18 @@
 import React from "react";
 import { HandHeart, Globe, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 const CommunityImpactSection = () => {
+  const fadeInUpVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6 }
+    }
+  };
+
   return (
     <section className="py-20 bg-gradient-to-b from-muted to-white">
       <div className="container mx-auto px-4">
@@ -11,17 +21,23 @@ const CommunityImpactSection = () => {
           <span className="inline-block bg-accent px-4 py-1 rounded-full text-sm font-medium mb-4">
             Making A Difference
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-700">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-700">
             Community Impact
           </h2>
           <div className="h-1.5 w-32 bg-gradient-to-r from-primary to-blue-600 mx-auto mb-8 rounded-full"></div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <div className="order-2 lg:order-1">
+          <motion.div 
+            className="order-2 lg:order-1"
+            variants={fadeInUpVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             <div className="bg-white p-8 rounded-2xl shadow-lg transform transition-all duration-300 hover:shadow-xl border border-gray-100">
-              <div className="flex items-start mb-6">
-                <div className="bg-gradient-to-br from-primary to-blue-600 p-3 rounded-full mr-4">
+              <div className="flex items-start mb-8">
+                <div className="bg-gradient-to-br from-primary to-blue-600 p-3 rounded-full mr-4 shadow-md">
                   <HandHeart className="h-7 w-7 text-white" />
                 </div>
                 <div>
@@ -34,8 +50,8 @@ const CommunityImpactSection = () => {
                 </div>
               </div>
               
-              <div className="flex items-start mb-6">
-                <div className="bg-gradient-to-br from-primary to-blue-600 p-3 rounded-full mr-4">
+              <div className="flex items-start mb-8">
+                <div className="bg-gradient-to-br from-primary to-blue-600 p-3 rounded-full mr-4 shadow-md">
                   <Globe className="h-7 w-7 text-white" />
                 </div>
                 <div>
@@ -49,7 +65,7 @@ const CommunityImpactSection = () => {
               </div>
               
               <div className="flex items-start">
-                <div className="bg-gradient-to-br from-primary to-blue-600 p-3 rounded-full mr-4">
+                <div className="bg-gradient-to-br from-primary to-blue-600 p-3 rounded-full mr-4 shadow-md">
                   <Building2 className="h-7 w-7 text-white" />
                 </div>
                 <div>
@@ -62,9 +78,15 @@ const CommunityImpactSection = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
           
-          <div className="order-1 lg:order-2 bg-white p-8 rounded-2xl shadow-lg">
+          <motion.div 
+            className="order-1 lg:order-2 bg-white p-8 rounded-2xl shadow-lg"
+            variants={fadeInUpVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             <h3 className="text-2xl font-bold mb-6 text-primary">
               Our Commitment to Community Wellness
             </h3>
@@ -81,13 +103,13 @@ const CommunityImpactSection = () => {
             <div className="flex justify-center">
               <Button 
                 size="lg" 
-                className="rounded-full"
+                className="rounded-full shadow-md hover:shadow-lg transition-all hover:scale-105"
                 onClick={() => window.open("https://wa.me/918600892884?text=Hello%2C%20I%E2%80%99d%20like%20to%20join%20your%20next%20community%20dental%20camp.%20Please%20share%20details%20about%20upcoming%20events.%20Thank%20you!", "_blank")}
               >
                 Join Our Next Community Camp
               </Button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
