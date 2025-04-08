@@ -1,8 +1,7 @@
-
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { 
-  Tooth, 
+  Tooth as ToothIcon, 
   Smile, 
   Gauge, 
   Syringe, 
@@ -28,7 +27,7 @@ const ServicesSection = () => {
       title: "General Dentistry",
       description: "Comprehensive dental care for the whole family",
       image: "/services/general-dentistry.jpg",
-      icon: <Tooth className="h-6 w-6 text-primary" />
+      icon: <ToothIcon className="h-6 w-6 text-primary" />
     },
     {
       title: "Cosmetic Dentistry",
@@ -80,7 +79,6 @@ const ServicesSection = () => {
     }
   ];
 
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
