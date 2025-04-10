@@ -16,6 +16,7 @@ import NRICornerSection from "@/components/home/NRICornerSection";
 import AchievementsSection from "@/components/home/AchievementsSection";
 import CommunityImpactSection from "@/components/home/CommunityImpactSection";
 import FacebookPixel from "@/components/FacebookPixel";
+import AppointmentPopup from "@/components/AppointmentPopup";
 
 const Index = () => {
   useEffect(() => {
@@ -56,6 +57,9 @@ const Index = () => {
         <CtaSection />
       </main>
       <Footer />
+      
+      {/* Appointment Popup that shows at the end of scrolling */}
+      <AppointmentPopup />
     </div>
   );
 };
