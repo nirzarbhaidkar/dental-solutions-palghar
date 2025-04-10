@@ -1,7 +1,5 @@
 
 import React from "react";
-import { MapPin, Clock, Phone, Mail } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
 
 const LocationSection = () => {
   return (
@@ -17,52 +15,6 @@ const LocationSection = () => {
           <p className="text-gray-600 max-w-2xl mx-auto">
             Find us easily with Google Maps directions to our dental clinic in Palghar.
           </p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-          <Card className="shadow-lg hover:shadow-xl transition-all duration-300">
-            <CardContent className="p-6 flex items-start space-x-4">
-              <div className="bg-primary/10 p-3 rounded-full">
-                <MapPin className="h-6 w-6 text-primary" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-lg mb-2">Our Address</h3>
-                <p className="text-gray-600">
-                  Dental Solutions, Shop No 9, Shree Samarth Plaza, Behind HP Petrol Pump, Palghar (W), Maharashtra, 401404
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-          
-          <Card className="shadow-lg hover:shadow-xl transition-all duration-300">
-            <CardContent className="p-6 flex items-start space-x-4">
-              <div className="bg-primary/10 p-3 rounded-full">
-                <Clock className="h-6 w-6 text-primary" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-lg mb-2">Working Hours</h3>
-                <p className="text-gray-600">
-                  Monday - Saturday: 10:00 AM - 8:00 PM<br />
-                  Sunday: 10:00 AM - 2:00 PM
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-          
-          <Card className="shadow-lg hover:shadow-xl transition-all duration-300">
-            <CardContent className="p-6 flex items-start space-x-4">
-              <div className="bg-primary/10 p-3 rounded-full">
-                <Phone className="h-6 w-6 text-primary" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-lg mb-2">Contact Us</h3>
-                <p className="text-gray-600">
-                  Phone: +91 8600892884<br />
-                  Email: info@dentalsolutionspalghar.com
-                </p>
-              </div>
-            </CardContent>
-          </Card>
         </div>
 
         <div className="rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:shadow-xl">
