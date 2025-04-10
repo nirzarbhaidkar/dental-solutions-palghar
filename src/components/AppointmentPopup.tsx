@@ -10,16 +10,23 @@ const AppointmentPopup = () => {
   const [hasShown, setHasShown] = useState(false);
 
   useEffect(() => {
+    // Function to check scroll position and trigger popup
     const handleScroll = () => {
-      // Show popup when user has scrolled 85% of the page height
+      // Calculate scroll percentage
       const scrollPosition = window.scrollY + window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
+      const scrollPercentage = (scrollPosition / documentHeight) * 100;
       
+      // Debug scroll position
+      console.log(`Scroll: ${scrollPercentage.toFixed(1)}%`);
+      
+      // Show popup when user has scrolled 85% of the page height
       if (
-        scrollPosition >= documentHeight * 0.85 && 
+        scrollPercentage >= 85 && 
         !hasShown && 
         !sessionStorage.getItem('appointmentPopupShown')
       ) {
+        console.log("Triggering appointment popup");
         setIsOpen(true);
         setHasShown(true);
         // Set a flag in sessionStorage to prevent showing again in this session
@@ -27,7 +34,13 @@ const AppointmentPopup = () => {
       }
     };
 
+    // Add scroll event listener
     window.addEventListener("scroll", handleScroll);
+    
+    // Initial check for very short pages
+    setTimeout(handleScroll, 2000);
+    
+    // Clean up
     return () => window.removeEventListener("scroll", handleScroll);
   }, [hasShown]);
 

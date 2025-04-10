@@ -22,6 +22,13 @@ const Index = () => {
   useEffect(() => {
     // Scroll to the top when the component mounts
     window.scrollTo(0, 0);
+    
+    // Clear session storage for appointment popup when testing
+    // Comment this out in production
+    if (process.env.NODE_ENV === 'development') {
+      sessionStorage.removeItem('appointmentPopupShown');
+      console.log("Development mode: Reset appointment popup");
+    }
   }, []);
 
   return (
