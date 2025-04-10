@@ -2,7 +2,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from 'react-helmet-async';
 import Index from "./pages/Index";
 import Blog from "./pages/Blog";
@@ -29,6 +29,10 @@ const App = () => {
               <Route path="/x-ray-dental-services" element={<Index />} />
               <Route path="/nri-dental-care" element={<Index />} />
               <Route path="/nri-dental-services" element={<Index />} />
+              
+              {/* Catch all blog-like paths for better error handling */}
+              <Route path="/blog/*" element={<NotFound />} />
+              
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
