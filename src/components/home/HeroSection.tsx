@@ -23,7 +23,7 @@ const HeroSection = () => {
     },
     {
       title: "Trusted by Families for",
-      highlight: "Over 11 Years",
+      highlight: "Over 15 Years",
     },
     {
       title: "Comfortable Care for Your",
