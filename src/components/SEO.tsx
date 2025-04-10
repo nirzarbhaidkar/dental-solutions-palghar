@@ -26,7 +26,8 @@ const SEO = ({
   authorName = "Dental Solutions Palghar"
 }: SEOProps) => {
   const { pathname } = useLocation();
-  const siteUrl = "https://dentalsolutionspalghar.com";
+  // Use current domain instead of hardcoded domain
+  const siteUrl = `https://${window.location.hostname}`;
   const url = canonicalUrl || `${siteUrl}${pathname}`;
 
   // Ensure image URL is absolute (starts with http or https)
@@ -103,7 +104,7 @@ const SEO = ({
       {/* Additional Performance Tags */}
       <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link rel="preconnect" href="https://www.googletagmanager.com" />
-      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+      <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
     </Helmet>
   );
 };

@@ -41,7 +41,7 @@ const Blog = () => {
   const featuredPost = blogPosts[0] as BlogPost;
   const featuredImageUrl = featuredPost.image.startsWith('http') 
     ? featuredPost.image 
-    : `https://dentalsolutionspalghar.com${featuredPost.image}`;
+    : `https://${window.location.hostname}${featuredPost.image}`;
 
   // Create structured data for blog posts
   const blogPostStructuredData = {
@@ -56,8 +56,8 @@ const Blog = () => {
           "@type": "BlogPosting",
           "headline": typedPost.title,
           "description": typedPost.excerpt,
-          "image": typedPost.image.startsWith('http') ? typedPost.image : `https://dentalsolutionspalghar.com${typedPost.image}`,
-          "url": `https://dentalsolutionspalghar.com/blog/${typedPost.slug}`,
+          "image": typedPost.image.startsWith('http') ? typedPost.image : `https://${window.location.hostname}${typedPost.image}`,
+          "url": `https://${window.location.hostname}/blog/${typedPost.slug}`,
           "author": {
             "@type": "Person",
             "name": "Dental Solutions Palghar Team"
@@ -67,7 +67,7 @@ const Blog = () => {
             "name": "Dental Solutions Palghar",
             "logo": {
               "@type": "ImageObject",
-              "url": "https://dentalsolutionspalghar.com/og-image.jpg"
+              "url": `https://${window.location.hostname}/og-image.jpg`
             }
           },
           "datePublished": "2024-07-01T00:00:00+05:30"

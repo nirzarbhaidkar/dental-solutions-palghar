@@ -1,4 +1,3 @@
-
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
@@ -22,6 +21,7 @@ const BlogPost = () => {
   const sharePost = (platform: string) => {
     if (!post) return;
     
+    // Use the current window's domain for sharing
     const url = window.location.href;
     const title = `${post.title} | Dental Solutions Palghar`;
     
@@ -141,10 +141,13 @@ const BlogPost = () => {
     ? `${post.content.substring(0, 157)}...` 
     : post.content;
 
-  // Ensure image URL is absolute for social sharing
+  // Get the current domain for social sharing
+  const currentDomain = window.location.hostname;
+  
+  // Ensure image URL is absolute for social sharing by using the current domain
   const absoluteImageUrl = post.image.startsWith('http') 
     ? post.image 
-    : `https://dentalsolutionspalghar.com${post.image}`;
+    : `https://${currentDomain}${post.image}`;
 
   return (
     <div className="min-h-screen bg-background">

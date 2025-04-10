@@ -19,39 +19,12 @@ const NotFound = () => {
       location.pathname
     );
 
-    // Check if this is a domain mismatch (.in vs .com)
-    const currentUrl = window.location.href;
-    const isIncorrectDomain = currentUrl.includes('dentalsolutionspalghar.in');
-    
-    if (isIncorrectDomain) {
-      // Create the correct URL with .com domain
-      const correctUrl = currentUrl.replace('dentalsolutionspalghar.in', 'dentalsolutionspalghar.com');
-      setOriginalUrl(correctUrl);
-      
-      // Countdown for auto-redirect
-      const timer = setInterval(() => {
-        setCountdown((prev) => {
-          if (prev <= 1) {
-            clearInterval(timer);
-            window.location.href = correctUrl;
-            return 0;
-          }
-          return prev - 1;
-        });
-      }, 1000);
-      
-      return () => clearInterval(timer);
-    }
+    // Since the site is hosted on .in domain, we no longer need domain mismatch handling
+    // Both .in and .com are valid, so we're not redirecting anymore
   }, [location.pathname]);
 
   const handleGoHome = () => {
     navigate("/");
-  };
-
-  const handleRedirect = () => {
-    if (originalUrl) {
-      window.location.href = originalUrl;
-    }
   };
 
   return (
@@ -68,33 +41,12 @@ const NotFound = () => {
             <h1 className="text-6xl font-bold text-primary mb-4">404</h1>
             <h2 className="text-2xl font-semibold mb-4">Page Not Found</h2>
             
-            {originalUrl ? (
-              <>
-                <p className="text-gray-600 mb-6">
-                  It looks like you're trying to access our site using <span className="font-medium">dentalsolutionspalghar.in</span>, but we've moved to <span className="font-medium">dentalsolutionspalghar.com</span>
-                </p>
-                <p className="text-gray-600 mb-6">
-                  Redirecting you in <span className="font-bold">{countdown}</span> seconds...
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button onClick={handleRedirect} className="w-full sm:w-auto">
-                    Redirect Now
-                  </Button>
-                  <Button variant="outline" onClick={handleGoHome} className="w-full sm:w-auto">
-                    Go to Homepage
-                  </Button>
-                </div>
-              </>
-            ) : (
-              <>
-                <p className="text-gray-600 mb-6">
-                  The page you're looking for doesn't exist or has been moved.
-                </p>
-                <Button onClick={handleGoHome} className="w-full sm:w-auto">
-                  Return to Homepage
-                </Button>
-              </>
-            )}
+            <p className="text-gray-600 mb-6">
+              The page you're looking for doesn't exist or has been moved.
+            </p>
+            <Button onClick={handleGoHome} className="w-full sm:w-auto">
+              Return to Homepage
+            </Button>
           </div>
         </div>
       </main>
