@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { MessageSquare, X } from "lucide-react";
+import { MessageSquare, X, Phone } from "lucide-react";
 import { toast } from "sonner";
 
 const AppointmentPopup = () => {
@@ -53,44 +53,68 @@ const AppointmentPopup = () => {
     setIsOpen(false);
   };
 
+  const handleCall = () => {
+    window.location.href = "tel:+918600892884";
+    toast.success("Initiating call to our clinic");
+    setIsOpen(false);
+  };
+
   const handleClose = () => {
     setIsOpen(false);
   };
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md bg-gradient-to-br from-white to-blue-50/30">
         <DialogHeader>
-          <DialogTitle className="text-xl font-bold text-primary">Book Your Dental Appointment</DialogTitle>
-          <DialogDescription>
-            Take the first step towards a healthier smile today! Our team is ready to provide you with exceptional dental care.
+          <DialogTitle className="text-2xl font-bold text-primary">
+            Get Expert Dental Care Today!
+          </DialogTitle>
+          <DialogDescription className="text-base">
+            Don't wait to address your dental concerns. Our experienced team is ready to provide immediate care and consultation.
           </DialogDescription>
         </DialogHeader>
         
-        <div className="py-4">
-          <p className="text-sm text-gray-500 mb-2">Benefits of booking now:</p>
-          <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
-            <li>Priority appointment scheduling</li>
-            <li>Personalized treatment plans</li>
-            <li>Expert dental consultation</li>
-            <li>Convenient WhatsApp booking</li>
-          </ul>
+        <div className="py-4 space-y-4">
+          <div className="bg-primary/5 rounded-lg p-4">
+            <p className="text-sm font-medium text-primary mb-2">Why Choose Us:</p>
+            <ul className="list-disc list-inside text-sm text-gray-600 space-y-1.5">
+              <li>Immediate appointments available</li>
+              <li>Expert dental consultation</li>
+              <li>State-of-the-art facilities</li>
+              <li>Affordable treatment plans</li>
+            </ul>
+          </div>
+          
+          <div className="bg-green-50 rounded-lg p-4">
+            <p className="text-sm text-green-800 font-medium">🕒 Limited Time Offer!</p>
+            <p className="text-sm text-green-700 mt-1">Book now and get a free dental check-up with your consultation.</p>
+          </div>
         </div>
         
         <DialogFooter className="sm:justify-between flex flex-col sm:flex-row gap-2">
           <Button 
             variant="outline" 
-            className="text-gray-500" 
+            className="text-gray-500 hover:bg-gray-50" 
             onClick={handleClose}
           >
-            <X className="h-4 w-4 mr-1" /> Maybe Later
+            <X className="h-4 w-4 mr-1" /> Not Now
           </Button>
-          <Button 
-            className="bg-primary text-white" 
-            onClick={handleBookAppointment}
-          >
-            <MessageSquare className="h-4 w-4 mr-1" /> Book via WhatsApp
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-2">
+            <Button 
+              className="bg-green-600 hover:bg-green-700 text-white" 
+              onClick={handleBookAppointment}
+            >
+              <MessageSquare className="h-4 w-4 mr-1" /> Book on WhatsApp
+            </Button>
+            <Button 
+              variant="secondary"
+              className="bg-primary hover:bg-primary/90 text-white" 
+              onClick={handleCall}
+            >
+              <Phone className="h-4 w-4 mr-1" /> Call Now
+            </Button>
+          </div>
         </DialogFooter>
       </DialogContent>
     </Dialog>

@@ -1,5 +1,4 @@
-
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import HeadContent from "@/components/HeadContent";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -13,7 +12,6 @@ import { Bookmark, Calendar, Clock, ChevronRight, Tag } from "lucide-react";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 import { Button } from "@/components/ui/button";
 
-// Define the BlogPost type based on the data structure
 interface BlogPost {
   id: string;
   title: string;
@@ -28,22 +26,27 @@ interface BlogPost {
 }
 
 const Blog = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>(blogPosts as BlogPost[]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    
+    const posts = selectedCategory === "all" 
+      ? blogPosts as BlogPost[]
+      : (blogPosts as BlogPost[]).filter(post => post.category === selectedCategory);
+    
+    setFilteredPosts(posts);
+  }, [selectedCategory]);
 
   const { items: visiblePosts, hasMore, loading, loaderRef } = useInfiniteScroll<BlogPost>({
-    initialItems: blogPosts as BlogPost[],
+    initialItems: filteredPosts,
     itemsPerPage: 6,
   });
 
-  // Get the featured blog post for OG image (first post)
   const featuredPost = blogPosts[0] as BlogPost;
-  const featuredImageUrl = featuredPost.image.startsWith('http') 
-    ? featuredPost.image 
-    : `https://${window.location.hostname}${featuredPost.image}`;
+  const featuredImageUrl = new URL(featuredPost.image, window.location.origin).toString();
 
-  // Create structured data for blog posts
   const blogPostStructuredData = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -76,8 +79,15 @@ const Blog = () => {
     })
   };
 
-  // Categories for filter (extract unique categories from blog posts)
-  const categories = [...new Set(blogPosts.map(post => (post as BlogPost).category || "Uncategorized"))];
+  const categories = ["all", ...new Set(blogPosts.map(post => (post as BlogPost).category || "Uncategorized"))];
+
+  const getImageUrl = (imageUrl: string) => {
+    try {
+      return new URL(imageUrl, window.location.origin).toString();
+    } catch {
+      return imageUrl;
+    }
+  };
 
   return (
     <ScrollArea className="min-h-screen bg-gradient-to-br from-white via-blue-50/20 to-white">
@@ -102,7 +112,6 @@ const Blog = () => {
       
       <section className="py-12 px-4">
         <div className="container mx-auto">
-          {/* Hero Section */}
           <div className="mb-12 text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">
               Dental Health Insights
@@ -113,7 +122,6 @@ const Blog = () => {
             </p>
           </div>
           
-          {/* Featured Post */}
           <div className="mb-16">
             <Link to={`/blog/${featuredPost.slug}`}>
               <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-blue-50 to-white border-none">
@@ -151,19 +159,19 @@ const Blog = () => {
             </Link>
           </div>
           
-          {/* Category Filters */}
           <div className="flex flex-wrap gap-2 mb-8 justify-center">
-            <Button variant="outline" className="rounded-full">
-              All Posts
-            </Button>
             {categories.map((category) => (
-              <Button key={category} variant="outline" className="rounded-full">
-                {category}
+              <Button 
+                key={category} 
+                variant={selectedCategory === category ? "default" : "outline"} 
+                className="rounded-full capitalize"
+                onClick={() => setSelectedCategory(category)}
+              >
+                {category === "all" ? "All Posts" : category}
               </Button>
             ))}
           </div>
           
-          {/* Blog Posts Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {visiblePosts.map((post, index) => (
               <article 
@@ -175,10 +183,14 @@ const Blog = () => {
                   <div className="relative overflow-hidden">
                     <Link to={`/blog/${post.slug}`}>
                       <img
-                        src={post.image}
+                        src={getImageUrl(post.image)}
                         alt={post.title}
                         className="w-full h-52 object-cover transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = "/placeholder.svg";
+                        }}
                       />
                     </Link>
                     {post.category && (
@@ -234,7 +246,6 @@ const Blog = () => {
             ))}
           </div>
           
-          {/* Loading indicator */}
           {hasMore && (
             <div 
               ref={loaderRef} 
@@ -257,7 +268,6 @@ const Blog = () => {
             </div>
           )}
           
-          {/* No more posts message */}
           {!hasMore && visiblePosts.length > 0 && (
             <div className="text-center my-8 py-4 border-t border-gray-100">
               <p className="text-gray-600">You've reached the end of our articles</p>
