@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -55,51 +56,53 @@ const AppointmentPopup = () => {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="sm:max-w-md bg-gradient-to-br from-white to-blue-50/30">
-        <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-primary">
-            Book Your Dental Appointment Today!
-          </DialogTitle>
-          <DialogDescription className="text-base">
-            Take the first step towards a healthier smile. Our expert team is ready to provide you with exceptional dental care.
-          </DialogDescription>
-        </DialogHeader>
-        
-        <div className="py-4">
-          <div className="bg-primary/5 rounded-lg p-4 space-y-3">
-            <p className="text-sm font-medium text-primary">Why Choose Us:</p>
-            <ul className="list-disc list-inside text-sm text-gray-600 space-y-2">
-              <li>Expert team of dental specialists</li>
-              <li>Modern, state-of-the-art facilities</li>
-              <li>Comfortable & caring environment</li>
-              <li>Personalized treatment plans</li>
-            </ul>
+      <DialogContent className="sm:max-w-lg bg-white p-6 rounded-lg shadow-lg">
+        <div className="flex flex-col items-center text-center">
+          <DialogHeader className="mb-4 w-full">
+            <DialogTitle className="text-2xl font-bold text-[#0FA0CE] mb-2">
+              Book Your Dental Appointment Today!
+            </DialogTitle>
+            <DialogDescription className="text-base text-gray-600">
+              Take the first step towards a healthier smile. Our expert team is ready to provide you with exceptional dental care.
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="w-full mb-4">
+            <div className="bg-blue-50 rounded-lg p-4">
+              <p className="text-sm font-semibold text-[#0FA0CE] mb-2">Why Choose Us:</p>
+              <ul className="list-disc list-inside text-sm text-gray-700 space-y-1.5 text-left">
+                <li>Expert team of dental specialists</li>
+                <li>Modern, state-of-the-art facilities</li>
+                <li>Comfortable & caring environment</li>
+                <li>Personalized treatment plans</li>
+              </ul>
+            </div>
           </div>
+          
+          <DialogFooter className="w-full flex flex-row justify-between gap-2">
+            <Button 
+              variant="outline" 
+              className="text-gray-500 hover:bg-gray-50 flex-1" 
+              onClick={handleClose}
+            >
+              <X className="h-4 w-4 mr-1" /> Not Now
+            </Button>
+            <div className="flex gap-2 flex-1">
+              <Button 
+                className="bg-[#0FA0CE] hover:bg-[#0FA0CE]/90 text-white flex-1"
+                onClick={handleCall}
+              >
+                <Phone className="h-4 w-4 mr-1" /> Call Now
+              </Button>
+              <Button 
+                className="bg-green-600 hover:bg-green-700 text-white flex-1" 
+                onClick={handleBookAppointment}
+              >
+                <MessageSquare className="h-4 w-4 mr-1" /> Book on WhatsApp
+              </Button>
+            </div>
+          </DialogFooter>
         </div>
-        
-        <DialogFooter className="sm:justify-between flex flex-col sm:flex-row gap-2">
-          <Button 
-            variant="outline" 
-            className="text-gray-500 hover:bg-gray-50" 
-            onClick={handleClose}
-          >
-            <X className="h-4 w-4 mr-1" /> Not Now
-          </Button>
-          <div className="flex flex-col sm:flex-row gap-2">
-            <Button 
-              className="bg-primary hover:bg-primary/90 text-white"
-              onClick={handleCall}
-            >
-              <Phone className="h-4 w-4 mr-1" /> Call Now
-            </Button>
-            <Button 
-              className="bg-green-600 hover:bg-green-700 text-white" 
-              onClick={handleBookAppointment}
-            >
-              <MessageSquare className="h-4 w-4 mr-1" /> Book on WhatsApp
-            </Button>
-          </div>
-        </DialogFooter>
       </DialogContent>
     </Dialog>
   );
