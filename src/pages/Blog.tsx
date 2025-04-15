@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import HeadContent from "@/components/HeadContent";
 import Header from "@/components/layout/Header";
@@ -9,9 +10,9 @@ import { Helmet } from "react-helmet-async";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Bookmark, Calendar, Clock, ChevronRight, Tag } from "lucide-react";
-import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 
 interface BlogPost {
   id: string;
@@ -42,11 +43,8 @@ const Blog = () => {
 
   const { items: visiblePosts, hasMore, loading, loaderRef } = useInfiniteScroll<BlogPost>({
     initialItems: filteredPosts,
-    itemsPerPage: 6,
+    itemsPerPage: 9,
   });
-
-  const featuredPost = blogPosts[0] as BlogPost;
-  const featuredImageUrl = new URL(featuredPost.image, window.location.origin).toString();
 
   const blogPostStructuredData = {
     "@context": "https://schema.org",
@@ -71,7 +69,7 @@ const Blog = () => {
             "name": "Dental Solutions Palghar",
             "logo": {
               "@type": "ImageObject",
-              "url": `https://${window.location.hostname}/og-image.jpg`
+              "url": `https://${window.location.hostname}/og-image.jpeg`
             }
           },
           "datePublished": "2024-07-01T00:00:00+05:30"
@@ -95,7 +93,7 @@ const Blog = () => {
       <HeadContent 
         title="Dental Health Blog | Tips & Advice | Dental Solutions Palghar"
         description="Read our blog for the latest dental health tips, treatment information, and oral care advice from the top dentists in Palghar."
-        image={featuredImageUrl}
+        image="/og-image.jpeg"
         article={true}
         keywords="dental health tips, oral hygiene advice, dental care blog, palghar dentist blog, teeth cleaning tips, dental treatment information, gum disease prevention, tooth decay prevention, children dental care, dental implant information"
       />
@@ -123,44 +121,7 @@ const Blog = () => {
             </p>
           </div>
           
-          <div className="mb-16">
-            <Link to={`/blog/${featuredPost.slug}`}>
-              <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-blue-50 to-white border-none">
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-                  <div className="md:col-span-7 lg:col-span-8 relative">
-                    <img 
-                      src={featuredPost.image} 
-                      alt={featuredPost.title}
-                      className="w-full h-full object-cover aspect-video rounded-l-lg"
-                    />
-                    {featuredPost.category && (
-                      <span className="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
-                        {featuredPost.category}
-                      </span>
-                    )}
-                  </div>
-                  <div className="md:col-span-5 lg:col-span-4 p-6 flex flex-col justify-center">
-                    <div className="mb-4 flex items-center text-sm text-gray-500">
-                      <Calendar className="h-4 w-4 mr-1" />
-                      <span>{featuredPost.date}</span>
-                      <span className="mx-2">•</span>
-                      <Clock className="h-4 w-4 mr-1" />
-                      <span>{featuredPost.readTime}</span>
-                    </div>
-                    <h2 className="text-2xl md:text-3xl font-bold mb-4 hover:text-primary transition-colors">
-                      {featuredPost.title}
-                    </h2>
-                    <p className="text-gray-600 mb-6">{featuredPost.excerpt}</p>
-                    <div className="flex items-center text-primary font-medium">
-                      Read Featured Article <ChevronRight className="ml-1 h-4 w-4" />
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            </Link>
-          </div>
-          
-          <div className="flex flex-wrap gap-3 mb-8 justify-center bg-white/50 p-4 rounded-lg sticky top-4 z-10 backdrop-blur-sm">
+          <div className="flex flex-wrap gap-3 mb-8 justify-center bg-white/50 p-4 rounded-lg sticky top-4 z-10 backdrop-blur-sm shadow-sm">
             {categories.map((category) => (
               <Button 
                 key={category} 
@@ -292,3 +253,4 @@ const Blog = () => {
 };
 
 export default Blog;
+
