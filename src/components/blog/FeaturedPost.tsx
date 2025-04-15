@@ -2,7 +2,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Calendar, Clock } from "lucide-react";
-import { BlogPost } from "@/data/blogPosts";
+
+interface BlogPost {
+  id: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  date: string;
+  readTime: string;
+  slug: string;
+  category: string;
+  image: string;
+  tags?: string[];
+}
 
 interface FeaturedPostProps {
   post: BlogPost;

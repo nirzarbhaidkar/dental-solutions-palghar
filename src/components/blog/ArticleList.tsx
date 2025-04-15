@@ -1,7 +1,19 @@
 
 import React from "react";
-import { BlogPost } from "@/data/blogPosts";
 import ArticleCard from "./ArticleCard";
+
+interface BlogPost {
+  id: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  date: string;
+  readTime: string;
+  slug: string;
+  category: string;
+  image: string;
+  tags?: string[];
+}
 
 interface ArticleListProps {
   posts: BlogPost[];
