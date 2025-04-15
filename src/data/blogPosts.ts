@@ -1,4 +1,3 @@
-
 export const blogPosts = [
   {
     id: "1",
@@ -9,7 +8,7 @@ export const blogPosts = [
     readTime: "5 min read",
     slug: "importance-of-regular-dental-checkups",
     category: "Preventive Care",
-    image: "https://images.unsplash.com/photo-1606265752439-1f18756aa8ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+    image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80",
     tags: ["Dental Check-ups", "Preventive Care", "Oral Health"]
   },
   {
@@ -21,7 +20,7 @@ export const blogPosts = [
     readTime: "6 min read",
     slug: "modern-dental-technology",
     category: "Technology",
-    image: "https://images.unsplash.com/photo-1609840112990-4265448268d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+    image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80",
     tags: ["Dental Technology", "Innovation", "Treatment"]
   },
   {
@@ -33,7 +32,7 @@ export const blogPosts = [
     readTime: "7 min read",
     slug: "understanding-dental-implants",
     category: "Restorative Dentistry",
-    image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80",
+    image: "https://images.unsplash.com/photo-1571566882372-1598d88abd90?auto=format&fit=crop&q=80",
   },
   {
     id: "4",
@@ -44,7 +43,7 @@ export const blogPosts = [
     readTime: "6 min read",
     slug: "childrens-dental-health",
     category: "Pediatric Dentistry",
-    image: "https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+    image: "https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&q=80",
   },
   {
     id: "5",
@@ -55,7 +54,7 @@ export const blogPosts = [
     readTime: "5 min read",
     slug: "teeth-whitening-options",
     category: "Cosmetic Dentistry",
-    image: "https://images.unsplash.com/photo-1581585504807-45d83ec342ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1025&q=80",
+    image: "https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&fit=crop&q=80",
   },
   {
     id: "6",
@@ -66,7 +65,7 @@ export const blogPosts = [
     readTime: "6 min read",
     slug: "what-to-expect-during-root-canal",
     category: "Endodontics",
-    image: "https://images.unsplash.com/photo-1609840112990-4265448268d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+    image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80",
   },
   {
     id: "7",
@@ -77,7 +76,7 @@ export const blogPosts = [
     readTime: "4 min read",
     slug: "common-causes-tooth-sensitivity",
     category: "Dental Health",
-    image: "https://images.unsplash.com/photo-1606265752439-1f18756aa8ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+    image: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&q=80",
     tags: ["Tooth Sensitivity", "Dental Care", "Oral Health"]
   },
   {
@@ -89,7 +88,7 @@ export const blogPosts = [
     readTime: "5 min read",
     slug: "oral-health-overall-wellness",
     category: "Preventive Care",
-    image: "https://images.unsplash.com/photo-1559131933-d9462ed87a3c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+    image: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&q=80",
     tags: ["Oral Health", "Wellness", "Preventive Care"]
   },
   {
@@ -101,7 +100,7 @@ export const blogPosts = [
     readTime: "4 min read",
     slug: "best-practices-flossing",
     category: "Oral Hygiene",
-    image: "https://images.unsplash.com/photo-1524638431109-93d95c968f03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+    image: "https://images.unsplash.com/photo-1598264294394-ba29cf557627?auto=format&fit=crop&q=80",
     tags: ["Flossing", "Oral Hygiene", "Dental Tips"]
   },
   {
@@ -113,7 +112,7 @@ export const blogPosts = [
     readTime: "5 min read",
     slug: "pediatric-dental-care-first-visit",
     category: "Pediatric Dentistry",
-    image: "https://images.unsplash.com/photo-1519340241574-2cec6aef0c01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+    image: "https://images.unsplash.com/photo-1499063078284-f78f7d89616a?auto=format&fit=crop&q=80",
     tags: ["Kids Dental Care", "Pediatric Dentist", "First Dental Visit"]
   },
   {
@@ -125,7 +124,7 @@ export const blogPosts = [
     readTime: "5 min read",
     slug: "dental-emergencies-what-to-do",
     category: "Emergency Dental Care",
-    image: "https://images.unsplash.com/photo-1513616149956-b77fb390fdb9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80",
+    image: "https://images.unsplash.com/photo-1559686045-6da5f6c5ec4b?auto=format&fit=crop&q=80",
     tags: ["Dental Emergency", "Emergency Care", "Dental Trauma"]
   },
   {
@@ -137,7 +136,7 @@ export const blogPosts = [
     readTime: "6 min read",
     slug: "latest-advancements-cosmetic-dentistry",
     category: "Cosmetic Dentistry",
-    image: "https://images.unsplash.com/photo-1541599468348-e96984315921?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+    image: "https://images.unsplash.com/photo-1606811842268-c22e6e1b54a8?auto=format&fit=crop&q=80",
     tags: ["Cosmetic Dentistry", "Smile Design", "Dental Technology"]
   },
   {
@@ -149,7 +148,7 @@ export const blogPosts = [
     readTime: "5 min read",
     slug: "nutrition-oral-health-diet-recommendations",
     category: "Preventive Care",
-    image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1173&q=80",
+    image: "https://images.unsplash.com/photo-1505253668822-42074d58a7c6?auto=format&fit=crop&q=80",
     tags: ["Nutrition", "Diet", "Oral Health"]
   },
   {
@@ -161,7 +160,7 @@ export const blogPosts = [
     readTime: "6 min read",
     slug: "invisalign-vs-traditional-braces",
     category: "Orthodontics",
-    image: "https://images.unsplash.com/photo-1600158362217-37da8bba028d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+    image: "https://images.unsplash.com/photo-1611766343313-49f13b0f6932?auto=format&fit=crop&q=80",
     tags: ["Invisalign", "Braces", "Orthodontics"]
   },
   {
@@ -173,7 +172,7 @@ export const blogPosts = [
     readTime: "6 min read",
     slug: "understanding-gum-disease",
     category: "Periodontics",
-    image: "https://images.unsplash.com/photo-1571772996211-2f02974be4f0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+    image: "https://images.unsplash.com/photo-1571566882372-1598d88abd90?auto=format&fit=crop&q=80",
     tags: ["Gum Disease", "Periodontal Disease", "Gum Health"]
   },
   {
@@ -185,7 +184,7 @@ export const blogPosts = [
     readTime: "5 min read",
     slug: "sleep-apnea-dental-health",
     category: "Sleep Dentistry",
-    image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+    image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80",
     tags: ["Sleep Apnea", "Oral Appliances", "Sleep Dentistry"]
   }
 ];
