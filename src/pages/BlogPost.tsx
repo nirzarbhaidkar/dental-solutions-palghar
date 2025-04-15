@@ -1,4 +1,3 @@
-
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
@@ -9,6 +8,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { toast } from "sonner";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import BlogCallToAction from "@/components/blog/BlogCallToAction";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -250,18 +250,8 @@ const BlogPost = () => {
             <p className="text-gray-700 leading-relaxed">{post?.content}</p>
           </div>
           
-          <div className="bg-primary/10 rounded-xl p-6 mb-8">
-            <h3 className="text-2xl font-semibold mb-3">Need a Dentist Near Me in Palghar?</h3>
-            <p className="mb-4">Our dental clinic near me provides comprehensive dental services including teeth cleaning, teeth whitening, dental implants, and pediatric dentistry. Book an appointment with the best dentist in Palghar today!</p>
-            <Button 
-              onClick={handleWhatsAppClick}
-              className="bg-green-600 hover:bg-green-700 text-white flex items-center justify-center w-full md:w-auto"
-            >
-              <MessageSquare className="mr-2 h-5 w-5" />
-              Book Appointment on WhatsApp
-            </Button>
-          </div>
-
+          <BlogCallToAction />
+          
           <div className="mt-12">
             <h3 className="text-2xl font-semibold mb-4">Related Dental Services</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
