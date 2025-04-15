@@ -65,7 +65,7 @@ const HeroSection = () => {
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up">
           <Button 
-            className="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white px-8 py-6 text-lg"
+            className="w-full sm:w-auto bg-[#1EAEDB] hover:bg-[#17a2b8] text-white px-8 py-6 text-lg"
             onClick={() => window.open("https://wa.me/918600892884?text=Hello%2C%20I%E2%80%99d%20like%20to%20book%20an%20appointment%20at%20Dental%20Solutions%20Palghar.%20Please%20let%20me%20know%20the%20available%20slots.%20Thank%20you!", "_blank")}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2 h-4 w-4">
@@ -75,7 +75,7 @@ const HeroSection = () => {
           </Button>
           <Button 
             variant="green"
-            className="w-full sm:w-auto px-8 py-6 text-lg"
+            className="w-full sm:w-auto bg-[#10B981] hover:bg-[#059669] text-white px-8 py-6 text-lg"
             onClick={() => window.open("tel:+918600892884")}
           >
             Call Now <Phone className="ml-2 h-4 w-4" />
