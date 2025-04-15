@@ -1,5 +1,6 @@
 
 import React from "react";
+import { Link } from "react-router-dom";
 import { 
   Stethoscope, 
   Sparkles, 
@@ -9,9 +10,11 @@ import {
   Sun, 
   Baby, 
   Heart, 
-  AlarmClock 
+  AlarmClock,
+  ArrowRight
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 type Service = {
   title: string;
@@ -19,6 +22,7 @@ type Service = {
   image: string;
   icon: React.ReactNode;
   color: string;
+  slug: string;
 };
 
 const ServicesSection = () => {
@@ -28,63 +32,72 @@ const ServicesSection = () => {
       description: "Comprehensive dental care for the whole family",
       image: "/services/general-dentistry.jpg",
       icon: <Stethoscope className="h-6 w-6" />,
-      color: "bg-blue-100"
+      color: "bg-blue-100",
+      slug: "general-dentistry"
     },
     {
       title: "Cosmetic Dentistry",
       description: "Transform your smile with our expert cosmetic services",
       image: "/services/cosmetic-dentistry.jpg",
       icon: <Sparkles className="h-6 w-6" />,
-      color: "bg-purple-100"
+      color: "bg-purple-100",
+      slug: "cosmetic-dentistry"
     },
     {
       title: "Orthodontics",
       description: "Achieve the perfect alignment with our orthodontic solutions",
       image: "/services/orthodontics.jpg",
       icon: <AlignCenter className="h-6 w-6" />,
-      color: "bg-green-100"
+      color: "bg-green-100",
+      slug: "orthodontics"
     },
     {
       title: "Dental Implants",
       description: "Permanent solutions for missing teeth with natural-looking results",
       image: "/services/dental-implants.jpg",
       icon: <Smartphone className="h-6 w-6" />,
-      color: "bg-yellow-100"
+      color: "bg-yellow-100",
+      slug: "dental-implants"
     },
     {
       title: "Root Canal Treatment",
       description: "Advanced endodontic care to save damaged teeth",
       image: "/services/root-canal.jpg",
       icon: <LineChart className="h-6 w-6" />,
-      color: "bg-red-100"
+      color: "bg-red-100",
+      slug: "root-canal"
     },
     {
       title: "Teeth Whitening",
       description: "Professional teeth whitening for a brighter smile",
       image: "/services/teeth-whitening.jpg",
       icon: <Sun className="h-6 w-6" />,
-      color: "bg-amber-100"
+      color: "bg-amber-100",
+      slug: "teeth-whitening"
     },
     {
       title: "Pediatric Dentistry",
       description: "Specialized dental care for children in a friendly environment",
       image: "/services/pediatric-dentistry.jpg",
       icon: <Baby className="h-6 w-6" />,
-      color: "bg-pink-100"
+      color: "bg-pink-100",
+      slug: "pediatric-dentistry"
     },
     {
       title: "Periodontal Treatment",
       description: "Comprehensive gum care and disease prevention",
       image: "/services/periodontal.jpg",
       icon: <Heart className="h-6 w-6" />,
-      color: "bg-indigo-100"
+      color: "bg-indigo-100",
+      slug: "periodontal-treatment"
     },
     {
       title: "Emergency Dental Care",
       description: "24/7 emergency dental services when you need them most",
       image: "/services/emergency-dental.jpg",
       icon: <AlarmClock className="h-6 w-6" />,
-      color: "bg-orange-100"
+      color: "bg-orange-100",
+      slug: "emergency-dental-care"
     }
   ];
 
@@ -123,7 +136,13 @@ const ServicesSection = () => {
                 </div>
                 <div className="mt-4">
                   <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                  <p className="text-gray-600">{service.description}</p>
+                  <p className="text-gray-600 mb-4">{service.description}</p>
+                  <Link to={`/services/${service.slug}`}>
+                    <Button variant="outline" className="w-full group">
+                      Learn More
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>

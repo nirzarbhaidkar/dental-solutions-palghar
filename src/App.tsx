@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
+import ServicePage from "./components/ServicePage";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => {
               <Route path="/" element={<Index />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/services/:serviceSlug" element={<ServicePage />} />
               <Route path="/find-dentist-near-me" element={<Index />} />
               <Route path="/best-dentist-palghar" element={<Index />} />
               <Route path="/dental-clinic-near-me" element={<Index />} />
