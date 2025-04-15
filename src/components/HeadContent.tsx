@@ -11,12 +11,33 @@ interface HeadContentProps {
   image?: string;
   article?: boolean;
   keywords?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  authorName?: string;
 }
 
-const HeadContent = (props: HeadContentProps) => {
+const HeadContent = ({
+  title,
+  description,
+  image = "/og-image.jpg",
+  article,
+  keywords,
+  publishedTime,
+  modifiedTime,
+  authorName,
+}: HeadContentProps) => {
   return (
     <>
-      <SEO {...props} />
+      <SEO 
+        title={title}
+        description={description}
+        image={image}
+        article={article}
+        keywords={keywords}
+        publishedTime={publishedTime}
+        modifiedTime={modifiedTime}
+        authorName={authorName}
+      />
       <StructuredData />
       <FAQStructuredData />
       <ReviewStructuredData />
@@ -25,3 +46,4 @@ const HeadContent = (props: HeadContentProps) => {
 };
 
 export default HeadContent;
+

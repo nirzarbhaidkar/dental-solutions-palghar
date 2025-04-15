@@ -1,4 +1,3 @@
-
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 
@@ -26,20 +25,22 @@ const SEO = ({
   authorName = "Dental Solutions Palghar"
 }: SEOProps) => {
   const { pathname } = useLocation();
-  // Use current domain instead of hardcoded domain
-  const siteUrl = `https://${window.location.hostname}`;
+  const siteUrl = window.location.origin;
   const url = canonicalUrl || `${siteUrl}${pathname}`;
 
-  // Ensure image URL is absolute (starts with http or https)
+  // Ensure image URL is absolute
   const absoluteImageUrl = image.startsWith('http') 
     ? image 
     : `${siteUrl}${image}`;
   
-  // Default dimensions for the OG image
+  // Default dimensions for the OG image - important for proper previews
   const imageWidth = "1200";
   const imageHeight = "630";
   const imageType = "image/jpeg";
-  const imageAlt = "Dental Solutions Palghar - Professional Dental Care";
+  const imageAlt = title;
+
+  // Facebook App ID - replace with your actual Facebook App ID
+  const fbAppId = "1358034681882804";
   
   return (
     <Helmet>
@@ -47,15 +48,16 @@ const SEO = ({
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
-      <meta name="author" content={authorName} />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="canonical" href={url} />
       
       {/* Open Graph / Facebook */}
+      <meta property="fb:app_id" content={fbAppId} />
       <meta property="og:type" content={article ? "article" : "website"} />
       <meta property="og:url" content={url} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={absoluteImageUrl} />
+      <meta property="og:image:secure_url" content={absoluteImageUrl} />
       <meta property="og:image:width" content={imageWidth} />
       <meta property="og:image:height" content={imageHeight} />
       <meta property="og:image:type" content={imageType} />
@@ -65,27 +67,25 @@ const SEO = ({
       
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@dentalsolutionspalghar" />
-      <meta name="twitter:creator" content="@dentalsolutionspalghar" />
-      <meta name="twitter:url" content={url} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={absoluteImageUrl} />
       <meta name="twitter:image:alt" content={imageAlt} />
-      
-      {/* Article specific tags */}
-      {article && publishedTime && (
-        <meta property="article:published_time" content={publishedTime} />
-      )}
-      {article && modifiedTime && (
-        <meta property="article:modified_time" content={modifiedTime} />
-      )}
-      {article && authorName && (
-        <meta property="article:author" content={authorName} />
-      )}
+      <meta name="twitter:site" content="@dentalsolutionspalghar" />
+      <meta name="twitter:creator" content="@dentalsolutionspalghar" />
       
       {/* WhatsApp specific */}
+      <meta property="og:image" content={absoluteImageUrl} />
       <meta property="og:image:secure_url" content={absoluteImageUrl} />
+      
+      {/* Article specific meta tags */}
+      {article && (
+        <>
+          {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+          {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+          {authorName && <meta property="article:author" content={authorName} />}
+        </>
+      )}
       
       {/* Additional iOS and Android app banner meta tags */}
       <meta name="apple-itunes-app" content="app-id=yourAppStoreID, affiliate-data=yourAffiliateData, app-argument=yourAppArgument" />
