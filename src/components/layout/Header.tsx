@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Facebook, Home, X, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -150,11 +151,78 @@ const Header = () => {
             </Button>
           </div>
 
-          {/* Removed mobile hamburger menu button */}
+          {/* Mobile menu button */}
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={() => setIsNavOpen(!isNavOpen)}
+              className="text-gray-700 hover:text-primary focus:outline-none"
+              aria-label={isNavOpen ? "Close menu" : "Open menu"}
+            >
+              {isNavOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Removed mobile navigation drawer */}
+      {/* Mobile navigation drawer */}
+      {isNavOpen && (
+        <div className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-40">
+          <div className="mobile-nav-container fixed right-0 top-0 h-full w-64 bg-white shadow-xl transform transition-transform duration-300 ease-in-out overflow-y-auto">
+            <div className="flex justify-between items-center p-4 border-b">
+              <span className="text-lg font-semibold text-primary">Menu</span>
+              <button
+                onClick={() => setIsNavOpen(false)}
+                className="text-gray-700 hover:text-primary focus:outline-none"
+                aria-label="Close menu"
+              >
+                <X size={20} />
+              </button>
+            </div>
+            <div className="py-4 px-4 space-y-4">
+              <Link
+                to="/"
+                className="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md transition-colors flex items-center"
+                onClick={() => setIsNavOpen(false)}
+              >
+                <Home size={18} className="mr-2" />
+                Home
+              </Link>
+              {navItems.map((item, index) => (
+                item.href.includes('#') ? (
+                  <a
+                    key={index}
+                    href={item.href}
+                    onClick={(e) => handleAnchorClick(e, item.href)}
+                    className="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md transition-colors"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={index}
+                    to={item.href}
+                    className="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md transition-colors"
+                    onClick={() => setIsNavOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                )
+              ))}
+              <div className="pt-4 border-t">
+                <Button
+                  className="w-full bg-primary text-white hover:bg-primary/90"
+                  onClick={() => {
+                    window.open("https://wa.me/918600892884?text=Hello%2C%20I%E2%80%99d%20like%20to%20book%20an%20appointment%20at%20Dental%20Solutions%20Palghar.%20Please%20let%20me%20know%20the%20available%20slots.%20Thank%20you!", "_blank");
+                    setIsNavOpen(false);
+                  }}
+                >
+                  Book Appointment
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

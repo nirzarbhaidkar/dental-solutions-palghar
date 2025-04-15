@@ -21,10 +21,25 @@ interface ArticleListProps {
 }
 
 const ArticleList = ({ posts, currentPage }: ArticleListProps) => {
+  // If no posts are available, show a message
+  if (posts.length === 0) {
+    return (
+      <div className="text-center py-12">
+        <p className="text-gray-500">No articles found. Please check back soon!</p>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-8">
-      {posts.slice(currentPage === 1 ? 1 : 0).map((post) => (
-        <ArticleCard key={post.id} {...post} />
+      {posts.map((post, index) => (
+        <div 
+          key={post.id} 
+          className="animate-fade-up" 
+          style={{ animationDelay: `${index * 0.1}s` }}
+        >
+          <ArticleCard {...post} />
+        </div>
       ))}
     </div>
   );
