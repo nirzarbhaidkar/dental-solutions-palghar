@@ -94,7 +94,6 @@ const SEO = ({
       
       {/* Robots and Canonical */}
       <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-      <link rel="canonical" href={url} />
       
       {/* Geo Tags */}
       <meta name="geo.region" content="IN-MH" />
