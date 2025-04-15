@@ -1,5 +1,4 @@
-
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import HeadContent from "@/components/HeadContent";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -9,10 +8,9 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Bookmark, Calendar, Clock, ChevronRight, Tag } from "lucide-react";
+import { Calendar, Clock, ChevronRight, Tag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 
 interface BlogPost {
   id: string;
@@ -28,23 +26,9 @@ interface BlogPost {
 }
 
 const Blog = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
-  const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>(blogPosts as BlogPost[]);
-
   useEffect(() => {
     window.scrollTo(0, 0);
-    
-    const posts = selectedCategory === "all" 
-      ? blogPosts as BlogPost[]
-      : (blogPosts as BlogPost[]).filter(post => post.category === selectedCategory);
-    
-    setFilteredPosts(posts);
-  }, [selectedCategory]);
-
-  const { items: visiblePosts, hasMore, loading, loaderRef } = useInfiniteScroll<BlogPost>({
-    initialItems: filteredPosts,
-    itemsPerPage: 9,
-  });
+  }, []);
 
   const blogPostStructuredData = {
     "@context": "https://schema.org",
@@ -77,8 +61,6 @@ const Blog = () => {
       };
     })
   };
-
-  const categories = ["all", ...new Set(blogPosts.map(post => (post as BlogPost).category || "Uncategorized"))];
 
   const getImageUrl = (imageUrl: string) => {
     try {
@@ -121,25 +103,8 @@ const Blog = () => {
             </p>
           </div>
           
-          <div className="flex flex-wrap gap-3 mb-8 justify-center bg-white/50 p-4 rounded-lg sticky top-4 z-10 backdrop-blur-sm shadow-sm">
-            {categories.map((category) => (
-              <Button 
-                key={category} 
-                variant={selectedCategory === category ? "default" : "outline"} 
-                className={`rounded-full capitalize ${
-                  selectedCategory === category 
-                    ? 'bg-primary text-white shadow-md' 
-                    : 'hover:bg-primary/10'
-                }`}
-                onClick={() => setSelectedCategory(category)}
-              >
-                {category === "all" ? "All Posts" : category}
-              </Button>
-            ))}
-          </div>
-          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {visiblePosts.map((post, index) => (
+            {blogPosts.map((post, index) => (
               <article 
                 key={`${post.slug}-${index}`} 
                 className="group animate-fade-up" 
@@ -160,7 +125,7 @@ const Blog = () => {
                       />
                     </Link>
                     {post.category && (
-                      <span className="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium shadow-md">
+                      <span className="absolute top-4 left-4 bg-primary/90 text-white px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm shadow-md">
                         {post.category}
                       </span>
                     )}
@@ -213,37 +178,6 @@ const Blog = () => {
               </article>
             ))}
           </div>
-          
-          {hasMore && (
-            <div 
-              ref={loaderRef} 
-              className="flex justify-center my-8"
-            >
-              {loading ? (
-                <div className="flex flex-col items-center">
-                  <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin mb-2"></div>
-                  <p className="text-gray-500">Loading more articles...</p>
-                </div>
-              ) : (
-                <Button 
-                  variant="outline" 
-                  className="border-primary text-primary hover:bg-primary/10"
-                  onClick={() => loaderRef.current?.scrollIntoView()}
-                >
-                  Load More Articles
-                </Button>
-              )}
-            </div>
-          )}
-          
-          {!hasMore && visiblePosts.length > 0 && (
-            <div className="text-center my-8 py-4 border-t border-gray-100">
-              <p className="text-gray-600">You've reached the end of our articles</p>
-              <Button variant="link" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-                Back to top
-              </Button>
-            </div>
-          )}
         </div>
       </section>
       
@@ -253,4 +187,3 @@ const Blog = () => {
 };
 
 export default Blog;
-
