@@ -16,7 +16,7 @@ const TestimonialsSection = () => {
     },
     {
       name: "Sugriv Chaursia",
-      text: "After struggling with dental anxiety for years, I finally found a clinic where I feel at ease. The staff is patient and understanding, and Dr. Patel takes time to explain everything thoroughly. Highly recommend!",
+      text: "After struggling with dental anxiety for years, I finally found a clinic where I feel at ease. The staff is patient and understanding, and Dr. Bhaidkar takes time to explain everything thoroughly. Highly recommend!",
       rating: 5
     },
     {
