@@ -1,3 +1,4 @@
+
 import React from "react";
 import DentalHealthQuiz from "@/components/DentalHealthQuiz";
 import { Helmet } from "react-helmet-async";
@@ -7,7 +8,7 @@ import { toast } from "sonner";
 
 const QuizSection = () => {
   const shareQuiz = (platform: string) => {
-    const url = `${window.location.origin}${window.location.pathname}#dental-health-assessment";
+    const url = `${window.location.origin}${window.location.pathname}#dental-health-assessment`;
     const title = "Dental Health Assessment Quiz | Dental Solutions Palghar";
     const description = "Take this dental health quiz from Dental Solutions Palghar to improve your oral health!";
     
