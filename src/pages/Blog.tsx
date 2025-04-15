@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import HeadContent from "@/components/HeadContent";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -8,9 +8,13 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Calendar, Clock, ChevronRight, Tag } from "lucide-react";
+import { Calendar, Clock, ChevronRight, Tag, Rss } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import TagCloud from "@/components/blog/TagCloud";
+import BlogPagination from "@/components/blog/Pagination";
+import { calculateReadingTime } from "@/utils/readingTime";
+import { generateRssFeed } from "@/utils/generateRssFeed";
 
 interface BlogPost {
   id: string;
@@ -25,10 +29,19 @@ interface BlogPost {
   tags?: string[];
 }
 
+const POSTS_PER_PAGE = 9;
+
 const Blog = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = Math.ceil(blogPosts.length / POSTS_PER_PAGE);
+
+  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+  const endIndex = startIndex + POSTS_PER_PAGE;
+  const currentPosts = blogPosts.slice(startIndex, endIndex);
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [currentPage]);
 
   const blogPostStructuredData = {
     "@context": "https://schema.org",
@@ -70,6 +83,19 @@ const Blog = () => {
     }
   };
 
+  const handleRssFeed = () => {
+    const rssContent = generateRssFeed();
+    const blob = new Blob([rssContent], { type: 'application/xml' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'rss.xml';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <ScrollArea className="min-h-screen bg-gradient-to-br from-white via-blue-50/20 to-white">
       <HeadContent 
@@ -97,14 +123,24 @@ const Blog = () => {
             <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6 font-serif">
               Dental Health Insights
             </h1>
-            <p className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">
+            <p className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed mb-4">
               Welcome to the Dental Solutions Palghar blog, where Dr. Anirudh Bhaidkar shares valuable insights, tips, 
               and information about dental health, treatments, and preventive care.
             </p>
+            <Button
+              variant="outline"
+              className="gap-2"
+              onClick={handleRssFeed}
+            >
+              <Rss className="h-4 w-4" />
+              Subscribe to RSS Feed
+            </Button>
           </div>
+
+          <TagCloud />
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post, index) => (
+            {currentPosts.map((post, index) => (
               <article 
                 key={`${post.slug}-${index}`} 
                 className="group animate-fade-up" 
@@ -139,7 +175,7 @@ const Blog = () => {
                       </div>
                       <div className="flex items-center gap-2">
                         <Clock className="h-4 w-4" />
-                        <span>{post.readTime}</span>
+                        <span>{calculateReadingTime(post.content)}</span>
                       </div>
                     </div>
                     <Link to={`/blog/${post.slug}`}>
@@ -178,6 +214,12 @@ const Blog = () => {
               </article>
             ))}
           </div>
+
+          <BlogPagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+          />
         </div>
       </section>
       
