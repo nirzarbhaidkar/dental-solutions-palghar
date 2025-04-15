@@ -1,3 +1,4 @@
+
 export const blogPosts = [
   {
     id: "1",
@@ -179,4 +180,12 @@ export const blogPosts = [
     id: "16",
     title: "Sleep Apnea and Dental Health: How Your Dentist Near Me Can Help",
     excerpt: "Discover the connection between sleep apnea and oral health, and learn how our dental clinic in Palghar can assist with treatment.",
-    content: "Sleep apnea is a serious sleep disorder characterized by repeated interruptions in breathing during sleep. As a comprehensive dental clinic in Palghar, we recognize the strong connection between sleep apnea and oral health, and offer solutions that can help patients manage this condition. There are three main types of sleep apnea: obstructive sleep apnea (OSA), which occurs when throat muscles relax and block the airway; central sleep apnea, which happens when the brain doesn't send proper signals to the muscles that control breathing; and complex sleep apnea, which is a combination of both. OSA
+    content: "Sleep apnea is a serious sleep disorder characterized by repeated interruptions in breathing during sleep. As a comprehensive dental clinic in Palghar, we recognize the strong connection between sleep apnea and oral health, and offer solutions that can help patients manage this condition. There are three main types of sleep apnea: obstructive sleep apnea (OSA), which occurs when throat muscles relax and block the airway; central sleep apnea, which happens when the brain doesn't send proper signals to the muscles that control breathing; and complex sleep apnea, which is a combination of both. OSA is the most common form and has strong connections to dental health. Dentists often identify signs of sleep apnea during routine check-ups, such as tooth grinding (bruxism), a small jaw, a large tongue, or redness in the throat. Our dental practitioners in Palghar can create custom-fitted oral appliances that help keep your airway open during sleep. These devices work by repositioning the lower jaw and tongue, preventing the airway from collapsing. Unlike CPAP machines, dental appliances are small, portable, and don't require electricity, making them a comfortable and convenient option for many patients. If you experience symptoms like loud snoring, gasping for air during sleep, morning headaches, excessive daytime sleepiness, irritability, or difficulty concentrating, we recommend scheduling a consultation with our dentist near me. We can conduct an initial assessment and work with sleep specialists for comprehensive diagnosis and treatment. By addressing sleep apnea, you're not only improving your sleep quality but also protecting your oral health and overall wellbeing.",
+    date: "October 5, 2024",
+    readTime: "5 min read",
+    slug: "sleep-apnea-dental-health",
+    category: "Sleep Dentistry",
+    image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+    tags: ["Sleep Apnea", "Oral Appliances", "Sleep Dentistry"]
+  }
+];
