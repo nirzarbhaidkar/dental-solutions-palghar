@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import HeadContent from "@/components/HeadContent";
 import Header from "@/components/layout/Header";
@@ -12,6 +11,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Bookmark, Calendar, Clock, ChevronRight, Tag } from "lucide-react";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 interface BlogPost {
   id: string;

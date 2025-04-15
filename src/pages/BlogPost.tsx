@@ -1,3 +1,4 @@
+
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
@@ -7,7 +8,7 @@ import HeadContent from "@/components/HeadContent";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { toast } from "sonner";
-import { Avatar, AvatarImage, AvatarFallback } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
