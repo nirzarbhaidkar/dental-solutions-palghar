@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import HeadContent from "@/components/HeadContent";
 import Header from "@/components/layout/Header";
@@ -111,13 +112,13 @@ const Blog = () => {
       <BreadcrumbNav currentPage="Dental Health Blog" />
       
       <section className="py-12 px-4">
-        <div className="container mx-auto">
+        <div className="container mx-auto max-w-7xl">
           <div className="mb-12 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6 font-serif">
               Dental Health Insights
             </h1>
-            <p className="text-gray-600 max-w-3xl mx-auto text-lg">
-              Welcome to the Dental Solutions Palghar blog, where our experienced dentists share valuable insights, tips, 
+            <p className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">
+              Welcome to the Dental Solutions Palghar blog, where Dr. Anirudh Bhaidkar shares valuable insights, tips, 
               and information about dental health, treatments, and preventive care.
             </p>
           </div>
@@ -159,12 +160,16 @@ const Blog = () => {
             </Link>
           </div>
           
-          <div className="flex flex-wrap gap-2 mb-8 justify-center">
+          <div className="flex flex-wrap gap-3 mb-8 justify-center bg-white/50 p-4 rounded-lg sticky top-4 z-10 backdrop-blur-sm">
             {categories.map((category) => (
               <Button 
                 key={category} 
                 variant={selectedCategory === category ? "default" : "outline"} 
-                className="rounded-full capitalize"
+                className={`rounded-full capitalize ${
+                  selectedCategory === category 
+                    ? 'bg-primary text-white shadow-md' 
+                    : 'hover:bg-primary/10'
+                }`}
                 onClick={() => setSelectedCategory(category)}
               >
                 {category === "all" ? "All Posts" : category}
@@ -180,12 +185,12 @@ const Blog = () => {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <Card className="h-full flex flex-col hover:shadow-lg transition-all duration-300 overflow-hidden border-none bg-white relative">
-                  <div className="relative overflow-hidden">
+                  <div className="relative overflow-hidden aspect-video">
                     <Link to={`/blog/${post.slug}`}>
                       <img
                         src={getImageUrl(post.image)}
                         alt={post.title}
-                        className="w-full h-52 object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
@@ -194,40 +199,42 @@ const Blog = () => {
                       />
                     </Link>
                     {post.category && (
-                      <span className="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+                      <span className="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium shadow-md">
                         {post.category}
                       </span>
                     )}
-                    <Button 
-                      size="icon" 
-                      variant="ghost" 
-                      className="absolute top-3 right-3 bg-white/80 hover:bg-white"
-                      aria-label="Bookmark this article"
-                    >
-                      <Bookmark className="h-4 w-4" />
-                    </Button>
                   </div>
                   
                   <CardHeader className="pb-2">
-                    <div className="flex items-center text-sm text-gray-500 mb-1">
-                      <Calendar className="h-4 w-4 mr-1" />
-                      <span>{post.date}</span>
-                      <span className="mx-2">•</span>
-                      <Clock className="h-4 w-4 mr-1" />
-                      <span>{post.readTime}</span>
+                    <div className="flex items-center justify-between text-sm text-gray-500 mb-2">
+                      <div className="flex items-center gap-2">
+                        <Calendar className="h-4 w-4" />
+                        <span>{post.date}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Clock className="h-4 w-4" />
+                        <span>{post.readTime}</span>
+                      </div>
                     </div>
                     <Link to={`/blog/${post.slug}`}>
-                      <h2 className="text-xl font-semibold text-gray-800 hover:text-primary transition-colors line-clamp-2">
+                      <h2 className="text-xl font-semibold text-gray-800 hover:text-primary transition-colors line-clamp-2 leading-tight">
                         {post.title}
                       </h2>
                     </Link>
                   </CardHeader>
                   
                   <CardContent className="pb-4 flex-grow">
-                    <p className="text-gray-600 line-clamp-3">{post.excerpt}</p>
+                    <p className="text-gray-600 line-clamp-3 leading-relaxed">{post.excerpt}</p>
+                    <div className="mt-4 flex items-center gap-2">
+                      <Avatar className="h-8 w-8">
+                        <AvatarImage src="/doctor-avatar.jpg" alt="Dr. Anirudh Bhaidkar" />
+                        <AvatarFallback>AB</AvatarFallback>
+                      </Avatar>
+                      <span className="text-sm text-gray-600">Dr. Anirudh Bhaidkar</span>
+                    </div>
                   </CardContent>
                   
-                  <CardFooter className="pt-0 flex justify-between items-center">
+                  <CardFooter className="pt-0 flex justify-between items-center border-t">
                     <Link
                       to={`/blog/${post.slug}`}
                       className="inline-flex items-center text-primary font-medium hover:underline"

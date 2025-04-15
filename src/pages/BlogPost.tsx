@@ -7,6 +7,7 @@ import HeadContent from "@/components/HeadContent";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { toast } from "sonner";
+import { Avatar, AvatarImage, AvatarFallback } from "lucide-react";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -21,7 +22,6 @@ const BlogPost = () => {
   const sharePost = (platform: string) => {
     if (!post) return;
     
-    // Use the current window's domain for sharing
     const url = window.location.href;
     const title = `${post.title} | Dental Solutions Palghar`;
     
@@ -57,40 +57,33 @@ const BlogPost = () => {
   };
 
   useEffect(() => {
-    // Scroll to the top when the component mounts
     window.scrollTo(0, 0);
     
     const timeInterval = setInterval(() => {
       const now = new Date();
       setCurrentTime(now);
       
-      const day = now.getDay(); // 0 is Sunday, 1 is Monday, etc.
+      const day = now.getDay();
       const hours = now.getHours();
       const minutes = now.getMinutes();
       const currentTimeInMinutes = hours * 60 + minutes;
       
-      // Clinic is closed on Sundays (day 0)
       if (day === 0) {
         setIsOpen(false);
         return;
       }
       
-      // Morning hours: 9:30 AM - 2:00 PM (570 - 840 minutes)
-      const morningStart = 9 * 60 + 30; // 9:30 AM in minutes
-      const morningEnd = 14 * 60; // 2:00 PM in minutes
+      const morningStart = 9 * 60 + 30;
+      const morningEnd = 14 * 60;
+      const eveningStart = 17 * 60;
+      const eveningEnd = 21 * 60;
       
-      // Evening hours: 5:00 PM - 9:00 PM (1020 - 1260 minutes)
-      const eveningStart = 17 * 60; // 5:00 PM in minutes
-      const eveningEnd = 21 * 60; // 9:00 PM in minutes
-      
-      // Check if current time falls within operating hours
       setIsOpen(
         (currentTimeInMinutes >= morningStart && currentTimeInMinutes < morningEnd) ||
         (currentTimeInMinutes >= eveningStart && currentTimeInMinutes < eveningEnd)
       );
-    }, 60000); // Update every minute
+    }, 60000);
     
-    // Initial check when component mounts
     const now = new Date();
     const day = now.getDay();
     const hours = now.getHours();
@@ -136,15 +129,12 @@ const BlogPost = () => {
     );
   }
 
-  // Generate a description from the first 160 characters of the content
   const metaDescription = post.content.length > 160 
     ? `${post.content.substring(0, 157)}...` 
     : post.content;
 
-  // Get the current domain for social sharing
   const currentDomain = window.location.hostname;
   
-  // Ensure image URL is absolute for social sharing by using the current domain
   const absoluteImageUrl = post.image.startsWith('http') 
     ? post.image 
     : `https://${currentDomain}${post.image}`;
@@ -160,19 +150,41 @@ const BlogPost = () => {
       />
       <Header />
 
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 py-16 max-w-4xl">
         <div className="mb-8">
-          <div className="flex items-center text-sm text-gray-500 mb-2">
-            <Calendar className="h-4 w-4 mr-1" />
-            <span>{post.date}</span>
-            <span className="mx-2">•</span>
-            <Clock className="h-4 w-4 mr-1" />
-            <span>{post.readTime}</span>
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-4">
+              <Avatar className="h-12 w-12">
+                <AvatarImage src="/doctor-avatar.jpg" alt="Dr. Anirudh Bhaidkar" />
+                <AvatarFallback>AB</AvatarFallback>
+              </Avatar>
+              <div>
+                <h3 className="font-medium text-gray-900">Dr. Anirudh Bhaidkar</h3>
+                <p className="text-sm text-gray-500">Dental Solutions Palghar</p>
+              </div>
+            </div>
+            <div className="flex items-center text-sm text-gray-500 gap-4">
+              <div className="flex items-center">
+                <Calendar className="h-4 w-4 mr-1" />
+                <span>{post?.date}</span>
+              </div>
+              <div className="flex items-center">
+                <Clock className="h-4 w-4 mr-1" />
+                <span>{post?.readTime}</span>
+              </div>
+            </div>
           </div>
-          <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
-          <img src={post.image} alt={post.title} className="w-full rounded-xl mb-8" />
           
-          {/* Share Buttons */}
+          <h1 className="text-4xl font-bold mb-6 text-gray-900 font-serif leading-tight">
+            {post?.title}
+          </h1>
+          
+          <img 
+            src={post?.image} 
+            alt={post?.title} 
+            className="w-full rounded-xl mb-8 aspect-video object-cover"
+          />
+          
           <div className="flex flex-wrap items-center gap-3 mb-6">
             <span className="text-sm font-medium text-gray-600">Share this article:</span>
             <Button 
@@ -233,9 +245,10 @@ const BlogPost = () => {
             </Button>
           </div>
           
-          <p className="text-gray-700 leading-relaxed mb-8">{post.content}</p>
+          <div className="prose prose-lg max-w-none mb-8">
+            <p className="text-gray-700 leading-relaxed">{post?.content}</p>
+          </div>
           
-          {/* WhatsApp CTA Section */}
           <div className="bg-primary/10 rounded-xl p-6 mb-8">
             <h3 className="text-2xl font-semibold mb-3">Need a Dentist Near Me in Palghar?</h3>
             <p className="mb-4">Our dental clinic near me provides comprehensive dental services including teeth cleaning, teeth whitening, dental implants, and pediatric dentistry. Book an appointment with the best dentist in Palghar today!</p>
@@ -248,7 +261,6 @@ const BlogPost = () => {
             </Button>
           </div>
 
-          {/* Related Posts Section */}
           <div className="mt-12">
             <h3 className="text-2xl font-semibold mb-4">Related Dental Services</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
