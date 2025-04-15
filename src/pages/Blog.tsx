@@ -103,7 +103,7 @@ const Blog = () => {
         description="Read our blog for the latest dental health tips, treatment information, and oral care advice from the top dentists in Palghar."
         image="/og-image.jpeg"
         article={true}
-        keywords="dental health tips, oral hygiene advice, dental care blog, palghar dentist blog, teeth cleaning tips, dental treatment information, gum disease prevention, tooth decay prevention, children dental care, dental implant information"
+        keywords="dental health tips, oral hygiene advice, dental care blog, palghar dentist blog"
       />
       
       <Helmet>
@@ -127,14 +127,6 @@ const Blog = () => {
               Welcome to the Dental Solutions Palghar blog, where Dr. Anirudh Bhaidkar shares valuable insights, tips, 
               and information about dental health, treatments, and preventive care.
             </p>
-            <Button
-              variant="outline"
-              className="gap-2"
-              onClick={handleRssFeed}
-            >
-              <Rss className="h-4 w-4" />
-              Subscribe to RSS Feed
-            </Button>
           </div>
 
           <TagCloud />
