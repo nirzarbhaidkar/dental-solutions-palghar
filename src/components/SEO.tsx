@@ -17,7 +17,7 @@ interface SEOProps {
 const SEO = ({
   title = "Best Dentist in Palghar | Advanced Dental Clinic | Dental Solutions Palghar",
   description = "Looking for the best dentist in Palghar? Dental Solutions Palghar provides complete dental care including general dentistry, cosmetic treatments, orthodontics, dental implants, root canal, and emergency services at affordable prices. Visit our top-rated dental clinic today!",
-  image = "/og-image.jpeg", 
+  image = "/og-image.jpg", 
   article = false,
   keywords = "dentist in palghar, dental clinic near me, best dentist palghar, affordable dental services, teeth whitening palghar, root canal treatment palghar, dental implants palghar, orthodontist palghar, kids dentist palghar, emergency dental care palghar, teeth cleaning, dental bridges, dental crowns",
   canonicalUrl,
@@ -94,6 +94,7 @@ const SEO = ({
       
       {/* Robots and Canonical */}
       <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+      <link rel="canonical" href={url} />
       
       {/* Geo Tags */}
       <meta name="geo.region" content="IN-MH" />
