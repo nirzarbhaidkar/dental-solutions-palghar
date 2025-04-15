@@ -1,4 +1,3 @@
-
 import React from "react";
 import DentalHealthQuiz from "@/components/DentalHealthQuiz";
 import { Helmet } from "react-helmet-async";
@@ -8,7 +7,7 @@ import { toast } from "sonner";
 
 const QuizSection = () => {
   const shareQuiz = (platform: string) => {
-    const url = `${window.location.origin}${window.location.pathname}#dental-health-assessment`;
+    const url = `${window.location.origin}${window.location.pathname}#dental-health-assessment";
     const title = "Dental Health Assessment Quiz | Dental Solutions Palghar";
     const description = "Take this dental health quiz from Dental Solutions Palghar to improve your oral health!";
     
@@ -109,16 +108,6 @@ const QuizSection = () => {
         </div>
         
         <DentalHealthQuiz />
-        
-        <div className="mt-10 text-center">
-          <div className="text-sm text-gray-500 bg-white p-5 rounded-lg shadow-sm max-w-xl mx-auto">
-            <h3 className="text-primary font-medium mb-2">Why This Quiz Matters</h3>
-            <p className="mb-3">
-              Regular dental assessments help identify potential issues before they become serious problems. 
-              Our Palghar dental experts recommend completing this quiz every 6 months.
-            </p>
-          </div>
-        </div>
       </div>
     </section>
   );
