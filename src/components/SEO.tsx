@@ -1,3 +1,4 @@
+
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 
@@ -16,7 +17,7 @@ interface SEOProps {
 const SEO = ({
   title = "Best Dentist in Palghar | Advanced Dental Clinic | Dental Solutions Palghar",
   description = "Looking for the best dentist in Palghar? Dental Solutions Palghar provides complete dental care including general dentistry, cosmetic treatments, orthodontics, dental implants, root canal, and emergency services at affordable prices. Visit our top-rated dental clinic today!",
-  image = "/og-image.jpg", 
+  image = "/og-image.jpeg", 
   article = false,
   keywords = "dentist in palghar, dental clinic near me, best dentist palghar, affordable dental services, teeth whitening palghar, root canal treatment palghar, dental implants palghar, orthodontist palghar, kids dentist palghar, emergency dental care palghar, teeth cleaning, dental bridges, dental crowns",
   canonicalUrl,

@@ -19,7 +19,7 @@ interface HeadContentProps {
 const HeadContent = ({
   title,
   description,
-  image = "/og-image.jpg",
+  image = "/og-image.jpeg",
   article,
   keywords,
   publishedTime,
@@ -46,4 +46,3 @@ const HeadContent = ({
 };
 
 export default HeadContent;
-
