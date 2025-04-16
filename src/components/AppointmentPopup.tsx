@@ -2,9 +2,10 @@
 import React, { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { MessageSquare, X, Phone, Sparkles, Clock, Calendar } from "lucide-react";
+import { MessageSquare, X, Phone, Sparkles, Clock, Calendar, MapPin, Shield, Star } from "lucide-react";
 import { toast } from "sonner";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Card, CardContent } from "@/components/ui/card";
 
 const AppointmentPopup = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,74 +57,103 @@ const AppointmentPopup = () => {
     setIsOpen(false);
   };
 
+  const benefits = [
+    { icon: <Star className="h-4 w-4 text-yellow-500" />, text: "Expert dental specialists" },
+    { icon: <Shield className="h-4 w-4 text-blue-500" />, text: "Modern, state-of-the-art facilities" },
+    { icon: <Sparkles className="h-4 w-4 text-purple-500" />, text: "Comfortable & caring environment" },
+    { icon: <Clock className="h-4 w-4 text-green-500" />, text: "Efficient & timely treatment" }
+  ];
+
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent 
-        className={`${isMobile ? 'w-[95%] max-h-[90vh] overflow-y-auto' : 'sm:max-w-lg'} bg-white p-6 rounded-xl shadow-lg border-0`}
+        className={`${isMobile ? 'w-[95%] max-h-[90vh] overflow-y-auto' : 'sm:max-w-lg'} bg-white p-0 rounded-xl shadow-xl border-0`}
       >
-        <div className="flex flex-col items-center text-center">
-          <DialogHeader className="mb-4 w-full">
-            <div className="flex items-center justify-center mb-2">
-              <Sparkles className="h-6 w-6 text-[#1EAEDB] mr-2" />
-              <DialogTitle className="text-2xl font-bold text-[#0FA0CE]">
-                Book Your Dental Appointment
+        {/* Header Section with gradient background */}
+        <div className="bg-gradient-to-r from-primary/90 to-blue-600 text-white p-6 rounded-t-xl">
+          <DialogHeader className="mb-1 w-full">
+            <div className="flex items-center mb-2">
+              <Sparkles className="h-6 w-6 text-white mr-2" />
+              <DialogTitle className="text-2xl font-bold text-white">
+                Your Smile Matters to Us
               </DialogTitle>
             </div>
-            <DialogDescription className="text-base text-gray-600 mt-1">
-              Take the first step towards a healthier smile. Our expert team is ready to provide you with exceptional dental care.
+            <DialogDescription className="text-base text-white/90">
+              Book your dental appointment today and take the first step towards a healthier smile.
             </DialogDescription>
           </DialogHeader>
           
-          <div className="w-full mb-5">
-            <div className="bg-blue-50 rounded-lg p-4">
-              <p className="text-sm font-semibold text-[#0FA0CE] mb-2">Why Choose Us:</p>
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-gray-700">
-                <li className="flex items-start">
-                  <Sparkles className="h-4 w-4 text-[#0FA0CE] mr-2 mt-0.5 flex-shrink-0" />
-                  <span>Expert dental specialists</span>
-                </li>
-                <li className="flex items-start">
-                  <Sparkles className="h-4 w-4 text-[#0FA0CE] mr-2 mt-0.5 flex-shrink-0" />
-                  <span>Modern, state-of-the-art facilities</span>
-                </li>
-                <li className="flex items-start">
-                  <Sparkles className="h-4 w-4 text-[#0FA0CE] mr-2 mt-0.5 flex-shrink-0" />
-                  <span>Comfortable & caring environment</span>
-                </li>
-                <li className="flex items-start">
-                  <Sparkles className="h-4 w-4 text-[#0FA0CE] mr-2 mt-0.5 flex-shrink-0" />
-                  <span>Personalized treatment plans</span>
-                </li>
-              </ul>
+          {/* Limited Time Offer */}
+          <div className="mt-4 bg-white/20 backdrop-blur-sm rounded-lg p-3 text-white text-sm">
+            <p className="font-medium flex items-center">
+              <Clock className="h-4 w-4 mr-2 inline" /> 
+              <span className="mr-2">Limited Time Offer:</span> 
+              <span className="bg-yellow-500 text-black px-2 py-0.5 rounded">20% OFF</span> 
+              <span className="ml-2">on first consultation</span>
+            </p>
+          </div>
+        </div>
+        
+        <div className="p-6">
+          {/* Benefits */}
+          <div className="mb-5">
+            <h3 className="text-base font-semibold text-gray-900 mb-3">Why Choose Dental Solutions Palghar:</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {benefits.map((benefit, index) => (
+                <div key={index} className="flex items-center space-x-2 bg-gray-50 p-2.5 rounded-lg border border-gray-100">
+                  {benefit.icon}
+                  <span className="text-sm text-gray-700">{benefit.text}</span>
+                </div>
+              ))}
             </div>
           </div>
           
-          <div className="w-full mb-4">
-            <div className="flex flex-col md:flex-row items-stretch gap-3 text-left">
-              <div className="flex-1 border border-gray-100 rounded-lg p-3 bg-gray-50 flex items-center">
-                <Calendar className="h-5 w-5 text-[#0FA0CE] mr-3 flex-shrink-0" />
-                <div>
-                  <h4 className="text-sm font-medium text-gray-900">Flexible Scheduling</h4>
-                  <p className="text-xs text-gray-500">Appointments available 6 days a week</p>
-                </div>
-              </div>
-              <div className="flex-1 border border-gray-100 rounded-lg p-3 bg-gray-50 flex items-center">
-                <Clock className="h-5 w-5 text-[#0FA0CE] mr-3 flex-shrink-0" />
-                <div>
-                  <h4 className="text-sm font-medium text-gray-900">Quick Response</h4>
-                  <p className="text-xs text-gray-500">Get confirmation within 30 minutes</p>
-                </div>
+          {/* Services Overview */}
+          <div className="mb-5">
+            <div className="bg-primary/5 rounded-lg p-3">
+              <h3 className="font-medium text-primary mb-2 text-sm">Our Services Include:</h3>
+              <div className="grid grid-cols-2 gap-2">
+                <div className="text-xs text-gray-700">• General Dentistry</div>
+                <div className="text-xs text-gray-700">• Cosmetic Dentistry</div>
+                <div className="text-xs text-gray-700">• Orthodontics</div>
+                <div className="text-xs text-gray-700">• Dental Implants</div>
+                <div className="text-xs text-gray-700">• Root Canal Treatment</div>
+                <div className="text-xs text-gray-700">• Periodontal Treatment</div>
               </div>
             </div>
           </div>
           
-          <DialogFooter className="w-full flex flex-col sm:flex-row gap-2">
+          {/* Location and Hours */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
+            <Card className="bg-muted/30 border-gray-100">
+              <CardContent className="p-3 flex items-center space-x-2">
+                <MapPin className="h-4 w-4 text-primary flex-shrink-0" />
+                <div className="text-xs">
+                  <strong className="text-gray-900">Location:</strong>
+                  <p className="text-gray-600">Dental Solutions, Near Court, Palghar</p>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-muted/30 border-gray-100">
+              <CardContent className="p-3 flex items-center space-x-2">
+                <Clock className="h-4 w-4 text-primary flex-shrink-0" />
+                <div className="text-xs">
+                  <strong className="text-gray-900">Hours:</strong>
+                  <p className="text-gray-600">Mon-Sat: 9:30am-2pm, 5pm-9pm</p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+          
+          {/* Action Buttons */}
+          <DialogFooter className="flex flex-col sm:flex-row gap-2 mt-2">
             <Button 
               variant="outline" 
               className="text-gray-500 hover:bg-gray-50 flex-1 order-3 sm:order-1" 
               onClick={handleClose}
             >
-              <X className="h-4 w-4 mr-1" /> Not Now
+              <X className="h-4 w-4 mr-1" /> Close
             </Button>
             <Button 
               className="bg-green-600 hover:bg-green-700 text-white flex-1 order-1 sm:order-2"
