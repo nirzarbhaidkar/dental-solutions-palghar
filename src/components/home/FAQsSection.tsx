@@ -23,7 +23,7 @@ const FAQsSection = () => {
       answer: "We recommend visiting the dentist every 6 months for routine check-ups and cleanings. However, some patients may need more frequent visits depending on their oral health needs."
     },
     {
-      question: "What should I do in case of a dental emergency?",
+      question: "What should in a dental emergency?",
       answer: "In case of a dental emergency, contact us immediately at +91 8600892884. We offer emergency services to address urgent dental issues promptly."
     },
     {
