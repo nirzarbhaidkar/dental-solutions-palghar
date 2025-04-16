@@ -18,7 +18,7 @@ const Header = () => {
 
   const navItems: NavItem[] = [
     { label: "Services", href: "/#services" },
-    { label: "NRI Corner", href: "/nri-corner" },
+    { label: "NRI Corner", href: "/#nri-corner" },
     { label: "Location", href: "/#location" },
     { label: "Testimonials", href: "/#testimonials" },
     { label: "FAQs", href: "/#faqs" },
