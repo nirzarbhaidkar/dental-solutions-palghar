@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -6,6 +5,7 @@ import { MessageSquare, X, Phone, Sparkles, Clock, Calendar, MapPin, Shield, Sta
 import { toast } from "sonner";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Card, CardContent } from "@/components/ui/card";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
 const AppointmentPopup = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -69,7 +69,6 @@ const AppointmentPopup = () => {
       <DialogContent 
         className={`${isMobile ? 'w-[95%] max-h-[90vh] overflow-y-auto' : 'sm:max-w-lg'} bg-white p-0 rounded-xl shadow-xl border-0`}
       >
-        {/* Header Section with gradient background */}
         <div className="bg-gradient-to-r from-primary/90 to-blue-600 text-white p-6 rounded-t-xl">
           <DialogHeader className="mb-1 w-full">
             <div className="flex items-center mb-2">
@@ -83,7 +82,6 @@ const AppointmentPopup = () => {
             </DialogDescription>
           </DialogHeader>
           
-          {/* Limited Time Offer */}
           <div className="mt-4 bg-white/20 backdrop-blur-sm rounded-lg p-3 text-white text-sm">
             <p className="font-medium flex items-center">
               <Clock className="h-4 w-4 mr-2 inline" /> 
@@ -95,7 +93,6 @@ const AppointmentPopup = () => {
         </div>
         
         <div className="p-6">
-          {/* Benefits */}
           <div className="mb-5">
             <h3 className="text-base font-semibold text-gray-900 mb-3">Why Choose Dental Solutions Palghar:</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -108,7 +105,6 @@ const AppointmentPopup = () => {
             </div>
           </div>
           
-          {/* Services Overview */}
           <div className="mb-5">
             <div className="bg-primary/5 rounded-lg p-3">
               <h3 className="font-medium text-primary mb-2 text-sm">Our Services Include:</h3>
@@ -123,7 +119,6 @@ const AppointmentPopup = () => {
             </div>
           </div>
           
-          {/* Location and Hours */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
             <Card className="bg-muted/30 border-gray-100">
               <CardContent className="p-3 flex items-center space-x-2">
@@ -146,10 +141,8 @@ const AppointmentPopup = () => {
             </Card>
           </div>
           
-          {/* Action Buttons */}
           <DialogFooter className="flex flex-col sm:flex-row gap-2 mt-2">
             <Button 
-              variant="outline" 
               className="text-gray-500 hover:bg-gray-50 flex-1 order-3 sm:order-1" 
               onClick={handleClose}
             >
@@ -165,7 +158,7 @@ const AppointmentPopup = () => {
               className="bg-[#1EAEDB] hover:bg-[#1EAEDB]/90 text-white flex-1 order-2 sm:order-3" 
               onClick={handleBookAppointment}
             >
-              <MessageSquare className="h-4 w-4 mr-1" /> Book on WhatsApp
+              <WhatsAppIcon className="h-4 w-4 mr-1" /> Book on WhatsApp
             </Button>
           </DialogFooter>
         </div>
