@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone } from "lucide-react";
@@ -69,7 +68,6 @@ const HeroSection = () => {
             className="w-full sm:w-auto bg-[#1EAEDB] hover:bg-[#17a2b8] text-white px-8 py-6 text-lg"
             onClick={() => window.open("https://wa.me/918600892884?text=Hello%2C%20I%E2%80%99d%20like%20to%20book%20an%20appointment%20at%20Dental%20Solutions%20Palghar.%20Please%20let%20me%20know%20the%20available%20slots.%20Thank%20you!", "_blank")}
           >
-            <WhatsAppIcon className="mr-2 h-5 w-5" />
             Book Appointment on WhatsApp
           </Button>
           <Button 
@@ -86,4 +84,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
