@@ -15,7 +15,7 @@ interface SEOProps {
 }
 
 const SEO = ({
-  title = "Best Dentist in Palghar | Advanced Dental Clinic | Dental Solutions Palghar",
+  title = "Best Dentist in Palghar | Dental Solutions Palghar",
   description = "Looking for the best dentist in Palghar? Dental Solutions Palghar provides complete dental care including general dentistry, cosmetic treatments, orthodontics, dental implants, root canal, and emergency services at affordable prices. Visit our top-rated dental clinic today!",
   image = "/og-image.jpg", 
   article = false,
@@ -41,7 +41,7 @@ const SEO = ({
   const imageAlt = title;
 
   // Facebook App ID - replace with your actual Facebook App ID
-  const fbAppId = "1358034681882804";
+  const fbAppId = "1683230922584242";
   
   return (
     <Helmet>
