@@ -1,14 +1,14 @@
+
 import React from "react";
 import DentalHealthQuiz from "@/components/DentalHealthQuiz";
 import { Helmet } from "react-helmet-async";
-import { Share, Facebook, Twitter, Linkedin, Copy } from "lucide-react";
+import { Share, Facebook, Twitter, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
 const QuizSection = () => {
   const shareQuiz = (platform: string) => {
-    const url = `${window.location.origin}${window.location.pathname}#dental-health-assessment";
+    const url = `${window.location.origin}${window.location.pathname}#dental-health-assessment`;
     const title = "Dental Health Assessment Quiz | Dental Solutions Palghar";
     const description = "Take this dental health quiz from Dental Solutions Palghar to improve your oral health!";
     
@@ -29,17 +29,6 @@ const QuizSection = () => {
           toast.error("Failed to copy link");
         });
         break;
-      case 'whatsapp':
-        window.open(`https://wa.me/?text=${encodeURIComponent(description + ' ' + url)}`, '_blank');
-        break;
-      default:
-        if (navigator.share) {
-          navigator.share({
-            title: title,
-            text: description,
-            url: url,
-          }).catch(err => console.error('Error sharing:', err));
-        }
     }
   };
 
@@ -93,15 +82,6 @@ const QuizSection = () => {
               aria-label="Share on Twitter"
             >
               <Twitter className="h-4 w-4 mr-1 text-blue-400" /> Tweet
-            </Button>
-            <Button 
-              variant="outline" 
-              size="sm" 
-              className="rounded-full" 
-              onClick={() => shareQuiz('whatsapp')}
-              aria-label="Share on WhatsApp"
-            >
-              <WhatsAppIcon className="h-4 w-4 mr-1 text-green-500" /> Share
             </Button>
           </div>
         </div>
