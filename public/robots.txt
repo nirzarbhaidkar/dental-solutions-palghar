@@ -1,3 +1,4 @@
+
 # Dental Solutions Palghar - Robots.txt
 # Last Updated: 2024-07-30
 
@@ -53,6 +54,15 @@ Crawl-delay: 1
 User-agent: Baiduspider
 Allow: /
 Crawl-delay: 2
+
+# Facebook Bot
+User-agent: facebookexternalhit
+Allow: /
+Crawl-delay: 1
+
+# LinkedIn Bot
+User-agent: LinkedInBot
+Allow: /
 
 # Crawl delay directive for bots that honor it
 User-agent: *

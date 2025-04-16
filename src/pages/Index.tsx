@@ -36,15 +36,15 @@ const Index = () => {
       <HeadContent 
         title="Best Dentist in Palghar | Advanced Dental Clinic | Dental Solutions Palghar"
         description="Looking for the best dentist in Palghar? Dental Solutions Palghar provides complete dental care including general dentistry, cosmetic treatments, orthodontics, dental implants, root canal, and emergency services at affordable prices."
-        image="/og-image.jpg"
+        image="https://dentalsolutionspalghar.in/og-image.jpg"
         keywords="best dentist in palghar, dental clinic palghar, affordable dentist, teeth whitening, root canal treatment, dental implants, orthodontist, pediatric dentist, emergency dental care, dental x-ray, tooth extraction, dental bridges, dental crowns"
       />
       <FacebookPixel />
       
       {/* Additional SEO elements */}
       <Helmet>
-        <link rel="alternate" hrefLang="en-in" href="https://dentalsolutionspalghar.com" />
-        <link rel="alternate" hrefLang="x-default" href="https://dentalsolutionspalghar.com" />
+        <link rel="alternate" hrefLang="en-in" href="https://dentalsolutionspalghar.in" />
+        <link rel="alternate" hrefLang="x-default" href="https://dentalsolutionspalghar.in" />
         <meta name="google-site-verification" content="your-verification-code" />
         <meta name="p:domain_verify" content="pinterest-verification-code" />
       </Helmet>

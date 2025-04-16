@@ -17,7 +17,7 @@ interface SEOProps {
 const SEO = ({
   title = "Best Dentist in Palghar | Dental Solutions Palghar",
   description = "Looking for the best dentist in Palghar? Dental Solutions Palghar provides complete dental care including general dentistry, cosmetic treatments, orthodontics, dental implants, root canal, and emergency services at affordable prices. Visit our top-rated dental clinic today!",
-  image = "https://dentalsolutionspalghar.in/og-image.jpg", 
+  image = "/og-image.jpg", 
   article = false,
   keywords = "dentist in palghar, dental clinic near me, best dentist palghar, affordable dental services, teeth whitening palghar, root canal treatment palghar, dental implants palghar, orthodontist palghar, kids dentist palghar, emergency dental care palghar, teeth cleaning, dental bridges, dental crowns",
   canonicalUrl,
@@ -26,13 +26,14 @@ const SEO = ({
   authorName = "Dental Solutions Palghar"
 }: SEOProps) => {
   const { pathname } = useLocation();
-  const siteUrl = window.location.origin;
+  const siteUrl = "https://dentalsolutionspalghar.in";
   const url = canonicalUrl || `${siteUrl}${pathname}`;
 
-  // Ensure image URL is absolute
-  const absoluteImageUrl = image.startsWith('http') 
-    ? image 
-    : `${siteUrl}${image}`;
+  // Ensure image URL is absolute - fixed to use the proper domain
+  let absoluteImageUrl = image;
+  if (!image.startsWith('http')) {
+    absoluteImageUrl = `${siteUrl}${image.startsWith('/') ? '' : '/'}${image}`;
+  }
   
   // Default dimensions for the OG image - important for proper previews
   const imageWidth = "1200";
