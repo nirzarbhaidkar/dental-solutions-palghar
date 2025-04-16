@@ -1,4 +1,3 @@
-
 # Dental Solutions Palghar - Robots.txt
 # Last Updated: 2024-07-30
 
@@ -60,4 +59,4 @@ User-agent: *
 Crawl-delay: 1
 
 # Sitemap location (absolute URL)
-Sitemap: https://dentalsolutionspalghar.com/sitemap.xml
+Sitemap: https://dentalsolutionspalghar.in/sitemap.xml
