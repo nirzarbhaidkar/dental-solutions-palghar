@@ -150,13 +150,15 @@ const FAQsSection = () => {
                     value={`item-${index}`} 
                     className="border-b border-gray-200 last:border-0 data-[state=open]:bg-blue-50/30 rounded-lg transition-colors"
                   >
-                    <AccordionTrigger className="text-lg font-medium py-4 px-4 hover:bg-muted/30 rounded-t-lg text-left">
-                      {faq.question}
-                      {faq.category && (
-                        <span className="ml-2 text-xs px-2 py-1 bg-primary/10 text-primary rounded-full">
-                          {faq.category}
-                        </span>
-                      )}
+                    <AccordionTrigger className="text-lg font-medium py-4 px-4 hover:bg-muted/30 rounded-t-lg text-left flex items-center justify-between">
+                      <div className="flex items-center space-x-3">
+                        <span>{faq.question}</span>
+                        {faq.category && (
+                          <span className="text-xs px-2 py-0.5 bg-blue-50 text-blue-600 rounded-full border border-blue-100">
+                            {faq.category}
+                          </span>
+                        )}
+                      </div>
                     </AccordionTrigger>
                     <AccordionContent className="text-gray-600 pb-4 px-4">
                       <p className="mb-3">{faq.answer}</p>
