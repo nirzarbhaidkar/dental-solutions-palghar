@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { Facebook, Home, X, Menu, MessageSquare, Phone } from "lucide-react";
+import { Facebook, Home, X, Menu, MessageSquare, Phone, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 import { toast } from "sonner";
@@ -196,9 +196,10 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile navigation drawer */}
+      {/* Mobile navigation drawer - Improved with better visibility and organization */}
       <div className={`fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity duration-300 md:hidden ${isNavOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-        <div className={`mobile-nav-container fixed right-0 top-0 h-full w-72 bg-white shadow-xl transform transition-transform duration-300 ease-in-out ${isNavOpen ? 'translate-x-0' : 'translate-x-full'} overflow-y-auto`}>
+        <div className={`mobile-nav-container fixed right-0 top-0 h-full w-80 bg-white shadow-xl transform transition-transform duration-300 ease-in-out ${isNavOpen ? 'translate-x-0' : 'translate-x-full'} overflow-y-auto flex flex-col`}>
+          {/* Header with close button */}
           <div className="flex justify-between items-center p-4 border-b">
             <span className="text-lg font-semibold text-primary">Menu</span>
             <button
@@ -209,59 +210,83 @@ const Header = () => {
               <X size={20} />
             </button>
           </div>
-          <div className="py-4 px-4 space-y-4">
+          
+          {/* Primary navigation links */}
+          <div className="py-4 px-4 flex-grow">
             <Link
               to="/"
-              className="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md transition-colors flex items-center"
+              className="flex items-center justify-between py-3 px-4 text-gray-700 hover:bg-gray-100 rounded-md transition-colors mb-2 border border-gray-100"
               onClick={() => setIsNavOpen(false)}
             >
-              <Home size={18} className="mr-2" />
-              Home
+              <div className="flex items-center">
+                <Home size={18} className="mr-3 text-primary" />
+                <span className="font-medium">Home</span>
+              </div>
+              <ChevronRight size={16} className="text-gray-400" />
             </Link>
+            
             {navItems.map((item, index) => (
               item.href.includes('#') ? (
                 <a
                   key={index}
                   href={item.href}
                   onClick={(e) => handleAnchorClick(e, item.href)}
-                  className="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md transition-colors"
+                  className="flex items-center justify-between py-3 px-4 text-gray-700 hover:bg-gray-100 rounded-md transition-colors mb-2 border border-gray-100"
                 >
-                  {item.label}
+                  <span className="font-medium">{item.label}</span>
+                  <ChevronRight size={16} className="text-gray-400" />
                 </a>
               ) : (
                 <Link
                   key={index}
                   to={item.href}
-                  className="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md transition-colors"
+                  className="flex items-center justify-between py-3 px-4 text-gray-700 hover:bg-gray-100 rounded-md transition-colors mb-2 border border-gray-100"
                   onClick={() => setIsNavOpen(false)}
                 >
-                  {item.label}
+                  <span className="font-medium">{item.label}</span>
+                  <ChevronRight size={16} className="text-gray-400" />
                 </Link>
               )
             ))}
-            <div className="pt-4 border-t">
-              <Button
-                className="w-full mb-3 bg-[#1EAEDB] hover:bg-[#1EAEDB]/90 text-white"
-                onClick={() => {
-                  handleBookAppointment();
-                  setIsNavOpen(false);
-                }}
+            
+            {/* Social links */}
+            <div className="mt-4 mb-6">
+              <h3 className="text-sm font-medium text-gray-500 px-4 mb-2">Connect With Us</h3>
+              <a
+                href="https://www.facebook.com/DentalSolutionsPalghar"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center py-3 px-4 text-gray-700 hover:bg-gray-100 rounded-md transition-colors border border-gray-100"
+                onClick={() => setIsNavOpen(false)}
               >
-                <MessageSquare size={18} className="mr-2" />
-                Book on WhatsApp
-              </Button>
-              <Button
-                variant="outline"
-                className="w-full border-gray-300 text-gray-700 hover:bg-gray-100"
-                onClick={() => {
-                  handleCall();
-                  setIsNavOpen(false);
-                }}
-              >
-                <Phone size={18} className="mr-2" />
-                Call Now
-              </Button>
+                <Facebook size={18} className="mr-3 text-[#1877F2]" />
+                <span className="font-medium">Facebook</span>
+              </a>
             </div>
+          </div>
+          
+          {/* CTA buttons at the bottom */}
+          <div className="mt-auto p-4 border-t bg-gray-50">
+            <Button
+              className="w-full mb-3 bg-primary hover:bg-primary/90 text-white"
+              onClick={() => {
+                handleBookAppointment();
+                setIsNavOpen(false);
+              }}
+            >
+              Book Appointment
+            </Button>
+            <Button
+              variant="outline"
+              className="w-full border-gray-300 text-gray-700 hover:bg-gray-100"
+              onClick={() => {
+                handleCall();
+                setIsNavOpen(false);
+              }}
+            >
+              <Phone size={18} className="mr-2" />
+              Call Us Directly
+            </Button>
           </div>
         </div>
       </div>
