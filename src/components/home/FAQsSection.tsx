@@ -6,7 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger
 } from "@/components/ui/accordion";
-import { Search } from "lucide-react";
+import { Search, Phone } from "lucide-react";
 import { 
   AlertDialog,
   AlertDialogAction,
@@ -231,13 +231,12 @@ const FAQsSection = () => {
                 <AlertDialogFooter className="mt-4">
                   <AlertDialogAction>Close</AlertDialogAction>
                 </AlertDialogFooter>
-              </AlertDialogHeader>
-            </AlertDialogContent>
-          </AlertDialog>
+              </AlertDialogContent>
+            </AlertDialog>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
   );
 };
 
