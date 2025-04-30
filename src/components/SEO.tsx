@@ -67,14 +67,15 @@ const SEO = ({
       <meta property="og:site_name" content="Dental Solutions Palghar" />
       <meta property="og:locale" content="en_IN" />
       
-      {/* Twitter */}
+      {/* Twitter Card Tags */}
       <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@dentalsolutionspalghar" />
+      <meta name="twitter:creator" content="@dentalsolutionspalghar" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={absoluteImageUrl} />
       <meta name="twitter:image:alt" content={imageAlt} />
-      <meta name="twitter:site" content="@dentalsolutionspalghar" />
-      <meta name="twitter:creator" content="@dentalsolutionspalghar" />
+      <meta name="twitter:domain" content={siteUrl} />
       
       {/* WhatsApp specific */}
       <meta property="og:image" content={absoluteImageUrl} />

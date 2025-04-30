@@ -1,8 +1,8 @@
+
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
 type Headline = {
   title: string;
@@ -54,6 +54,7 @@ const HeroSection = () => {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
               className="text-4xl md:text-6xl font-bold"
+              aria-live="polite"
             >
               {headlines[currentHeadlineIndex].title}{" "}
               <span className="text-primary">{headlines[currentHeadlineIndex].highlight}</span>
