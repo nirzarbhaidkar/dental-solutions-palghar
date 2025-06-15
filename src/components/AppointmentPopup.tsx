@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -10,15 +9,39 @@ import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
 const AppointmentPopup = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [hasShown, setHasShown] = useState(false);
   const isMobile = useIsMobile();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-    }, 5000); // Show popup after 5 seconds
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      // Handle cases where documentHeight is 0 to avoid division by zero
+      if (documentHeight === 0) return;
+      
+      const scrollPercentage = (scrollPosition / documentHeight) * 100;
+      
+      if (
+        scrollPercentage >= 80 && 
+        !hasShown && 
+        !sessionStorage.getItem('appointmentPopupShown')
+      ) {
+        setIsOpen(true);
+        setHasShown(true);
+        sessionStorage.setItem('appointmentPopupShown', 'true');
+      }
+    };
 
-    return () => clearTimeout(timer);
-  }, []); // Empty dependency array means this effect runs only once after initial render
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    
+    // Check shortly after load in case user is already scrolled down
+    const timeoutId = setTimeout(handleScroll, 500);
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(timeoutId);
+    }
+  }, [hasShown]);
 
   const handleBookAppointment = () => {
     window.open(
