@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -102,16 +101,7 @@ const AppointmentPopup = () => {
             </ul>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <Card className="bg-muted/40 border-0">
-              <CardContent className="p-4 flex items-center gap-3">
-                <MapPin className="h-5 w-5 text-primary" />
-                <div>
-                  <p className="text-sm font-semibold text-gray-800">Location</p>
-                  <p className="text-xs text-gray-600">1st Fl, Vaity Complex, Tembhode Rd, Palghar</p>
-                </div>
-              </CardContent>
-            </Card>
+          <div className="grid grid-cols-1 gap-4">
             <Card className="bg-muted/40 border-0">
               <CardContent className="p-4 flex items-center gap-3">
                 <Clock className="h-5 w-5 text-primary" />
