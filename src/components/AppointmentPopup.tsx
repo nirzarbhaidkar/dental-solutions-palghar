@@ -1,7 +1,8 @@
+
 import React, { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { X, Phone, Sparkles, Clock, MapPin, Award, Building, HeartHandshake, Timer } from "lucide-react";
+import { X, Phone, Sparkles, Clock, Award, Building, HeartHandshake, Timer } from "lucide-react";
 import { toast } from "sonner";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,34 +10,15 @@ import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
 const AppointmentPopup = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [hasShown, setHasShown] = useState(false);
   const isMobile = useIsMobile();
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      const scrollPercentage = (scrollPosition / documentHeight) * 100;
-      
-      if (
-        scrollPercentage >= 85 && 
-        !hasShown && 
-        !sessionStorage.getItem('appointmentPopupShown')
-      ) {
-        setIsOpen(true);
-        setHasShown(true);
-        sessionStorage.setItem('appointmentPopupShown', 'true');
-      }
-    };
+    const timer = setTimeout(() => {
+      setIsOpen(true);
+    }, 5000); // Show popup after 5 seconds
 
-    window.addEventListener("scroll", handleScroll);
-    const timeoutId = setTimeout(handleScroll, 2000);
-    
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      clearTimeout(timeoutId);
-    }
-  }, [hasShown]);
+    return () => clearTimeout(timer);
+  }, []); // Empty dependency array means this effect runs only once after initial render
 
   const handleBookAppointment = () => {
     window.open(
