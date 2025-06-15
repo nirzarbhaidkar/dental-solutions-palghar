@@ -108,7 +108,7 @@ const AppointmentPopup = () => {
                 <MapPin className="h-5 w-5 text-primary" />
                 <div>
                   <p className="text-sm font-semibold text-gray-800">Location</p>
-                  <p className="text-xs text-gray-600">Near Court, Palghar</p>
+                  <p className="text-xs text-gray-600">1st Fl, Vaity Complex, Tembhode Rd, Palghar</p>
                 </div>
               </CardContent>
             </Card>
