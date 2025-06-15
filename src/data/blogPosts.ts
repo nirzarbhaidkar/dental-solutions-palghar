@@ -32,7 +32,7 @@ export const blogPosts = [
     readTime: "7 min read",
     slug: "understanding-dental-implants",
     category: "Restorative Dentistry",
-    image: "https://images.unsplash.com/photo-1571566882372-1598d88abd90?auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1599426464522-81e8b6b47c2e?auto=format&fit=crop&q=80",
   },
   {
     id: "4",
