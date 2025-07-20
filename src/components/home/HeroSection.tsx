@@ -1,8 +1,6 @@
-
-
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone, Heart, Smile, Sparkles, Shield, Star, Tooth, Award, Zap } from "lucide-react";
+import { Phone, Heart, Smile, Sparkles, Shield, Star, Award, Zap, Plus, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 type Headline = {
@@ -34,16 +32,16 @@ const HeroSection = () => {
 
   // Enhanced floating icons with more dental-specific icons and better visibility
   const floatingIcons = [
-    { Icon: Smile, delay: 0, duration: 8, x: "5%", y: "15%", color: "text-blue-400/30" },
-    { Icon: Heart, delay: 1.5, duration: 10, x: "85%", y: "25%", color: "text-red-400/30" },
-    { Icon: Sparkles, delay: 3, duration: 9, x: "15%", y: "75%", color: "text-yellow-400/30" },
-    { Icon: Shield, delay: 4.5, duration: 7, x: "75%", y: "65%", color: "text-green-400/30" },
-    { Icon: Star, delay: 6, duration: 8.5, x: "92%", y: "80%", color: "text-purple-400/30" },
-    { Icon: Tooth, delay: 2, duration: 11, x: "8%", y: "45%", color: "text-primary/40" },
-    { Icon: Award, delay: 5, duration: 9.5, x: "88%", y: "50%", color: "text-orange-400/30" },
-    { Icon: Zap, delay: 1, duration: 7.5, x: "25%", y: "35%", color: "text-cyan-400/30" },
-    { Icon: Smile, delay: 4, duration: 10.5, x: "70%", y: "20%", color: "text-indigo-400/25" },
-    { Icon: Heart, delay: 6.5, duration: 8, x: "12%", y: "60%", color: "text-pink-400/30" },
+    { Icon: Smile, delay: 0, duration: 8, x: "5%", y: "15%", color: "text-blue-500/40" },
+    { Icon: Heart, delay: 1.5, duration: 10, x: "85%", y: "25%", color: "text-red-500/40" },
+    { Icon: Sparkles, delay: 3, duration: 9, x: "15%", y: "75%", color: "text-yellow-500/40" },
+    { Icon: Shield, delay: 4.5, duration: 7, x: "75%", y: "65%", color: "text-green-500/40" },
+    { Icon: Star, delay: 6, duration: 8.5, x: "92%", y: "80%", color: "text-purple-500/40" },
+    { Icon: Plus, delay: 2, duration: 11, x: "8%", y: "45%", color: "text-primary/50" },
+    { Icon: Award, delay: 5, duration: 9.5, x: "88%", y: "50%", color: "text-orange-500/40" },
+    { Icon: Zap, delay: 1, duration: 7.5, x: "25%", y: "35%", color: "text-cyan-500/40" },
+    { Icon: Check, delay: 4, duration: 10.5, x: "70%", y: "20%", color: "text-indigo-500/40" },
+    { Icon: Heart, delay: 6.5, duration: 8, x: "12%", y: "60%", color: "text-pink-500/40" },
   ];
 
   useEffect(() => {
@@ -61,18 +59,18 @@ const HeroSection = () => {
         {floatingIcons.map((item, index) => (
           <motion.div
             key={index}
-            className={`absolute ${item.color} drop-shadow-sm`}
+            className={`absolute ${item.color} drop-shadow-lg`}
             style={{
               left: item.x,
               top: item.y,
             }}
             initial={{ opacity: 0, scale: 0, rotate: 0 }}
             animate={{
-              opacity: [0, 0.8, 1, 0.6, 0],
-              scale: [0, 1.2, 1, 1.1, 0],
-              y: [0, -40, -20, -35, 0],
-              rotate: [0, 15, -10, 20, 0],
-              x: [0, 10, -5, 8, 0],
+              opacity: [0, 1, 0.8, 1, 0],
+              scale: [0, 1.3, 1, 1.2, 0],
+              y: [0, -50, -25, -45, 0],
+              rotate: [0, 20, -15, 25, 0],
+              x: [0, 15, -8, 12, 0],
             }}
             transition={{
               duration: item.duration,
@@ -82,7 +80,7 @@ const HeroSection = () => {
               times: [0, 0.2, 0.5, 0.8, 1],
             }}
           >
-            <item.Icon size={48} strokeWidth={1.5} />
+            <item.Icon size={56} strokeWidth={1.8} />
           </motion.div>
         ))}
       </div>
@@ -154,4 +152,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
