@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone } from "lucide-react";
+import { Phone, Heart, Smile, Sparkles, Shield, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 type Headline = {
@@ -31,6 +31,16 @@ const HeroSection = () => {
     },
   ];
 
+  // Floating icons data
+  const floatingIcons = [
+    { Icon: Smile, delay: 0, duration: 6, x: "10%", y: "20%" },
+    { Icon: Heart, delay: 1, duration: 8, x: "80%", y: "30%" },
+    { Icon: Sparkles, delay: 2, duration: 7, x: "20%", y: "70%" },
+    { Icon: Shield, delay: 3, duration: 9, x: "70%", y: "60%" },
+    { Icon: Star, delay: 4, duration: 6.5, x: "90%", y: "80%" },
+    { Icon: Smile, delay: 5, duration: 7.5, x: "15%", y: "40%" },
+  ];
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentHeadlineIndex((prev) => (prev + 1) % headlines.length);
@@ -40,8 +50,37 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="pt-32 pb-16 px-4">
-      <div className="container mx-auto text-center">
+    <section className="relative pt-32 pb-16 px-4 overflow-hidden">
+      {/* Floating Icons Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        {floatingIcons.map((item, index) => (
+          <motion.div
+            key={index}
+            className="absolute text-primary/10"
+            style={{
+              left: item.x,
+              top: item.y,
+            }}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{
+              opacity: [0, 1, 1, 0],
+              scale: [0, 1, 1, 0],
+              y: [0, -30, 0],
+              rotate: [0, 10, -10, 0],
+            }}
+            transition={{
+              duration: item.duration,
+              delay: item.delay,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <item.Icon size={40} />
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="container mx-auto text-center relative z-10">
         <span className="inline-block bg-accent px-4 py-1 rounded-full text-sm font-medium mb-4 animate-fade-in">
           Welcome to Dental Solutions Palghar
         </span>
