@@ -1,35 +1,22 @@
 
-import { Star, Quote } from "lucide-react";
-
-type Testimonial = {
-  name: string;
-  text: string;
-  rating: number;
-};
+import { useEffect } from "react";
 
 const TestimonialsSection = () => {
-  const testimonials: Testimonial[] = [
-    {
-      name: "Nupur Nerkar",
-      text: "I had my root canal treatment done at Dental Solutions Palghar. Had a very smooth experience. The doctors explained the procedure very well. I am happy with the experience. My kid also underwent his dental procedure here. Dr Radha is really good with kids.",
-      rating: 5
-    },
-    {
-      name: "Sugriv Chaursia",
-      text: "After struggling with dental anxiety for years, I finally found a clinic where I feel at ease. The staff is patient and understanding, and Dr. Bhaidkar takes time to explain everything thoroughly. Highly recommend!",
-      rating: 5
-    },
-    {
-      name: "Aadii Jagtap",
-      text: "I had a dental emergency and Dental Solutions accommodated me immediately. The care was exceptional, and they followed up the next day to check on me. That's the kind of personalized service that keeps me coming back.",
-      rating: 5
-    },
-    {
-      name: "Namrata Pailwan",
-      text: "The orthodontic treatment I received at Dental Solutions transformed my smile completely. The team is professional, the facility is immaculate, and the results exceeded my expectations. Worth every penny!",
-      rating: 5
-    }
-  ];
+  useEffect(() => {
+    // Load Elfsight platform script
+    const script = document.createElement('script');
+    script.src = 'https://static.elfsight.com/platform/platform.js';
+    script.async = true;
+    document.head.appendChild(script);
+
+    return () => {
+      // Cleanup script on unmount
+      const existingScript = document.querySelector('script[src="https://static.elfsight.com/platform/platform.js"]');
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, []);
 
   return (
     <section id="testimonials" className="py-16 bg-muted">
@@ -46,30 +33,8 @@ const TestimonialsSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <div 
-              key={index}
-              className="bg-white rounded-2xl shadow-lg p-8 relative"
-            >
-              <Quote className="absolute top-6 left-6 text-primary/20 h-12 w-12" />
-              <div className="relative z-10">
-                <div className="flex mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-yellow-500 fill-yellow-500" />
-                  ))}
-                </div>
-                <p className="text-gray-700 italic mb-6">"{testimonial.text}"</p>
-                <div className="flex items-center">
-                  <div>
-                    <h4 className="font-semibold">{testimonial.name}</h4>
-                    <p className="text-sm text-gray-500">Verified Patient</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Elfsight Google Reviews Widget */}
+        <div className="elfsight-app-1c9335dd-4e92-462e-9c64-87c8b9bcb7ab" data-elfsight-app-lazy></div>
       </div>
     </section>
   );
