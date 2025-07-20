@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone, Heart, Smile, Sparkles, Shield, Star, Award, Zap, Plus, Check } from "lucide-react";
+import { Phone, Heart, Smile, Sparkles, Shield, Star, Award, Plus, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 type Headline = {
@@ -30,7 +30,7 @@ const HeroSection = () => {
     },
   ];
 
-  // Enhanced floating icons with more dental-specific icons and better visibility
+  // Dental-related floating icons only
   const floatingIcons = [
     { Icon: Smile, delay: 0, duration: 8, x: "5%", y: "15%", color: "text-blue-500/40" },
     { Icon: Heart, delay: 1.5, duration: 10, x: "85%", y: "25%", color: "text-red-500/40" },
@@ -39,8 +39,8 @@ const HeroSection = () => {
     { Icon: Star, delay: 6, duration: 8.5, x: "92%", y: "80%", color: "text-purple-500/40" },
     { Icon: Plus, delay: 2, duration: 11, x: "8%", y: "45%", color: "text-primary/50" },
     { Icon: Award, delay: 5, duration: 9.5, x: "88%", y: "50%", color: "text-orange-500/40" },
-    { Icon: Zap, delay: 1, duration: 7.5, x: "25%", y: "35%", color: "text-cyan-500/40" },
-    { Icon: Check, delay: 4, duration: 10.5, x: "70%", y: "20%", color: "text-indigo-500/40" },
+    { Icon: Check, delay: 1, duration: 7.5, x: "25%", y: "35%", color: "text-cyan-500/40" },
+    { Icon: Smile, delay: 4, duration: 10.5, x: "70%", y: "20%", color: "text-indigo-500/40" },
     { Icon: Heart, delay: 6.5, duration: 8, x: "12%", y: "60%", color: "text-pink-500/40" },
   ];
 
@@ -90,12 +90,13 @@ const HeroSection = () => {
 
       <div className="container mx-auto text-center relative z-10">
         <motion.span 
-          className="inline-block bg-primary/10 backdrop-blur-sm border border-primary/20 px-6 py-2 rounded-full text-sm font-medium mb-6 text-primary shadow-lg"
+          className="inline-flex items-center gap-2 bg-primary/10 backdrop-blur-sm border border-primary/20 px-6 py-2 rounded-full text-sm font-medium mb-6 text-primary shadow-lg"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          ✨ Welcome to Dental Solutions Palghar
+          <Shield className="w-4 h-4" />
+          Trusted by 10000+ Happy Patients
         </motion.span>
         
         <div className="h-[120px] md:h-[144px] mb-6">
