@@ -103,7 +103,7 @@ const HeroSection = () => {
           <AnimatePresence mode="wait">
             <motion.h1
               key={currentHeadlineIndex}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 1, y: 0 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -30 }}
               transition={{ duration: 0.7, ease: "easeOut" }}
