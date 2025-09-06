@@ -81,7 +81,7 @@ const BlogSection = () => {
                   <Link
                     to={`/blog/${post.slug}`}
                     className="inline-flex items-center text-primary font-medium hover:underline"
-                    aria-label={`Read more about ${post.title}`}
+                    aria-label="Read Article"
                   >
                     Read Article <ChevronRight className="ml-1 h-4 w-4" />
                   </Link>

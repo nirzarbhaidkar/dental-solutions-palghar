@@ -79,7 +79,7 @@ const QuizSection = () => {
               size="sm" 
               className="rounded-full" 
               onClick={() => shareQuiz('twitter')}
-              aria-label="Share on Twitter"
+              aria-label="Tweet"
             >
               <Twitter className="h-4 w-4 mr-1 text-blue-400" /> Tweet
             </Button>
