@@ -127,6 +127,10 @@ const ServicesSection = () => {
                   src={service.image} 
                   alt={service.title}
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                  loading="lazy"
+                  width="413"
+                  height="192"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-70"></div>
               </div>
