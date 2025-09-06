@@ -1,5 +1,6 @@
 
 import React from 'react';
+import OptimizedImage from '@/components/ui/optimized-image';
 
 interface WhatsAppIconProps {
   className?: string;
@@ -11,10 +12,10 @@ export const WhatsAppIcon: React.FC<WhatsAppIconProps> = ({
   className = '', 
   size = 24
 }) => (
-  <img 
+  <OptimizedImage 
     src="/lovable-uploads/b6079457-2714-4d35-9f2b-10acffdd0871.png" 
-    alt="WhatsApp" 
-    width={size} 
+    alt="WhatsApp"
+    width={size}
     height={size} 
     className={className}
     style={{ objectFit: 'contain' }}

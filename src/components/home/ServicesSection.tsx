@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import OptimizedImage from "@/components/ui/optimized-image";
 import { 
   Stethoscope, 
   Sparkles, 
@@ -123,7 +124,7 @@ const ServicesSection = () => {
               className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
             >
               <div className="relative h-48 overflow-hidden">
-                <img 
+                <OptimizedImage 
                   src={service.image} 
                   alt={service.title}
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
