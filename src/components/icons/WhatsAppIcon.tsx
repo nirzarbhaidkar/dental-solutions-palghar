@@ -18,6 +18,8 @@ export const WhatsAppIcon: React.FC<WhatsAppIconProps> = ({
     height={size} 
     className={className}
     style={{ objectFit: 'contain' }}
+    loading="lazy"
+    sizes={`${size}px`}
   />
 );
 

@@ -130,7 +130,7 @@ const ServicesSection = () => {
                   loading="lazy"
                   width="413"
                   height="192"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 413px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-70"></div>
               </div>
