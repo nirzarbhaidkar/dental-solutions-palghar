@@ -17,6 +17,32 @@
     <link rel="dns-prefetch" href="https://universe-static.elfsightcdn.com">
     <link rel="preload" href="https://connect.facebook.net/en_US/fbevents.js" as="script">
     <link rel="modulepreload" href="/src/main.tsx">
+    
+    <!-- Critical CSS optimization -->
+    <script>
+      // Preload CSS and optimize render blocking
+      (function() {
+        const links = document.querySelectorAll('link[rel="stylesheet"]');
+        links.forEach(function(link) {
+          const preloadLink = document.createElement('link');
+          preloadLink.rel = 'preload';
+          preloadLink.as = 'style';
+          preloadLink.href = link.href;
+          preloadLink.onload = function() {
+            link.media = 'all';
+          };
+          document.head.appendChild(preloadLink);
+          link.media = 'print';
+        });
+        
+        // Fallback to ensure CSS loads
+        setTimeout(function() {
+          links.forEach(function(link) {
+            link.media = 'all';
+          });
+        }, 100);
+      })();
+    </script>
 
     <!-- Google tag (gtag.js) - Deferred loading -->
     <script>
