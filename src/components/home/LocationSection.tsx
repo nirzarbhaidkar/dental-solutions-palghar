@@ -26,6 +26,7 @@ const LocationSection = () => {
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
+            title="Dental Solutions clinic location in Palghar - Google Maps"
             className="w-full hover:opacity-95 transition-opacity"
           ></iframe>
         </div>
