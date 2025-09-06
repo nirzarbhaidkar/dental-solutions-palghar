@@ -139,7 +139,7 @@ const ServicesSection = () => {
                   <p className="text-gray-600 mb-4">{service.description}</p>
                   <Link to={`/services/${service.slug}`}>
                     <Button variant="outline" className="w-full group">
-                      Learn More
+                      Learn More about {service.title}
                       <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Button>
                   </Link>
