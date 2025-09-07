@@ -28,6 +28,7 @@ const Blog = () => {
       <HeadContent 
         title="Dental Health Blog | Tips & Advice | Dental Solutions Palghar"
         description="Read our blog for the latest dental health tips, treatment information, and oral care advice from the top dentists in Palghar."
+        pageType="blog"
       />
       
       <Header />

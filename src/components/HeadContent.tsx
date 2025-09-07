@@ -1,7 +1,7 @@
 
 import React from 'react';
 import SEO from './SEO';
-import StructuredData from './StructuredData';
+import DynamicStructuredData from './DynamicStructuredData';
 import FAQStructuredData from './FAQStructuredData';
 import ReviewStructuredData from './ReviewStructuredData';
 
@@ -14,6 +14,13 @@ interface HeadContentProps {
   publishedTime?: string;
   modifiedTime?: string;
   authorName?: string;
+  pageType?: 'home' | 'blog' | 'blogpost' | 'service';
+  serviceData?: {
+    name: string;
+    description: string;
+    price?: string;
+    category: string;
+  };
 }
 
 const HeadContent = ({
@@ -25,6 +32,8 @@ const HeadContent = ({
   publishedTime,
   modifiedTime,
   authorName,
+  pageType,
+  serviceData,
 }: HeadContentProps) => {
   return (
     <>
@@ -38,7 +47,15 @@ const HeadContent = ({
         modifiedTime={modifiedTime}
         authorName={authorName}
       />
-      <StructuredData />
+      <DynamicStructuredData 
+        pageType={pageType}
+        title={title}
+        description={description}
+        publishedTime={publishedTime}
+        modifiedTime={modifiedTime}
+        authorName={authorName}
+        serviceData={serviceData}
+      />
       <FAQStructuredData />
       <ReviewStructuredData />
     </>

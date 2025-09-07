@@ -438,6 +438,12 @@ const ServicePage = () => {
         title={`${service.title} | Dental Solutions Palghar`}
         description={service.description}
         image={service.image}
+        pageType="service"
+        serviceData={{
+          name: service.title,
+          description: service.description,
+          category: "Dental Service"
+        }}
       />
       <Header />
       

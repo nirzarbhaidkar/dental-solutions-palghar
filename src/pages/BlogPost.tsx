@@ -148,6 +148,9 @@ const BlogPost = () => {
         image={absoluteImageUrl}
         article={true}
         keywords={`dental health, oral care, ${post.category.toLowerCase()}, dentist palghar, dental clinic, ${post.title.toLowerCase()}`}
+        pageType="blogpost"
+        publishedTime={post.date}
+        authorName="Dr. Anirudh Bhaidkar"
       />
       <Header />
 
