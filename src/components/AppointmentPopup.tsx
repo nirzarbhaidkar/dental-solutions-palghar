@@ -88,11 +88,11 @@ const AppointmentPopup = () => {
               <div className="absolute inset-0 pointer-events-none">
                 <motion.div
                   animate={{
-                    scale: [1, 1.2, 1],
-                    rotate: [0, 180, 360],
+                    scale: [1, 1.05, 1],
+                    opacity: [0.3, 0.5, 0.3],
                   }}
                   transition={{
-                    duration: 3,
+                    duration: 4,
                     repeat: Infinity,
                     ease: "easeInOut"
                   }}
@@ -100,11 +100,11 @@ const AppointmentPopup = () => {
                 />
                 <motion.div
                   animate={{
-                    scale: [1.2, 1, 1.2],
-                    rotate: [360, 180, 0],
+                    scale: [1, 1.05, 1],
+                    opacity: [0.4, 0.6, 0.4],
                   }}
                   transition={{
-                    duration: 4,
+                    duration: 5,
                     repeat: Infinity,
                     ease: "easeInOut"
                   }}
@@ -116,13 +116,12 @@ const AppointmentPopup = () => {
                 <div className="flex items-start gap-3">
                   <motion.div 
                     animate={{ 
-                      rotate: [0, 10, -10, 0],
-                      scale: [1, 1.1, 1]
+                      rotate: [0, 5, -5, 0],
                     }}
                     transition={{
-                      duration: 2,
+                      duration: 3,
                       repeat: Infinity,
-                      repeatDelay: 1
+                      ease: "easeInOut"
                     }}
                     className="bg-white/20 backdrop-blur-sm p-3 rounded-2xl shadow-lg"
                   >
@@ -168,7 +167,7 @@ const AppointmentPopup = () => {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.2 + index * 0.1 }}
-                      whileHover={{ scale: 1.02, x: 5 }}
+                      whileHover={{ x: 5 }}
                       className="group"
                     >
                       <div className="flex items-center gap-3 p-3 rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300">
@@ -223,8 +222,6 @@ const AppointmentPopup = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
               >
                 <Button 
                   className="w-full bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#128C7E] hover:to-[#25D366] text-white py-6 text-base font-bold shadow-lg shadow-green-500/30 hover:shadow-xl hover:shadow-green-500/40 transition-all duration-300" 
@@ -238,8 +235,6 @@ const AppointmentPopup = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.9 }}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
               >
                 <Button 
                   className="w-full border-2 border-primary/20 text-primary hover:bg-primary/10 hover:border-primary/40 py-6 transition-all duration-300" 
