@@ -185,8 +185,12 @@ const BlogPost = () => {
           
           <img 
             src={post?.image} 
-            alt={post?.title} 
+            alt={`${post?.title} - Dental health guide from Dental Solutions Palghar`} 
             className="w-full rounded-xl mb-8 aspect-video object-cover"
+            loading="eager"
+            width="896"
+            height="504"
+            decoding="async"
           />
           
           <div className="flex flex-wrap items-center gap-3 mb-6">
@@ -267,8 +271,12 @@ const BlogPost = () => {
                       <div className="h-40 overflow-hidden">
                         <img 
                           src={relatedPost.image} 
-                          alt={relatedPost.title}
+                          alt={`${relatedPost.title} - Related dental health article from Dental Solutions Palghar`}
                           className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-300"
+                          loading="lazy"
+                          width="350"
+                          height="160"
+                          decoding="async"
                         />
                       </div>
                       <div className="p-4">

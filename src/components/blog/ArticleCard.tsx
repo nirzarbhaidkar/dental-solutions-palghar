@@ -21,8 +21,12 @@ const ArticleCard = ({ slug, image, title, excerpt, date, readTime, category }: 
           <div className="md:col-span-2 aspect-[4/3] overflow-hidden">
             <img
               src={image}
-              alt={title}
+              alt={`${title} - ${category} article from Dental Solutions Palghar dental blog`}
               className="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+              width="640"
+              height="480"
+              decoding="async"
             />
           </div>
           <div className="md:col-span-3 p-4 flex flex-col justify-between">

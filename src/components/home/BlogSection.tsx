@@ -46,9 +46,12 @@ const BlogSection = () => {
                   <Link to={`/blog/${post.slug}`}>
                     <img
                       src={post.image}
-                      alt={post.title}
+                      alt={`${post.title} - Dental health tips and advice from Dental Solutions Palghar`}
                       className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
+                      width="413"
+                      height="192"
+                      decoding="async"
                     />
                   </Link>
                   {post.category && (

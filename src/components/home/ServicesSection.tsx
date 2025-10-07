@@ -125,12 +125,13 @@ const ServicesSection = () => {
               <div className="relative h-48 overflow-hidden">
                 <img 
                   src={service.image} 
-                  alt={service.title}
+                  alt={`${service.title} in Palghar - Professional dental care and treatment at Dental Solutions Palghar`}
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                   loading="lazy"
                   width="413"
                   height="192"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 413px"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-70"></div>
               </div>
