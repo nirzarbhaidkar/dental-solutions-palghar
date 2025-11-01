@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { X, Phone, Clock, Award, Building, HeartHandshake, Timer, CheckCircle2 } from "lucide-react";
+import { X, Phone, Clock, Award, Building, HeartHandshake, Timer, CheckCircle2, Calendar } from "lucide-react";
 import { toast } from "sonner";
 import { useIsMobile } from "@/hooks/use-mobile";
-import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
 const AppointmentPopup = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -105,11 +104,11 @@ const AppointmentPopup = () => {
         
         <DialogFooter className="px-6 pb-6 flex-col gap-3">
           <Button 
-            className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white" 
+            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" 
             onClick={handleBookAppointment}
           >
-            <WhatsAppIcon className="h-5 w-5 mr-2" /> 
-            Book on WhatsApp
+            <Calendar className="h-5 w-5 mr-2" /> 
+            Schedule an Appointment
           </Button>
           <Button 
             className="w-full" 
