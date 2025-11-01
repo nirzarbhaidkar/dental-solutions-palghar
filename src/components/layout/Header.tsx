@@ -1,9 +1,10 @@
 
 import { useState, useEffect } from "react";
-import { Facebook, Home, X, Menu, MessageSquare, Phone, ChevronRight } from "lucide-react";
+import { Facebook, Home, X, Menu, Phone, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 import { toast } from "sonner";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
 type NavItem = {
   label: string;
@@ -113,184 +114,217 @@ const Header = () => {
   };
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-md' : 'bg-white/90 backdrop-blur-sm shadow-sm'}`}>
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
-            <Link to="/" className="text-xl md:text-2xl font-semibold text-primary">Dental Solutions Palghar</Link>
-          </div>
-          
-          <div className="hidden md:flex items-center space-x-8">
+    <>
+      {/* Mobile-first header */}
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-lg' : 'bg-white/95 backdrop-blur-sm shadow-md'}`}>
+        <div className="px-4 sm:px-6 lg:px-8">
+          {/* Mobile header (base styles) */}
+          <div className="flex items-center justify-between h-14 md:h-16">
+            {/* Logo */}
             <Link 
-              to="/"
-              className="text-gray-700 hover:text-primary transition-colors flex items-center"
-              aria-label="Home"
+              to="/" 
+              className="text-base sm:text-lg md:text-xl font-bold text-primary truncate max-w-[180px] sm:max-w-none"
             >
-              <Home size={20} />
+              Dental Solutions Palghar
             </Link>
-            {navItems.map((item, index) => (
-              item.href.includes('#') ? (
-                <a 
-                  key={index}
-                  href={item.href}
-                  onClick={(e) => handleAnchorClick(e, item.href)}
-                  className="text-gray-700 hover:text-primary transition-colors"
-                >
-                  {item.label}
-                </a>
-              ) : (
-                <Link 
-                  key={index}
-                  to={item.href} 
-                  className="text-gray-700 hover:text-primary transition-colors"
-                >
-                  {item.label}
-                </Link>
-              )
-            ))}
-            <a
-              href="https://www.facebook.com/DentalSolutionsPalghar"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-700 hover:text-primary transition-colors"
-              aria-label="Facebook"
-            >
-              <Facebook size={20} />
-            </a>
-            <Button 
-              className="bg-primary text-white hover:bg-primary/90"
-              onClick={handleBookAppointment}
-            >
-              Book Appointment
-            </Button>
-          </div>
 
-          {/* Mobile buttons */}
-          <div className="md:hidden flex items-center gap-2">
-            <Button 
-              variant="outline" 
-              size="icon" 
-              className="h-8 w-8 border-primary text-primary"
-              onClick={handleCall}
-              aria-label="Call us"
-            >
-              <Phone size={16} />
-            </Button>
-            <Button 
-              variant="outline" 
-              size="icon" 
-              className="h-8 w-8 border-[#25D366] text-[#25D366]"
-              onClick={handleBookAppointment}
-              aria-label="Book on WhatsApp"
-            >
-              <MessageSquare size={16} />
-            </Button>
-            <button
-              onClick={() => setIsNavOpen(!isNavOpen)}
-              className="text-gray-700 hover:text-primary focus:outline-none"
-              aria-label={isNavOpen ? "Close menu" : "Open menu"}
-            >
-              {isNavOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile navigation drawer - Improved with better visibility and organization */}
-      <div className={`fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity duration-300 md:hidden ${isNavOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-        <div className={`mobile-nav-container fixed right-0 top-0 h-full w-80 bg-white shadow-xl transform transition-transform duration-300 ease-in-out ${isNavOpen ? 'translate-x-0' : 'translate-x-full'} overflow-y-auto flex flex-col`}>
-          {/* Header with close button */}
-          <div className="flex justify-between items-center p-4 border-b">
-            <span className="text-lg font-semibold text-primary">Menu</span>
-            <button
-              onClick={() => setIsNavOpen(false)}
-              className="text-gray-700 hover:text-primary focus:outline-none"
-              aria-label="Close menu"
-            >
-              <X size={20} />
-            </button>
-          </div>
-          
-          {/* Primary navigation links */}
-          <div className="py-4 px-4 flex-grow">
-            <Link
-              to="/"
-              className="flex items-center justify-between py-3 px-4 text-gray-700 hover:bg-gray-100 rounded-md transition-colors mb-2 border border-gray-100"
-              onClick={() => setIsNavOpen(false)}
-            >
-              <div className="flex items-center">
-                <Home size={18} className="mr-3 text-primary" />
-                <span className="font-medium">Home</span>
-              </div>
-              <ChevronRight size={16} className="text-gray-400" />
-            </Link>
-            
-            {navItems.map((item, index) => (
-              item.href.includes('#') ? (
-                <a
-                  key={index}
-                  href={item.href}
-                  onClick={(e) => handleAnchorClick(e, item.href)}
-                  className="flex items-center justify-between py-3 px-4 text-gray-700 hover:bg-gray-100 rounded-md transition-colors mb-2 border border-gray-100"
-                >
-                  <span className="font-medium">{item.label}</span>
-                  <ChevronRight size={16} className="text-gray-400" />
-                </a>
-              ) : (
-                <Link
-                  key={index}
-                  to={item.href}
-                  className="flex items-center justify-between py-3 px-4 text-gray-700 hover:bg-gray-100 rounded-md transition-colors mb-2 border border-gray-100"
-                  onClick={() => setIsNavOpen(false)}
-                >
-                  <span className="font-medium">{item.label}</span>
-                  <ChevronRight size={16} className="text-gray-400" />
-                </Link>
-              )
-            ))}
-            
-            {/* Social links */}
-            <div className="mt-4 mb-6">
-              <h3 className="text-sm font-medium text-gray-500 px-4 mb-2">Connect With Us</h3>
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+              <Link 
+                to="/"
+                className="text-sm text-foreground/80 hover:text-primary transition-colors font-medium flex items-center gap-1"
+                aria-label="Home"
+              >
+                <Home className="h-4 w-4" />
+              </Link>
+              {navItems.map((item, index) => (
+                item.href.includes('#') ? (
+                  <a 
+                    key={index}
+                    href={item.href}
+                    onClick={(e) => handleAnchorClick(e, item.href)}
+                    className="text-sm text-foreground/80 hover:text-primary transition-colors font-medium whitespace-nowrap"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link 
+                    key={index}
+                    to={item.href} 
+                    className="text-sm text-foreground/80 hover:text-primary transition-colors font-medium whitespace-nowrap"
+                  >
+                    {item.label}
+                  </Link>
+                )
+              ))}
               <a
                 href="https://www.facebook.com/DentalSolutionsPalghar"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center py-3 px-4 text-gray-700 hover:bg-gray-100 rounded-md transition-colors border border-gray-100"
-                onClick={() => setIsNavOpen(false)}
+                className="text-foreground/80 hover:text-primary transition-colors"
+                aria-label="Facebook"
               >
-                <Facebook size={18} className="mr-3 text-[#1877F2]" />
-                <span className="font-medium">Facebook</span>
+                <Facebook className="h-5 w-5" />
               </a>
+              <Button 
+                className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
+                onClick={handleBookAppointment}
+                size="sm"
+              >
+                <Calendar className="h-4 w-4 mr-2" />
+                Book Now
+              </Button>
+            </nav>
+
+            {/* Mobile actions */}
+            <div className="flex items-center gap-2 lg:hidden">
+              <Button 
+                size="icon" 
+                variant="ghost"
+                className="h-9 w-9 text-primary"
+                onClick={handleCall}
+                aria-label="Call clinic"
+              >
+                <Phone className="h-5 w-5" />
+              </Button>
+              <Button 
+                size="icon"
+                variant="ghost"
+                className="h-9 w-9"
+                onClick={() => setIsNavOpen(!isNavOpen)}
+                aria-label={isNavOpen ? "Close menu" : "Open menu"}
+              >
+                {isNavOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </Button>
             </div>
           </div>
-          
-          {/* CTA buttons at the bottom */}
-          <div className="mt-auto p-4 border-t bg-gray-50">
+        </div>
+      </header>
+
+      {/* Mobile navigation overlay */}
+      {isNavOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+          onClick={() => setIsNavOpen(false)}
+        />
+      )}
+
+      {/* Mobile navigation drawer */}
+      <nav
+        className={`fixed top-0 right-0 h-full w-[85%] max-w-sm bg-background z-50 transform transition-transform duration-300 ease-out lg:hidden ${
+          isNavOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <div className="flex flex-col h-full">
+          {/* Drawer header */}
+          <div className="flex items-center justify-between p-4 border-b">
+            <span className="text-lg font-bold text-primary">Menu</span>
             <Button
-              className="w-full mb-3 bg-primary hover:bg-primary/90 text-white"
+              size="icon"
+              variant="ghost"
+              onClick={() => setIsNavOpen(false)}
+              aria-label="Close menu"
+            >
+              <X className="h-5 w-5" />
+            </Button>
+          </div>
+
+          {/* Navigation links */}
+          <div className="flex-1 overflow-y-auto py-4">
+            <div className="px-4 space-y-1">
+              <Link
+                to="/"
+                className="flex items-center gap-3 px-4 py-3 rounded-lg text-foreground hover:bg-accent transition-colors"
+                onClick={() => setIsNavOpen(false)}
+              >
+                <Home className="h-5 w-5 text-primary" />
+                <span className="font-medium">Home</span>
+              </Link>
+
+              {navItems.map((item, index) => (
+                item.href.includes('#') ? (
+                  <a
+                    key={index}
+                    href={item.href}
+                    onClick={(e) => handleAnchorClick(e, item.href)}
+                    className="flex items-center justify-between px-4 py-3 rounded-lg text-foreground hover:bg-accent transition-colors"
+                  >
+                    <span className="font-medium">{item.label}</span>
+                  </a>
+                ) : (
+                  <Link
+                    key={index}
+                    to={item.href}
+                    className="flex items-center justify-between px-4 py-3 rounded-lg text-foreground hover:bg-accent transition-colors"
+                    onClick={() => setIsNavOpen(false)}
+                  >
+                    <span className="font-medium">{item.label}</span>
+                  </Link>
+                )
+              ))}
+
+              <div className="pt-4 mt-4 border-t">
+                <a
+                  href="https://www.facebook.com/DentalSolutionsPalghar"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg text-foreground hover:bg-accent transition-colors"
+                >
+                  <Facebook className="h-5 w-5 text-[#1877F2]" />
+                  <span className="font-medium">Follow on Facebook</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA section */}
+          <div className="p-4 border-t space-y-2 bg-muted/30">
+            <Button
+              className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-semibold h-12"
               onClick={() => {
                 handleBookAppointment();
                 setIsNavOpen(false);
               }}
             >
-              Book Appointment
+              <WhatsAppIcon className="h-5 w-5 mr-2" />
+              Book on WhatsApp
             </Button>
             <Button
               variant="outline"
-              className="w-full border-gray-300 text-gray-700 hover:bg-gray-100"
+              className="w-full h-12 font-semibold"
               onClick={() => {
                 handleCall();
                 setIsNavOpen(false);
               }}
             >
-              <Phone size={18} className="mr-2" />
-              Call Us Directly
+              <Phone className="h-5 w-5 mr-2" />
+              Call +91 86008 92884
             </Button>
           </div>
         </div>
+      </nav>
+
+      {/* Mobile bottom action bar */}
+      <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white border-t shadow-lg">
+        <div className="grid grid-cols-2 gap-2 p-3">
+          <Button
+            className="bg-[#25D366] hover:bg-[#128C7E] text-white font-semibold h-12"
+            onClick={handleBookAppointment}
+          >
+            <WhatsAppIcon className="h-5 w-5 mr-2" />
+            Book Now
+          </Button>
+          <Button
+            variant="outline"
+            className="h-12 font-semibold border-primary text-primary"
+            onClick={handleCall}
+          >
+            <Phone className="h-5 w-5 mr-2" />
+            Call Now
+          </Button>
+        </div>
       </div>
-    </nav>
+    </>
   );
 };
 

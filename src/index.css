@@ -98,4 +98,19 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Mobile-first touch targets */
+  button, a {
+    @apply min-h-[44px] md:min-h-0;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Prevent horizontal scroll on mobile */
+  body {
+    overflow-x: hidden;
+  }
 }

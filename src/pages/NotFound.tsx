@@ -28,7 +28,7 @@ const NotFound = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col pb-20 lg:pb-0">{/* Added padding for mobile bottom bar */}
       <HeadContent 
         title="Page Not Found | Dental Solutions Palghar"
         description="The page you're looking for doesn't exist. You may have mistyped the address or the page may have been moved."

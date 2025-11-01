@@ -414,7 +414,7 @@ const ServicePage = () => {
 
   if (!service) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-background pb-20 lg:pb-0">{/* Added padding for mobile bottom bar */}
         <Header />
         <div className="container mx-auto px-4 py-16">
           <div className="text-center">
@@ -433,7 +433,7 @@ const ServicePage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-20 lg:pb-0">{/* Added padding for mobile bottom bar */}
       <HeadContent 
         title={`${service.title} | Dental Solutions Palghar`}
         description={service.description}

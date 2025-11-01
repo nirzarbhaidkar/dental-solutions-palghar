@@ -24,7 +24,7 @@ const Blog = () => {
   }, [currentPage]);
 
   return (
-    <ScrollArea className="min-h-screen bg-white">
+    <ScrollArea className="min-h-screen bg-white pb-20 lg:pb-0">{/* Added padding for mobile bottom bar */}
       <HeadContent 
         title="Dental Health Blog | Tips & Advice | Dental Solutions Palghar"
         description="Read our blog for the latest dental health tips, treatment information, and oral care advice from the top dentists in Palghar."

@@ -110,7 +110,7 @@ const BlogPost = () => {
 
   if (!post) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-background pb-20 lg:pb-0">{/* Added padding for mobile bottom bar */}
         <HeadContent 
           title="Post Not Found | Dental Solutions Palghar"
           description="The blog post you're looking for could not be found. Explore our other dental health articles and resources."
@@ -141,7 +141,7 @@ const BlogPost = () => {
     : `https://${currentDomain}${post.image}`;
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-20 lg:pb-0">{/* Added padding for mobile bottom bar */}
       <HeadContent 
         title={`${post.title} | Dental Solutions Palghar`}
         description={metaDescription}
