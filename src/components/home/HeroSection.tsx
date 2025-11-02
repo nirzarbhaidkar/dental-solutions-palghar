@@ -53,7 +53,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative pt-32 pb-16 px-4 overflow-hidden bg-gradient-to-br from-blue-50/30 via-white to-primary/5">
+    <section className="relative min-h-screen flex items-center px-4 overflow-hidden bg-gradient-to-br from-blue-50/30 via-white to-primary/5">
       {/* Enhanced Floating Icons Background */}
       <div className="absolute inset-0 pointer-events-none">
         {floatingIcons.map((item, index) => (
@@ -140,8 +140,8 @@ const HeroSection = () => {
             Book Appointment on WhatsApp
           </Button>
           <Button 
-            variant="outline"
-            className="w-full sm:w-auto border-2 border-primary/30 text-primary hover:bg-primary/10 hover:border-primary/50 px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 backdrop-blur-sm"
+            variant="green"
+            className="w-full sm:w-auto px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
             onClick={() => window.open("tel:+918600892884")}
           >
             Call Now <Phone className="ml-2 h-5 w-5" />
