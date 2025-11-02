@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { X, Phone, Clock, Award, Building, HeartHandshake, Timer, CheckCircle2, Calendar } from "lucide-react";
+import { Phone, Calendar, X } from "lucide-react";
 import { toast } from "sonner";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -56,69 +56,80 @@ const AppointmentPopup = () => {
     setIsOpen(false);
   };
 
-  const benefits = [
-    { icon: <Award className="h-5 w-5" />, text: "15+ Years of Excellence", color: "from-amber-500 to-orange-600" },
-    { icon: <Building className="h-5 w-5" />, text: "State-of-the-Art Facility", color: "from-blue-500 to-cyan-600" },
-    { icon: <HeartHandshake className="h-5 w-5" />, text: "10,000+ Happy Patients", color: "from-rose-500 to-pink-600" },
-    { icon: <Timer className="h-5 w-5" />, text: "Same-Day Appointments", color: "from-green-500 to-emerald-600" }
-  ];
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent 
-        className={`${isMobile ? 'w-[95%]' : 'sm:max-w-md'} p-0`}
+        className={`${isMobile ? 'w-[95%] max-w-sm' : 'sm:max-w-md'} p-0 gap-0 border-0 overflow-hidden`}
+        showCloseButton={false}
       >
-        <DialogHeader className="p-6 pb-4 bg-primary text-white">
-          <DialogTitle className="text-xl font-bold">
-            Book Your Appointment
-          </DialogTitle>
-          <DialogDescription className="text-white/90 text-sm">
-            Get in touch with us today
-          </DialogDescription>
-        </DialogHeader>
+        {/* Close button */}
+        <button
+          onClick={() => setIsOpen(false)}
+          className="absolute right-4 top-4 z-10 rounded-full p-2 hover:bg-muted/80 transition-colors"
+          aria-label="Close"
+        >
+          <X className="h-4 w-4 text-muted-foreground" />
+        </button>
 
-        <div className="p-6 space-y-4">
-          <div className="space-y-3">
-            {benefits.map((benefit, index) => (
-              <div key={index} className="flex items-center gap-3">
-                <div className="flex-shrink-0 text-primary">
-                  {benefit.icon}
-                </div>
-                <span className="text-sm text-foreground">
-                  {benefit.text}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          <div className="bg-muted p-4 rounded-lg flex items-center gap-3">
-            <Clock className="h-5 w-5 text-primary flex-shrink-0" />
-            <div>
-              <p className="text-sm font-semibold">Clinic Hours</p>
-              <p className="text-xs text-muted-foreground">
-                Mon-Sat: 9:30am-2pm & 5pm-9pm
+        {/* Content */}
+        <div className="relative bg-gradient-to-br from-background via-background to-primary/5">
+          <div className="px-6 pt-12 pb-8 space-y-6">
+            {/* Header */}
+            <div className="text-center space-y-2">
+              <h2 className="text-2xl font-bold tracking-tight text-foreground">
+                Ready for a Healthier Smile?
+              </h2>
+              <p className="text-sm text-muted-foreground">
+                Schedule your visit with us today
               </p>
             </div>
+
+            {/* Stats - Minimal */}
+            <div className="grid grid-cols-2 gap-3 py-4">
+              <div className="text-center p-3 rounded-lg bg-muted/30">
+                <div className="text-2xl font-bold text-primary">15+</div>
+                <div className="text-xs text-muted-foreground">Years</div>
+              </div>
+              <div className="text-center p-3 rounded-lg bg-muted/30">
+                <div className="text-2xl font-bold text-primary">10K+</div>
+                <div className="text-xs text-muted-foreground">Patients</div>
+              </div>
+            </div>
+
+            {/* Hours */}
+            <div className="text-center py-3 px-4 rounded-lg border border-border/40 bg-card/50">
+              <p className="text-xs font-medium text-muted-foreground mb-1">Clinic Hours</p>
+              <p className="text-sm font-semibold text-foreground">Mon-Sat: 9:30am-2pm & 5pm-9pm</p>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="space-y-3 pt-2">
+              <Button 
+                size="lg"
+                className="w-full h-12 text-base font-semibold shadow-lg hover:shadow-xl transition-all" 
+                onClick={handleBookAppointment}
+              >
+                <Calendar className="h-5 w-5 mr-2" /> 
+                Book Appointment
+              </Button>
+              <Button 
+                size="lg"
+                className="w-full h-12 text-base font-semibold" 
+                variant="outline"
+                onClick={handleCall}
+              >
+                <Phone className="h-5 w-5 mr-2" /> 
+                Call Now
+              </Button>
+            </div>
+
+            {/* Trust badge */}
+            <p className="text-center text-xs text-muted-foreground pt-2">
+              Trusted by families across Palghar
+            </p>
           </div>
         </div>
-        
-        <DialogFooter className="px-6 pb-6 flex-col gap-3">
-          <Button 
-            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" 
-            onClick={handleBookAppointment}
-          >
-            <Calendar className="h-5 w-5 mr-2" /> 
-            Schedule an Appointment
-          </Button>
-          <Button 
-            className="w-full" 
-            variant="outline"
-            onClick={handleCall}
-          >
-            <Phone className="h-5 w-5 mr-2" /> 
-            Call +91 86008 92884
-          </Button>
-        </DialogFooter>
       </DialogContent>
     </Dialog>
   );
