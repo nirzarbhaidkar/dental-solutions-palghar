@@ -305,22 +305,22 @@ const Header = () => {
       </nav>
 
       {/* Mobile bottom action bar */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white border-t shadow-lg">
-        <div className="grid grid-cols-2 gap-2 p-3">
+      <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white border-t shadow-lg safe-area-bottom">
+        <div className="grid grid-cols-2 gap-2 p-2">
           <Button
-            className="bg-[#25D366] hover:bg-[#128C7E] text-white font-semibold h-12"
+            className="bg-[#25D366] hover:bg-[#128C7E] text-white font-semibold h-12 text-sm"
             onClick={handleBookAppointment}
           >
-            <WhatsAppIcon className="h-5 w-5 mr-2" />
-            Book Now
+            <WhatsAppIcon className="h-4 w-4 mr-1 flex-shrink-0" />
+            <span className="truncate">Book Now</span>
           </Button>
           <Button
             variant="outline"
-            className="h-12 font-semibold border-primary text-primary"
+            className="h-12 font-semibold border-primary text-primary text-sm"
             onClick={handleCall}
           >
-            <Phone className="h-5 w-5 mr-2" />
-            Call Now
+            <Phone className="h-4 w-4 mr-1 flex-shrink-0" />
+            <span className="truncate">Call Now</span>
           </Button>
         </div>
       </div>
