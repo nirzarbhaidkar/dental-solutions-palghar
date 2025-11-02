@@ -1,3 +1,5 @@
+import dentalImplantsImage from '@/assets/blog-dental-implants.jpg';
+
 export const blogPosts = [
   {
     id: "1",
@@ -32,7 +34,7 @@ export const blogPosts = [
     readTime: "7 min read",
     slug: "understanding-dental-implants",
     category: "Restorative Dentistry",
-    image: "https://images.unsplash.com/photo-1599426464522-81e8b6b47c2e?auto=format&fit=crop&q=80",
+    image: dentalImplantsImage,
   },
   {
     id: "4",
