@@ -11,8 +11,8 @@ const ReviewStructuredData = () => {
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           "name": "Dental Solutions Palghar",
-          "image": "/og-image.png",
-          "url": "https://dentalsolutionspalghar.com",
+          "image": "https://dentalsolutionspalghar.in/og-image.jpg",
+          "url": "https://dentalsolutionspalghar.in",
           "telephone": "+918600892884",
           "address": {
             "@type": "PostalAddress",
@@ -34,7 +34,7 @@ const ReviewStructuredData = () => {
                 "@type": "Person",
                 "name": "Amit Sharma"
               },
-              "datePublished": "2023-12-15",
+              "datePublished": "2024-09-15",
               "reviewBody": "Dr. Shah at Dental Solutions Palghar is exceptional! I had severe tooth pain and got an emergency appointment the same day. The root canal procedure was virtually painless. Highly recommend this dental clinic in Palghar!",
               "reviewRating": {
                 "@type": "Rating",
@@ -47,7 +47,7 @@ const ReviewStructuredData = () => {
                 "@type": "Person",
                 "name": "Priya Patel"
               },
-              "datePublished": "2024-01-20",
+              "datePublished": "2024-10-08",
               "reviewBody": "I took my 4-year-old son for his first dental checkup at Dental Solutions Palghar, and the pediatric dentist was amazing with him. The clinic is clean, modern, and the staff is very friendly. Great dental care for children in Palghar!",
               "reviewRating": {
                 "@type": "Rating",
@@ -60,7 +60,7 @@ const ReviewStructuredData = () => {
                 "@type": "Person",
                 "name": "Rahul Desai"
               },
-              "datePublished": "2024-02-10",
+              "datePublished": "2024-10-22",
               "reviewBody": "Had my teeth whitening done at Dental Solutions Palghar last week. The results are fantastic! My teeth are visibly whiter. The procedure was comfortable and the staff explained everything thoroughly. Best dental clinic in Palghar for cosmetic dentistry.",
               "reviewRating": {
                 "@type": "Rating",

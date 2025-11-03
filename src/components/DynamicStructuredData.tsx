@@ -28,7 +28,7 @@ const DynamicStructuredData = ({
   serviceData 
 }: DynamicStructuredDataProps) => {
   const location = useLocation();
-  const currentUrl = `https://dentalsolutionspalghar.com${location.pathname}`;
+  const currentUrl = `https://dentalsolutionspalghar.in${location.pathname}`;
   
   // Auto-detect page type if not provided
   const detectedPageType = pageType || (() => {
@@ -48,9 +48,9 @@ const DynamicStructuredData = ({
     "@type": "Dentist",
     "name": "Dental Solutions Palghar",
     "alternateName": "Best Dental Clinic in Palghar",
-    "url": "https://dentalsolutionspalghar.com",
-    "logo": "https://dentalsolutionspalghar.com/og-image.jpg",
-    "image": "https://dentalsolutionspalghar.com/og-image.jpg",
+    "url": "https://dentalsolutionspalghar.in",
+    "logo": "https://dentalsolutionspalghar.in/og-image.jpg",
+    "image": "https://dentalsolutionspalghar.in/og-image.jpg",
     "telephone": "+918600892884",
     "email": "contact@dentalsolutionspalghar.com",
     "description": "Dental Solutions Palghar is the leading dental clinic in Palghar offering comprehensive dental care including general dentistry, cosmetic dentistry, orthodontics, dental implants, root canal treatment, teeth whitening, emergency dental care, and pediatric dentistry.",
@@ -83,9 +83,7 @@ const DynamicStructuredData = ({
     ],
     "sameAs": [
       "https://www.facebook.com/DentalSolutionsPalghar",
-      "https://www.instagram.com/dentalsolutionspalghar",
-      "https://www.youtube.com/channel/YourYouTubeChannel",
-      "https://twitter.com/DentalPalghar"
+      "https://www.instagram.com/dentalsolutionspalghar"
     ]
   });
 
@@ -101,14 +99,14 @@ const DynamicStructuredData = ({
       "author": {
         "@type": "Person",
         "name": authorName,
-        "url": "https://dentalsolutionspalghar.com"
+        "url": "https://dentalsolutionspalghar.in"
       },
       "publisher": {
         "@type": "Organization",
         "name": "Dental Solutions Palghar",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://dentalsolutionspalghar.com/og-image.jpg"
+          "url": "https://dentalsolutionspalghar.in/og-image.jpg"
         }
       },
       "datePublished": publishedTime || blogPost.date,
@@ -125,7 +123,7 @@ const DynamicStructuredData = ({
       "inLanguage": "en-US",
       "isPartOf": {
         "@type": "Blog",
-        "@id": "https://dentalsolutionspalghar.com/blog"
+        "@id": "https://dentalsolutionspalghar.in/blog"
       }
     };
   };
@@ -142,7 +140,7 @@ const DynamicStructuredData = ({
       "provider": {
         "@type": "Dentist",
         "name": "Dental Solutions Palghar",
-        "url": "https://dentalsolutionspalghar.com",
+        "url": "https://dentalsolutionspalghar.in",
         "telephone": "+918600892884",
         "address": {
           "@type": "PostalAddress",
@@ -168,7 +166,7 @@ const DynamicStructuredData = ({
     "@type": "WebSite",
     "name": "Dental Solutions Palghar",
     "alternateName": "Best Dental Clinic in Palghar",
-    "url": "https://dentalsolutionspalghar.com",
+    "url": "https://dentalsolutionspalghar.in",
     "description": "Leading dental clinic in Palghar offering comprehensive dental care services including general dentistry, cosmetic dentistry, orthodontics, and emergency dental care.",
     "publisher": {
       "@type": "Organization",
@@ -176,7 +174,7 @@ const DynamicStructuredData = ({
     },
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://dentalsolutionspalghar.com/blog?q={search_term_string}",
+      "target": "https://dentalsolutionspalghar.in/blog?q={search_term_string}",
       "query-input": "required name=search_term_string"
     },
     "sameAs": [
@@ -191,7 +189,7 @@ const DynamicStructuredData = ({
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://dentalsolutionspalghar.com"
+        "item": "https://dentalsolutionspalghar.in"
       }
     ];
 
@@ -200,7 +198,7 @@ const DynamicStructuredData = ({
         "@type": "ListItem",
         "position": 2,
         "name": "Blog",
-        "item": "https://dentalsolutionspalghar.com/blog"
+        "item": "https://dentalsolutionspalghar.in/blog"
       });
     } else if (detectedPageType === 'blogpost' && blogPost) {
       breadcrumbs.push(
@@ -208,7 +206,7 @@ const DynamicStructuredData = ({
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://dentalsolutionspalghar.com/blog"
+          "item": "https://dentalsolutionspalghar.in/blog"
         },
         {
           "@type": "ListItem",
@@ -223,7 +221,7 @@ const DynamicStructuredData = ({
           "@type": "ListItem",
           "position": 2,
           "name": "Services",
-          "item": "https://dentalsolutionspalghar.com/#services"
+          "item": "https://dentalsolutionspalghar.in/#services"
         },
         {
           "@type": "ListItem",

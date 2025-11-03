@@ -13,9 +13,9 @@ const StructuredData = () => {
           "@type": "Dentist",
           "name": "Dental Solutions Palghar",
           "alternateName": "Best Dental Clinic in Palghar",
-          "image": "https://dentalsolutionspalghar.com/og-image.png",
-          "logo": "https://dentalsolutionspalghar.com/og-image.png",
-          "url": "https://dentalsolutionspalghar.com",
+          "image": "https://dentalsolutionspalghar.in/og-image.jpg",
+          "logo": "https://dentalsolutionspalghar.in/og-image.jpg",
+          "url": "https://dentalsolutionspalghar.in",
           "telephone": "+918600892884",
           "email": "contact@dentalsolutionspalghar.com",
           "description": "Dental Solutions Palghar is the leading dental clinic in Palghar offering comprehensive dental care including general dentistry, cosmetic dentistry, orthodontics, dental implants, root canal treatment, teeth whitening, emergency dental care, and pediatric dentistry at affordable prices.",
@@ -50,12 +50,10 @@ const StructuredData = () => {
             "latitude": 19.694437699999998,
             "longitude": 72.76597319999999
           },
-          "hasMap": "https://goo.gl/maps/YourGoogleMapsLink",
+          "hasMap": "https://www.google.com/maps/place/Dental+Solutions+Palghar/@19.6944377,72.7659732,17z",
           "sameAs": [
             "https://www.facebook.com/DentalSolutionsPalghar",
-            "https://www.instagram.com/dentalsolutionspalghar",
-            "https://www.youtube.com/channel/YourYouTubeChannel",
-            "https://twitter.com/DentalPalghar"
+            "https://www.instagram.com/dentalsolutionspalghar"
           ],
           "department": [
             {
@@ -84,43 +82,43 @@ const StructuredData = () => {
               "@type": "MedicalProcedure",
               "name": "Root Canal Treatment",
               "description": "Procedure to remove infected pulp and preserve the damaged tooth.",
-              "url": "https://dentalsolutionspalghar.com/services/root-canal"
+              "url": "https://dentalsolutionspalghar.in/services/root-canal"
             },
             {
               "@type": "MedicalProcedure",
               "name": "Dental Implants",
               "description": "Artificial tooth roots placed to support restorations.",
-              "url": "https://dentalsolutionspalghar.com/services/dental-implants"
+              "url": "https://dentalsolutionspalghar.in/services/dental-implants"
             },
             {
               "@type": "MedicalProcedure",
               "name": "Teeth Whitening",
               "description": "Professional teeth bleaching for a brighter smile.",
-              "url": "https://dentalsolutionspalghar.com/services/teeth-whitening"
+              "url": "https://dentalsolutionspalghar.in/services/teeth-whitening"
             },
             {
               "@type": "MedicalProcedure",
               "name": "Orthodontic Treatment",
               "description": "Corrective procedures for teeth alignment and jaw position.",
-              "url": "https://dentalsolutionspalghar.com/services/orthodontics"
+              "url": "https://dentalsolutionspalghar.in/services/orthodontics"
             },
             {
               "@type": "MedicalProcedure",
               "name": "Pediatric Dentistry",
               "description": "Specialized dental care for children.",
-              "url": "https://dentalsolutionspalghar.com/services/pediatric-dentistry"
+              "url": "https://dentalsolutionspalghar.in/services/pediatric-dentistry"
             },
             {
               "@type": "MedicalProcedure",
               "name": "Emergency Dental Care",
               "description": "Immediate dental care for urgent situations.",
-              "url": "https://dentalsolutionspalghar.com/services/emergency-dental"
+              "url": "https://dentalsolutionspalghar.in/services/emergency-dental"
             },
             {
               "@type": "MedicalProcedure",
               "name": "Periodontal Treatment",
               "description": "Treatment for gum diseases and infections.",
-              "url": "https://dentalsolutionspalghar.com/services/periodontal"
+              "url": "https://dentalsolutionspalghar.in/services/periodontal"
             }
           ],
           "areaServed": [
@@ -191,13 +189,13 @@ const StructuredData = () => {
               "@type": "ListItem",
               "position": 1,
               "name": "Home",
-              "item": "https://dentalsolutionspalghar.com"
+              "item": "https://dentalsolutionspalghar.in"
             },
             {
               "@type": "ListItem",
               "position": 2,
               "name": "Services",
-              "item": "https://dentalsolutionspalghar.com/services"
+              "item": "https://dentalsolutionspalghar.in/#services"
             }
           ]
         }
@@ -211,8 +209,8 @@ const StructuredData = () => {
           "@context": "https://schema.org",
           "@type": "MedicalBusiness",
           "name": "Dental Solutions Palghar",
-          "image": "https://dentalsolutionspalghar.com/og-image.png",
-          "url": "https://dentalsolutionspalghar.com",
+          "image": "https://dentalsolutionspalghar.in/og-image.jpg",
+          "url": "https://dentalsolutionspalghar.in",
           "telephone": "+918600892884",
           "address": {
             "@type": "PostalAddress",
@@ -233,12 +231,12 @@ const StructuredData = () => {
         {
           "@context": "https://schema.org",
           "@type": "WebSite",
-          "url": "https://dentalsolutionspalghar.com",
+          "url": "https://dentalsolutionspalghar.in",
           "name": "Dental Solutions Palghar",
           "description": "Leading dental clinic in Palghar offering comprehensive dental care services.",
           "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://dentalsolutionspalghar.com/search?q={search_term_string}",
+            "target": "https://dentalsolutionspalghar.in/blog?q={search_term_string}",
             "query-input": "required name=search_term_string"
           }
         }
