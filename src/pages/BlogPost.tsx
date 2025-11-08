@@ -188,6 +188,7 @@ const BlogPost = () => {
             alt={`${post?.title} - Dental health guide from Dental Solutions Palghar`} 
             className="w-full rounded-xl mb-8 aspect-video object-cover"
             loading="eager"
+            fetchPriority="high"
             width="896"
             height="504"
             decoding="async"

@@ -459,6 +459,7 @@ const ServicePage = () => {
               alt={`${service.title} in Palghar - Comprehensive ${service.title.toLowerCase()} services at Dental Solutions Palghar`} 
               className="w-full h-[400px] object-cover"
               loading="eager"
+              fetchPriority="high"
               width="1024"
               height="400"
               sizes="(max-width: 768px) 100vw, 1024px"

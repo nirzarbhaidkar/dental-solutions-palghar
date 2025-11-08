@@ -29,6 +29,10 @@ const FeaturedPost = ({ post }: FeaturedPostProps) => {
             src={post.image}
             alt={post.title}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            loading="lazy"
+            width="1400"
+            height="600"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
           

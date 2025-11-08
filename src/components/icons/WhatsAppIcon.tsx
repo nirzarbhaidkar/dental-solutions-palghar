@@ -12,13 +12,14 @@ export const WhatsAppIcon: React.FC<WhatsAppIconProps> = ({
   size = 24
 }) => (
   <img 
-    src="/lovable-uploads/b6079457-2714-4d35-9f2b-10acffdd0871.png" 
+    src="/lovable-uploads/b6079457-2714-4d35-9f2b-10acffdd0871.png"
     alt="WhatsApp" 
     width={size} 
     height={size} 
     className={className}
     style={{ objectFit: 'contain' }}
     loading="lazy"
+    decoding="async"
     sizes={`${size}px`}
   />
 );
