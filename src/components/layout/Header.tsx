@@ -123,10 +123,9 @@ const Header = () => {
             {/* Logo */}
             <Link 
               to="/" 
-              className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-primary flex-shrink-0"
+              className="text-xs sm:text-base md:text-lg lg:text-xl font-bold text-primary flex-shrink-0"
             >
-              <span className="hidden xs:inline">Dental Solutions Palghar</span>
-              <span className="inline xs:hidden">DS Palghar</span>
+              Dental Solutions Palghar
             </Link>
 
             {/* Desktop Navigation */}
