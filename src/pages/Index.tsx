@@ -32,7 +32,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50/20 to-white pb-20 lg:pb-0">{/* Added padding for mobile bottom bar */}
+    <div className="min-h-screen bg-background">
       <HeadContent 
         title="Best Dentist in Palghar | Advanced Dental Clinic | Dental Solutions Palghar"
         description="Looking for the best dentist in Palghar? Dental Solutions Palghar provides complete dental care including general dentistry, cosmetic treatments, orthodontics, dental implants, root canal, and emergency services at affordable prices."
