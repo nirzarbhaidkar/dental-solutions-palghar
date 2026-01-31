@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Search } from "lucide-react";
+import { Search, HelpCircle } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
   Accordion,
   AccordionContent,
@@ -20,6 +21,7 @@ import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
 import { toast } from "sonner";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import ScrollReveal from "@/components/ui/scroll-reveal";
 
 export type FAQ = {
   question: string;
@@ -99,135 +101,162 @@ const FAQsSection = () => {
     toast.success("Opening WhatsApp to ask your question");
   };
 
-  return (
-    <section id="faqs" className="py-20 bg-gradient-to-b from-muted/50 to-muted">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-14">
-          <span className="inline-block bg-accent/80 px-4 py-1 rounded-full text-sm font-medium mb-4">
-            FAQs
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-700">
-            Frequently Asked Questions
-          </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Find answers to common questions about our dental services and procedures. Can't find what you're looking for? Feel free to contact us.
-          </p>
-          <div className="h-1.5 w-32 bg-gradient-to-r from-primary to-blue-600 mx-auto mt-8 rounded-full"></div>
-        </div>
+  const categoryColors: Record<string, string> = {
+    services: "bg-blue-50 text-blue-600 border-blue-100",
+    general: "bg-gray-50 text-gray-600 border-gray-100",
+    emergency: "bg-red-50 text-red-600 border-red-100",
+    payments: "bg-green-50 text-green-600 border-green-100",
+    appointments: "bg-purple-50 text-purple-600 border-purple-100",
+    treatments: "bg-amber-50 text-amber-600 border-amber-100",
+  };
 
-        <div className="max-w-3xl mx-auto">
-          <div className="relative mb-6 flex items-center">
-            <div className="relative w-full">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3">
-                <Search className="h-5 w-5 text-gray-400" />
+  return (
+    <section id="faqs" className="py-20 md:py-28 relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-muted/30 via-background to-muted/50" />
+      <div className="absolute inset-0 bg-gradient-mesh opacity-30" />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <ScrollReveal>
+          <div className="text-center mb-14">
+            <span className="badge-premium mb-4">
+              <HelpCircle className="w-4 h-4" />
+              FAQs
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+              Frequently Asked <span className="gradient-text">Questions</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+              Find answers to common questions about our dental services and procedures.
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.1}>
+          <div className="max-w-3xl mx-auto">
+            {/* Search input */}
+            <div className="relative mb-8">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-4">
+                <Search className="h-5 w-5 text-muted-foreground" />
               </div>
               <input
                 type="text"
                 value={searchTerm}
                 onChange={handleSearch}
                 placeholder="Search for questions..."
-                className="w-full py-3 pl-12 pr-10 bg-white rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none"
+                className="w-full py-4 pl-12 pr-12 bg-card rounded-2xl border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all duration-300 shadow-soft"
               />
-              {searchTerm && (
-                <button
-                  onClick={handleClearSearch}
-                  className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-                  </svg>
-                </button>
-              )}
-            </div>
-          </div>
-
-          <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 transition-all">
-            {filteredFAQs.length > 0 ? (
-              <Accordion type="multiple" value={expandedItems} onValueChange={handleAccordionValueChange} className="w-full">
-                {filteredFAQs.map((faq, index) => (
-                  <AccordionItem 
-                    key={index} 
-                    value={`item-${index}`} 
-                    className="border-b border-gray-200 last:border-0 data-[state=open]:bg-blue-50/30 rounded-lg transition-colors"
+              <AnimatePresence>
+                {searchTerm && (
+                  <motion.button
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    onClick={handleClearSearch}
+                    className="absolute inset-y-0 right-0 flex items-center pr-4 text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    <AccordionTrigger className="text-lg font-medium py-4 px-4 hover:bg-muted/30 rounded-t-lg text-left flex items-center justify-between">
-                      <div className="flex items-center space-x-3">
-                        <span>{faq.question}</span>
-                        {faq.category && (
-                          <span className="text-xs px-2 py-0.5 bg-blue-50 text-blue-600 rounded-full border border-blue-100">
-                            {faq.category}
-                          </span>
-                        )}
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="text-gray-600 pb-4 px-4">
-                      <p className="mb-3">{faq.answer}</p>
-                      {(faq.category === "emergency" || faq.category === "appointments") && (
-                        <div className="mt-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                    </svg>
+                  </motion.button>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* FAQ Accordion */}
+            <div className="card-elevated p-6 md:p-8">
+              {filteredFAQs.length > 0 ? (
+                <Accordion type="multiple" value={expandedItems} onValueChange={handleAccordionValueChange} className="w-full space-y-2">
+                  {filteredFAQs.map((faq, index) => (
+                    <AccordionItem 
+                      key={index} 
+                      value={`item-${index}`} 
+                      className="border border-border/50 rounded-xl overflow-hidden data-[state=open]:bg-primary/5 data-[state=open]:border-primary/20 transition-all duration-300"
+                    >
+                      <AccordionTrigger className="text-base md:text-lg font-medium py-4 px-5 hover:no-underline hover:bg-muted/30 text-left">
+                        <div className="flex items-center gap-3 flex-wrap">
+                          <span className="flex-1">{faq.question}</span>
+                          {faq.category && (
+                            <span className={`text-xs px-2.5 py-1 rounded-full border ${categoryColors[faq.category] || categoryColors.general}`}>
+                              {faq.category}
+                            </span>
+                          )}
+                        </div>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-muted-foreground px-5 pb-5">
+                        <p className="mb-4 leading-relaxed">{faq.answer}</p>
+                        {(faq.category === "emergency" || faq.category === "appointments") && (
                           <Button 
                             size="sm" 
                             variant="outline" 
                             className="bg-green-50 border-green-200 text-green-700 hover:bg-green-100 hover:text-green-800"
                             onClick={handleWhatsAppContact}
                           >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1">
-                              <path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.2.301-.767.966-.94 1.164-.173.199-.347.223-.647.075-.3-.15-1.269-.467-2.416-1.483-.893-.795-1.494-1.78-1.67-2.079-.173-.3-.018-.462.13-.61.134-.133.3-.347.45-.52.149-.174.199-.3.299-.5.1-.2.05-.374-.05-.524-.1-.15-.673-1.62-.92-2.21-.243-.582-.486-.5-.673-.51-.172-.008-.371-.01-.571-.01-.2 0-.522.074-.796.375-.273.3-1.045 1.02-1.045 2.475s1.07 2.865 1.219 3.075c.149.218 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.223-.572-.372m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                            </svg>
+                            <WhatsAppIcon className="w-4 h-4 mr-2" />
                             Ask on WhatsApp
                           </Button>
-                        </div>
-                      )}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            ) : (
-              <div className="text-center py-8">
-                <p className="text-gray-500 mb-4">No matching questions found</p>
-                <Button variant="outline" onClick={handleClearSearch}>
-                  Clear Search
-                </Button>
-              </div>
-            )}
-          </div>
-
-          <div className="mt-10 text-center">
-            <AlertDialog>
-              <AlertDialogTrigger asChild>
-                <Button variant="outline" className="bg-white hover:bg-blue-50 border-primary/30 text-primary">
-                  Have More Questions?
-                </Button>
-              </AlertDialogTrigger>
-              <AlertDialogContent className="max-w-md">
-                <AlertDialogHeader>
-                  <AlertDialogTitle className="text-xl text-primary">Still Have Questions?</AlertDialogTitle>
-                  <AlertDialogDescription>
-                    Our team is ready to help you with any questions you might have about our dental services.
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <div className="grid grid-cols-1 gap-3 mt-2">
-                  <Button 
-                    className="bg-green-600 hover:bg-green-700 text-white w-full justify-start" 
-                    onClick={handleWhatsAppContact}
-                  >
-                    <WhatsAppIcon className="mr-2 h-5 w-5" />
-                    Ask on WhatsApp
-                  </Button>
-                  <Button 
-                    className="bg-primary hover:bg-primary/90 text-white w-full justify-start"
-                    onClick={() => window.location.href = "tel:+918600892884"}
-                  >
-                    <Phone className="mr-2 h-5 w-5" />
-                    Call Us Directly
+                        )}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              ) : (
+                <div className="text-center py-12">
+                  <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">
+                    <Search className="w-8 h-8 text-muted-foreground" />
+                  </div>
+                  <p className="text-muted-foreground mb-4">No matching questions found</p>
+                  <Button variant="outline" onClick={handleClearSearch}>
+                    Clear Search
                   </Button>
                 </div>
-                <AlertDialogFooter className="mt-4">
-                  <AlertDialogAction>Close</AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
+              )}
+            </div>
+
+            {/* Still have questions CTA */}
+            <div className="mt-10 text-center">
+              <AlertDialog>
+                <AlertDialogTrigger asChild>
+                  <Button 
+                    variant="outline" 
+                    size="lg"
+                    className="border-2 border-primary/20 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300"
+                  >
+                    <HelpCircle className="w-5 h-5 mr-2" />
+                    Still Have Questions?
+                  </Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent className="max-w-md">
+                  <AlertDialogHeader>
+                    <AlertDialogTitle className="text-xl gradient-text">Still Have Questions?</AlertDialogTitle>
+                    <AlertDialogDescription className="text-muted-foreground">
+                      Our team is ready to help you with any questions you might have about our dental services.
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <div className="grid grid-cols-1 gap-3 mt-4">
+                    <Button 
+                      className="bg-[#25D366] hover:bg-[#128C7E] text-white w-full justify-start h-12" 
+                      onClick={handleWhatsAppContact}
+                    >
+                      <WhatsAppIcon className="mr-3 h-5 w-5" />
+                      Ask on WhatsApp
+                    </Button>
+                    <Button 
+                      className="bg-primary hover:bg-primary/90 text-white w-full justify-start h-12"
+                      onClick={() => window.location.href = "tel:+918600892884"}
+                    >
+                      <Phone className="mr-3 h-5 w-5" />
+                      Call Us Directly
+                    </Button>
+                  </div>
+                  <AlertDialogFooter className="mt-4">
+                    <AlertDialogAction className="w-full">Close</AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );
