@@ -164,7 +164,7 @@ const HeroSection = () => {
           >
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-[#25D366] hover:bg-[#128C7E] text-white px-8 py-6 text-lg font-semibold shadow-elevated hover:shadow-glow transition-all duration-300 hover:-translate-y-1 group"
+              className="w-full sm:w-auto bg-[#25D366] hover:bg-[#128C7E] text-white px-8 py-6 text-lg font-semibold shadow-elevated hover:shadow-glow transition-all duration-300 hover:-translate-y-1 group inline-flex items-center justify-center"
               onClick={() =>
                 window.open(
                   "https://wa.me/918600892884?text=Hello%2C%20I%E2%80%99d%20like%20to%20book%20an%20appointment%20at%20Dental%20Solutions%20Palghar.%20Please%20let%20me%20know%20the%20available%20slots.%20Thank%20you!",
@@ -172,8 +172,8 @@ const HeroSection = () => {
                 )
               }
             >
-              <WhatsAppIcon className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
-              Book on WhatsApp
+              <WhatsAppIcon className="mr-2 h-5 w-5 shrink-0 group-hover:scale-110 transition-transform" />
+              <span>Book on WhatsApp</span>
             </Button>
             <Button
               size="lg"
