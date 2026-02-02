@@ -173,7 +173,7 @@ const HeroSection = () => {
               
               <Button
                 size="lg"
-                className="relative w-full sm:w-auto bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#128C7E] hover:to-[#25D366] text-white px-8 py-7 text-lg font-bold rounded-xl shadow-xl transition-all duration-300 inline-flex items-center justify-center gap-3 border border-white/20"
+                className="relative w-full sm:w-auto bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#128C7E] hover:to-[#25D366] text-white px-8 py-7 text-lg font-bold rounded-xl shadow-xl transition-all duration-300 inline-flex items-center justify-center border border-white/20"
                 onClick={() =>
                   window.open(
                     "https://wa.me/918600892884?text=Hello%2C%20I%E2%80%99d%20like%20to%20book%20an%20appointment%20at%20Dental%20Solutions%20Palghar.%20Please%20let%20me%20know%20the%20available%20slots.%20Thank%20you!",
@@ -181,11 +181,7 @@ const HeroSection = () => {
                   )
                 }
               >
-                <span className="relative flex items-center justify-center">
-                  <span className="absolute inline-flex h-full w-full rounded-full bg-white/30 animate-ping opacity-75" style={{ animationDuration: '2s' }} />
-                  <WhatsAppIcon className="relative h-6 w-6" />
-                </span>
-                <span className="flex flex-col items-start leading-tight">
+                <span className="flex flex-col items-center leading-tight">
                   <span className="text-xs font-medium opacity-90">Instant Response</span>
                   <span>Book on WhatsApp</span>
                 </span>
