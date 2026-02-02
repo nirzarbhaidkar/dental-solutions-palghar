@@ -162,28 +162,56 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <Button
-              size="lg"
-              className="w-full sm:w-auto bg-[#25D366] hover:bg-[#128C7E] text-white px-8 py-6 text-lg font-semibold shadow-elevated hover:shadow-glow transition-all duration-300 hover:-translate-y-1 group inline-flex items-center justify-center"
-              onClick={() =>
-                window.open(
-                  "https://wa.me/918600892884?text=Hello%2C%20I%E2%80%99d%20like%20to%20book%20an%20appointment%20at%20Dental%20Solutions%20Palghar.%20Please%20let%20me%20know%20the%20available%20slots.%20Thank%20you!",
-                  "_blank"
-                )
-              }
+            {/* Primary WhatsApp CTA */}
+            <motion.div
+              className="relative group"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <WhatsAppIcon className="mr-2 h-5 w-5 shrink-0 group-hover:scale-110 transition-transform" />
-              <span>Book on WhatsApp</span>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="w-full sm:w-auto px-8 py-6 text-lg font-semibold border-2 border-primary/20 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 hover:-translate-y-1"
-              onClick={() => window.open("tel:+918600892884")}
+              {/* Animated glow effect */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#25D366] via-[#128C7E] to-[#25D366] rounded-2xl blur-lg opacity-40 group-hover:opacity-70 transition-opacity duration-500 animate-pulse" />
+              
+              <Button
+                size="lg"
+                className="relative w-full sm:w-auto bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#128C7E] hover:to-[#25D366] text-white px-8 py-7 text-lg font-bold rounded-xl shadow-xl transition-all duration-300 inline-flex items-center justify-center gap-3 border border-white/20"
+                onClick={() =>
+                  window.open(
+                    "https://wa.me/918600892884?text=Hello%2C%20I%E2%80%99d%20like%20to%20book%20an%20appointment%20at%20Dental%20Solutions%20Palghar.%20Please%20let%20me%20know%20the%20available%20slots.%20Thank%20you!",
+                    "_blank"
+                  )
+                }
+              >
+                <span className="relative flex items-center justify-center">
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-white/30 animate-ping opacity-75" style={{ animationDuration: '2s' }} />
+                  <WhatsAppIcon className="relative h-6 w-6" />
+                </span>
+                <span className="flex flex-col items-start leading-tight">
+                  <span className="text-xs font-medium opacity-90">Instant Response</span>
+                  <span>Book on WhatsApp</span>
+                </span>
+              </Button>
+            </motion.div>
+
+            {/* Secondary Call CTA */}
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <Phone className="mr-2 h-5 w-5" />
-              Call Now
-            </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full sm:w-auto px-8 py-7 text-lg font-semibold rounded-xl glass border-2 border-primary/30 hover:border-primary/60 hover:bg-primary/10 transition-all duration-300 inline-flex items-center justify-center gap-3 group"
+                onClick={() => window.open("tel:+918600892884")}
+              >
+                <span className="relative p-2 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                  <Phone className="h-5 w-5 text-primary" />
+                </span>
+                <span className="flex flex-col items-start leading-tight">
+                  <span className="text-xs font-medium text-muted-foreground">Talk to Us</span>
+                  <span className="text-foreground">Call Now</span>
+                </span>
+              </Button>
+            </motion.div>
           </motion.div>
 
           {/* Trust badges row */}
