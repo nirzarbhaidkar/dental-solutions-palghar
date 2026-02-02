@@ -34,10 +34,10 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <HeadContent 
-        title="Best Dentist in Palghar | Advanced Dental Clinic | Dental Solutions Palghar"
-        description="Looking for the best dentist in Palghar? Dental Solutions Palghar provides complete dental care including general dentistry, cosmetic treatments, orthodontics, dental implants, root canal, and emergency services at affordable prices."
+        title="Dentist in Palghar | Best Dental Clinic Near You | Dental Solutions"
+        description="Looking for a trusted dentist in Palghar? Dental Solutions Palghar offers expert dental care including implants, braces, root canal, teeth whitening, and emergency services. Affordable prices & modern technology. Book today!"
         image="https://dentalsolutionspalghar.in/og-image.jpg"
-        keywords="best dentist in palghar, dental clinic palghar, affordable dentist, teeth whitening, root canal treatment, dental implants, orthodontist, pediatric dentist, emergency dental care, dental x-ray, tooth extraction, dental bridges, dental crowns"
+        keywords="dentist in palghar, palghar dentist, dental clinic in palghar, best dentist palghar, dentist near me palghar, affordable dentist palghar, teeth whitening palghar, root canal palghar, dental implants palghar, orthodontist palghar, kids dentist palghar, emergency dentist palghar"
         pageType="home"
       />
       <FacebookPixel />
