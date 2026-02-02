@@ -11,15 +11,16 @@ const StructuredData = () => {
         {
           "@context": "https://schema.org",
           "@type": "Dentist",
+          "@id": "https://dentalsolutionspalghar.in/#dentist",
           "name": "Dental Solutions Palghar",
-          "alternateName": "Best Dental Clinic in Palghar",
+          "alternateName": ["Dentist in Palghar", "Palghar Dental Clinic", "Best Dentist Palghar"],
           "image": "https://dentalsolutionspalghar.in/og-image.jpg",
           "logo": "https://dentalsolutionspalghar.in/og-image.jpg",
           "url": "https://dentalsolutionspalghar.in",
           "telephone": "+918600892884",
           "email": "contact@dentalsolutionspalghar.com",
-          "description": "Dental Solutions Palghar is the leading dental clinic in Palghar offering comprehensive dental care including general dentistry, cosmetic dentistry, orthodontics, dental implants, root canal treatment, teeth whitening, emergency dental care, and pediatric dentistry at affordable prices.",
-          "slogan": "Your Smile, Our Priority",
+          "description": "Dental Solutions Palghar is your trusted dentist in Palghar offering comprehensive dental care including general dentistry, cosmetic dentistry, orthodontics, dental implants, root canal treatment, teeth whitening, emergency dental care, and pediatric dentistry at affordable prices.",
+          "slogan": "Your Trusted Dentist in Palghar",
           "currenciesAccepted": "INR",
           "paymentAccepted": "Cash, Credit Card, Debit Card, UPI",
           "priceRange": "₹₹",
@@ -225,19 +226,87 @@ const StructuredData = () => {
         `}
       </script>
       
-      {/* WebSite structured data */}
+      {/* WebSite structured data with local SEO */}
       <script type="application/ld+json">
         {`
         {
           "@context": "https://schema.org",
           "@type": "WebSite",
+          "@id": "https://dentalsolutionspalghar.in/#website",
           "url": "https://dentalsolutionspalghar.in",
-          "name": "Dental Solutions Palghar",
-          "description": "Leading dental clinic in Palghar offering comprehensive dental care services.",
+          "name": "Dental Solutions Palghar - Dentist in Palghar",
+          "description": "Your trusted dentist in Palghar offering comprehensive dental care services at affordable prices.",
+          "publisher": {
+            "@id": "https://dentalsolutionspalghar.in/#dentist"
+          },
           "potentialAction": {
             "@type": "SearchAction",
             "target": "https://dentalsolutionspalghar.in/blog?q={search_term_string}",
             "query-input": "required name=search_term_string"
+          }
+        }
+        `}
+      </script>
+
+      {/* LocalBusiness with Service structured data for "dentist in palghar" */}
+      <script type="application/ld+json">
+        {`
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "serviceType": "Dental Care",
+          "provider": {
+            "@type": "Dentist",
+            "@id": "https://dentalsolutionspalghar.in/#dentist"
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Palghar",
+            "containedInPlace": {
+              "@type": "State",
+              "name": "Maharashtra"
+            }
+          },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Dental Services in Palghar",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "General Dentistry in Palghar"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Root Canal Treatment in Palghar"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Dental Implants in Palghar"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Teeth Whitening in Palghar"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Emergency Dentist in Palghar"
+                }
+              }
+            ]
           }
         }
         `}
