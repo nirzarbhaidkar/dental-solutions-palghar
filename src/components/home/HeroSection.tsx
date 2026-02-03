@@ -181,9 +181,9 @@ const HeroSection = () => {
                   )
                 }
               >
-                <span className="flex flex-col items-center leading-tight">
+                <span className="flex flex-col items-center justify-center text-center leading-tight">
                   <span className="text-xs font-medium opacity-90">Instant Response</span>
-                  <span>Book on WhatsApp</span>
+                  <span className="text-lg">Book on WhatsApp</span>
                 </span>
               </Button>
             </motion.div>
