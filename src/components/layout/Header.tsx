@@ -118,12 +118,11 @@ const Header = () => {
       {/* Mobile-first header */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-lg' : 'bg-white/95 backdrop-blur-sm shadow-md'}`}>
         <div className="px-4 sm:px-6 lg:px-8">
-          {/* Mobile header (base styles) */}
-          <div className="flex items-center justify-between h-14 md:h-16">
+          <div className="flex items-center justify-between h-16 md:h-16">
             {/* Logo */}
             <Link 
               to="/" 
-              className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-primary flex-shrink-0"
+              className="text-base sm:text-lg md:text-lg lg:text-xl font-bold text-primary flex-shrink-0"
             >
               Dental Solutions Palghar
             </Link>
@@ -177,11 +176,19 @@ const Header = () => {
             </nav>
 
             {/* Mobile actions */}
-            <div className="flex items-center gap-2 lg:hidden">
+            <div className="flex items-center gap-1 lg:hidden">
+              <Button 
+                size="sm"
+                className="h-9 bg-primary text-primary-foreground hover:bg-primary/90 text-xs font-semibold px-3"
+                onClick={handleBookAppointment}
+              >
+                <Calendar className="h-4 w-4 mr-1" />
+                Book Now
+              </Button>
               <Button 
                 size="icon" 
                 variant="ghost"
-                className="h-9 w-9 text-primary"
+                className="h-10 w-10 text-primary"
                 onClick={handleCall}
                 aria-label="Call clinic"
               >
@@ -190,7 +197,7 @@ const Header = () => {
               <Button 
                 size="icon"
                 variant="ghost"
-                className="h-9 w-9"
+                className="h-10 w-10"
                 onClick={() => setIsNavOpen(!isNavOpen)}
                 aria-label={isNavOpen ? "Close menu" : "Open menu"}
               >
