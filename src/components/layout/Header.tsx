@@ -176,24 +176,7 @@ const Header = () => {
             </nav>
 
             {/* Mobile actions */}
-            <div className="flex items-center gap-1 lg:hidden">
-              <Button 
-                size="sm"
-                className="h-9 bg-primary text-primary-foreground hover:bg-primary/90 text-xs font-semibold px-3"
-                onClick={handleBookAppointment}
-              >
-                <Calendar className="h-4 w-4 mr-1" />
-                Book Now
-              </Button>
-              <Button 
-                size="icon" 
-                variant="ghost"
-                className="h-10 w-10 text-primary"
-                onClick={handleCall}
-                aria-label="Call clinic"
-              >
-                <Phone className="h-5 w-5" />
-              </Button>
+            <div className="flex items-center lg:hidden">
               <Button 
                 size="icon"
                 variant="ghost"
