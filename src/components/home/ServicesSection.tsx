@@ -37,12 +37,12 @@ const ServicesSection = () => {
       slug: "general-dentistry"
     },
     {
-      title: "Cosmetic Dentistry",
-      description: "Transform your smile with our expert cosmetic services",
-      image: "/services/cosmetic-dentistry.jpg",
+      title: "Conscious Sedation",
+      description: "Gentle inhalation sedation for anxiety-free dental care in children",
+      image: "/services/conscious-sedation.jpg",
       icon: <Sparkles className="h-6 w-6" />,
       gradient: "from-purple-500 to-pink-500",
-      slug: "cosmetic-dentistry"
+      slug: "conscious-sedation"
     },
     {
       title: "Orthodontics",
