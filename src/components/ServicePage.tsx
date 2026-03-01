@@ -58,43 +58,52 @@ const serviceContent: Record<string, ServiceContent> = {
       }
     ]
   },
-  "cosmetic-dentistry": {
-    title: "Cosmetic Dentistry",
-    description: "Transform your smile with our expert cosmetic services",
-    image: "/services/cosmetic-dentistry.jpg",
+  "conscious-sedation": {
+    title: "Conscious Sedation",
+    description: "Gentle inhalation sedation for anxiety-free dental care in children",
+    image: "/services/conscious-sedation.jpg",
     longDescription: [
-      "Our cosmetic dentistry services are designed to enhance the appearance of your smile, giving you the confidence to show it off.",
-      "We offer a range of treatments from simple teeth whitening to complete smile makeovers, all tailored to your unique needs."
+      "Conscious sedation (inhalation sedation) is a minimally invasive technique that helps reduce anxiety and improve cooperation in children who are unable to tolerate dental procedures under routine local anesthesia alone.",
+      "The child remains conscious, maintains protective reflexes, and responds to verbal commands, while being in a relaxed and comfortable state. All cases are carefully evaluated prior to sedation, and appropriate monitoring protocols are strictly followed throughout the procedure."
     ],
     benefits: [
-      "Enhanced smile aesthetics",
-      "Improved self-confidence",
-      "Personalized treatment plans",
-      "State-of-the-art technology",
-      "Natural-looking results"
+      "Improved cooperation and smoother treatment delivery",
+      "Reduced psychological trauma for anxious children",
+      "Better completion of required dental care",
+      "Quick recovery with minimal post-procedure downtime",
+      "May help avoid referral for general anesthesia in appropriate cases",
+      "Safe for children with special healthcare needs"
     ],
     process: [
       {
-        title: "Aesthetic Consultation",
-        description: "Discussion of your cosmetic goals and desired outcomes"
+        title: "Pre-Sedation Evaluation",
+        description: "Careful assessment of the child's medical history, anxiety level, and suitability for conscious sedation"
       },
       {
-        title: "Digital Smile Design",
-        description: "Preview your potential results before treatment begins"
+        title: "Sedation Administration",
+        description: "Gentle inhalation sedation delivered through a small nasal mask, keeping the child relaxed and comfortable"
       },
       {
-        title: "Expert Treatment",
-        description: "Skilled professionals using advanced techniques and materials"
+        title: "Dental Treatment",
+        description: "Required dental procedures performed while the child remains calm, conscious, and cooperative"
+      },
+      {
+        title: "Recovery & Monitoring",
+        description: "Quick recovery period with continuous monitoring before the child is discharged"
       }
     ],
     faqs: [
       {
-        question: "How long do cosmetic dental procedures take?",
-        answer: "Treatment time varies based on the procedure - from a single visit for teeth whitening to several weeks for veneers or complete smile makeovers."
+        question: "Is conscious sedation safe for children?",
+        answer: "Yes, conscious sedation is a well-established and safe technique when administered by trained professionals. The child remains conscious, maintains protective reflexes, and is monitored throughout the procedure."
       },
       {
-        question: "Are cosmetic dental procedures painful?",
-        answer: "Most patients experience minimal discomfort. We use local anesthesia and offer sedation options for more complex procedures."
+        question: "Which children benefit from conscious sedation?",
+        answer: "It is ideal for highly anxious or fearful children, very young children requiring dental intervention, uncooperative behavior due to dental phobia, children with special healthcare needs, cases requiring longer or multiple procedures, and those with a strong gag reflex."
+      },
+      {
+        question: "How quickly does the child recover after sedation?",
+        answer: "Recovery is typically very quick with minimal downtime. Most children return to normal activities shortly after the procedure."
       }
     ]
   },
