@@ -151,8 +151,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Looking for a dentist in Palghar? Dental Solutions Palghar offers expert dental implants, 
-            braces, root canal, teeth whitening &amp; emergency dental services near Palghar station.
+            Your trusted dental care partner in Palghar — modern technology, gentle hands, beautiful smiles.
           </motion.p>
 
           {/* CTA Buttons */}
