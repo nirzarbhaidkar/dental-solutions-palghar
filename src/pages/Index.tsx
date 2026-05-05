@@ -1,22 +1,23 @@
 
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { Helmet } from "react-helmet-async";
 import HeadContent from "@/components/HeadContent";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
 import ServicesSection from "@/components/home/ServicesSection";
-import QuizSection from "@/components/home/QuizSection";
-import LocationSection from "@/components/home/LocationSection";
-import TestimonialsSection from "@/components/home/TestimonialsSection";
-import FAQsSection from "@/components/home/FAQsSection";
-import BlogSection from "@/components/home/BlogSection";
-import CtaSection from "@/components/home/CtaSection";
-import NRICornerSection from "@/components/home/NRICornerSection";
-import AchievementsSection from "@/components/home/AchievementsSection";
-import CommunityImpactSection from "@/components/home/CommunityImpactSection";
 import FacebookPixel from "@/components/FacebookPixel";
 import AppointmentPopup from "@/components/AppointmentPopup";
+
+const QuizSection = lazy(() => import("@/components/home/QuizSection"));
+const LocationSection = lazy(() => import("@/components/home/LocationSection"));
+const TestimonialsSection = lazy(() => import("@/components/home/TestimonialsSection"));
+const FAQsSection = lazy(() => import("@/components/home/FAQsSection"));
+const BlogSection = lazy(() => import("@/components/home/BlogSection"));
+const CtaSection = lazy(() => import("@/components/home/CtaSection"));
+const NRICornerSection = lazy(() => import("@/components/home/NRICornerSection"));
+const AchievementsSection = lazy(() => import("@/components/home/AchievementsSection"));
+const CommunityImpactSection = lazy(() => import("@/components/home/CommunityImpactSection"));
 
 const Index = () => {
   useEffect(() => {
@@ -54,15 +55,17 @@ const Index = () => {
       <main id="main-content">
         <HeroSection />
         <ServicesSection />
-        <AchievementsSection />
-        <NRICornerSection />
-        <QuizSection />
-        <LocationSection />
-        <TestimonialsSection />
-        <FAQsSection />
-        <CommunityImpactSection />
-        <BlogSection />
-        <CtaSection />
+        <Suspense fallback={<div className="min-h-[200px]" />}>
+          <AchievementsSection />
+          <NRICornerSection />
+          <QuizSection />
+          <LocationSection />
+          <TestimonialsSection />
+          <FAQsSection />
+          <CommunityImpactSection />
+          <BlogSection />
+          <CtaSection />
+        </Suspense>
       </main>
       <Footer />
       
