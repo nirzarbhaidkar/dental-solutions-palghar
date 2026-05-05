@@ -80,9 +80,9 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4">
           <div className="md:max-w-xs">
-            <h4 className="text-xl font-bold mb-4">Dental Solutions</h4>
+            <h3 className="text-xl font-bold mb-4">Dental Solutions Palghar</h3>
             <p className="text-gray-400">
-              Dental Solutions Palghar is a leading dental clinic committed to providing high-quality oral healthcare with a patient-first approach. Equipped with state-of-the-art technology and a team of experienced dentists, we offer comprehensive treatments, including cosmetic dentistry, orthodontics, dental implants, and preventive care.
+              Dental Solutions Palghar is the best dental clinic in Palghar, offering comprehensive oral healthcare including dental implants, orthodontics (braces), root canal treatment, teeth whitening, pediatric dentistry, and emergency dental care near Palghar station.
             </p>
           </div>
           

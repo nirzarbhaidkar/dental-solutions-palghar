@@ -24,13 +24,13 @@ const App = () => {
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/services/:serviceSlug" element={<ServicePage />} />
-              <Route path="/find-dentist-near-me" element={<Index />} />
-              <Route path="/best-dentist-palghar" element={<Index />} />
-              <Route path="/dental-clinic-near-me" element={<Index />} />
-              <Route path="/mouth-doctor-palghar" element={<Index />} />
-              <Route path="/x-ray-dental-services" element={<Index />} />
-              <Route path="/nri-dental-care" element={<Index />} />
-              <Route path="/nri-dental-services" element={<Index />} />
+              <Route path="/find-dentist-near-me" element={<Navigate to="/" replace />} />
+              <Route path="/best-dentist-palghar" element={<Navigate to="/" replace />} />
+              <Route path="/dental-clinic-near-me" element={<Navigate to="/" replace />} />
+              <Route path="/mouth-doctor-palghar" element={<Navigate to="/" replace />} />
+              <Route path="/x-ray-dental-services" element={<Navigate to="/" replace />} />
+              <Route path="/nri-dental-care" element={<Navigate to="/#nri-corner" replace />} />
+              <Route path="/nri-dental-services" element={<Navigate to="/#nri-corner" replace />} />
               
               {/* Catch all blog-like paths for better error handling */}
               <Route path="/blog/*" element={<NotFound />} />
