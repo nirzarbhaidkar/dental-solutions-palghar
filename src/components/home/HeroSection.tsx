@@ -14,20 +14,20 @@ const HeroSection = () => {
 
   const headlines: Headline[] = [
     {
-      title: "Expert Dental Care for Your",
+      title: "Best Dentist in Palghar for Your",
       highlight: "Perfect Smile",
     },
     {
-      title: "Advanced Technology for",
-      highlight: "Better Care",
+      title: "Advanced Dental Technology in",
+      highlight: "Palghar",
     },
     {
-      title: "Trusted by Families for",
+      title: "Trusted Dental Clinic in Palghar for",
       highlight: "Over 15 Years",
     },
     {
-      title: "Comfortable Care for Your",
-      highlight: "Dental Health",
+      title: "Affordable Dental Care in",
+      highlight: "Palghar",
     },
   ];
 
@@ -151,8 +151,8 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Experience world-class dental care with our team of experienced professionals. 
-            Your smile deserves the best.
+            Looking for a dentist in Palghar? Dental Solutions Palghar offers expert dental implants, 
+            braces, root canal, teeth whitening &amp; emergency dental services near Palghar station.
           </motion.p>
 
           {/* CTA Buttons */}

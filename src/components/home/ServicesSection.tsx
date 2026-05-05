@@ -137,10 +137,10 @@ const ServicesSection = () => {
               Our Services
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-              Comprehensive <span className="gradient-text">Dental Solutions</span>
+              Comprehensive <span className="gradient-text">Dental Services in Palghar</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-              We offer a wide range of dental services to keep your smile healthy and beautiful.
+              As the best dental clinic in Palghar, we offer a wide range of dental treatments including implants, braces, root canal, and more — all under one roof near Palghar station.
             </p>
           </div>
         </ScrollReveal>

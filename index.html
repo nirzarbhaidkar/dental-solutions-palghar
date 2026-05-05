@@ -18,31 +18,9 @@
     <link rel="preload" href="https://connect.facebook.net/en_US/fbevents.js" as="script">
     <link rel="modulepreload" href="/src/main.tsx">
     
-    <!-- Critical CSS optimization -->
-    <script>
-      // Preload CSS and optimize render blocking
-      (function() {
-        const links = document.querySelectorAll('link[rel="stylesheet"]');
-        links.forEach(function(link) {
-          const preloadLink = document.createElement('link');
-          preloadLink.rel = 'preload';
-          preloadLink.as = 'style';
-          preloadLink.href = link.href;
-          preloadLink.onload = function() {
-            link.media = 'all';
-          };
-          document.head.appendChild(preloadLink);
-          link.media = 'print';
-        });
-        
-        // Fallback to ensure CSS loads
-        setTimeout(function() {
-          links.forEach(function(link) {
-            link.media = 'all';
-          });
-        }, 100);
-      })();
-    </script>
+    <!-- Resource hints -->
+    <link rel="preconnect" href="https://static.hotjar.com">
+    <link rel="dns-prefetch" href="https://static.hotjar.com">
 
     <!-- Google tag (gtag.js) - Deferred loading -->
     <script>
@@ -71,16 +49,18 @@
     </script>
     <!-- End Google Tag Manager -->
 
-    <!-- Hotjar Tracking Code for Dental Clinic Website -->
+    <!-- Hotjar Tracking Code - Deferred loading -->
     <script>
-      (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:6641397,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+      window.addEventListener('load', function() {
+        (function(h,o,t,j,a,r){
+          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+          h._hjSettings={hjid:6641397,hjsv:6};
+          a=o.getElementsByTagName('head')[0];
+          r=o.createElement('script');r.async=1;
+          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+          a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+      });
     </script>
   </head>
 
