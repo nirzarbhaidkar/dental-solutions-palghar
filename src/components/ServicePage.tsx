@@ -241,7 +241,7 @@ const serviceContent: Record<string, ServiceContent> = {
   },
   "teeth-whitening": {
     title: "Teeth Whitening",
-    description: "Professional teeth whitening for a brighter smile",
+    description: "Professional in-office and take-home teeth whitening in Palghar for a noticeably brighter, whiter smile.",
     image: "/services/teeth-whitening.jpg",
     longDescription: [
       "Our professional teeth whitening services provide safe, effective results that are significantly better than over-the-counter options.",
