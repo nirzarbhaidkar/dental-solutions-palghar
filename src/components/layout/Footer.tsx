@@ -154,11 +154,11 @@ const Footer = () => {
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-gray-400 font-medium">Sunday</span>
-                  <span className="text-gray-500">Closed</span>
+                  <span className="text-gray-400">Closed</span>
                 </div>
               </div>
               
-              <div className="text-xs text-gray-500 mt-3">
+              <div className="text-xs text-gray-400 mt-3">
                 Last updated: {currentTime.toLocaleDateString()} at {currentTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
               </div>
             </div>
@@ -212,7 +212,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-gray-800">
-          <p className="text-center text-gray-500 text-sm">
+          <p className="text-center text-gray-400 text-sm">
             © {new Date().getFullYear()} Dental Solutions Palghar. All rights reserved. Designed by{' '}
             <a 
               href="https://nirzar.in/" 
