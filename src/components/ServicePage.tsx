@@ -109,7 +109,7 @@ const serviceContent: Record<string, ServiceContent> = {
   },
   "orthodontics": {
     title: "Orthodontics",
-    description: "Achieve the perfect alignment with our orthodontic solutions",
+    description: "Braces and clear aligners in Palghar for straighter teeth, better bite alignment and a confident, healthy smile.",
     image: "/services/orthodontics.jpg",
     longDescription: [
       "Our orthodontic services help patients of all ages achieve properly aligned teeth and jaws for improved function and aesthetics.",
