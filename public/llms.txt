@@ -1,0 +1,26 @@
+# Dental Solutions Palghar
+
+> Leading dental clinic in Palghar, Maharashtra offering implants, braces, root canal, teeth whitening, pediatric dentistry, conscious sedation and emergency dental care.
+
+Dental Solutions Palghar is a trusted multi-specialty dental clinic serving Palghar and Mahim. The practice combines modern dental technology with gentle, patient-centred care across general, cosmetic, paediatric and emergency dentistry.
+
+## Pages
+
+- [Home](/): Overview of services, clinic info, and appointment booking.
+- [Blog](/blog): Dental health articles, treatment guides and oral care tips.
+
+## Services
+
+- [General Dentistry](/services/general-dentistry): Checkups, cleanings, fillings and preventive care.
+- [Dental Implants](/services/dental-implants): Single, multiple and full-arch implant solutions.
+- [Orthodontics](/services/orthodontics): Braces and aligners for children and adults.
+- [Root Canal](/services/root-canal): Painless endodontic treatment.
+- [Teeth Whitening](/services/teeth-whitening): In-office and take-home whitening.
+- [Pediatric Dentistry](/services/pediatric-dentistry): Child-focused dental care.
+- [Conscious Sedation](/services/conscious-sedation): Inhalation sedation for anxious children.
+- [Emergency Dental](/services/emergency-dental): Same-day care for dental emergencies.
+- [Periodontal](/services/periodontal): Gum disease treatment.
+
+## Optional
+
+- [NRI Dental Care](/nri-dental-care): Treatment planning for NRI patients.

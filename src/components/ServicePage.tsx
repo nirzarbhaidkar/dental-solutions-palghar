@@ -20,7 +20,7 @@ interface ServiceContent {
 const serviceContent: Record<string, ServiceContent> = {
   "general-dentistry": {
     title: "General Dentistry",
-    description: "Comprehensive dental care for the whole family",
+    description: "Comprehensive preventive and family dental care in Palghar — checkups, cleanings, fillings and routine treatments.",
     image: "/services/general-dentistry.jpg",
     longDescription: [
       "Our general dentistry services form the foundation of good oral health, providing comprehensive care for patients of all ages.",
@@ -109,7 +109,7 @@ const serviceContent: Record<string, ServiceContent> = {
   },
   "orthodontics": {
     title: "Orthodontics",
-    description: "Achieve the perfect alignment with our orthodontic solutions",
+    description: "Braces and clear aligners in Palghar for straighter teeth, better bite alignment and a confident, healthy smile.",
     image: "/services/orthodontics.jpg",
     longDescription: [
       "Our orthodontic services help patients of all ages achieve properly aligned teeth and jaws for improved function and aesthetics.",
@@ -193,7 +193,7 @@ const serviceContent: Record<string, ServiceContent> = {
   },
   "root-canal": {
     title: "Root Canal Treatment",
-    description: "Advanced endodontic care to save damaged teeth",
+    description: "Painless root canal treatment in Palghar using advanced endodontic techniques to save infected or damaged teeth.",
     image: "/services/root-canal.jpg",
     longDescription: [
       "Root canal therapy is a specialized procedure that treats the infected pulp of a tooth, eliminating pain and saving the natural tooth.",
@@ -241,7 +241,7 @@ const serviceContent: Record<string, ServiceContent> = {
   },
   "teeth-whitening": {
     title: "Teeth Whitening",
-    description: "Professional teeth whitening for a brighter smile",
+    description: "Professional in-office and take-home teeth whitening in Palghar for a noticeably brighter, whiter smile.",
     image: "/services/teeth-whitening.jpg",
     longDescription: [
       "Our professional teeth whitening services provide safe, effective results that are significantly better than over-the-counter options.",
@@ -329,7 +329,7 @@ const serviceContent: Record<string, ServiceContent> = {
   },
   "periodontal-treatment": {
     title: "Periodontal Treatment",
-    description: "Comprehensive gum care and disease prevention",
+    description: "Comprehensive gum disease prevention, scaling and periodontal treatment in Palghar for healthy gums and teeth.",
     image: "/services/periodontal.jpg",
     longDescription: [
       "Our periodontal services focus on the prevention, diagnosis, and treatment of gum disease and other conditions affecting the supporting structures of the teeth.",
