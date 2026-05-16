@@ -193,7 +193,7 @@ const serviceContent: Record<string, ServiceContent> = {
   },
   "root-canal": {
     title: "Root Canal Treatment",
-    description: "Advanced endodontic care to save damaged teeth",
+    description: "Painless root canal treatment in Palghar using advanced endodontic techniques to save infected or damaged teeth.",
     image: "/services/root-canal.jpg",
     longDescription: [
       "Root canal therapy is a specialized procedure that treats the infected pulp of a tooth, eliminating pain and saving the natural tooth.",
