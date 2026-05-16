@@ -20,7 +20,7 @@ interface ServiceContent {
 const serviceContent: Record<string, ServiceContent> = {
   "general-dentistry": {
     title: "General Dentistry",
-    description: "Comprehensive dental care for the whole family",
+    description: "Comprehensive preventive and family dental care in Palghar — checkups, cleanings, fillings and routine treatments.",
     image: "/services/general-dentistry.jpg",
     longDescription: [
       "Our general dentistry services form the foundation of good oral health, providing comprehensive care for patients of all ages.",
