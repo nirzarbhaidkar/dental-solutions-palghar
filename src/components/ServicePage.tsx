@@ -329,7 +329,7 @@ const serviceContent: Record<string, ServiceContent> = {
   },
   "periodontal-treatment": {
     title: "Periodontal Treatment",
-    description: "Comprehensive gum care and disease prevention",
+    description: "Comprehensive gum disease prevention, scaling and periodontal treatment in Palghar for healthy gums and teeth.",
     image: "/services/periodontal.jpg",
     longDescription: [
       "Our periodontal services focus on the prevention, diagnosis, and treatment of gum disease and other conditions affecting the supporting structures of the teeth.",
