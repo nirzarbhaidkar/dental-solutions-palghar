@@ -453,6 +453,7 @@ const ServicePage = () => {
           description: service.description,
           category: "Dental Service"
         }}
+        faqs={service.faqs}
       />
       <Header />
       

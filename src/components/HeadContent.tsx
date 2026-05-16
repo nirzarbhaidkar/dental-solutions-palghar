@@ -21,6 +21,7 @@ interface HeadContentProps {
     price?: string;
     category: string;
   };
+  faqs?: { question: string; answer: string }[];
 }
 
 const HeadContent = ({
@@ -34,7 +35,12 @@ const HeadContent = ({
   authorName,
   pageType,
   serviceData,
+  faqs,
 }: HeadContentProps) => {
+  // Only emit FAQPage schema where FAQs are actually visible:
+  // - homepage (FAQsSection renders the default FAQs)
+  // - service pages (when matching faqs are passed)
+  const showFAQ = pageType === 'home' || (pageType === 'service' && faqs && faqs.length > 0);
   return (
     <>
       <SEO 
@@ -56,7 +62,7 @@ const HeadContent = ({
         authorName={authorName}
         serviceData={serviceData}
       />
-      <FAQStructuredData />
+      {showFAQ && <FAQStructuredData faqs={faqs} />}
       <ReviewStructuredData />
     </>
   );
