@@ -183,11 +183,11 @@ const ServicesSection = () => {
                 </div>
 
                 {/* Content */}
-                <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors duration-300">
+                <div className="p-5 sm:p-6 flex flex-col flex-grow">
+                  <h3 className="text-lg sm:text-xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors duration-300">
                     {service.title}
                   </h3>
-                  <p className="text-muted-foreground mb-6 flex-grow">
+                  <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6 flex-grow">
                     {service.description}
                   </p>
                   <Link to={`/services/${service.slug}`}>
