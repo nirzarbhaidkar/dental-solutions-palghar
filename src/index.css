@@ -172,6 +172,15 @@
       0 2px 8px -1px hsl(197 71% 49% / 0.06);
   }
 
+  /* Reduce liquid glass blur on mobile for performance */
+  @media (max-width: 767px) {
+    .liquid-glass,
+    .liquid-glass-scrolled {
+      backdrop-filter: blur(10px) saturate(1.5) brightness(1.05);
+      -webkit-backdrop-filter: blur(10px) saturate(1.5) brightness(1.05);
+    }
+  }
+
   /* Glass morphism effect */
   .glass {
     background: var(--glass-bg);
