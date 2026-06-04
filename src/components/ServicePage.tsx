@@ -84,8 +84,8 @@ const serviceContent: Record<string, ServiceContent> = {
     ]
   },
   "conscious-sedation": {
-    title: "Conscious Sedation",
-    description: "Gentle inhalation sedation for anxiety-free dental care in children",
+    title: "Conscious Sedation Dentistry for Kids in Palghar",
+    description: "Anxiety-free conscious sedation (nitrous oxide / inhalation sedation) for fearful children in Palghar. The only clinic in Palghar offering pediatric sedation dentistry.",
     image: "/services/conscious-sedation.jpg",
     longDescription: [
       "Conscious sedation (inhalation sedation) is a minimally invasive technique that helps reduce anxiety and improve cooperation in children who are unable to tolerate dental procedures under routine local anesthesia alone.",
