@@ -80,23 +80,23 @@ const HeroSection = () => {
           }}
         />
         
-        {/* Floating icons with subtle animation */}
+        {/* Floating icons - hidden on mobile to reduce GPU cost */}
         <motion.div
-          className="absolute top-1/4 left-[10%] text-primary/20"
+          className="hidden sm:block absolute top-1/4 left-[10%] text-primary/20"
           animate={{ y: [-5, 5, -5], rotate: [0, 5, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         >
           <Sparkles size={48} />
         </motion.div>
         <motion.div
-          className="absolute top-1/3 right-[15%] text-blue-500/20"
+          className="hidden sm:block absolute top-1/3 right-[15%] text-blue-500/20"
           animate={{ y: [5, -5, 5], rotate: [0, -5, 0] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
         >
           <Star size={40} />
         </motion.div>
         <motion.div
-          className="absolute bottom-1/3 left-[15%] text-primary/15"
+          className="hidden sm:block absolute bottom-1/3 left-[15%] text-primary/15"
           animate={{ y: [-8, 8, -8] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
         >
@@ -104,28 +104,29 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 py-16 sm:py-20">
         <div className="max-w-4xl mx-auto text-center">
           {/* Trust badge */}
           <motion.div
-            className="inline-flex items-center gap-2 glass px-5 py-2.5 rounded-full mb-8"
+            className="inline-flex items-center gap-1.5 sm:gap-2 glass px-3 sm:px-5 py-2 sm:py-2.5 rounded-full mb-5 sm:mb-8 max-w-full"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Shield className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-foreground/80">
-              Trusted by 10,000+ Happy Patients
+            <Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary flex-shrink-0" />
+            <span className="text-xs sm:text-sm font-medium text-foreground/80 whitespace-nowrap">
+              <span className="sm:hidden">10,000+ Happy Patients</span>
+              <span className="hidden sm:inline">Trusted by 10,000+ Happy Patients</span>
             </span>
-            <span className="flex items-center gap-0.5 text-amber-500">
+            <span className="flex items-center gap-0.5 text-amber-500 flex-shrink-0">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-3 h-3 fill-current" />
+                <Star key={i} className="w-2.5 h-2.5 sm:w-3 sm:h-3 fill-current" />
               ))}
             </span>
           </motion.div>
 
           {/* Rotating headlines */}
-          <div className="h-[100px] sm:h-[120px] md:h-[144px] mb-6 flex items-center justify-center">
+          <div className="min-h-[88px] sm:min-h-[120px] md:min-h-[144px] mb-4 sm:mb-6 flex items-center justify-center">
             <AnimatePresence mode="wait">
               <motion.h1
                 key={currentHeadlineIndex}
@@ -133,7 +134,7 @@ const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -30 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
+                className="text-[28px] leading-[1.15] sm:text-4xl md:text-5xl lg:text-6xl font-bold sm:leading-tight px-2"
                 aria-live="polite"
               >
                 <span className="text-foreground">{headlines[currentHeadlineIndex].title}</span>{" "}
@@ -146,7 +147,7 @@ const HeroSection = () => {
 
           {/* Subheadline */}
           <motion.p
-            className="text-muted-foreground text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
+            className="text-muted-foreground text-sm sm:text-lg md:text-xl max-w-2xl mx-auto mb-7 sm:mb-10 leading-relaxed px-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -156,23 +157,21 @@ const HeroSection = () => {
 
           {/* CTA Buttons */}
           <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-12 px-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             {/* Primary WhatsApp CTA */}
             <motion.div
-              className="relative group"
-              whileHover={{ scale: 1.02 }}
+              className="relative group w-full sm:w-auto"
               whileTap={{ scale: 0.98 }}
             >
-              {/* Animated glow effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-[#25D366] via-[#128C7E] to-[#25D366] rounded-2xl blur-lg opacity-40 group-hover:opacity-70 transition-opacity duration-500 animate-pulse" />
-              
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#25D366] via-[#128C7E] to-[#25D366] rounded-2xl blur-lg opacity-30 sm:opacity-40 group-hover:opacity-70 transition-opacity duration-500 sm:animate-pulse" />
+
               <Button
                 size="lg"
-                className="relative w-full sm:w-auto bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#128C7E] hover:to-[#25D366] text-white px-8 py-7 text-lg font-bold rounded-xl shadow-xl transition-all duration-300 inline-flex items-center justify-center border border-white/20"
+                className="relative w-full sm:w-auto bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#128C7E] hover:to-[#25D366] text-white px-6 sm:px-8 py-5 sm:py-7 text-base sm:text-lg font-bold rounded-xl shadow-xl transition-all duration-300 inline-flex items-center justify-center border border-white/20 min-h-[56px]"
                 onClick={() =>
                   window.open(
                     "https://wa.me/918600892884?text=Hello%2C%20I%E2%80%99d%20like%20to%20book%20an%20appointment%20at%20Dental%20Solutions%20Palghar.%20Please%20let%20me%20know%20the%20available%20slots.%20Thank%20you!",
@@ -181,28 +180,28 @@ const HeroSection = () => {
                 }
               >
                 <span className="flex flex-col items-center justify-center text-center leading-tight">
-                  <span className="text-xs font-medium opacity-90">Instant Response</span>
-                  <span className="text-lg">Book on WhatsApp</span>
+                  <span className="text-[10px] sm:text-xs font-medium opacity-90">Instant Response</span>
+                  <span className="text-base sm:text-lg">Book on WhatsApp</span>
                 </span>
               </Button>
             </motion.div>
 
             {/* Secondary Call CTA */}
             <motion.div
-              whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
+              className="w-full sm:w-auto"
             >
               <Button
                 size="lg"
                 variant="outline"
-                className="w-full sm:w-auto px-8 py-7 text-lg font-semibold rounded-xl glass border-2 border-primary/30 hover:border-primary/60 hover:bg-primary/10 transition-all duration-300 inline-flex items-center justify-center gap-3 group"
+                className="w-full sm:w-auto px-6 sm:px-8 py-5 sm:py-7 text-base sm:text-lg font-semibold rounded-xl glass border-2 border-primary/30 hover:border-primary/60 hover:bg-primary/10 transition-all duration-300 inline-flex items-center justify-center gap-3 group min-h-[56px]"
                 onClick={() => window.open("tel:+918600892884")}
               >
-                <span className="relative p-2 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                  <Phone className="h-5 w-5 text-primary" />
+                <span className="relative p-1.5 sm:p-2 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                  <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                 </span>
                 <span className="flex flex-col items-start leading-tight">
-                  <span className="text-xs font-medium text-muted-foreground">Talk to Us</span>
+                  <span className="text-[10px] sm:text-xs font-medium text-muted-foreground">Talk to Us</span>
                   <span className="text-foreground">Call Now</span>
                 </span>
               </Button>
@@ -211,7 +210,7 @@ const HeroSection = () => {
 
           {/* Trust badges row */}
           <motion.div
-            className="flex flex-wrap items-center justify-center gap-6 sm:gap-8"
+            className="flex flex-wrap items-center justify-center gap-3 sm:gap-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.6 }}
@@ -219,15 +218,15 @@ const HeroSection = () => {
             {trustBadges.map((badge, index) => (
               <motion.div
                 key={index}
-                className="flex items-center gap-2 text-muted-foreground"
+                className="flex items-center gap-1.5 sm:gap-2 text-muted-foreground"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.7 + index * 0.1 }}
               >
-                <div className="p-2 rounded-full bg-primary/10">
-                  <badge.icon className="w-4 h-4 text-primary" />
+                <div className="p-1.5 sm:p-2 rounded-full bg-primary/10">
+                  <badge.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
                 </div>
-                <span className="text-sm font-medium">{badge.label}</span>
+                <span className="text-xs sm:text-sm font-medium">{badge.label}</span>
               </motion.div>
             ))}
           </motion.div>
