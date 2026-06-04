@@ -176,7 +176,7 @@ const Header = () => {
             </nav>
 
             {/* Mobile actions */}
-            <div className="flex items-center lg:hidden">
+            <div className="absolute right-0 flex items-center lg:hidden">
               <Button 
                 size="icon"
                 variant="ghost"
