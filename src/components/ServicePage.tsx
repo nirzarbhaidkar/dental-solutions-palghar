@@ -413,138 +413,391 @@ const serviceContent: Record<string, ServiceContent> = {
   },
 
   "pediatric-dentistry": {
-    title: "Pediatric Dentistry",
-    description: "Specialized dental care for children in a friendly environment",
+    title: "Pediatric Dentist in Palghar — Dentist for Kids",
+    description: "Gentle pediatric dentistry in Palghar — kids' dental checkups, fluoride, sealants, milk-tooth fillings, painless extractions and habit-breaking appliances. Tell-show-do approach with happy-visit guarantee.",
     image: "/services/pediatric-dentistry.jpg",
     longDescription: [
-      "Our pediatric dental services are designed specifically for children, creating positive experiences that foster lifelong oral health habits.",
-      "We focus on prevention, early intervention, and education in a child-friendly environment that makes dental visits fun and stress-free."
+      "Children are not small adults — their teeth, jaws and emotions need a specialist approach. Our pediatric dentists at Dental Solutions Palghar are trained to make dental visits a positive, play-like experience so your child grows up loving (not fearing) the dentist.",
+      "We offer the full range of children's dental care: first-tooth checkups, fluoride application, pit-and-fissure sealants, painless milk-tooth fillings, baby root canals (pulpotomy / pulpectomy), space maintainers, habit-breaking appliances for thumb-sucking and tongue-thrusting, and early orthodontic interception.",
+      "Our pediatric chair has cartoons on the ceiling, the team uses the 'tell-show-do' technique, and parents are welcome inside the operatory. For highly anxious children, we are the only clinic in Palghar that offers conscious inhalation sedation so even fearful kids can complete treatment in a single calm visit.",
+      "Children from across Palghar, Boisar, Tarapur and Virar visit us for their dental needs because we combine pediatric expertise with a genuinely kid-friendly environment and zero-pressure parenting advice."
     ],
     benefits: [
-      "Child-friendly environment",
-      "Specialized care for developing teeth",
-      "Prevention-focused approach",
-      "Early detection of dental issues",
-      "Positive dental experiences"
+      "Child-friendly chair with cartoons and tell-show-do technique",
+      "Painless milk-tooth fillings using tooth-coloured GIC/composite",
+      "Pit-and-fissure sealants prevent up to 80% of childhood cavities",
+      "Topical fluoride application for stronger enamel",
+      "Habit-breaking appliances for thumb-sucking and tongue-thrust",
+      "Early orthodontic interception (ages 7-10) prevents complex braces later",
+      "Optional conscious sedation for anxious or special-needs children",
+      "Happy-visit guarantee — we never restrain or shame a child"
     ],
     process: [
       {
-        title: "First Visit",
-        description: "Gentle introduction to dental care in a kid-friendly setting"
+        title: "Happy First Visit",
+        description: "Counting teeth, riding the chair and meeting the team — no treatment unless the child is comfortable."
       },
       {
         title: "Preventive Care",
-        description: "Regular cleanings, fluoride treatments, and sealants"
+        description: "Cleaning, fluoride and sealants to lock out future cavities."
       },
       {
-        title: "Education",
-        description: "Age-appropriate instruction on proper brushing and flossing"
+        title: "Restorative Treatment",
+        description: "Painless tooth-coloured fillings, pulpotomy or stainless-steel crowns as needed."
       },
       {
-        title: "Growth Monitoring",
-        description: "Tracking dental development and addressing concerns early"
+        title: "Habit & Bite Guidance",
+        description: "Thumb-sucking, tongue-thrust and mouth-breathing appliances; early ortho screening at age 7."
+      },
+      {
+        title: "Parent Coaching",
+        description: "Personalised diet, brushing and weaning advice tailored to your child's age."
       }
     ],
     faqs: [
       {
-        question: "When should my child first visit the dentist?",
-        answer: "The American Academy of Pediatric Dentistry recommends scheduling the first dental visit when the first tooth appears or no later than the child's first birthday."
+        question: "At what age should I bring my child to the dentist in Palghar?",
+        answer: "At the eruption of the first milk tooth or by 1 year of age, whichever is earlier. Early visits are short, fun and 'no-treatment' — they build trust so future visits are stress-free."
       },
       {
-        question: "How can I prepare my child for their first dental visit?",
-        answer: "Keep it positive! Read children's books about dental visits, play pretend dentist at home, and avoid using words like 'hurt,' 'pain,' or 'shot' when discussing the appointment."
+        question: "Do milk teeth really need filling? They'll fall out anyway.",
+        answer: "Yes. Milk teeth hold space for permanent teeth, help your child speak and chew, and untreated cavities cause pain, infection and damage to the developing adult tooth underneath. Modern milk-tooth fillings are quick and painless."
+      },
+      {
+        question: "How do you handle a child who is scared or won't cooperate?",
+        answer: "We use the tell-show-do technique, distraction, positive reinforcement and parental support — most children settle in 1-2 visits. For severely anxious or special-needs children we offer conscious inhalation sedation, the only such service in Palghar."
+      },
+      {
+        question: "How much does pediatric dental treatment cost?",
+        answer: "First visit consultation is free. Cleaning starts from ₹500, fluoride application from ₹500, sealants from ₹400 per tooth, and a milk-tooth filling from ₹500. We publish transparent pricing — no hidden costs."
+      },
+      {
+        question: "Should my child see a pediatric dentist or a general dentist?",
+        answer: "For routine cleaning either is fine, but for anxious children, special-needs kids, milk-tooth root canals, early ortho assessment or sedation dentistry, a pediatric specialist gets better outcomes with less trauma."
       }
     ]
   },
   "periodontal-treatment": {
-    title: "Periodontal Treatment",
-    description: "Comprehensive gum disease prevention, scaling and periodontal treatment in Palghar for healthy gums and teeth.",
+    title: "Gum Treatment in Palghar — Periodontist",
+    description: "Specialist gum disease treatment in Palghar — deep cleaning, scaling & root planing, laser gum therapy, flap surgery and gum recession treatment. Stop bleeding gums and prevent tooth loss.",
     image: "/services/periodontal.jpg",
     longDescription: [
-      "Our periodontal services focus on the prevention, diagnosis, and treatment of gum disease and other conditions affecting the supporting structures of the teeth.",
-      "We offer both non-surgical and surgical treatments to effectively manage periodontal disease and restore gum health."
+      "Bleeding gums, bad breath and loose teeth are not 'normal' — they are warning signs of gum (periodontal) disease, the #1 cause of tooth loss in adults. The good news: when caught early, gum disease is fully reversible. Even advanced cases can be controlled to save your natural teeth.",
+      "At Dental Solutions Palghar we offer the complete periodontal menu: ultrasonic scaling and polishing for early gingivitis, deep scaling and root planing (SRP) for moderate disease, laser-assisted periodontal therapy for stubborn pockets, and flap surgery, bone grafting and gum-grafting for advanced cases.",
+      "Recent research links untreated gum disease with heart disease, diabetes, stroke, premature birth and Alzheimer's — so treating your gums protects your whole body, not just your mouth. Every periodontal patient leaves with a personalised home-care routine and a 3- or 6-month maintenance schedule."
     ],
     benefits: [
-      "Improved gum health",
-      "Prevention of tooth loss",
-      "Reduced inflammation",
-      "Fresh breath",
-      "Support for overall health"
+      "Stops bleeding gums and bad breath at the source",
+      "Saves teeth that would otherwise be lost",
+      "Reduces gum pockets and stops bone loss",
+      "Laser therapy — less pain, less bleeding, faster healing",
+      "Protects systemic health (heart, diabetes, pregnancy)",
+      "Treats gum recession with grafting for a healthy smile line",
+      "Custom 3-month maintenance plan for long-term stability"
     ],
     process: [
       {
-        title: "Comprehensive Assessment",
-        description: "Thorough evaluation of gum health, pocket depths, and bone levels"
+        title: "Periodontal Assessment",
+        description: "Full-mouth pocket charting, bleeding index, X-rays and bone-level evaluation."
       },
       {
-        title: "Deep Cleaning",
-        description: "Scaling and root planing to remove bacteria and calculus below the gumline"
+        title: "Phase 1 — Deep Cleaning",
+        description: "Ultrasonic scaling and root planing under local anaesthesia to remove sub-gingival plaque, tartar and bacteria."
       },
       {
-        title: "Medication Therapy",
-        description: "Targeted antibiotics or antimicrobials when needed"
+        title: "Laser Periodontal Therapy",
+        description: "Diode-laser decontamination of deep pockets — bactericidal, with minimal bleeding and faster healing."
       },
       {
-        title: "Maintenance Program",
-        description: "Regular follow-up care to prevent disease recurrence"
+        title: "Surgical Phase (if needed)",
+        description: "Flap surgery, bone grafting or gum grafting for severe pockets, bone loss or recession."
+      },
+      {
+        title: "Maintenance Programme",
+        description: "3- or 6-monthly periodontal maintenance appointments — proven to keep teeth for life once gum disease is controlled."
       }
     ],
     faqs: [
       {
-        question: "What are the signs of gum disease?",
-        answer: "Common signs include bleeding when brushing or flossing, red, swollen, or tender gums, persistent bad breath, receding gums, and loose teeth."
+        question: "Why do my gums bleed when I brush?",
+        answer: "Bleeding gums are the earliest sign of gingivitis caused by plaque and tartar at the gumline. With professional scaling and a good home-care routine, bleeding stops within 1-2 weeks. Ignoring it leads to bone loss and loose teeth."
       },
       {
-        question: "Is periodontal disease treatable?",
-        answer: "Yes, periodontal disease is treatable, especially in its early stages. Advanced cases can be managed effectively, though some damage may be irreversible, highlighting the importance of early intervention."
+        question: "How much does gum treatment cost in Palghar?",
+        answer: "Basic scaling and polishing starts from ₹800, deep scaling and root planing (full mouth) from ₹4,000-₹8,000 depending on severity, and laser gum therapy from ₹6,000. Flap surgery is quoted per quadrant after examination. 0% EMI available."
+      },
+      {
+        question: "Is gum disease reversible?",
+        answer: "Early gum disease (gingivitis) is fully reversible. Moderate to advanced periodontitis cannot be 'reversed' — bone that was lost won't grow back without grafting — but the disease can be arrested and teeth saved with proper treatment plus 3-monthly maintenance."
+      },
+      {
+        question: "Will my teeth loosen after deep cleaning?",
+        answer: "No. The tartar was the only thing 'holding' inflamed gums against the teeth. After cleaning, healthy gums and ligaments reattach. Slight sensitivity for 3-7 days is normal."
+      },
+      {
+        question: "Can gum disease affect my overall health?",
+        answer: "Yes. Strong evidence links gum disease with heart disease, poorly controlled diabetes, stroke, pre-term low-birth-weight babies and Alzheimer's. Treating periodontitis improves blood sugar and reduces inflammatory markers across the body."
       }
     ]
   },
   "emergency-dental-care": {
-    title: "Emergency Dental Care",
-    description: "24/7 emergency dental services when you need them most",
+    title: "Emergency Dentist in Palghar — Same-Day Care",
+    description: "24/7 emergency dental care in Palghar — toothache relief, knocked-out tooth, broken tooth, dental abscess and trauma. Same-day appointments, after-hours availability.",
     image: "/services/emergency-dental.jpg",
     longDescription: [
-      "Our emergency dental services provide prompt relief for dental pain and urgent care for dental injuries and acute conditions.",
-      "We prioritize emergency cases to ensure you receive the care you need when you need it most, often offering same-day appointments for true emergencies."
+      "Dental emergencies don't wait for office hours. A throbbing toothache, a knocked-out tooth after an accident, a broken front tooth, or a swollen face from an abscess all need urgent attention to prevent permanent damage and unbearable pain. Dental Solutions Palghar runs a same-day emergency slot every day and offers after-hours phone triage so you're never stranded.",
+      "We handle the full range of dental emergencies: severe toothache, knocked-out (avulsed) teeth, fractured teeth and crowns, lost fillings, dental abscess and facial swelling, post-extraction bleeding, broken braces and wires, sports trauma, and severe orthodontic discomfort. Call us first — we'll tell you exactly what to do at home while you head to the clinic.",
+      "Most emergency visits cost between ₹500 and ₹2,000 for immediate relief. If full treatment (RCT, crown, implant) is needed afterwards, we provide a transparent quote and 0% EMI so cost never delays urgent care."
     ],
     benefits: [
-      "Immediate pain relief",
-      "Same-day appointments",
-      "After-hours availability",
-      "Comprehensive emergency treatment",
-      "Prevention of further damage"
+      "Same-day emergency appointments — every day",
+      "After-hours phone triage for first-aid guidance",
+      "Immediate pain and infection relief",
+      "Re-implantation of knocked-out teeth (within 30-60 mins)",
+      "Emergency RCT, drainage and antibiotics for dental abscess",
+      "On-the-spot temporary repair for broken front teeth",
+      "Trauma management with digital X-ray and CBCT",
+      "Transparent emergency-visit pricing — no surprise bills"
     ],
     process: [
       {
-        title: "Emergency Assessment",
-        description: "Rapid evaluation of your condition and pain level"
+        title: "Call & Phone Triage",
+        description: "Call us first — we advise immediate first-aid and reserve the next emergency slot."
       },
       {
-        title: "Pain Management",
-        description: "Immediate steps to relieve pain and discomfort"
+        title: "Rapid Assessment",
+        description: "Targeted history, examination and digital X-ray to identify the source of pain or trauma."
       },
       {
-        title: "Problem Resolution",
-        description: "Treatment of the underlying issue causing the emergency"
+        title: "Immediate Relief",
+        description: "Pain control via anaesthesia, drainage of abscess, splinting of mobile teeth or temporary restoration as needed."
       },
       {
-        title: "Follow-up Care",
-        description: "Instructions and appointments for any necessary continuing care"
+        title: "Definitive Treatment Plan",
+        description: "Written quote for follow-up RCT, crown, implant or other treatment with 0% EMI options."
+      },
+      {
+        title: "Follow-Up Care",
+        description: "Phone check-in next day plus scheduled appointment to complete treatment."
       }
     ],
     faqs: [
       {
-        question: "What constitutes a dental emergency?",
-        answer: "Dental emergencies include severe pain, knocked-out teeth, loose or broken teeth, severe infections or abscesses, significant soft tissue injury, and persistent bleeding."
+        question: "What counts as a dental emergency?",
+        answer: "Severe or worsening toothache, knocked-out tooth, broken tooth with sharp edges, facial swelling, dental abscess, uncontrolled bleeding after extraction, trauma to the jaw, or a wire/bracket injuring the cheek — all need same-day care. When in doubt, call us."
       },
       {
-        question: "What should I do if my tooth is knocked out?",
-        answer: "Handle the tooth by the crown (not the root), rinse it gently without scrubbing, try to reinsert it if possible, or keep it in milk or saliva, and see a dentist immediately—ideally within 30 minutes."
+        question: "My tooth was knocked out — what do I do?",
+        answer: "Pick the tooth up by the crown (white part) — never the root. Rinse gently with milk or saline (don't scrub). If possible, push it back into the socket and bite on a clean cloth. If not, store it in milk (not water) and reach us within 30-60 minutes — re-implantation success drops sharply after 1 hour."
+      },
+      {
+        question: "Do you treat dental emergencies after hours?",
+        answer: "Our clinic phone is monitored after hours for triage advice. Same-day in-clinic emergency slots are available every day during working hours. Severe trauma is referred to a hospital if life-threatening; we coordinate with maxillofacial colleagues for complex jaw injuries."
+      },
+      {
+        question: "How much does an emergency dental visit cost?",
+        answer: "An emergency consultation with X-ray costs ₹500-₹1,000. Acute pain relief (open access, drainage, temporary filling) is ₹500-₹2,000. Definitive treatment (RCT, crown, implant) is quoted separately and qualifies for 0% EMI."
+      },
+      {
+        question: "Can I take a painkiller and wait?",
+        answer: "Painkillers mask pain but never cure infection. Dental abscesses can spread to the airway or bloodstream within 24-48 hours and become life-threatening. Always see a dentist within 24 hours of severe pain or swelling."
+      }
+    ]
+  },
+  "wisdom-tooth-extraction": {
+    title: "Wisdom Tooth Removal in Palghar — Painless Extraction",
+    description: "Painless wisdom tooth extraction in Palghar by experienced oral surgeons. Impacted wisdom teeth, surgical extraction, minimal swelling, same-day recovery. Transparent pricing & 0% EMI.",
+    image: "/services/dental-implants.jpg",
+    longDescription: [
+      "Wisdom teeth (third molars) erupt between ages 17-25 and frequently cause problems: pain, infection (pericoronitis), crowding of front teeth, cysts, and damage to the neighbouring second molar. Most patients need at least one wisdom tooth removed in their lifetime — but the procedure has a fearsome reputation it no longer deserves.",
+      "At Dental Solutions Palghar our oral surgeons perform painless wisdom tooth extractions using modern surgical protocols: 3D CBCT planning to map the nerve, ultrasonic piezo surgery for minimal trauma, proper anaesthesia, and gentle suturing for fast healing. Most patients return to work the next day with only mild swelling.",
+      "We handle every type — fully erupted, partially erupted, soft-tissue impacted, bony impacted, and complex horizontal/distoangular impactions. Whether you need a single straightforward extraction or all four wisdom teeth removed in one sitting under sedation, we offer fixed-price packages and 0% EMI."
+    ],
+    benefits: [
+      "Painless extraction under local anaesthesia",
+      "3D CBCT-guided planning to protect the inferior alveolar nerve",
+      "Ultrasonic piezo surgery — less trauma, faster healing",
+      "Single-sitting removal of all 4 wisdom teeth (with sedation option)",
+      "Minimal swelling and same-day or next-day return to work for most cases",
+      "Stops recurring pericoronitis pain, infection and bad breath",
+      "Prevents damage to second molar and cyst formation",
+      "Transparent flat-fee pricing with EMI option"
+    ],
+    process: [
+      {
+        title: "Consultation & 3D CBCT",
+        description: "Examination, OPG and (when needed) CBCT scan to map nerves and plan a minimally invasive approach."
+      },
+      {
+        title: "Pre-Surgical Briefing",
+        description: "Written quote, pre-op antibiotics if indicated, and detailed instructions on what to do before and after."
+      },
+      {
+        title: "Painless Extraction",
+        description: "Local anaesthesia (optional sedation), minimal-trauma surgical technique using piezo / ultrasonic instruments."
+      },
+      {
+        title: "Post-Op Care Kit",
+        description: "Written aftercare instructions, prescribed analgesics and antibiotics, and a 24/7 helpline number."
+      },
+      {
+        title: "Suture Removal & Review",
+        description: "Free 7-day follow-up to remove sutures and confirm healing."
+      }
+    ],
+    faqs: [
+      {
+        question: "How much does wisdom tooth removal cost in Palghar?",
+        answer: "A simple wisdom tooth extraction starts from ₹2,500. Surgical extraction of a fully impacted wisdom tooth starts from ₹5,000-₹8,000 depending on complexity and angle. All-four extraction packages start from ₹18,000. CBCT (if needed) is ₹1,500. 0% EMI available."
+      },
+      {
+        question: "Is wisdom tooth extraction painful?",
+        answer: "The procedure itself is completely painless under local anaesthesia. Post-operative discomfort for 2-3 days is normal and easily controlled with prescribed painkillers. Most patients describe it as much less painful than they had feared."
+      },
+      {
+        question: "How long is the recovery?",
+        answer: "Mild swelling and discomfort peak at 48 hours and resolve in 5-7 days. Most patients return to work the next day; physically demanding jobs may need 2-3 days off. Full bone healing takes 4-6 weeks but you can eat and speak normally within a few days."
+      },
+      {
+        question: "Do all wisdom teeth need to be removed?",
+        answer: "No. Fully erupted, functional and easy-to-clean wisdom teeth can be kept. We recommend removal when there is recurring pericoronitis, decay, cyst formation, damage to the second molar, or impaction that threatens future problems. CBCT helps decide objectively."
+      },
+      {
+        question: "Can all four wisdom teeth be removed at once?",
+        answer: "Yes — especially under conscious sedation. It saves time, money and one round of swelling. Suitability depends on impaction severity, medical history and your preference. We discuss both options after examination."
+      }
+    ]
+  },
+  "smile-makeover": {
+    title: "Smile Makeover in Palghar — Cosmetic Dentistry",
+    description: "Bespoke smile makeovers in Palghar combining veneers, teeth whitening, composite bonding, gum contouring and orthodontics. Digital smile design with 3D preview before treatment.",
+    image: "/services/teeth-whitening.jpg",
+    longDescription: [
+      "A smile makeover is a custom combination of cosmetic dental treatments designed to give you the smile you've always wanted. At Dental Solutions Palghar we use Digital Smile Design (DSD) — you'll see a 3D digital preview of your new smile before any treatment begins, so there are zero surprises.",
+      "Depending on what you want to change, your smile makeover may combine: professional teeth whitening, porcelain or composite veneers, edge bonding, gum contouring (for a 'gummy smile'), orthodontic alignment (braces or aligners), and tooth-coloured crowns. We plan everything around your face shape, skin tone and personality — not a copy-paste 'Hollywood smile'.",
+      "Our cosmetic dentists trained in advanced aesthetic protocols deliver natural-looking results that age well. Whether you need a single chipped front tooth fixed or a complete 8-10 unit veneer makeover for your wedding, we offer transparent fixed-quote packages and 0% EMI."
+    ],
+    benefits: [
+      "Digital Smile Design — 3D preview before treatment starts",
+      "Personalised plan combining whitening, veneers, bonding, ortho, gum reshaping",
+      "Natural-looking results matched to your face and skin tone",
+      "Minimal-prep / no-prep veneer options preserve tooth structure",
+      "Single-visit composite bonding for small chips and gaps",
+      "Premium ceramic veneers for long-lasting front-tooth aesthetics",
+      "Fixed-quote packages with 0% EMI",
+      "Pre-wedding / event timeline planning"
+    ],
+    process: [
+      {
+        title: "Smile Goals Consultation",
+        description: "Free consultation, photographs and discussion of what you want to change."
+      },
+      {
+        title: "Digital Smile Design (DSD)",
+        description: "3D mock-up of your future smile based on your face, lips and personality."
+      },
+      {
+        title: "Customised Treatment Plan",
+        description: "Combination of whitening, veneers, bonding, ortho and gum reshaping with transparent pricing."
+      },
+      {
+        title: "Phased Treatment Delivery",
+        description: "Treatments delivered in the right sequence — usually 2-4 visits across a few weeks."
+      },
+      {
+        title: "Final Polish & Maintenance Plan",
+        description: "Final shade match, photographs and a long-term maintenance schedule to keep your smile bright."
+      }
+    ],
+    faqs: [
+      {
+        question: "How much does a smile makeover cost in Palghar?",
+        answer: "It depends on what's involved. A simple whitening + composite-bonding makeover starts from ₹15,000. A 6-unit porcelain veneer makeover starts from ₹1,20,000. Full 10-unit ceramic veneers with whitening and gum contouring start from ₹2,50,000. Every quote is fixed and qualifies for 0% EMI."
+      },
+      {
+        question: "Will veneers damage my natural teeth?",
+        answer: "Modern minimal-prep and no-prep veneers preserve most of your natural enamel. Some traditional cases need 0.3-0.5mm enamel reduction. We always discuss options — including reversible composite bonding for younger patients — before recommending veneers."
+      },
+      {
+        question: "How long do smile-makeover results last?",
+        answer: "Porcelain veneers last 12-15+ years, composite bonding 5-7 years, whitening 1-3 years (touch-ups recommended). With good hygiene and 6-monthly checkups your makeover keeps looking great for over a decade."
+      },
+      {
+        question: "Can I see my smile design before treatment?",
+        answer: "Yes — that's the whole point of Digital Smile Design. You see a 3D digital preview and (for veneer cases) a try-in mock-up in your own mouth before any irreversible work is done."
+      },
+      {
+        question: "I have a wedding in 3 months — is that enough time?",
+        answer: "Usually yes. Whitening + bonding takes 1-2 weeks. Veneer makeovers take 3-5 weeks. We routinely run pre-wedding smile timelines and recommend booking your consultation 8-12 weeks before the event for a relaxed schedule."
+      }
+    ]
+  },
+  "dentures-and-prosthetics": {
+    title: "Dentures in Palghar — Complete & Partial Dentures",
+    description: "Custom-fitted complete dentures, partial dentures, flexible (Valplast) dentures and implant-supported dentures in Palghar. Natural-looking smile, comfortable bite, transparent pricing.",
+    image: "/services/general-dentistry.jpg",
+    longDescription: [
+      "Missing teeth shouldn't mean an uncomfortable smile or a soft-food-only diet. Dental Solutions Palghar offers the complete prosthodontic menu — from affordable acrylic dentures to premium implant-supported overdentures — designed to restore your bite, your speech and your confidence.",
+      "We craft every denture in-house with precise impressions, individual tooth selection (shape, size, shade) and try-in appointments so you approve your smile before final fabrication. Our prosthodontists offer complete dentures, removable partial dentures (cast metal and acrylic), flexible Valplast dentures (no metal clasps), and implant-supported snap-on overdentures.",
+      "For patients who have struggled with loose, ill-fitting dentures from elsewhere — we specialise in denture re-fits, relines, and converting unstable dentures to implant-supported overdentures (just 2-4 implants per arch can give you a denture that never slips again)."
+    ],
+    benefits: [
+      "Complete, partial, flexible (Valplast) and implant-supported options",
+      "Natural-looking, individually selected tooth shape and shade",
+      "Multiple try-in appointments before final delivery",
+      "Implant overdentures eliminate slipping and adhesive paste",
+      "Restored chewing efficiency — eat what you love again",
+      "Improved speech and confident smile",
+      "Free re-fits and adjustments for the first 6 months",
+      "Transparent pricing with 0% EMI on implant overdentures"
+    ],
+    process: [
+      {
+        title: "Consultation & Impressions",
+        description: "Examination, X-rays, photographs and precise digital or PVS impressions."
+      },
+      {
+        title: "Bite Registration",
+        description: "Recording your jaw relation and selecting tooth shape, size and shade to suit your face."
+      },
+      {
+        title: "Wax Try-In",
+        description: "Try the denture in wax form to approve the smile, speech and bite before final processing."
+      },
+      {
+        title: "Final Delivery",
+        description: "Fitting, polishing and detailed instructions on wear, cleaning and care."
+      },
+      {
+        title: "Free 6-Month Adjustments",
+        description: "Complimentary review and minor adjustments to ensure a perfect, pain-free fit."
+      }
+    ],
+    faqs: [
+      {
+        question: "How much do dentures cost in Palghar?",
+        answer: "Acrylic complete dentures (per arch) start from ₹8,000. Premium aesthetic complete dentures from ₹15,000. Cast partial dentures from ₹12,000. Flexible Valplast partial dentures from ₹10,000. Implant-supported overdentures (2-implant) start from ₹85,000 per arch — and qualify for 0% EMI."
+      },
+      {
+        question: "My denture keeps slipping — what can I do?",
+        answer: "Loose dentures are the #1 patient complaint. Solutions include a denture reline (₹2,500-₹5,000), a new properly-fitted denture, or — best of all — converting to an implant-supported overdenture where 2-4 small implants click into the denture so it never slips again."
+      },
+      {
+        question: "How long do dentures take to make?",
+        answer: "Standard complete or partial dentures take 4-5 appointments over 2-3 weeks. Implant-supported overdentures take 3-6 months because the implants need to integrate with the jawbone first."
+      },
+      {
+        question: "Will I be able to eat normally with dentures?",
+        answer: "There is a 2-4 week learning period. Start with soft foods and progress gradually. With conventional dentures you'll regain about 25-30% of natural chewing efficiency; implant-supported overdentures restore 70-90%."
+      },
+      {
+        question: "Should I get dentures or dental implants?",
+        answer: "Dental implants are the gold standard if budget and bone allow. Conventional dentures are far more affordable and a perfectly good option for many patients. Implant-supported overdentures are an excellent middle path — much more stable than regular dentures at a fraction of the cost of full-mouth implants. We'll explain all three options with transparent pricing."
       }
     ]
   }
 };
+
 
 const ServicePage = () => {
   const { serviceSlug } = useParams<{ serviceSlug: string }>();
