@@ -122,7 +122,7 @@ const Header = () => {
             {/* Logo */}
             <Link 
               to="/" 
-              className="text-base sm:text-lg md:text-lg lg:text-xl font-bold text-primary flex-shrink-0"
+              className="text-lg sm:text-lg md:text-lg lg:text-xl font-bold text-primary flex-shrink-0"
             >
               Dental Solutions Palghar
             </Link>
