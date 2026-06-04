@@ -113,53 +113,24 @@ const Footer = () => {
 
           <div className="flex flex-col items-start justify-start">
             <h4 className="text-xl font-bold mb-4">Opening Hours</h4>
-            <div className="space-y-4">
-              <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium" 
-                   style={{ 
-                     backgroundColor: isOpen ? 'rgba(34, 197, 94, 0.2)' : 'rgba(239, 68, 68, 0.2)',
-                     color: isOpen ? 'rgb(34, 197, 94)' : 'rgb(239, 68, 68)'
-                   }}>
-                <div className="w-2 h-2 rounded-full mr-2" 
-                     style={{ 
-                       backgroundColor: isOpen ? 'rgb(34, 197, 94)' : 'rgb(239, 68, 68)'
-                     }}>
-                </div>
-                <span>{isOpen ? 'Open Now' : 'Closed Now'}</span>
+            <div className="space-y-5 w-full">
+              <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-semibold tracking-wide ${isOpen ? 'bg-emerald-500/15 text-emerald-400' : 'bg-red-500/15 text-red-400'}`}>
+                <span className="relative flex h-2 w-2">
+                  <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${isOpen ? 'bg-emerald-400' : 'bg-red-400'}`}></span>
+                  <span className={`relative inline-flex rounded-full h-2 w-2 ${isOpen ? 'bg-emerald-400' : 'bg-red-400'}`}></span>
+                </span>
+                {isOpen ? 'Open Now' : 'Closed Now'}
               </div>
-              
-              <div className="space-y-2 text-sm">
-                <div className="flex justify-between items-center border-b border-gray-800 pb-2">
-                  <span className="text-gray-400 font-medium">Monday</span>
-                  <span className="text-gray-400">9:30 am–2 pm, 5–9 pm</span>
+
+              <div className="space-y-0 text-sm">
+                <div className="flex justify-between items-center py-3 border-b border-white/10">
+                  <span className="text-white/80 font-medium">Monday – Saturday</span>
+                  <span className="text-white/60 tabular-nums">9:30 am – 2 pm<br className="sm:hidden" /><span className="hidden sm:inline">, </span>5 – 9 pm</span>
                 </div>
-                <div className="flex justify-between items-center border-b border-gray-800 pb-2">
-                  <span className="text-gray-400 font-medium">Tuesday</span>
-                  <span className="text-gray-400">9:30 am–2 pm, 5–9 pm</span>
+                <div className="flex justify-between items-center py-3">
+                  <span className="text-white/80 font-medium">Sunday</span>
+                  <span className="text-red-400/80 font-medium">Closed</span>
                 </div>
-                <div className="flex justify-between items-center border-b border-gray-800 pb-2">
-                  <span className="text-gray-400 font-medium">Wednesday</span>
-                  <span className="text-gray-400">9:30 am–2 pm, 5–9 pm</span>
-                </div>
-                <div className="flex justify-between items-center border-b border-gray-800 pb-2">
-                  <span className="text-gray-400 font-medium">Thursday</span>
-                  <span className="text-gray-400">9:30 am–2 pm, 5–9 pm</span>
-                </div>
-                <div className="flex justify-between items-center border-b border-gray-800 pb-2">
-                  <span className="text-gray-400 font-medium">Friday</span>
-                  <span className="text-gray-400">9:30 am–2 pm, 5–9 pm</span>
-                </div>
-                <div className="flex justify-between items-center border-b border-gray-800 pb-2">
-                  <span className="text-gray-400 font-medium">Saturday</span>
-                  <span className="text-gray-400">9:30 am–2 pm, 5–9 pm</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-400 font-medium">Sunday</span>
-                  <span className="text-gray-400">Closed</span>
-                </div>
-              </div>
-              
-              <div className="text-xs text-gray-400 mt-3">
-                Last updated: {currentTime.toLocaleDateString()} at {currentTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
               </div>
             </div>
           </div>
