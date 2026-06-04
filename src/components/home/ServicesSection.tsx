@@ -160,7 +160,7 @@ const ServicesSection = () => {
             >
               <div className="card-elevated overflow-hidden h-full flex flex-col">
                 {/* Image container */}
-                <div className="relative h-52 overflow-hidden">
+                <div className="relative h-40 sm:h-52 overflow-hidden">
                   <img
                     src={service.image}
                     alt={`${service.title} in Palghar - Professional dental care and treatment at Dental Solutions Palghar`}
