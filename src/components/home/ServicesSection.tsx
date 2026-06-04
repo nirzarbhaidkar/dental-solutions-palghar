@@ -99,8 +99,33 @@ const ServicesSection = () => {
       icon: <AlarmClock className="h-6 w-6" />,
       gradient: "from-orange-500 to-red-500",
       slug: "emergency-dental-care"
+    },
+    {
+      title: "Wisdom Tooth Removal",
+      description: "Painless wisdom tooth extraction with 3D CBCT-guided surgery",
+      image: "/services/dental-implants.jpg",
+      icon: <Sparkles className="h-6 w-6" />,
+      gradient: "from-slate-500 to-zinc-600",
+      slug: "wisdom-tooth-extraction"
+    },
+    {
+      title: "Smile Makeover",
+      description: "Digital Smile Design with veneers, whitening and bonding",
+      image: "/services/teeth-whitening.jpg",
+      icon: <Sparkles className="h-6 w-6" />,
+      gradient: "from-fuchsia-500 to-pink-500",
+      slug: "smile-makeover"
+    },
+    {
+      title: "Dentures & Prosthetics",
+      description: "Complete, partial, flexible and implant-supported dentures",
+      image: "/services/general-dentistry.jpg",
+      icon: <Heart className="h-6 w-6" />,
+      gradient: "from-teal-500 to-cyan-600",
+      slug: "dentures-and-prosthetics"
     }
   ];
+
 
   const containerVariants = {
     hidden: { opacity: 0 },
