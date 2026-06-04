@@ -179,9 +179,12 @@ const HeroSection = () => {
                   )
                 }
               >
-                <span className="flex flex-col items-center justify-center text-center leading-tight">
-                  <span className="text-[10px] sm:text-xs font-medium opacity-90">Instant Response</span>
-                  <span className="text-base sm:text-lg">Book on WhatsApp</span>
+                <span className="flex items-center gap-2 sm:gap-3">
+                  <WhatsAppIcon className="w-6 h-6 sm:w-7 sm:h-7" />
+                  <span className="flex flex-col items-start text-center leading-tight">
+                    <span className="text-[10px] sm:text-xs font-medium opacity-90">Instant Response</span>
+                    <span className="text-base sm:text-lg">Book on WhatsApp</span>
+                  </span>
                 </span>
               </Button>
             </motion.div>

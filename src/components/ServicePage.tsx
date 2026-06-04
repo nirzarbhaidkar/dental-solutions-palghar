@@ -5,7 +5,8 @@ import HeadContent from "@/components/HeadContent";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, MessageSquare, Phone } from "lucide-react";
+import { ArrowLeft, Phone } from "lucide-react";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
 interface ServiceContent {
   title: string;
