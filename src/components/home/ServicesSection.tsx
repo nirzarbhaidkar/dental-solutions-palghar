@@ -125,28 +125,28 @@ const ServicesSection = () => {
   };
 
   return (
-    <section id="services" className="py-20 md:py-28 bg-gradient-to-b from-background via-muted/30 to-background relative overflow-hidden">
+    <section id="services" className="py-12 sm:py-20 md:py-28 bg-gradient-to-b from-background via-muted/30 to-background relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
       
       <div className="container mx-auto px-4">
         <ScrollReveal>
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 sm:mb-16">
             <span className="badge-premium mb-4">
               <Sparkles className="w-4 h-4" />
               Our Services
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
               Comprehensive <span className="gradient-text">Dental Services in Palghar</span>
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+            <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-lg">
               As the best dental clinic in Palghar, we offer a wide range of dental treatments including implants, braces, root canal, and more — all under one roof near Palghar station.
             </p>
           </div>
         </ScrollReveal>
 
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
