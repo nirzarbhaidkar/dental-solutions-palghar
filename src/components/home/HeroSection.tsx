@@ -104,7 +104,7 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10 py-16 sm:py-20">
+      <div className="container mx-auto px-4 relative z-10 py-10 sm:py-20">
         <div className="max-w-4xl mx-auto text-center">
           {/* Trust badge */}
           <motion.div
@@ -126,7 +126,7 @@ const HeroSection = () => {
           </motion.div>
 
           {/* Rotating headlines */}
-          <div className="min-h-[88px] sm:min-h-[120px] md:min-h-[144px] mb-4 sm:mb-6 flex items-center justify-center">
+          <div className="min-h-[72px] sm:min-h-[120px] md:min-h-[144px] mb-3 sm:mb-6 flex items-center justify-center">
             <AnimatePresence mode="wait">
               <motion.h1
                 key={currentHeadlineIndex}
@@ -134,7 +134,7 @@ const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -30 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="text-[28px] leading-[1.15] sm:text-4xl md:text-5xl lg:text-6xl font-bold sm:leading-tight px-2"
+                className="text-[24px] leading-[1.15] sm:text-4xl md:text-5xl lg:text-6xl font-bold sm:leading-tight px-1"
                 aria-live="polite"
               >
                 <span className="text-foreground">{headlines[currentHeadlineIndex].title}</span>{" "}
@@ -147,7 +147,7 @@ const HeroSection = () => {
 
           {/* Subheadline */}
           <motion.p
-            className="text-muted-foreground text-sm sm:text-lg md:text-xl max-w-2xl mx-auto mb-7 sm:mb-10 leading-relaxed px-2"
+            className="text-muted-foreground text-[13px] sm:text-lg md:text-xl max-w-2xl mx-auto mb-5 sm:mb-10 leading-relaxed px-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
