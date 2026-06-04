@@ -122,26 +122,48 @@ const StructuredData = () => {
               "url": "https://dentalsolutionspalghar.in/services/periodontal"
             }
           ],
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "telephone": "+918600892884",
+              "contactType": "Appointments",
+              "areaServed": ["IN"],
+              "availableLanguage": ["English", "Hindi", "Marathi", "Gujarati"],
+              "contactOption": "TollFree"
+            },
+            {
+              "@type": "ContactPoint",
+              "telephone": "+918600892884",
+              "contactType": "Emergency",
+              "areaServed": ["IN"],
+              "availableLanguage": ["English", "Hindi", "Marathi"]
+            },
+            {
+              "@type": "ContactPoint",
+              "email": "contact@dentalsolutionspalghar.com",
+              "contactType": "Customer Service",
+              "availableLanguage": ["English", "Hindi"]
+            }
+          ],
           "areaServed": [
+            { "@type": "City", "name": "Palghar", "containedInPlace": { "@type": "State", "name": "Maharashtra" } },
+            { "@type": "City", "name": "Boisar" },
+            { "@type": "City", "name": "Tarapur" },
+            { "@type": "City", "name": "Safale" },
+            { "@type": "City", "name": "Kelve Road" },
+            { "@type": "City", "name": "Virar" },
+            { "@type": "City", "name": "Vasai" },
+            { "@type": "City", "name": "Manor" },
+            { "@type": "City", "name": "Wada" },
+            { "@type": "City", "name": "Dahanu" },
             {
-              "@type": "City",
-              "name": "Palghar"
-            },
-            {
-              "@type": "City",
-              "name": "Boisar"
-            },
-            {
-              "@type": "City",
-              "name": "Tarapur"
-            },
-            {
-              "@type": "City",
-              "name": "Safale"
-            },
-            {
-              "@type": "City",
-              "name": "Kelve Road"
+              "@type": "GeoCircle",
+              "geoMidpoint": {
+                "@type": "GeoCoordinates",
+                "latitude": 19.694437699999998,
+                "longitude": 72.76597319999999
+              },
+              "geoRadius": "50000"
             }
           ],
           "amenityFeature": [

@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
+import Contact from "./pages/Contact";
 import ServicePage from "./components/ServicePage";
 
 // Create a client
@@ -24,6 +25,7 @@ const App = () => {
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/services/:serviceSlug" element={<ServicePage />} />
+              <Route path="/contact" element={<Contact />} />
               <Route path="/find-dentist-near-me" element={<Navigate to="/" replace />} />
               <Route path="/best-dentist-palghar" element={<Navigate to="/" replace />} />
               <Route path="/dental-clinic-near-me" element={<Navigate to="/" replace />} />
