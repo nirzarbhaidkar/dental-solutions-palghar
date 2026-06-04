@@ -77,6 +77,10 @@ export default {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       keyframes: {
+        shine: {
+          "0%": { backgroundPosition: "200% 0" },
+          "100%": { backgroundPosition: "-200% 0" },
+        },
         "fade-up": {
           "0%": {
             opacity: "0",

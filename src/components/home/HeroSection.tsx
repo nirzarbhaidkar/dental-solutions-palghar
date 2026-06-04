@@ -155,49 +155,68 @@ const HeroSection = () => {
             Your trusted dental care partner in Palghar — modern technology, gentle hands, beautiful smiles.
           </motion.p>
 
-          {/* CTA Buttons — mobile first */}
+          {/* World-class CTAs — mobile first */}
           <motion.div
-            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-4 mb-8 sm:mb-12 px-2 max-w-md sm:max-w-none mx-auto"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-12 px-2 max-w-sm sm:max-w-none mx-auto w-full"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            {/* Primary WhatsApp CTA */}
-            <motion.button
-              whileTap={{ scale: 0.97 }}
-              onClick={() =>
-                window.open(
-                  "https://wa.me/918600892884?text=Hello%2C%20I%E2%80%99d%20like%20to%20book%20an%20appointment%20at%20Dental%20Solutions%20Palghar.%20Please%20let%20me%20know%20the%20available%20slots.%20Thank%20you!",
-                  "_blank"
-                )
-              }
+            {/* Primary — WhatsApp */}
+            <motion.a
+              href="https://wa.me/918600892884?text=Hello%2C%20I%E2%80%99d%20like%20to%20book%20an%20appointment%20at%20Dental%20Solutions%20Palghar.%20Please%20let%20me%20know%20the%20available%20slots.%20Thank%20you!"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Book appointment on WhatsApp"
-              className="relative w-full sm:w-auto min-h-[56px] px-5 sm:px-7 rounded-2xl bg-[#25D366] hover:bg-[#1ebe5d] text-white font-semibold shadow-[0_8px_24px_-8px_rgba(37,211,102,0.6)] transition-colors duration-200 flex items-center justify-center gap-3 active:translate-y-px"
+              whileTap={{ scale: 0.98 }}
+              className="group relative isolate w-full sm:w-auto h-[60px] sm:h-[64px] rounded-2xl overflow-hidden flex items-center pl-2 pr-5 sm:pr-7 gap-3.5 text-white font-semibold select-none
+                         bg-gradient-to-br from-[#25D366] via-[#1FB855] to-[#128C7E]
+                         shadow-[0_10px_30px_-10px_rgba(18,140,126,0.7),inset_0_1px_0_rgba(255,255,255,0.25)]
+                         ring-1 ring-white/10 transition-transform duration-200 active:translate-y-px"
             >
-              <span className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-white shrink-0 shadow-sm">
-                <WhatsAppIcon size={22} />
+              {/* sheen */}
+              <span aria-hidden className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500
+                                          bg-[linear-gradient(110deg,transparent_35%,rgba(255,255,255,0.35)_50%,transparent_65%)] bg-[length:200%_100%] animate-[shine_2.4s_linear_infinite]" />
+              {/* live pulse dot */}
+              <span aria-hidden className="absolute top-2 right-3 flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-white/70 animate-ping" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
               </span>
-              <span className="flex flex-col items-start leading-tight text-left">
-                <span className="text-[10px] sm:text-xs font-medium text-white/85">Instant reply · 24/7</span>
-                <span className="text-[15px] sm:text-base font-bold">Book on WhatsApp</span>
-              </span>
-            </motion.button>
 
-            {/* Secondary Call CTA */}
-            <motion.button
-              whileTap={{ scale: 0.97 }}
-              onClick={() => window.open("tel:+918600892884")}
+              <span className="relative flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-white shrink-0 shadow-md">
+                <WhatsAppIcon size={26} />
+              </span>
+              <span className="relative flex flex-col items-start leading-tight text-left min-w-0">
+                <span className="text-[10px] sm:text-[11px] font-medium tracking-wide uppercase text-white/85">Instant reply · 24/7</span>
+                <span className="text-[16px] sm:text-[17px] font-extrabold tracking-tight">Book on WhatsApp</span>
+              </span>
+              <svg aria-hidden viewBox="0 0 24 24" className="relative ml-auto h-5 w-5 text-white/90 transition-transform duration-200 group-hover:translate-x-0.5">
+                <path fill="currentColor" d="M13.3 5.3a1 1 0 0 1 1.4 0l5.6 5.6a1.5 1.5 0 0 1 0 2.1l-5.6 5.6a1 1 0 1 1-1.4-1.4l4.3-4.3H4.5a1 1 0 1 1 0-2h13.1l-4.3-4.2a1 1 0 0 1 0-1.4z" />
+              </svg>
+            </motion.a>
+
+            {/* Secondary — Call */}
+            <motion.a
+              href="tel:+918600892884"
               aria-label="Call clinic now"
-              className="relative w-full sm:w-auto min-h-[56px] px-5 sm:px-7 rounded-2xl bg-white/70 dark:bg-white/5 backdrop-blur border border-primary/25 hover:border-primary/50 hover:bg-white text-foreground font-semibold transition-colors duration-200 flex items-center justify-center gap-3 active:translate-y-px"
+              whileTap={{ scale: 0.98 }}
+              className="group relative w-full sm:w-auto h-[60px] sm:h-[64px] rounded-2xl overflow-hidden flex items-center pl-2 pr-5 sm:pr-7 gap-3.5 font-semibold select-none
+                         bg-white/85 dark:bg-white/[0.06] backdrop-blur-xl
+                         border border-primary/20 hover:border-primary/45
+                         shadow-[0_8px_24px_-12px_rgba(11,122,159,0.35)]
+                         transition-colors duration-200 active:translate-y-px"
             >
-              <span className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-primary/10 shrink-0">
+              <span className="relative flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-primary/10 group-hover:bg-primary/15 transition-colors shrink-0">
                 <Phone className="h-5 w-5 text-primary" />
               </span>
-              <span className="flex flex-col items-start leading-tight text-left">
-                <span className="text-[10px] sm:text-xs font-medium text-muted-foreground">Talk to us now</span>
-                <span className="text-[15px] sm:text-base font-bold">Call Clinic</span>
+              <span className="flex flex-col items-start leading-tight text-left min-w-0">
+                <span className="text-[10px] sm:text-[11px] font-medium tracking-wide uppercase text-muted-foreground">Talk to us now</span>
+                <span className="text-[16px] sm:text-[17px] font-extrabold tracking-tight text-foreground">Call Clinic</span>
               </span>
-            </motion.button>
+              <svg aria-hidden viewBox="0 0 24 24" className="ml-auto h-5 w-5 text-primary/70 transition-transform duration-200 group-hover:translate-x-0.5">
+                <path fill="currentColor" d="M13.3 5.3a1 1 0 0 1 1.4 0l5.6 5.6a1.5 1.5 0 0 1 0 2.1l-5.6 5.6a1 1 0 1 1-1.4-1.4l4.3-4.3H4.5a1 1 0 1 1 0-2h13.1l-4.3-4.2a1 1 0 0 1 0-1.4z" />
+              </svg>
+            </motion.a>
           </motion.div>
 
           {/* Trust badges row */}
