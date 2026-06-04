@@ -149,46 +149,76 @@ const serviceContent: Record<string, ServiceContent> = {
     ]
   },
   "dental-implants": {
-    title: "Dental Implants",
-    description: "Permanent solutions for missing teeth with natural-looking results",
+    title: "Dental Implants in Palghar",
+    description: "Palghar's trusted implant centre offering single-tooth, multiple, full-mouth and All-on-4 dental implants with FDA-approved titanium implants, 3D-guided placement and lifetime warranty.",
     image: "/services/dental-implants.jpg",
     longDescription: [
-      "Dental implants provide a permanent foundation for replacement teeth that look, feel, and function like natural teeth.",
-      "Our implant solutions restore both the appearance and functionality of your smile, preventing bone loss and maintaining facial structure."
+      "Dental Solutions Palghar is a dedicated implant centre delivering world-class tooth replacement using premium European and Korean implant systems (Nobel Biocare, Straumann, Osstem). Whether you're missing a single tooth, several teeth, or need full-mouth rehabilitation, our implantologists plan every case with 3D CBCT scans for precise, predictable, and pain-free placement.",
+      "Unlike removable dentures or tooth-supported bridges, dental implants replace the tooth root itself. This stops jawbone shrinkage, preserves your facial structure, and gives you teeth that look, feel, and bite exactly like natural ones — often within a single surgical visit using our flapless and immediate-loading protocols.",
+      "We offer the complete implant menu: single-tooth implants, implant-supported bridges, All-on-4 and All-on-6 full-arch rehabilitation, zygomatic implants for severe bone loss, and same-day 'teeth in a day' solutions. Every implant placed at our Palghar clinic carries a written warranty and lifetime follow-up.",
+      "Patients travel to us from Palghar, Boisar, Tarapur, Virar, Vasai and across the Mumbai-Ahmedabad corridor because we combine specialist expertise, transparent pricing, EMI options, and a proven 98%+ success rate backed by 4.9★ Google reviews."
     ],
     benefits: [
-      "Permanent tooth replacement",
-      "Natural look and feel",
-      "Preserved facial structure",
-      "Improved speech and chewing",
-      "No adhesives or removable parts"
+      "Permanent, lifetime tooth replacement — no slipping or removal",
+      "Looks, feels and functions like a natural tooth",
+      "Prevents jawbone loss and facial sagging that follows tooth loss",
+      "Restores 100% chewing efficiency — eat anything you love",
+      "Protects adjacent healthy teeth (no grinding required, unlike bridges)",
+      "98%+ clinical success rate with premium implant brands",
+      "Single-visit immediate loading available for eligible cases",
+      "Flexible EMI plans and transparent, all-inclusive pricing",
+      "Lifetime warranty on the implant fixture"
     ],
     process: [
       {
-        title: "Comprehensive Evaluation",
-        description: "Assessment of bone structure, oral health, and treatment goals"
+        title: "Free Implant Consultation & 3D CBCT Scan",
+        description: "Comprehensive evaluation including digital X-rays, CBCT scan and bone-density analysis to create your personalised, computer-guided treatment plan."
       },
       {
-        title: "Implant Placement",
-        description: "Surgical placement of the titanium implant into the jawbone"
+        title: "Treatment Planning & Quote",
+        description: "Transparent written quote with implant brand options (Nobel Biocare / Straumann / Osstem), timeline, and EMI options — no hidden costs."
       },
       {
-        title: "Healing and Integration",
-        description: "Period of osseointegration where the implant fuses with the bone"
+        title: "Painless Implant Placement",
+        description: "Surgical placement under local anaesthesia using flapless, computer-guided technique. Most single implants are placed in under 45 minutes."
       },
       {
-        title: "Restoration Placement",
-        description: "Attachment of the custom-designed crown, bridge, or denture"
+        title: "Osseointegration (Healing)",
+        description: "3-6 month healing period during which the titanium implant fuses with your jawbone. A temporary tooth is provided so you're never without a smile."
+      },
+      {
+        title: "Abutment & Final Crown",
+        description: "Custom-designed zirconia or PFM crown is digitally fabricated and attached for a perfectly natural look and bite."
+      },
+      {
+        title: "Lifetime Aftercare",
+        description: "Free 6-monthly implant maintenance check-ups and written warranty for complete peace of mind."
       }
     ],
     faqs: [
       {
+        question: "How much do dental implants cost in Palghar?",
+        answer: "At Dental Solutions Palghar, single-tooth implants start from ₹25,000 (Korean systems) and go up to ₹55,000 for premium Swiss/Swedish brands like Straumann and Nobel Biocare. Full-mouth All-on-4 rehabilitation starts from ₹2,50,000 per arch. Every quote is all-inclusive (implant + abutment + crown + scans) and we offer 0% EMI options."
+      },
+      {
         question: "Are dental implants painful?",
-        answer: "Most patients report less discomfort than expected. We provide appropriate anesthesia during the procedure and pain management options for recovery."
+        answer: "No. The procedure is done under local anaesthesia and most patients report it's more comfortable than a tooth extraction. Mild swelling for 2-3 days is normal and easily managed with prescribed medication."
       },
       {
         question: "How long do dental implants last?",
-        answer: "With proper care, dental implants can last a lifetime. The visible portion (crown) may need replacement after 10-15 years due to normal wear."
+        answer: "With proper oral hygiene and 6-monthly check-ups, the titanium implant itself lasts a lifetime. The crown on top may need replacement after 10-15 years. We provide a written lifetime warranty on the implant fixture."
+      },
+      {
+        question: "Can I get teeth in a single day?",
+        answer: "Yes — for suitable cases we offer immediate-loading 'Teeth in a Day' and All-on-4 protocols, where implants and a fixed temporary bridge are placed in the same visit. Suitability is confirmed after a free CBCT scan."
+      },
+      {
+        question: "What if I don't have enough bone for an implant?",
+        answer: "We routinely perform sinus lifts, bone grafting, and ridge augmentation procedures to rebuild bone. For severe cases, zygomatic implants anchored in the cheekbone make implants possible even when conventional implants cannot."
+      },
+      {
+        question: "Why choose Dental Solutions Palghar over other implant clinics?",
+        answer: "We are a dedicated multispeciality implant centre with in-house CBCT, 15+ years of implantology experience, only FDA-approved premium brands, written lifetime warranty, 4.9★ Google reviews, and transparent EMI pricing — patients travel from Boisar, Tarapur, Virar and Vasai for our expertise."
       }
     ]
   },
