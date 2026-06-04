@@ -15,11 +15,11 @@ interface SEOProps {
 }
 
 const SEO = ({
-  title = "Dentist in Palghar | Dental Solutions Palghar",
-  description = "Trusted dentist in Palghar offering implants, braces, root canal, teeth whitening & emergency dental care. Book your appointment today!",
+  title = "Best Dentist in Palghar | Dental Solutions — Book Online",
+  description = "Top-rated dentist in Palghar with 4.9★ Google reviews. Painless implants, braces, root canal, whitening & emergency dental care. Book your appointment today.",
   image = "/og-image.jpg", 
   article = false,
-  keywords = "dentist in palghar, palghar dentist, dental clinic in palghar, best dentist palghar, dentist near me palghar, affordable dentist palghar, teeth whitening palghar, root canal palghar, dental implants palghar, orthodontist palghar, kids dentist palghar, emergency dentist palghar, dental clinic near palghar station, tooth extraction palghar, dental checkup palghar",
+  keywords = "dentist in palghar, best dentist in palghar, dental clinic in palghar, palghar dentist, dentist near me palghar, top dentist palghar, dental hospital palghar, affordable dentist palghar, teeth whitening palghar, root canal palghar, dental implants palghar, orthodontist palghar, kids dentist palghar, emergency dentist palghar, dental clinic near palghar station, tooth extraction palghar, dental checkup palghar, painless dentist palghar",
   canonicalUrl,
   publishedTime,
   modifiedTime,
