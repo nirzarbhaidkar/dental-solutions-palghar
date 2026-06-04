@@ -80,23 +80,23 @@ const HeroSection = () => {
           }}
         />
         
-        {/* Floating icons with subtle animation */}
+        {/* Floating icons - hidden on mobile to reduce GPU cost */}
         <motion.div
-          className="absolute top-1/4 left-[10%] text-primary/20"
+          className="hidden sm:block absolute top-1/4 left-[10%] text-primary/20"
           animate={{ y: [-5, 5, -5], rotate: [0, 5, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         >
           <Sparkles size={48} />
         </motion.div>
         <motion.div
-          className="absolute top-1/3 right-[15%] text-blue-500/20"
+          className="hidden sm:block absolute top-1/3 right-[15%] text-blue-500/20"
           animate={{ y: [5, -5, 5], rotate: [0, -5, 0] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
         >
           <Star size={40} />
         </motion.div>
         <motion.div
-          className="absolute bottom-1/3 left-[15%] text-primary/15"
+          className="hidden sm:block absolute bottom-1/3 left-[15%] text-primary/15"
           animate={{ y: [-8, 8, -8] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
         >
