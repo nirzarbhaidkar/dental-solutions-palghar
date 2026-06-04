@@ -5,7 +5,8 @@ import HeadContent from "@/components/HeadContent";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, MessageSquare, Phone } from "lucide-react";
+import { ArrowLeft, Phone } from "lucide-react";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
 interface ServiceContent {
   title: string;
@@ -528,10 +529,10 @@ const ServicePage = () => {
             <p className="text-gray-600 mb-6">Book an appointment today and take the first step towards better dental health.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Button 
-                className="bg-primary text-white"
+                className="bg-[#25D366] hover:bg-[#128C7E] text-white"
                 onClick={() => window.open("https://wa.me/918600892884?text=Hello%2C%20I'd%20like%20to%20book%20an%20appointment%20for%20" + encodeURIComponent(service.title) + "%20at%20Dental%20Solutions%20Palghar.%20Please%20let%20me%20know%20the%20available%20slots.%20Thank%20you!", "_blank")}
               >
-                <MessageSquare className="mr-2 h-4 w-4" />
+                <WhatsAppIcon className="mr-2 h-4 w-4" />
                 Book on WhatsApp
               </Button>
               <Button 
