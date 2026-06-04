@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
+import Contact from "./pages/Contact";
 import ServicePage from "./components/ServicePage";
 
 // Create a client
