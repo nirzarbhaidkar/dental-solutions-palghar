@@ -134,7 +134,7 @@ const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -30 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="text-[24px] leading-[1.15] sm:text-4xl md:text-5xl lg:text-6xl font-bold sm:leading-tight px-1"
+                className="text-[22px] min-[360px]:text-[24px] min-[390px]:text-[26px] min-[430px]:text-[28px] sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] sm:leading-tight px-1"
                 aria-live="polite"
               >
                 <span className="text-foreground">{headlines[currentHeadlineIndex].title}</span>{" "}
@@ -147,7 +147,7 @@ const HeroSection = () => {
 
           {/* Subheadline */}
           <motion.p
-            className="text-muted-foreground text-[13px] sm:text-lg md:text-xl max-w-2xl mx-auto mb-5 sm:mb-10 leading-relaxed px-2"
+            className="text-muted-foreground text-[12px] min-[360px]:text-[13px] min-[390px]:text-[14px] min-[430px]:text-[15px] sm:text-lg md:text-xl max-w-2xl mx-auto mb-5 sm:mb-10 leading-relaxed px-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
