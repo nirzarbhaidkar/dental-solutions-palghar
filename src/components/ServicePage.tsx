@@ -251,97 +251,143 @@ const serviceContent: Record<string, ServiceContent> = {
     ]
   },
   "root-canal": {
-    title: "Root Canal Treatment",
-    description: "Painless root canal treatment in Palghar using advanced endodontic techniques to save infected or damaged teeth.",
+    title: "Painless Root Canal Treatment in Palghar",
+    description: "Single-visit, painless root canal treatment (RCT) in Palghar using rotary endodontics, apex locators and dental microscopes. 4.9★ rated endodontists.",
     image: "/services/root-canal.jpg",
     longDescription: [
-      "Root canal therapy is a specialized procedure that treats the infected pulp of a tooth, eliminating pain and saving the natural tooth.",
-      "Our advanced techniques and technology make the process comfortable while effectively preserving your tooth's function and appearance."
+      "A root canal treatment (RCT) saves a tooth that would otherwise need extraction. When deep decay, a crack or trauma infects the inner pulp, you experience the classic throbbing toothache, sensitivity to hot/cold, and swelling. RCT removes the infection, disinfects the canals, and seals the tooth — letting you keep your natural tooth for life.",
+      "At Dental Solutions Palghar we use the latest single-visit RCT protocols: rotary NiTi files for precise canal shaping, electronic apex locators for accuracy, and dental loupes/microscopes for visualisation. Most root canals are completed comfortably in one 45-90 minute visit, with zero pain thanks to modern local anaesthesia.",
+      "We treat everything from straightforward single-canal incisors to complex molar re-treatments and surgical apicoectomies. Every RCT is followed by a same-day temporary filling and a definitive crown within 2 weeks to fully protect the treated tooth.",
+      "Patients trust us because we charge transparent, all-inclusive RCT pricing (no hidden 'crown extra' surprises), publish before-and-after X-rays, and back every procedure with a written warranty."
     ],
     benefits: [
-      "Relief from tooth pain",
-      "Preservation of natural tooth",
-      "Prevention of infection spread",
-      "Restored tooth function",
-      "Minimally invasive procedure"
+      "Instant relief from severe toothache and sensitivity",
+      "Saves your natural tooth — avoids extraction and costly implants later",
+      "Single-visit treatment for most cases (60-90 minutes)",
+      "Truly painless thanks to modern anaesthesia and rotary endodontics",
+      "Prevents the infection from spreading to jawbone and other teeth",
+      "Treated tooth functions normally for decades when properly crowned",
+      "Transparent all-inclusive pricing (RCT + post + core + crown)",
+      "Written warranty on every root canal"
     ],
     process: [
       {
-        title: "Diagnosis and Assessment",
-        description: "Evaluation of tooth damage and determination of appropriate treatment"
+        title: "Diagnosis & Digital X-ray",
+        description: "Clinical examination plus digital IOPA and (when needed) CBCT to map the canal anatomy."
       },
       {
-        title: "Pulp Removal",
-        description: "Careful removal of infected or damaged pulp tissue"
+        title: "Anaesthesia & Isolation",
+        description: "Painless local anaesthesia followed by rubber-dam isolation for a sterile, comfortable procedure."
       },
       {
-        title: "Canal Cleaning and Shaping",
-        description: "Thorough cleaning and shaping of the root canals"
+        title: "Access & Canal Cleaning",
+        description: "Tiny access opening, complete removal of infected pulp using rotary NiTi files and apex-locator-guided shaping."
       },
       {
-        title: "Filling and Sealing",
-        description: "Placement of biocompatible material and permanent sealing"
+        title: "Disinfection & Obturation",
+        description: "Canals are thoroughly irrigated and sealed with biocompatible gutta-percha and bioceramic sealer."
       },
       {
-        title: "Restoration",
-        description: "Placement of a crown or filling to restore tooth function and appearance"
+        title: "Core Build-up",
+        description: "Tooth structure is rebuilt with a strong composite core (and post, if needed) to support the final crown."
+      },
+      {
+        title: "Permanent Crown",
+        description: "A custom zirconia or PFM crown is placed within 2 weeks to fully protect the tooth long-term."
       }
     ],
     faqs: [
       {
-        question: "Is a root canal painful?",
-        answer: "Modern techniques and anesthesia make root canal treatment no more uncomfortable than getting a filling. Most patients report immediate relief from the pain of infection."
+        question: "How much does a root canal cost in Palghar?",
+        answer: "Single-rooted (incisor) RCT starts from ₹3,500, premolars from ₹4,500, and molars from ₹6,000. With a zirconia crown the all-inclusive package starts from ₹10,000. We offer 0% EMI on packages above ₹15,000."
       },
       {
-        question: "How long does the procedure take?",
-        answer: "Most root canals can be completed in one or two appointments, each lasting 60-90 minutes depending on the complexity of the case."
+        question: "Is root canal treatment painful?",
+        answer: "No — this is the biggest myth in dentistry. Modern RCT with proper anaesthesia is completely painless. In fact, RCT *relieves* the severe toothache caused by the infection. You'll feel mild soreness for 1-2 days afterwards, easily managed with a regular painkiller."
+      },
+      {
+        question: "Can a root canal be done in one sitting?",
+        answer: "Yes — over 80% of our RCTs are completed in a single 60-90 minute visit using single-visit endodontic protocols. Complex molars, re-treatments or active infections may need 2 visits."
+      },
+      {
+        question: "Do I need a crown after a root canal?",
+        answer: "Yes, almost always. A root-canal-treated tooth becomes brittle and is at high risk of fracture without a crown. We strongly recommend placing a zirconia or PFM crown within 2 weeks to ensure the tooth lasts for decades."
+      },
+      {
+        question: "Root canal vs extraction — which is better?",
+        answer: "Saving your natural tooth with RCT is almost always the better choice — it preserves chewing, prevents adjacent teeth from drifting, and is cheaper than the eventual implant or bridge that would follow extraction. We only recommend extraction when the tooth is unsalvageable."
       }
     ]
   },
   "teeth-whitening": {
-    title: "Teeth Whitening",
-    description: "Professional in-office and take-home teeth whitening in Palghar for a noticeably brighter, whiter smile.",
+    title: "Teeth Whitening in Palghar",
+    description: "Professional in-office Zoom teeth whitening and take-home whitening kits in Palghar. Up to 8 shades whiter in 60 minutes with zero sensitivity.",
     image: "/services/teeth-whitening.jpg",
     longDescription: [
-      "Our professional teeth whitening services provide safe, effective results that are significantly better than over-the-counter options.",
-      "We offer both in-office and take-home whitening options to accommodate your preferences and lifestyle."
+      "Years of tea, coffee, tobacco and ageing leave teeth dull and yellow. Our professional teeth whitening treatments at Dental Solutions Palghar lighten your smile by up to 8 shades in a single sitting — safely, predictably, and with virtually no sensitivity.",
+      "We offer two clinically-proven options: in-office laser/LED accelerated whitening (the famous 'Zoom' system) for instant dramatic results in 60-90 minutes, and dentist-supervised take-home kits with custom-fitted trays for gradual whitening at your own pace.",
+      "Unlike supermarket whitening strips or charcoal toothpastes that can damage enamel, our treatments use FDA-approved professional-grade hydrogen peroxide formulations applied under controlled conditions, with desensitisers to keep the process comfortable."
     ],
     benefits: [
-      "Dramatically whiter smile",
-      "Professionally supervised process",
-      "Longer-lasting results",
-      "Reduced tooth sensitivity",
-      "Customized treatment options"
+      "Up to 8 shades whiter in a single 60-minute visit",
+      "Safe, FDA-approved professional-grade whitening agents",
+      "Virtually zero sensitivity with our desensitiser protocol",
+      "Results last 1-3 years with simple maintenance",
+      "Choice of in-office Zoom whitening or take-home kits",
+      "Dentist-supervised — no risk of enamel damage",
+      "Combinable with veneers and smile makeover packages",
+      "Free shade-match consultation and post-treatment care kit"
     ],
     process: [
       {
-        title: "Shade Assessment",
-        description: "Evaluation of current tooth color and desired outcome"
+        title: "Shade Assessment & Consultation",
+        description: "Digital shade matching, evaluation of stain type, and discussion of realistic outcomes."
       },
       {
-        title: "Preparation",
-        description: "Protection of gums and oral tissues before treatment"
+        title: "Professional Cleaning",
+        description: "Scaling and polishing removes surface stains and calculus before whitening for best results."
+      },
+      {
+        title: "Gum Protection",
+        description: "Light-cured gum barrier and lip retractors protect soft tissues from the whitening gel."
       },
       {
         title: "Whitening Application",
-        description: "Application of professional-grade whitening agents"
+        description: "Professional-grade gel is applied and activated with LED/laser light in three 15-minute cycles."
       },
       {
-        title: "Post-Treatment Care",
-        description: "Instructions for maintaining your new, brighter smile"
+        title: "Desensitiser & Polish",
+        description: "Final fluoride/desensitiser application minimises post-treatment sensitivity."
+      },
+      {
+        title: "Maintenance Kit",
+        description: "Take-home maintenance gel and shade chart to track and prolong your results."
       }
     ],
     faqs: [
       {
-        question: "How long do teeth whitening results last?",
-        answer: "Results typically last 1-3 years depending on lifestyle factors like consumption of staining foods and beverages, smoking, and oral hygiene practices."
+        question: "How much does teeth whitening cost in Palghar?",
+        answer: "In-office Zoom/LED whitening at Dental Solutions Palghar costs ₹8,000-₹12,000 for both arches. Dentist-supervised take-home kits start from ₹5,000. Combined in-office + take-home packages offer the best long-term value at ₹14,000."
       },
       {
         question: "Is professional teeth whitening safe?",
-        answer: "Yes, professional teeth whitening under dental supervision is safe for your teeth and gums. We take precautions to minimize sensitivity and protect your oral tissues."
+        answer: "Yes. Done under dentist supervision with proper gum protection, professional whitening is completely safe and does not damage enamel. We strongly advise against unsupervised whitening strips, charcoal pastes or 'parlour' bleaching, which can cause permanent sensitivity and enamel erosion."
+      },
+      {
+        question: "How long do teeth whitening results last?",
+        answer: "Results typically last 1-3 years. Lifestyle matters: tea, coffee, red wine, smoking and gutka shorten the duration. Using your take-home maintenance kit once every 3-6 months keeps your smile bright indefinitely."
+      },
+      {
+        question: "Will whitening cause sensitivity?",
+        answer: "Modern whitening gels contain potassium nitrate and fluoride desensitisers. Most patients feel zero or only very mild, transient sensitivity for 24 hours. We adjust gel concentration for patients with pre-existing sensitivity."
+      },
+      {
+        question: "Will whitening work on crowns and veneers?",
+        answer: "No — whitening only works on natural enamel. Existing crowns, veneers and fillings keep their original colour. If you have visible front-tooth restorations, we'll plan whitening before replacing them so everything matches your new shade."
       }
     ]
   },
+
   "pediatric-dentistry": {
     title: "Pediatric Dentistry",
     description: "Specialized dental care for children in a friendly environment",
