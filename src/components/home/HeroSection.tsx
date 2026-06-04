@@ -155,60 +155,49 @@ const HeroSection = () => {
             Your trusted dental care partner in Palghar — modern technology, gentle hands, beautiful smiles.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons — mobile first */}
           <motion.div
-            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-12 px-2"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-4 mb-8 sm:mb-12 px-2 max-w-md sm:max-w-none mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             {/* Primary WhatsApp CTA */}
-            <motion.div
-              className="relative group w-full sm:w-auto"
-              whileTap={{ scale: 0.98 }}
+            <motion.button
+              whileTap={{ scale: 0.97 }}
+              onClick={() =>
+                window.open(
+                  "https://wa.me/918600892884?text=Hello%2C%20I%E2%80%99d%20like%20to%20book%20an%20appointment%20at%20Dental%20Solutions%20Palghar.%20Please%20let%20me%20know%20the%20available%20slots.%20Thank%20you!",
+                  "_blank"
+                )
+              }
+              aria-label="Book appointment on WhatsApp"
+              className="relative w-full sm:w-auto min-h-[56px] px-5 sm:px-7 rounded-2xl bg-[#25D366] hover:bg-[#1ebe5d] text-white font-semibold shadow-[0_8px_24px_-8px_rgba(37,211,102,0.6)] transition-colors duration-200 flex items-center justify-center gap-3 active:translate-y-px"
             >
-              <div className="absolute -inset-1 bg-gradient-to-r from-[#25D366] via-[#128C7E] to-[#25D366] rounded-2xl blur-lg opacity-30 sm:opacity-40 group-hover:opacity-70 transition-opacity duration-500 sm:animate-pulse" />
-
-              <Button
-                size="lg"
-                className="relative w-full sm:w-auto bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#128C7E] hover:to-[#25D366] text-white px-6 sm:px-8 py-5 sm:py-7 text-base sm:text-lg font-bold rounded-xl shadow-xl transition-all duration-300 inline-flex items-center justify-center border border-white/20 min-h-[56px]"
-                onClick={() =>
-                  window.open(
-                    "https://wa.me/918600892884?text=Hello%2C%20I%E2%80%99d%20like%20to%20book%20an%20appointment%20at%20Dental%20Solutions%20Palghar.%20Please%20let%20me%20know%20the%20available%20slots.%20Thank%20you!",
-                    "_blank"
-                  )
-                }
-              >
-                <span className="flex items-center gap-2 sm:gap-3">
-                  <WhatsAppIcon className="w-6 h-6 sm:w-7 sm:h-7" />
-                  <span className="flex flex-col items-start text-center leading-tight">
-                    <span className="text-[10px] sm:text-xs font-medium opacity-90">Instant Response</span>
-                    <span className="text-base sm:text-lg">Book on WhatsApp</span>
-                  </span>
-                </span>
-              </Button>
-            </motion.div>
+              <span className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-white shrink-0 shadow-sm">
+                <WhatsAppIcon size={22} />
+              </span>
+              <span className="flex flex-col items-start leading-tight text-left">
+                <span className="text-[10px] sm:text-xs font-medium text-white/85">Instant reply · 24/7</span>
+                <span className="text-[15px] sm:text-base font-bold">Book on WhatsApp</span>
+              </span>
+            </motion.button>
 
             {/* Secondary Call CTA */}
-            <motion.div
-              whileTap={{ scale: 0.98 }}
-              className="w-full sm:w-auto"
+            <motion.button
+              whileTap={{ scale: 0.97 }}
+              onClick={() => window.open("tel:+918600892884")}
+              aria-label="Call clinic now"
+              className="relative w-full sm:w-auto min-h-[56px] px-5 sm:px-7 rounded-2xl bg-white/70 dark:bg-white/5 backdrop-blur border border-primary/25 hover:border-primary/50 hover:bg-white text-foreground font-semibold transition-colors duration-200 flex items-center justify-center gap-3 active:translate-y-px"
             >
-              <Button
-                size="lg"
-                variant="outline"
-                className="w-full sm:w-auto px-6 sm:px-8 py-5 sm:py-7 text-base sm:text-lg font-semibold rounded-xl glass border-2 border-primary/30 hover:border-primary/60 hover:bg-primary/10 transition-all duration-300 inline-flex items-center justify-center gap-3 group min-h-[56px]"
-                onClick={() => window.open("tel:+918600892884")}
-              >
-                <span className="relative p-1.5 sm:p-2 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                  <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                </span>
-                <span className="flex flex-col items-start leading-tight">
-                  <span className="text-[10px] sm:text-xs font-medium text-muted-foreground">Talk to Us</span>
-                  <span className="text-foreground">Call Now</span>
-                </span>
-              </Button>
-            </motion.div>
+              <span className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-primary/10 shrink-0">
+                <Phone className="h-5 w-5 text-primary" />
+              </span>
+              <span className="flex flex-col items-start leading-tight text-left">
+                <span className="text-[10px] sm:text-xs font-medium text-muted-foreground">Talk to us now</span>
+                <span className="text-[15px] sm:text-base font-bold">Call Clinic</span>
+              </span>
+            </motion.button>
           </motion.div>
 
           {/* Trust badges row */}
