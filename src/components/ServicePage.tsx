@@ -20,42 +20,66 @@ interface ServiceContent {
 
 const serviceContent: Record<string, ServiceContent> = {
   "general-dentistry": {
-    title: "General Dentistry",
-    description: "Comprehensive preventive and family dental care in Palghar — checkups, cleanings, fillings and routine treatments.",
+    title: "General Dentistry in Palghar — Family Dental Care",
+    description: "Comprehensive family dentistry in Palghar — dental checkups, scaling & polishing, tooth-coloured fillings, extractions and preventive care. 4.9★ rated, transparent pricing.",
     image: "/services/general-dentistry.jpg",
     longDescription: [
-      "Our general dentistry services form the foundation of good oral health, providing comprehensive care for patients of all ages.",
-      "We focus on preventive care and early intervention to maintain your oral health and prevent serious dental issues from developing."
+      "General dentistry is the foundation of lifelong oral health. At Dental Solutions Palghar we provide complete preventive, restorative and family dental care under one roof — from a child's first checkup to a senior's denture review — so you never have to visit multiple clinics for routine treatment.",
+      "Our services include comprehensive dental examinations, professional scaling and polishing, tooth-coloured composite fillings, painless extractions, fluoride applications, dental sealants, mouth guards and oral cancer screenings. Every visit starts with a free consultation and a transparent written treatment plan — no hidden costs.",
+      "We use digital X-rays (90% less radiation), intra-oral cameras so you can see exactly what we see, and strict sterilisation protocols that meet ADA standards. Whether you need a 6-monthly checkup, a long-overdue cleaning, or treatment for a sudden cavity, our general dentists deliver gentle, evidence-based care for the whole family."
     ],
     benefits: [
-      "Regular check-ups and cleanings",
-      "Early detection of dental problems",
-      "Preventive care and education",
-      "Complete oral health maintenance",
-      "Family-friendly environment"
+      "Comprehensive 6-monthly checkups with digital X-rays",
+      "Professional scaling, polishing and stain removal",
+      "Tooth-coloured (composite) fillings — no metallic look",
+      "Painless extractions under local anaesthesia",
+      "Preventive sealants & fluoride for children and adults",
+      "Early detection of cavities, gum disease and oral cancer",
+      "Family-friendly environment for kids, adults and seniors",
+      "Transparent pricing with 0% EMI on larger treatments"
     ],
     process: [
       {
-        title: "Initial Consultation",
-        description: "Thorough examination and discussion of your dental health goals"
+        title: "Free Consultation & Digital X-rays",
+        description: "Complete oral examination, digital IOPA/OPG X-rays and intra-oral camera review."
       },
       {
-        title: "Treatment Planning",
-        description: "Customized care plan based on your specific needs"
+        title: "Personalised Treatment Plan",
+        description: "Written treatment plan with priorities, options and transparent pricing — no surprises."
       },
       {
-        title: "Regular Maintenance",
-        description: "Ongoing care to maintain optimal oral health"
+        title: "Treatment Delivery",
+        description: "Cleaning, fillings, extractions or other procedures performed gently in a single visit where possible."
+      },
+      {
+        title: "Home-Care Coaching",
+        description: "Personalised brushing, flossing and diet advice to keep results long-term."
+      },
+      {
+        title: "6-Monthly Recall",
+        description: "Automated reminders for your next preventive visit so you never miss a check-up."
       }
     ],
     faqs: [
       {
-        question: "How often should I visit the dentist?",
-        answer: "We recommend visiting every 6 months for regular check-ups and cleanings."
+        question: "How often should I visit the dentist in Palghar?",
+        answer: "Every 6 months for a checkup, scaling and polishing — even if you have no pain. Most dental problems are painless in early stages, and 6-monthly visits catch them when treatment is simplest and cheapest."
       },
       {
-        question: "What does a routine check-up include?",
-        answer: "A routine check-up includes dental cleaning, examination, X-rays if needed, and oral cancer screening."
+        question: "How much does a dental checkup and cleaning cost?",
+        answer: "At Dental Solutions Palghar a comprehensive consultation is free. Professional scaling and polishing starts from ₹800 for the full mouth. Tooth-coloured composite fillings start from ₹600 per surface. We publish transparent, all-inclusive pricing."
+      },
+      {
+        question: "Are silver/amalgam fillings still used?",
+        answer: "No — we exclusively use tooth-coloured composite fillings. They bond to your tooth, contain no mercury, look completely natural, and require less drilling than older amalgam fillings."
+      },
+      {
+        question: "Is teeth scaling harmful or does it loosen teeth?",
+        answer: "This is a common myth. Scaling removes the hard tartar that was actually causing your gums to recede. Teeth may feel slightly sensitive for a day or two as healthy gums reattach — they're not 'loose'. Skipping scaling causes real tooth loss."
+      },
+      {
+        question: "Do you treat children and seniors at the same clinic?",
+        answer: "Yes — we are a family clinic with in-house pediatric, general and prosthodontic dentists. The same clinic looks after your toddler's first tooth and your grandparent's dentures."
       }
     ]
   },
