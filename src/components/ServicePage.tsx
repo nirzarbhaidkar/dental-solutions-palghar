@@ -109,42 +109,70 @@ const serviceContent: Record<string, ServiceContent> = {
     ]
   },
   "orthodontics": {
-    title: "Orthodontics",
-    description: "Braces and clear aligners in Palghar for straighter teeth, better bite alignment and a confident, healthy smile.",
+    title: "Orthodontics — Braces & Aligners in Palghar",
+    description: "Metal braces, ceramic braces, self-ligating braces and Invisalign-style clear aligners in Palghar for children, teens and adults. Free smile consultation and 0% EMI.",
     image: "/services/orthodontics.jpg",
     longDescription: [
-      "Our orthodontic services help patients of all ages achieve properly aligned teeth and jaws for improved function and aesthetics.",
-      "We offer traditional braces, clear aligners, and other modern orthodontic solutions tailored to your unique needs."
+      "Crooked, crowded or protruding teeth aren't just a cosmetic concern — they make cleaning harder, accelerate enamel wear, and can cause jaw pain. Our in-house orthodontists at Dental Solutions Palghar straighten teeth using the full spectrum of modern braces and clear aligner systems.",
+      "We offer traditional metal braces (most affordable), tooth-coloured ceramic braces (discreet), self-ligating Damon-style braces (faster, fewer visits), lingual braces (invisible behind the teeth), and clear aligners from leading global brands. Each option comes with a fixed price, fixed timeline, and 0% EMI.",
+      "Treatment starts with a free smile consultation, digital scans, and a 3D simulation showing your future smile before you commit. Adult orthodontics is one of our fastest-growing specialities — many adults complete clear aligner treatment in just 6-12 months."
     ],
     benefits: [
-      "Improved tooth alignment",
-      "Enhanced facial appearance",
-      "Better oral hygiene",
-      "Corrected bite issues",
-      "Reduced risk of dental problems"
+      "Straighter, healthier teeth that are easier to clean",
+      "Corrected bite — prevents jaw pain, headaches and uneven wear",
+      "Improved facial profile and confident smile",
+      "Reduced risk of cavities, gum disease and tooth fractures",
+      "Multiple price points — metal, ceramic, self-ligating or invisible aligners",
+      "Free 3D smile simulation before treatment",
+      "0% EMI options on all orthodontic packages",
+      "Free retainers and 1-year post-treatment follow-up included"
     ],
     process: [
       {
-        title: "Orthodontic Assessment",
-        description: "Comprehensive evaluation of your teeth, jaw, and facial structure"
+        title: "Free Smile Consultation & Records",
+        description: "Digital X-rays, intra-oral scans, photographs and clinical assessment — at no cost."
       },
       {
-        title: "Customized Treatment Plan",
-        description: "Detailed plan outlining treatment approach, timeline, and expected outcomes"
+        title: "3D Treatment Simulation",
+        description: "See a digital preview of your final smile and treatment timeline before deciding."
       },
       {
-        title: "Regular Adjustments",
-        description: "Periodic visits to monitor progress and make necessary adjustments"
+        title: "Personalised Treatment Plan",
+        description: "Choose between metal braces, ceramic braces, self-ligating braces or clear aligners with transparent pricing."
+      },
+      {
+        title: "Braces / Aligner Fitting",
+        description: "Comfortable, single-visit bonding of braces or delivery of your first aligner set."
+      },
+      {
+        title: "Regular Adjustment Visits",
+        description: "Monthly check-ups (every 6-8 weeks for aligners) to monitor progress and make adjustments."
+      },
+      {
+        title: "Retention Phase",
+        description: "Free fixed and removable retainers plus 1-year follow-up to keep your new smile perfect for life."
       }
     ],
     faqs: [
       {
-        question: "At what age should orthodontic treatment begin?",
-        answer: "The American Association of Orthodontists recommends an initial orthodontic evaluation at age 7, but treatment can be effective at any age."
+        question: "How much do braces cost in Palghar?",
+        answer: "Metal braces at Dental Solutions Palghar start from ₹30,000, ceramic braces from ₹45,000, self-ligating Damon braces from ₹65,000, and clear aligners from ₹85,000 — all inclusive of consultation, scans, fittings, monthly adjustments and retainers. 0% EMI options are available."
       },
       {
         question: "How long does orthodontic treatment take?",
-        answer: "Treatment typically ranges from 12 to 30 months, depending on individual needs and the specific orthodontic issue being addressed."
+        answer: "Most cases complete in 12-24 months. Clear aligners for mild cases finish in 6-12 months. Self-ligating Damon-style braces are typically 20-30% faster than conventional braces."
+      },
+      {
+        question: "Braces vs clear aligners — which is better?",
+        answer: "Aligners are nearly invisible, removable for eating and cleaning, and have no diet restrictions — ideal for adults and professionals. Braces are more affordable and handle severe cases more predictably. Our orthodontist will recommend the best option after your free consultation."
+      },
+      {
+        question: "What is the best age for braces?",
+        answer: "The ideal age is 10-14 when most permanent teeth are in. However, adults of any age can benefit from orthodontic treatment — over 40% of our orthodontic patients are adults."
+      },
+      {
+        question: "Will braces be painful?",
+        answer: "There is mild discomfort for 3-5 days after fitting and after each adjustment, easily managed with over-the-counter pain relief. Modern braces and aligners are far more comfortable than older generations."
       }
     ]
   },
