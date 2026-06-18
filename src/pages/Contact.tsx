@@ -27,6 +27,7 @@ const CLINIC = {
 const Contact = () => {
   const widgetRef = useRef<HTMLDivElement>(null);
   const [reviewsInView, setReviewsInView] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     if (!widgetRef.current) return;
