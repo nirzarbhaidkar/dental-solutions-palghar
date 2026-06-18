@@ -213,7 +213,7 @@ const Header = () => {
         <div className="flex flex-col h-full">
           {/* Drawer header */}
           <div className="flex items-center justify-between p-4 border-b">
-            <span className="text-lg font-bold text-primary">Menu</span>
+            <span className="text-lg font-bold text-primary">{t("nav.menu")}</span>
             <Button
               size="icon"
               variant="ghost"
