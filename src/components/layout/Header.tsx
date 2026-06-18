@@ -233,7 +233,7 @@ const Header = () => {
                 onClick={() => setIsNavOpen(false)}
               >
                 <Home className="h-5 w-5 text-primary" />
-                <span className="font-medium">Home</span>
+                <span className="font-medium">{t("nav.home")}</span>
               </Link>
 
               {navItems.map((item, index) => (
