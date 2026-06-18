@@ -177,8 +177,8 @@ const HeroSection = () => {
                 <WhatsAppIcon size={26} />
               </span>
               <span className="relative flex flex-col items-start leading-tight text-left min-w-0">
-                <span className="text-[10px] sm:text-[11px] font-medium tracking-wide uppercase text-white/85">Instant reply · 24/7</span>
-                <span className="text-[16px] sm:text-[17px] font-extrabold tracking-tight">Book on WhatsApp</span>
+                <span className="text-[10px] sm:text-[11px] font-medium tracking-wide uppercase text-white/85">{t("cta.instantReply")}</span>
+                <span className="text-[16px] sm:text-[17px] font-extrabold tracking-tight">{t("cta.bookWhatsapp")}</span>
               </span>
               <svg aria-hidden viewBox="0 0 24 24" className="relative ml-auto h-5 w-5 text-white/90 transition-transform duration-200 group-hover:translate-x-0.5">
                 <path fill="currentColor" d="M13.3 5.3a1 1 0 0 1 1.4 0l5.6 5.6a1.5 1.5 0 0 1 0 2.1l-5.6 5.6a1 1 0 1 1-1.4-1.4l4.3-4.3H4.5a1 1 0 1 1 0-2h13.1l-4.3-4.2a1 1 0 0 1 0-1.4z" />
