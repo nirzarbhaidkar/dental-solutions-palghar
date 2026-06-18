@@ -2,10 +2,10 @@ import { createContext, useContext, useEffect, useState, ReactNode } from "react
 
 export type Lang = "en" | "hi" | "mr";
 
-export const LANGUAGES: { code: Lang; label: string; native: string }[] = [
-  { code: "en", label: "English", native: "English" },
-  { code: "hi", label: "Hindi", native: "हिन्दी" },
-  { code: "mr", label: "Marathi", native: "मराठी" },
+export const LANGUAGES: { code: Lang; label: string; native: string; short: string }[] = [
+  { code: "en", label: "English", native: "English", short: "EN" },
+  { code: "hi", label: "Hindi", native: "हिन्दी", short: "हि" },
+  { code: "mr", label: "Marathi", native: "मराठी", short: "म" },
 ];
 
 type Dict = Record<string, string>;
