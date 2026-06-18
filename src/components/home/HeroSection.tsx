@@ -142,7 +142,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Your trusted dental care partner in Palghar — modern technology, gentle hands, beautiful smiles.
+            {t("hero.subheadline")}
           </motion.p>
 
           {/* World-class CTAs — mobile first */}
