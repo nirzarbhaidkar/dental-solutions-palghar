@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone, Shield, Sparkles, Star, Award, Clock, Users } from "lucide-react";
+import { Phone, Shield, Sparkles, Star, Award, Clock, Users, Languages } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 type Headline = {
   title: string;
@@ -11,30 +12,19 @@ type Headline = {
 
 const HeroSection = () => {
   const [currentHeadlineIndex, setCurrentHeadlineIndex] = useState(0);
+  const { t } = useLanguage();
 
   const headlines: Headline[] = [
-    {
-      title: "Best Dentist in Palghar for Your",
-      highlight: "Perfect Smile",
-    },
-    {
-      title: "Advanced Dental Technology in",
-      highlight: "Palghar",
-    },
-    {
-      title: "Trusted Dental Clinic in Palghar for",
-      highlight: "Over 15 Years",
-    },
-    {
-      title: "Affordable Dental Care in",
-      highlight: "Palghar",
-    },
+    { title: t("hero.headline1.title"), highlight: t("hero.headline1.highlight") },
+    { title: t("hero.headline2.title"), highlight: t("hero.headline2.highlight") },
+    { title: t("hero.headline3.title"), highlight: t("hero.headline3.highlight") },
+    { title: t("hero.headline4.title"), highlight: t("hero.headline4.highlight") },
   ];
 
   const trustBadges = [
-    { icon: Users, label: "10,000+ Patients" },
-    { icon: Star, label: "4.9★ Rating" },
-    { icon: Clock, label: "Same Day Care" },
+    { icon: Users, label: t("hero.trust.patients") },
+    { icon: Star, label: t("hero.trust.rating") },
+    { icon: Clock, label: t("hero.trust.sameDay") },
   ];
 
   useEffect(() => {
@@ -43,7 +33,7 @@ const HeroSection = () => {
     }, 4000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [headlines.length]);
 
   return (
     <section className="relative min-h-screen flex items-center overflow-x-hidden">
@@ -115,8 +105,8 @@ const HeroSection = () => {
           >
             <Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary flex-shrink-0" />
             <span className="text-xs sm:text-sm font-medium text-foreground/80 whitespace-nowrap">
-              <span className="sm:hidden">10,000+ Happy Patients</span>
-              <span className="hidden sm:inline">Trusted by 10,000+ Happy Patients</span>
+              <span className="sm:hidden">{t("hero.badge.short")}</span>
+              <span className="hidden sm:inline">{t("hero.badge.long")}</span>
             </span>
             <span className="flex items-center gap-0.5 text-amber-500 flex-shrink-0">
               {[...Array(5)].map((_, i) => (
@@ -152,7 +142,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Your trusted dental care partner in Palghar — modern technology, gentle hands, beautiful smiles.
+            {t("hero.subheadline")}
           </motion.p>
 
           {/* World-class CTAs — mobile first */}
@@ -187,8 +177,8 @@ const HeroSection = () => {
                 <WhatsAppIcon size={26} />
               </span>
               <span className="relative flex flex-col items-start leading-tight text-left min-w-0">
-                <span className="text-[10px] sm:text-[11px] font-medium tracking-wide uppercase text-white/85">Instant reply · 24/7</span>
-                <span className="text-[16px] sm:text-[17px] font-extrabold tracking-tight">Book on WhatsApp</span>
+                <span className="text-[10px] sm:text-[11px] font-medium tracking-wide uppercase text-white/85">{t("cta.instantReply")}</span>
+                <span className="text-[16px] sm:text-[17px] font-extrabold tracking-tight">{t("cta.bookWhatsapp")}</span>
               </span>
               <svg aria-hidden viewBox="0 0 24 24" className="relative ml-auto h-5 w-5 text-white/90 transition-transform duration-200 group-hover:translate-x-0.5">
                 <path fill="currentColor" d="M13.3 5.3a1 1 0 0 1 1.4 0l5.6 5.6a1.5 1.5 0 0 1 0 2.1l-5.6 5.6a1 1 0 1 1-1.4-1.4l4.3-4.3H4.5a1 1 0 1 1 0-2h13.1l-4.3-4.2a1 1 0 0 1 0-1.4z" />
@@ -210,8 +200,8 @@ const HeroSection = () => {
                 <Phone className="h-5 w-5 text-primary" />
               </span>
               <span className="flex flex-col items-start leading-tight text-left min-w-0">
-                <span className="text-[10px] sm:text-[11px] font-medium tracking-wide uppercase text-muted-foreground">Talk to us now</span>
-                <span className="text-[16px] sm:text-[17px] font-extrabold tracking-tight text-foreground">Call Clinic</span>
+                <span className="text-[10px] sm:text-[11px] font-medium tracking-wide uppercase text-muted-foreground">{t("cta.talkToUsNow")}</span>
+                <span className="text-[16px] sm:text-[17px] font-extrabold tracking-tight text-foreground">{t("cta.callClinic")}</span>
               </span>
               <svg aria-hidden viewBox="0 0 24 24" className="ml-auto h-5 w-5 text-primary/70 transition-transform duration-200 group-hover:translate-x-0.5">
                 <path fill="currentColor" d="M13.3 5.3a1 1 0 0 1 1.4 0l5.6 5.6a1.5 1.5 0 0 1 0 2.1l-5.6 5.6a1 1 0 1 1-1.4-1.4l4.3-4.3H4.5a1 1 0 1 1 0-2h13.1l-4.3-4.2a1 1 0 0 1 0-1.4z" />
@@ -240,6 +230,17 @@ const HeroSection = () => {
                 <span className="text-xs sm:text-sm font-medium">{badge.label}</span>
               </motion.div>
             ))}
+          </motion.div>
+
+          {/* Multilingual trust badge */}
+          <motion.div
+            className="mt-6 sm:mt-8 inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/5 border border-primary/15 text-primary"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 1 }}
+          >
+            <Languages className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <span className="text-xs sm:text-sm font-medium">{t("lang.weSpeak")}</span>
           </motion.div>
         </div>
       </div>

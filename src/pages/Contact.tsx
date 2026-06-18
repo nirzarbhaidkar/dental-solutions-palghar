@@ -4,6 +4,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const CLINIC = {
   name: "Dental Solutions Palghar — Multispeciality Dental Clinic & Implant Centre",
@@ -26,6 +27,7 @@ const CLINIC = {
 const Contact = () => {
   const widgetRef = useRef<HTMLDivElement>(null);
   const [reviewsInView, setReviewsInView] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     if (!widgetRef.current) return;
@@ -174,22 +176,21 @@ const Contact = () => {
         <div className="max-w-5xl mx-auto">
           <header className="mb-12 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Contact Dental Solutions Palghar
+              {t("contact.title")}
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Call, WhatsApp, email or visit our multispeciality dental clinic & implant
-              centre on Mahim Rd, Palghar. Same-day appointments. 24/7 emergency dental care.
+              {t("contact.subtitle")}
             </p>
           </header>
 
           <section className="grid md:grid-cols-2 gap-6 mb-16" aria-label="Clinic contact details">
             <article className="rounded-2xl border bg-card p-6 shadow-sm">
-              <h2 className="text-2xl font-semibold mb-6">Reach Us</h2>
+              <h2 className="text-2xl font-semibold mb-6">{t("contact.reachUs")}</h2>
               <ul className="space-y-5">
                 <li className="flex items-start gap-3">
                   <Phone className="h-5 w-5 mt-1 text-primary shrink-0" aria-hidden />
                   <div>
-                    <div className="font-medium">Phone & WhatsApp</div>
+                    <div className="font-medium">{t("contact.phoneWa")}</div>
                     <a className="text-muted-foreground hover:text-primary" href={`tel:${CLINIC.phone}`}>
                       {CLINIC.phoneDisplay}
                     </a>
@@ -198,7 +199,7 @@ const Contact = () => {
                 <li className="flex items-start gap-3">
                   <Mail className="h-5 w-5 mt-1 text-primary shrink-0" aria-hidden />
                   <div>
-                    <div className="font-medium">Email</div>
+                    <div className="font-medium">{t("contact.email")}</div>
                     <a className="text-muted-foreground hover:text-primary" href={`mailto:${CLINIC.email}`}>
                       {CLINIC.email}
                     </a>
@@ -207,7 +208,7 @@ const Contact = () => {
                 <li className="flex items-start gap-3">
                   <MapPin className="h-5 w-5 mt-1 text-primary shrink-0" aria-hidden />
                   <div>
-                    <div className="font-medium">Clinic Address</div>
+                    <div className="font-medium">{t("contact.address")}</div>
                     <address className="not-italic text-muted-foreground">
                       {CLINIC.street}
                       <br />
@@ -219,18 +220,18 @@ const Contact = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Get directions →
+                      {t("contact.directions")}
                     </a>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <Clock className="h-5 w-5 mt-1 text-primary shrink-0" aria-hidden />
                   <div>
-                    <div className="font-medium">Opening Hours</div>
+                    <div className="font-medium">{t("contact.hours")}</div>
                     <div className="text-muted-foreground">
-                      Mon – Sat: 9:30 AM – 2:00 PM &amp; 5:00 PM – 9:00 PM
+                      {t("contact.hoursValue")}
                       <br />
-                      Sunday: By appointment only
+                      {t("contact.sunday")}
                     </div>
                   </div>
                 </li>
@@ -239,7 +240,7 @@ const Contact = () => {
               <div className="mt-6 flex flex-wrap gap-3">
                 <Button asChild size="lg">
                   <a href={`tel:${CLINIC.phone}`} aria-label="Call clinic to book appointment">
-                    Call to Book
+                    {t("contact.callToBook")}
                   </a>
                 </Button>
                 <Button asChild variant="outline" size="lg">
@@ -249,7 +250,7 @@ const Contact = () => {
                     rel="noopener noreferrer"
                     aria-label="Message clinic on WhatsApp"
                   >
-                    WhatsApp Us
+                    {t("contact.whatsappUs")}
                   </a>
                 </Button>
               </div>
@@ -270,11 +271,10 @@ const Contact = () => {
           <section aria-labelledby="reviews-heading" className="mb-8">
             <div className="text-center mb-8">
               <h2 id="reviews-heading" className="text-3xl md:text-4xl font-bold mb-3">
-                Real Google Reviews from Palghar Patients
+                {t("contact.reviewsTitle")}
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                4.9★ rated by hundreds of patients across Palghar, Boisar, Tarapur, Virar
-                and Vasai. Live Google Reviews — unedited.
+                {t("contact.reviewsSub")}
               </p>
             </div>
             <div ref={widgetRef} className="min-h-[420px]">

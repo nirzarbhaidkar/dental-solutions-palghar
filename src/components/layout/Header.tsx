@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 import { toast } from "sonner";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 type NavItem = {
   label: string;
@@ -16,14 +18,15 @@ const Header = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const { t } = useLanguage();
 
   const navItems: NavItem[] = [
-    { label: "Services", href: "/#services" },
-    { label: "NRI Corner", href: "/#nri-corner" },
-    { label: "Location", href: "/#location" },
-    { label: "Testimonials", href: "/#testimonials" },
-    { label: "FAQs", href: "/#faqs" },
-    { label: "Blog", href: "/blog" }
+    { label: t("nav.services"), href: "/#services" },
+    { label: t("nav.nri"), href: "/#nri-corner" },
+    { label: t("nav.location"), href: "/#location" },
+    { label: t("nav.testimonials"), href: "/#testimonials" },
+    { label: t("nav.faqs"), href: "/#faqs" },
+    { label: t("nav.blog"), href: "/blog" }
   ];
 
   // Handle anchor links with smooth scrolling
@@ -165,18 +168,20 @@ const Header = () => {
               >
                 <Facebook className="h-5 w-5" />
               </a>
+              <LanguageSwitcher />
               <Button 
                 className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
                 onClick={handleBookAppointment}
                 size="sm"
               >
                 <Calendar className="h-4 w-4 mr-2" />
-                Book Now
+                {t("cta.bookNow")}
               </Button>
             </nav>
 
             {/* Mobile actions */}
-            <div className="absolute right-0 flex items-center lg:hidden">
+            <div className="absolute right-0 flex items-center gap-1 lg:hidden">
+              <LanguageSwitcher compact />
               <Button 
                 size="icon"
                 variant="ghost"
@@ -208,7 +213,7 @@ const Header = () => {
         <div className="flex flex-col h-full">
           {/* Drawer header */}
           <div className="flex items-center justify-between p-4 border-b">
-            <span className="text-lg font-bold text-primary">Menu</span>
+            <span className="text-lg font-bold text-primary">{t("nav.menu")}</span>
             <Button
               size="icon"
               variant="ghost"
@@ -228,7 +233,7 @@ const Header = () => {
                 onClick={() => setIsNavOpen(false)}
               >
                 <Home className="h-5 w-5 text-primary" />
-                <span className="font-medium">Home</span>
+                <span className="font-medium">{t("nav.home")}</span>
               </Link>
 
               {navItems.map((item, index) => (
@@ -261,7 +266,7 @@ const Header = () => {
                   className="flex items-center gap-3 px-4 py-3 rounded-lg text-foreground hover:bg-accent transition-colors"
                 >
                   <Facebook className="h-5 w-5 text-[#1877F2]" />
-                  <span className="font-medium">Follow on Facebook</span>
+                  <span className="font-medium">{t("nav.followFb")}</span>
                 </a>
               </div>
             </div>
@@ -277,7 +282,7 @@ const Header = () => {
               }}
             >
               <WhatsAppIcon className="h-5 w-5 mr-2" />
-              Book on WhatsApp
+              {t("cta.bookWhatsapp")}
             </Button>
             <Button
               variant="outline"
@@ -288,7 +293,7 @@ const Header = () => {
               }}
             >
               <Phone className="h-5 w-5 mr-2" />
-              Call +91 86008 92884
+              {t("cta.callClinicFull")}
             </Button>
           </div>
         </div>
