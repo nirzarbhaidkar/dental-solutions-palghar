@@ -180,7 +180,8 @@ const Header = () => {
             </nav>
 
             {/* Mobile actions */}
-            <div className="absolute right-0 flex items-center lg:hidden">
+            <div className="absolute right-0 flex items-center gap-1 lg:hidden">
+              <LanguageSwitcher compact />
               <Button 
                 size="icon"
                 variant="ghost"
