@@ -282,7 +282,7 @@ const Header = () => {
               }}
             >
               <WhatsAppIcon className="h-5 w-5 mr-2" />
-              Book on WhatsApp
+              {t("cta.bookWhatsapp")}
             </Button>
             <Button
               variant="outline"
