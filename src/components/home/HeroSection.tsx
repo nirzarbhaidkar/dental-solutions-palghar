@@ -105,8 +105,8 @@ const HeroSection = () => {
           >
             <Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary flex-shrink-0" />
             <span className="text-xs sm:text-sm font-medium text-foreground/80 whitespace-nowrap">
-              <span className="sm:hidden">10,000+ Happy Patients</span>
-              <span className="hidden sm:inline">Trusted by 10,000+ Happy Patients</span>
+              <span className="sm:hidden">{t("hero.badge.short")}</span>
+              <span className="hidden sm:inline">{t("hero.badge.long")}</span>
             </span>
             <span className="flex items-center gap-0.5 text-amber-500 flex-shrink-0">
               {[...Array(5)].map((_, i) => (
