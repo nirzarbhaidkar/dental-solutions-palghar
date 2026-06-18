@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone, Shield, Sparkles, Star, Award, Clock, Users } from "lucide-react";
+import { Phone, Shield, Sparkles, Star, Award, Clock, Users, Languages } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 type Headline = {
   title: string;
@@ -11,30 +12,19 @@ type Headline = {
 
 const HeroSection = () => {
   const [currentHeadlineIndex, setCurrentHeadlineIndex] = useState(0);
+  const { t } = useLanguage();
 
   const headlines: Headline[] = [
-    {
-      title: "Best Dentist in Palghar for Your",
-      highlight: "Perfect Smile",
-    },
-    {
-      title: "Advanced Dental Technology in",
-      highlight: "Palghar",
-    },
-    {
-      title: "Trusted Dental Clinic in Palghar for",
-      highlight: "Over 15 Years",
-    },
-    {
-      title: "Affordable Dental Care in",
-      highlight: "Palghar",
-    },
+    { title: t("hero.headline1.title"), highlight: t("hero.headline1.highlight") },
+    { title: t("hero.headline2.title"), highlight: t("hero.headline2.highlight") },
+    { title: t("hero.headline3.title"), highlight: t("hero.headline3.highlight") },
+    { title: t("hero.headline4.title"), highlight: t("hero.headline4.highlight") },
   ];
 
   const trustBadges = [
-    { icon: Users, label: "10,000+ Patients" },
-    { icon: Star, label: "4.9★ Rating" },
-    { icon: Clock, label: "Same Day Care" },
+    { icon: Users, label: t("hero.trust.patients") },
+    { icon: Star, label: t("hero.trust.rating") },
+    { icon: Clock, label: t("hero.trust.sameDay") },
   ];
 
   useEffect(() => {
@@ -43,7 +33,7 @@ const HeroSection = () => {
     }, 4000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [headlines.length]);
 
   return (
     <section className="relative min-h-screen flex items-center overflow-x-hidden">
