@@ -266,7 +266,7 @@ const Header = () => {
                   className="flex items-center gap-3 px-4 py-3 rounded-lg text-foreground hover:bg-accent transition-colors"
                 >
                   <Facebook className="h-5 w-5 text-[#1877F2]" />
-                  <span className="font-medium">Follow on Facebook</span>
+                  <span className="font-medium">{t("nav.followFb")}</span>
                 </a>
               </div>
             </div>
