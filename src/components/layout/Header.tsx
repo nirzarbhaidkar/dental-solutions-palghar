@@ -293,7 +293,7 @@ const Header = () => {
               }}
             >
               <Phone className="h-5 w-5 mr-2" />
-              Call +91 86008 92884
+              {t("cta.callClinicFull")}
             </Button>
           </div>
         </div>
