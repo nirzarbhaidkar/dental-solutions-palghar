@@ -176,11 +176,10 @@ const Contact = () => {
         <div className="max-w-5xl mx-auto">
           <header className="mb-12 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Contact Dental Solutions Palghar
+              {t("contact.title")}
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Call, WhatsApp, email or visit our multispeciality dental clinic & implant
-              centre on Mahim Rd, Palghar. Same-day appointments. 24/7 emergency dental care.
+              {t("contact.subtitle")}
             </p>
           </header>
 
