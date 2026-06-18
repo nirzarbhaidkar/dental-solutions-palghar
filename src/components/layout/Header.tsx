@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 import { toast } from "sonner";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 type NavItem = {
   label: string;
