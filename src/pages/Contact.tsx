@@ -240,7 +240,7 @@ const Contact = () => {
               <div className="mt-6 flex flex-wrap gap-3">
                 <Button asChild size="lg">
                   <a href={`tel:${CLINIC.phone}`} aria-label="Call clinic to book appointment">
-                    Call to Book
+                    {t("contact.callToBook")}
                   </a>
                 </Button>
                 <Button asChild variant="outline" size="lg">
@@ -250,7 +250,7 @@ const Contact = () => {
                     rel="noopener noreferrer"
                     aria-label="Message clinic on WhatsApp"
                   >
-                    WhatsApp Us
+                    {t("contact.whatsappUs")}
                   </a>
                 </Button>
               </div>
