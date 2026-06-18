@@ -231,6 +231,17 @@ const HeroSection = () => {
               </motion.div>
             ))}
           </motion.div>
+
+          {/* Multilingual trust badge */}
+          <motion.div
+            className="mt-6 sm:mt-8 inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/5 border border-primary/15 text-primary"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 1 }}
+          >
+            <Languages className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <span className="text-xs sm:text-sm font-medium">{t("lang.weSpeak")}</span>
+          </motion.div>
         </div>
       </div>
 
