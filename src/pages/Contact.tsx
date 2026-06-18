@@ -185,12 +185,12 @@ const Contact = () => {
 
           <section className="grid md:grid-cols-2 gap-6 mb-16" aria-label="Clinic contact details">
             <article className="rounded-2xl border bg-card p-6 shadow-sm">
-              <h2 className="text-2xl font-semibold mb-6">Reach Us</h2>
+              <h2 className="text-2xl font-semibold mb-6">{t("contact.reachUs")}</h2>
               <ul className="space-y-5">
                 <li className="flex items-start gap-3">
                   <Phone className="h-5 w-5 mt-1 text-primary shrink-0" aria-hidden />
                   <div>
-                    <div className="font-medium">Phone & WhatsApp</div>
+                    <div className="font-medium">{t("contact.phoneWa")}</div>
                     <a className="text-muted-foreground hover:text-primary" href={`tel:${CLINIC.phone}`}>
                       {CLINIC.phoneDisplay}
                     </a>
@@ -199,7 +199,7 @@ const Contact = () => {
                 <li className="flex items-start gap-3">
                   <Mail className="h-5 w-5 mt-1 text-primary shrink-0" aria-hidden />
                   <div>
-                    <div className="font-medium">Email</div>
+                    <div className="font-medium">{t("contact.email")}</div>
                     <a className="text-muted-foreground hover:text-primary" href={`mailto:${CLINIC.email}`}>
                       {CLINIC.email}
                     </a>
@@ -208,7 +208,7 @@ const Contact = () => {
                 <li className="flex items-start gap-3">
                   <MapPin className="h-5 w-5 mt-1 text-primary shrink-0" aria-hidden />
                   <div>
-                    <div className="font-medium">Clinic Address</div>
+                    <div className="font-medium">{t("contact.address")}</div>
                     <address className="not-italic text-muted-foreground">
                       {CLINIC.street}
                       <br />
@@ -220,18 +220,18 @@ const Contact = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Get directions →
+                      {t("contact.directions")}
                     </a>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <Clock className="h-5 w-5 mt-1 text-primary shrink-0" aria-hidden />
                   <div>
-                    <div className="font-medium">Opening Hours</div>
+                    <div className="font-medium">{t("contact.hours")}</div>
                     <div className="text-muted-foreground">
-                      Mon – Sat: 9:30 AM – 2:00 PM &amp; 5:00 PM – 9:00 PM
+                      {t("contact.hoursValue")}
                       <br />
-                      Sunday: By appointment only
+                      {t("contact.sunday")}
                     </div>
                   </div>
                 </li>
