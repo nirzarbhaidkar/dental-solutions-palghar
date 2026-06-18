@@ -18,14 +18,15 @@ const Header = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const { t } = useLanguage();
 
   const navItems: NavItem[] = [
-    { label: "Services", href: "/#services" },
-    { label: "NRI Corner", href: "/#nri-corner" },
-    { label: "Location", href: "/#location" },
-    { label: "Testimonials", href: "/#testimonials" },
-    { label: "FAQs", href: "/#faqs" },
-    { label: "Blog", href: "/blog" }
+    { label: t("nav.services"), href: "/#services" },
+    { label: t("nav.nri"), href: "/#nri-corner" },
+    { label: t("nav.location"), href: "/#location" },
+    { label: t("nav.testimonials"), href: "/#testimonials" },
+    { label: t("nav.faqs"), href: "/#faqs" },
+    { label: t("nav.blog"), href: "/blog" }
   ];
 
   // Handle anchor links with smooth scrolling
