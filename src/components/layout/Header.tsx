@@ -168,13 +168,14 @@ const Header = () => {
               >
                 <Facebook className="h-5 w-5" />
               </a>
+              <LanguageSwitcher />
               <Button 
                 className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
                 onClick={handleBookAppointment}
                 size="sm"
               >
                 <Calendar className="h-4 w-4 mr-2" />
-                Book Now
+                {t("cta.bookNow")}
               </Button>
             </nav>
 
