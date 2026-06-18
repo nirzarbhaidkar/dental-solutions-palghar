@@ -271,11 +271,10 @@ const Contact = () => {
           <section aria-labelledby="reviews-heading" className="mb-8">
             <div className="text-center mb-8">
               <h2 id="reviews-heading" className="text-3xl md:text-4xl font-bold mb-3">
-                Real Google Reviews from Palghar Patients
+                {t("contact.reviewsTitle")}
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                4.9★ rated by hundreds of patients across Palghar, Boisar, Tarapur, Virar
-                and Vasai. Live Google Reviews — unedited.
+                {t("contact.reviewsSub")}
               </p>
             </div>
             <div ref={widgetRef} className="min-h-[420px]">
