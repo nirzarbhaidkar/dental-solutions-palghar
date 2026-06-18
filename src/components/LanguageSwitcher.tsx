@@ -1,57 +1,39 @@
-import { Globe, Check } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { LANGUAGES, useLanguage } from "@/i18n/LanguageContext";
 
 type Props = {
-  variant?: "ghost" | "outline";
   compact?: boolean;
 };
 
-const LanguageSwitcher = ({ variant = "ghost", compact = false }: Props) => {
-  const { lang, setLang, t } = useLanguage();
-  const current = LANGUAGES.find((l) => l.code === lang) ?? LANGUAGES[0];
+const LanguageSwitcher = ({ compact = false }: Props) => {
+  const { lang, setLang } = useLanguage();
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          variant={variant}
-          size={compact ? "icon" : "sm"}
-          className={compact ? "h-10 w-10" : "gap-2"}
-          aria-label={t("lang.label")}
-        >
-          <Globe className="h-4 w-4" />
-          {!compact && (
-            <span className="text-sm font-medium">{current.native}</span>
-          )}
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-44">
-        {LANGUAGES.map((l) => (
-          <DropdownMenuItem
+    <div
+      role="group"
+      aria-label="Language switcher"
+      className="inline-flex items-center rounded-full border border-primary/20 bg-background/80 backdrop-blur-sm p-0.5"
+    >
+      {LANGUAGES.map((l) => {
+        const isActive = lang === l.code;
+        return (
+          <button
             key={l.code}
             onClick={() => setLang(l.code)}
-            className="flex items-center justify-between cursor-pointer"
+            aria-pressed={isActive}
+            className={[
+              "relative px-2.5 py-1 text-xs font-semibold rounded-full transition-all duration-200",
+              isActive
+                ? "bg-primary text-primary-foreground shadow-sm"
+                : "text-foreground/70 hover:text-foreground hover:bg-accent",
+              compact && l.code !== "en" ? "hidden sm:inline-block" : "",
+            ].join(" ")}
           >
-            <span>
-              <span className="font-medium">{l.native}</span>
-              {l.code !== "en" && (
-                <span className="ml-2 text-xs text-muted-foreground">
-                  {l.label}
-                </span>
-              )}
-            </span>
-            {lang === l.code && <Check className="h-4 w-4 text-primary" />}
-          </DropdownMenuItem>
-        ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
+            <span className="sr-only">{l.label}</span>
+            <span aria-hidden="true">{l.short}</span>
+          </button>
+        );
+      })}
+    </div>
   );
 };
 
