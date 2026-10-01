@@ -3,7 +3,6 @@ import React from 'react';
 import SEO from './SEO';
 import DynamicStructuredData from './DynamicStructuredData';
 import FAQStructuredData from './FAQStructuredData';
-import ReviewStructuredData from './ReviewStructuredData';
 
 interface HeadContentProps {
   title?: string;
@@ -22,6 +21,7 @@ interface HeadContentProps {
     category: string;
   };
   faqs?: { question: string; answer: string }[];
+  noindex?: boolean;
 }
 
 const HeadContent = ({
@@ -36,6 +36,7 @@ const HeadContent = ({
   pageType,
   serviceData,
   faqs,
+  noindex = false,
 }: HeadContentProps) => {
   // Only emit FAQPage schema where FAQs are actually visible:
   // - homepage (FAQsSection renders the default FAQs)
@@ -52,6 +53,7 @@ const HeadContent = ({
         publishedTime={publishedTime}
         modifiedTime={modifiedTime}
         authorName={authorName}
+        noindex={noindex}
       />
       <DynamicStructuredData 
         pageType={pageType}
@@ -63,7 +65,6 @@ const HeadContent = ({
         serviceData={serviceData}
       />
       {showFAQ && <FAQStructuredData faqs={faqs} />}
-      <ReviewStructuredData />
     </>
   );
 };
