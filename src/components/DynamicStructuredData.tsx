@@ -120,7 +120,7 @@ const DynamicStructuredData = ({
       "keywords": blogPost.tags?.join(", ") || "",
       "wordCount": blogPost.content.split(' ').length,
       "timeRequired": blogPost.readTime,
-      "inLanguage": "en-US",
+      "inLanguage": "en-IN",
       "isPartOf": {
         "@type": "Blog",
         "@id": "https://dentalsolutionspalghar.in/blog"
