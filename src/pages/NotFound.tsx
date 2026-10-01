@@ -32,6 +32,7 @@ const NotFound = () => {
       <HeadContent 
         title="Page Not Found | Dental Solutions Palghar"
         description="The page you're looking for doesn't exist. You may have mistyped the address or the page may have been moved."
+        noindex
       />
       <Header />
       

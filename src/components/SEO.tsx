@@ -1,4 +1,3 @@
-
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 
@@ -12,102 +11,64 @@ interface SEOProps {
   publishedTime?: string;
   modifiedTime?: string;
   authorName?: string;
+  noindex?: boolean;
 }
 
 const SEO = ({
-  title = "Best Dentist in Palghar | Dental Solutions — Book Online",
-  description = "Top-rated dentist in Palghar with 4.9★ Google reviews. Painless implants, braces, root canal, whitening & emergency dental care. Book your appointment today.",
-  image = "/og-image.jpg", 
+  title = "Dental Clinic in Palghar | Dental Solutions",
+  description = "Dental Solutions Palghar offers general, cosmetic, restorative and emergency dental care, including implants, braces, root canal treatment and care for children.",
+  image = "/og-image.jpg",
   article = false,
-  keywords = "dentist in palghar, best dentist in palghar, dental clinic in palghar, palghar dentist, dentist near me palghar, top dentist palghar, dental hospital palghar, affordable dentist palghar, teeth whitening palghar, root canal palghar, dental implants palghar, orthodontist palghar, kids dentist palghar, emergency dentist palghar, dental clinic near palghar station, tooth extraction palghar, dental checkup palghar, painless dentist palghar",
   canonicalUrl,
   publishedTime,
   modifiedTime,
-  authorName = "Dental Solutions Palghar"
+  authorName = "Dental Solutions Palghar",
+  noindex = false,
 }: SEOProps) => {
   const { pathname } = useLocation();
   const siteUrl = "https://dentalsolutionspalghar.in";
-  const url = canonicalUrl || `${siteUrl}${pathname}`;
+  const url = canonicalUrl || `${siteUrl}${pathname === "/" ? "/" : pathname}`;
+  const absoluteImageUrl = image.startsWith("http")
+    ? image
+    : `${siteUrl}${image.startsWith("/") ? "" : "/"}${image}`;
+  const robots = noindex
+    ? "noindex, nofollow"
+    : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1";
 
-  // Ensure image URL is absolute - fixed to use the proper domain
-  let absoluteImageUrl = image;
-  if (!image.startsWith('http')) {
-    absoluteImageUrl = `${siteUrl}${image.startsWith('/') ? '' : '/'}${image}`;
-  }
-  
-  // Default dimensions for the OG image - important for proper previews
-  const imageWidth = "1200";
-  const imageHeight = "630";
-  const imageType = "image/jpeg";
-  const imageAlt = title;
-
-  // Facebook App ID - replace with your actual Facebook App ID
-  const fbAppId = "1683230922584242";
-  
   return (
     <Helmet>
-      {/* Basic Meta Tags */}
       <title>{title}</title>
       <meta name="description" content={description} />
-      <meta name="keywords" content={keywords} />
+      <meta name="robots" content={robots} />
       <link rel="canonical" href={url} />
-      
-      {/* Open Graph / Facebook */}
-      <meta property="fb:app_id" content={fbAppId} />
+
       <meta property="og:type" content={article ? "article" : "website"} />
       <meta property="og:url" content={url} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={absoluteImageUrl} />
       <meta property="og:image:secure_url" content={absoluteImageUrl} />
-      <meta property="og:image:width" content={imageWidth} />
-      <meta property="og:image:height" content={imageHeight} />
-      <meta property="og:image:type" content={imageType} />
-      <meta property="og:image:alt" content={imageAlt} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:type" content="image/jpeg" />
+      <meta property="og:image:alt" content={title} />
       <meta property="og:site_name" content="Dental Solutions Palghar" />
       <meta property="og:locale" content="en_IN" />
-      
-      {/* Twitter Card Tags */}
+
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@dentalsolutionspalghar" />
-      <meta name="twitter:creator" content="@dentalsolutionspalghar" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={absoluteImageUrl} />
-      <meta name="twitter:image:alt" content={imageAlt} />
-      <meta name="twitter:domain" content={siteUrl} />
-      
-      {/* WhatsApp specific */}
-      <meta property="og:image" content={absoluteImageUrl} />
-      <meta property="og:image:secure_url" content={absoluteImageUrl} />
-      
-      {/* Article specific meta tags */}
-      {article && (
-        <>
-          {publishedTime && <meta property="article:published_time" content={publishedTime} />}
-          {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
-          {authorName && <meta property="article:author" content={authorName} />}
-        </>
-      )}
-      
-      {/* Additional iOS and Android app banner meta tags */}
-      <meta name="apple-itunes-app" content="app-id=yourAppStoreID, affiliate-data=yourAffiliateData, app-argument=yourAppArgument" />
-      <meta name="google-play-app" content="app-id=yourPackageName" />
-      
-      {/* Robots and Canonical */}
-      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-      <link rel="canonical" href={url} />
-      
-      {/* Geo Tags */}
+      <meta name="twitter:image:alt" content={title} />
+
+      {article && publishedTime && <meta property="article:published_time" content={publishedTime} />}
+      {article && modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+      {article && authorName && <meta property="article:author" content={authorName} />}
+
       <meta name="geo.region" content="IN-MH" />
       <meta name="geo.placename" content="Palghar" />
-      <meta name="geo.position" content="19.694437699999998;72.76597319999999" />
-      <meta name="ICBM" content="19.694437699999998, 72.76597319999999" />
-      
-      {/* Additional Performance Tags */}
-      <link rel="preconnect" href="https://fonts.gstatic.com" />
-      <link rel="preconnect" href="https://www.googletagmanager.com" />
-      <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+      <meta name="geo.position" content="19.6944377;72.7659732" />
+      <meta name="ICBM" content="19.6944377, 72.7659732" />
     </Helmet>
   );
 };

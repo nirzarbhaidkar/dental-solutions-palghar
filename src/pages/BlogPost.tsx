@@ -114,6 +114,7 @@ const BlogPost = () => {
         <HeadContent 
           title="Post Not Found | Dental Solutions Palghar"
           description="The blog post you're looking for could not be found. Explore our other dental health articles and resources."
+          noindex
         />
         <div className="container mx-auto px-4 py-16">
           <div className="text-center">
