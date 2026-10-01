@@ -806,6 +806,7 @@ const ServicePage = () => {
   if (!service) {
     return (
       <div className="min-h-screen bg-background pb-20 lg:pb-0">{/* Added padding for mobile bottom bar */}
+        <HeadContent title="Service Not Found | Dental Solutions Palghar" noindex />
         <Header />
         <div className="container mx-auto px-4 py-16">
           <div className="text-center">
