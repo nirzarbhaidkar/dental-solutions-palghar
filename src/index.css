@@ -117,6 +117,11 @@
     scroll-behavior: smooth;
   }
 
+  /* Keep section headings clear of the fixed header when jumping to /#section */
+  section[id] {
+    scroll-margin-top: 4rem;
+  }
+
   /* Prevent horizontal scroll on mobile */
   body {
     overflow-x: hidden;

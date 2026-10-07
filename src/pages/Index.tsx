@@ -21,15 +21,45 @@ const CommunityImpactSection = lazy(() => import("@/components/home/CommunityImp
 
 const Index = () => {
   useEffect(() => {
-    // Scroll to the top when the component mounts
-    window.scrollTo(0, 0);
-    
+    // Scroll to the top when the component mounts, unless we arrived via a section link (e.g. /#faqs)
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+
     // Clear session storage for appointment popup when testing
     // Comment this out in production
     if (process.env.NODE_ENV === 'development') {
       sessionStorage.removeItem('appointmentPopupShown');
       console.log("Development mode: Reset appointment popup");
     }
+  }, []);
+
+  useEffect(() => {
+    // Most sections are lazy-loaded, so when another page links to /#faqs the target
+    // doesn't exist yet and the browser can't jump to it. Wait for it to mount instead.
+    const id = window.location.hash.slice(1);
+    if (!id) return;
+
+    const scrollToTarget = () => {
+      const element = document.getElementById(id);
+      if (!element) return false;
+      element.scrollIntoView({ behavior: "instant" });
+      return true;
+    };
+
+    if (scrollToTarget()) return;
+
+    const observer = new MutationObserver(() => {
+      if (scrollToTarget()) stopWaiting();
+    });
+    const timeout = window.setTimeout(() => stopWaiting(), 10000);
+    function stopWaiting() {
+      observer.disconnect();
+      window.clearTimeout(timeout);
+    }
+
+    observer.observe(document.body, { childList: true, subtree: true });
+    return stopWaiting;
   }, []);
 
   return (

@@ -46,7 +46,7 @@ const QuizSection = () => {
                 "position": 1,
                 "name": "Dental Health Assessment Quiz",
                 "description": "Take our comprehensive dental health assessment to evaluate your oral hygiene practices and get personalized recommendations.",
-                "url": "https://dentalsolutionspalghar.com/#dental-health-assessment"
+                "url": "https://dentalsolutionspalghar.in/#quiz"
               }
             ]
           }

@@ -8,6 +8,7 @@ Dental Solutions Palghar is a trusted multi-specialty dental clinic serving Palg
 
 - [Home](/): Overview of services, clinic info, and appointment booking.
 - [Blog](/blog): Dental health articles, treatment guides and oral care tips.
+- [Contact](/contact): Phone, WhatsApp, address, directions and opening hours.
 
 ## Services
 
@@ -18,9 +19,12 @@ Dental Solutions Palghar is a trusted multi-specialty dental clinic serving Palg
 - [Teeth Whitening](/services/teeth-whitening): In-office and take-home whitening.
 - [Pediatric Dentistry](/services/pediatric-dentistry): Child-focused dental care.
 - [Conscious Sedation](/services/conscious-sedation): Inhalation sedation for anxious children.
-- [Emergency Dental](/services/emergency-dental): Same-day care for dental emergencies.
-- [Periodontal](/services/periodontal): Gum disease treatment.
+- [Emergency Dental](/services/emergency-dental-care): Same-day care for dental emergencies.
+- [Periodontal](/services/periodontal-treatment): Gum disease treatment.
+- [Wisdom Tooth Removal](/services/wisdom-tooth-extraction): CBCT-guided wisdom tooth extraction.
+- [Smile Makeover](/services/smile-makeover): Digital Smile Design with veneers, whitening and bonding.
+- [Dentures & Prosthetics](/services/dentures-and-prosthetics): Complete, partial, flexible and implant-supported dentures.
 
 ## Optional
 
-- [NRI Dental Care](/nri-dental-care): Treatment planning for NRI patients.
+- [NRI Dental Care](/#nri-corner): Treatment planning for NRI patients.

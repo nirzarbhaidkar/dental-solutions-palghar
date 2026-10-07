@@ -1,195 +1,238 @@
-import React, { useState, useEffect } from "react";
-import { MapPin, Phone, Facebook, Instagram, Twitter, Share } from "lucide-react";
 import { Link } from "react-router-dom";
+import { ArrowRight, ArrowUpRight, Facebook, Instagram, MapPin, Phone, Twitter } from "lucide-react";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import {
+  CLINIC_FACEBOOK_URL,
+  CLINIC_MAPS_URL,
+  CLINIC_PHONE_DISPLAY,
+  CLINIC_PHONE_HREF,
+  CLINIC_WHATSAPP_URL,
+  useClinicStatus,
+} from "@/lib/clinic";
 
-type NavItem = {
+type FooterLinkItem = {
   label: string;
   href: string;
 };
 
-const Footer = () => {
-  const [currentTime, setCurrentTime] = useState(new Date());
-  const [isOpen, setIsOpen] = useState(false);
+const treatments: FooterLinkItem[] = [
+  { label: "Dental Implants", href: "/services/dental-implants" },
+  { label: "Root Canal Treatment", href: "/services/root-canal" },
+  { label: "Orthodontics & Braces", href: "/services/orthodontics" },
+  { label: "Teeth Whitening", href: "/services/teeth-whitening" },
+  { label: "Pediatric Dentistry", href: "/services/pediatric-dentistry" },
+  { label: "Emergency Dental Care", href: "/services/emergency-dental-care" },
+];
 
-  const navItems: NavItem[] = [
-    { label: "Services", href: "#services" },
-    { label: "Location", href: "#location" },
-    { label: "Testimonials", href: "#testimonials" },
-    { label: "FAQs", href: "#faqs" },
-    { label: "Blog", href: "/blog" },
-    { label: "Dental Health Quiz", href: "#quiz" }
+const exploreLinks: FooterLinkItem[] = [
+  { label: "NRI Corner", href: "/#nri-corner" },
+  { label: "Our Locations", href: "/#location" },
+  { label: "Testimonials", href: "/#testimonials" },
+  { label: "FAQs", href: "/#faqs" },
+  { label: "Dental Health Quiz", href: "/#quiz" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/contact" },
+];
+
+const socials = [
+  { label: "Facebook", href: CLINIC_FACEBOOK_URL, icon: Facebook },
+  { label: "Instagram", href: "https://www.instagram.com/dentalsolutionspalghar", icon: Instagram },
+  { label: "X (Twitter)", href: "https://x.com/dentalsoluti0ns", icon: Twitter },
+];
+
+const headingClass = "text-xs font-semibold uppercase tracking-[0.16em] text-primary-300";
+const linkClass = "text-sm text-white/70 transition-colors hover:text-white";
+
+// Service and blog pages don't reset scroll on mount, so jump to the top before navigating
+const scrollToTop = () => window.scrollTo({ top: 0, behavior: "instant" });
+
+const FooterLink = ({ label, href }: FooterLinkItem) =>
+  href.includes("#") ? (
+    <a href={href} className={linkClass}>
+      {label}
+    </a>
+  ) : (
+    <Link to={href} onClick={scrollToTop} className={linkClass}>
+      {label}
+    </Link>
+  );
+
+const Footer = () => {
+  const status = useClinicStatus();
+
+  const contactTiles = [
+    {
+      label: "Call us",
+      value: CLINIC_PHONE_DISPLAY,
+      href: CLINIC_PHONE_HREF,
+      icon: <Phone className="h-5 w-5" />,
+    },
+    {
+      label: "WhatsApp · 24/7",
+      value: "Book an appointment",
+      href: CLINIC_WHATSAPP_URL,
+      icon: <WhatsAppIcon className="h-5 w-5" />,
+      external: true,
+    },
+    {
+      label: "Get directions",
+      value: "Near National College",
+      href: CLINIC_MAPS_URL,
+      icon: <MapPin className="h-5 w-5" />,
+      external: true,
+    },
   ];
 
-  useEffect(() => {
-    const timeInterval = setInterval(() => {
-      const now = new Date();
-      setCurrentTime(now);
-      
-      const day = now.getDay(); // 0 is Sunday, 1 is Monday, etc.
-      const hours = now.getHours();
-      const minutes = now.getMinutes();
-      const currentTimeInMinutes = hours * 60 + minutes;
-      
-      // Clinic is closed on Sundays (day 0)
-      if (day === 0) {
-        setIsOpen(false);
-        return;
-      }
-      
-      // Morning hours: 9:30 AM - 2:00 PM (570 - 840 minutes)
-      const morningStart = 9 * 60 + 30; // 9:30 AM in minutes
-      const morningEnd = 14 * 60; // 2:00 PM in minutes
-      
-      // Evening hours: 5:00 PM - 9:00 PM (1020 - 1260 minutes)
-      const eveningStart = 17 * 60; // 5:00 PM in minutes
-      const eveningEnd = 21 * 60; // 9:00 PM in minutes
-      
-      // Check if current time falls within operating hours
-      setIsOpen(
-        (currentTimeInMinutes >= morningStart && currentTimeInMinutes < morningEnd) ||
-        (currentTimeInMinutes >= eveningStart && currentTimeInMinutes < eveningEnd)
-      );
-    }, 60000); // Update every minute
-    
-    // Initial check when component mounts
-    const now = new Date();
-    const day = now.getDay();
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
-    const currentTimeInMinutes = hours * 60 + minutes;
-    
-    if (day === 0) {
-      setIsOpen(false);
-    } else {
-      const morningStart = 9 * 60 + 30;
-      const morningEnd = 14 * 60;
-      const eveningStart = 17 * 60;
-      const eveningEnd = 21 * 60;
-      
-      setIsOpen(
-        (currentTimeInMinutes >= morningStart && currentTimeInMinutes < morningEnd) ||
-        (currentTimeInMinutes >= eveningStart && currentTimeInMinutes < eveningEnd)
-      );
-    }
-    
-    return () => clearInterval(timeInterval);
-  }, []);
-
   return (
-    <footer className="bg-gray-900 text-white py-12">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4">
-          <div className="md:max-w-xs">
-            <h3 className="text-xl font-bold mb-4">Dental Solutions Palghar</h3>
-            <p className="text-gray-400">
+    <footer className="relative overflow-hidden bg-primary-900 text-white">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary-400/50 to-transparent"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-48 left-1/2 h-96 w-[56rem] max-w-full -translate-x-1/2 rounded-full bg-primary-500/15 blur-3xl"
+      />
+
+      <div className="container relative mx-auto px-4">
+        {/* Contact strip */}
+        <div className="grid gap-3 pt-12 md:grid-cols-3 md:pt-16">
+          {contactTiles.map((tile) => (
+            <a
+              key={tile.label}
+              href={tile.href}
+              {...(tile.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-4 transition-colors hover:border-primary-400/40 hover:bg-white/[0.06] sm:p-5"
+            >
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary-500/15 text-primary-300 ring-1 ring-inset ring-primary-400/20">
+                {tile.icon}
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block text-xs font-medium uppercase tracking-wider text-white/50">
+                  {tile.label}
+                </span>
+                <span className="mt-0.5 block truncate font-semibold text-white">{tile.value}</span>
+              </span>
+              <ArrowUpRight className="hidden h-4 w-4 shrink-0 text-white/30 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white lg:block" />
+            </a>
+          ))}
+        </div>
+
+        {/* Main columns */}
+        <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 border-t border-white/10 py-12 md:grid-cols-3 lg:grid-cols-12 lg:gap-x-8">
+          <div className="col-span-2 md:col-span-3 lg:col-span-4">
+            <Link to="/" onClick={scrollToTop} className="text-xl font-bold tracking-tight">
+              Dental Solutions <span className="text-primary-300">Palghar</span>
+            </Link>
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-white/60">
               Dental Solutions Palghar is the best dental clinic in Palghar, offering comprehensive oral healthcare including dental implants, orthodontics (braces), root canal treatment, teeth whitening, pediatric dentistry, and emergency dental care near Palghar station.
             </p>
+            <div className="mt-6 flex gap-2">
+              {socials.map(({ label, href, icon: Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/70 ring-1 ring-inset ring-white/10 transition-colors hover:bg-primary hover:text-white hover:ring-primary"
+                >
+                  <Icon className="h-[18px] w-[18px]" />
+                </a>
+              ))}
+            </div>
           </div>
-          
-          <div className="flex flex-col items-start justify-start">
-            <h4 className="text-xl font-bold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              {navItems.map((item, index) => (
-                <li key={index}>
-                  {item.href.startsWith('#') ? (
-                    <a 
-                      href={item.href} 
-                      className="text-gray-400 hover:text-white transition-colors"
-                    >
-                      {item.label}
-                    </a>
-                  ) : (
-                    <Link 
-                      to={item.href} 
-                      className="text-gray-400 hover:text-white transition-colors"
-                    >
-                      {item.label}
-                    </Link>
-                  )}
+
+          <nav aria-label="Treatments" className="lg:col-span-3">
+            <h3 className={headingClass}>Treatments</h3>
+            <ul className="mt-5 space-y-3">
+              {treatments.map((item) => (
+                <li key={item.href}>
+                  <FooterLink {...item} />
+                </li>
+              ))}
+              <li className="pt-1">
+                <a
+                  href="/#services"
+                  className="group flex w-fit items-center gap-1 text-sm font-medium text-primary-300 transition-colors hover:text-primary-200"
+                >
+                  All services
+                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <nav aria-label="Explore" className="lg:col-span-2">
+            <h3 className={headingClass}>Explore</h3>
+            <ul className="mt-5 space-y-3">
+              {exploreLinks.map((item) => (
+                <li key={item.href}>
+                  <FooterLink {...item} />
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          <div className="flex flex-col items-start justify-start">
-            <h4 className="text-xl font-bold mb-4">Opening Hours</h4>
-            <div className="space-y-5 w-full">
-              <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-semibold tracking-wide ${isOpen ? 'bg-emerald-500/15 text-emerald-400' : 'bg-red-500/15 text-red-400'}`}>
-                <span className="relative flex h-2 w-2">
-                  <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${isOpen ? 'bg-emerald-400' : 'bg-red-400'}`}></span>
-                  <span className={`relative inline-flex rounded-full h-2 w-2 ${isOpen ? 'bg-emerald-400' : 'bg-red-400'}`}></span>
+          <div className="col-span-2 md:col-span-1 lg:col-span-3">
+            <h3 className={headingClass}>Visit us</h3>
+            <div className="mt-5 rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+              <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5">
+                <span
+                  className={`inline-flex items-center gap-2 rounded-full px-2.5 py-1 text-xs font-semibold ${
+                    status.isOpen ? "bg-emerald-400/15 text-emerald-300" : "bg-rose-400/15 text-rose-300"
+                  }`}
+                >
+                  <span className="relative flex h-2 w-2">
+                    <span
+                      className={`absolute inline-flex h-full w-full animate-ping rounded-full opacity-75 ${
+                        status.isOpen ? "bg-emerald-400" : "bg-rose-400"
+                      }`}
+                    />
+                    <span
+                      className={`relative inline-flex h-2 w-2 rounded-full ${
+                        status.isOpen ? "bg-emerald-400" : "bg-rose-400"
+                      }`}
+                    />
+                  </span>
+                  {status.isOpen ? "Open now" : "Closed now"}
                 </span>
-                {isOpen ? 'Open Now' : 'Closed Now'}
+                <span className="text-xs text-white/60">{status.detail}</span>
               </div>
-
-              <div className="space-y-0 text-sm">
-                <div className="flex justify-between items-center py-3 border-b border-white/10">
-                  <span className="text-white/80 font-medium">Monday – Saturday</span>
-                  <span className="text-white/60 tabular-nums">9:30 am – 2 pm<br className="sm:hidden" /><span className="hidden sm:inline">, </span>5 – 9 pm</span>
+              <dl className="mt-4 divide-y divide-white/10 text-sm">
+                <div className="flex justify-between gap-4 pb-3">
+                  <dt className="font-medium text-white/80">Mon – Sat</dt>
+                  <dd className="text-right tabular-nums text-white/60">
+                    9:30 am – 2 pm
+                    <br />
+                    5 pm – 9 pm
+                  </dd>
                 </div>
-                <div className="flex justify-between items-center py-3">
-                  <span className="text-white/80 font-medium">Sunday</span>
-                  <span className="text-red-400/80 font-medium">Closed</span>
+                <div className="flex justify-between gap-4 pt-3">
+                  <dt className="font-medium text-white/80">Sunday</dt>
+                  <dd className="text-rose-300/90">Closed</dd>
                 </div>
-              </div>
+              </dl>
             </div>
-          </div>
-
-          <div className="flex flex-col items-start justify-start">
-            <h4 className="text-xl font-bold mb-4">Contact Us</h4>
-            <div className="space-y-3">
-              <div className="flex items-start">
-                <MapPin className="h-5 w-5 mr-3 text-primary shrink-0 mt-0.5" />
-                <p className="text-gray-400">
-                  Shop number 5,6, Apoorva Apartments, Mahim Rd, next to Chetna Classes, next to National College, Shri Ram Nagar, Vishnu Nagar, Palghar, Maharashtra 401404
-                </p>
-              </div>
-              <div className="flex items-center">
-                <Phone className="h-5 w-5 mr-3 text-primary" />
-                <a href="tel:+918600892884" className="text-gray-400 hover:text-white transition-colors">
-                  +91 8600892884
-                </a>
-              </div>
-              <div className="flex items-center space-x-4 mt-4">
-                <a
-                  href="https://www.facebook.com/DentalSolutionsPalghar"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
-                  aria-label="Facebook"
-                >
-                  <Facebook className="h-6 w-6" />
-                </a>
-                <a
-                  href="https://www.instagram.com/dentalsolutionspalghar"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
-                  aria-label="Instagram"
-                >
-                  <Instagram className="h-6 w-6" />
-                </a>
-                <a
-                  href="https://x.com/dentalsoluti0ns"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
-                  aria-label="Twitter"
-                >
-                  <Twitter className="h-6 w-6" />
-                </a>
-              </div>
-            </div>
+            <address className="mt-5 flex gap-3 text-sm not-italic leading-relaxed text-white/60">
+              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary-300" />
+              <span>
+                Shop number 5,6, Apoorva Apartments, Mahim Rd, next to Chetna Classes, next to National College, Shri Ram Nagar, Vishnu Nagar, Palghar, Maharashtra 401404
+              </span>
+            </address>
           </div>
         </div>
-        <div className="mt-8 pt-8 border-t border-gray-800">
-          <p className="text-center text-gray-400 text-sm">
-            © {new Date().getFullYear()} Dental Solutions Palghar. All rights reserved. Designed by{' '}
-            <a 
-              href="https://nirzar.in/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="underline hover:text-white transition-colors"
+
+        {/* Bottom bar */}
+        <div className="flex flex-col gap-2 border-t border-white/10 py-6 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} Dental Solutions Palghar. All rights reserved.</p>
+          <p>
+            Designed by{" "}
+            <a
+              href="https://nirzar.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/70 underline decoration-white/30 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
             >
               Nirzar Marketing Solutions
             </a>
