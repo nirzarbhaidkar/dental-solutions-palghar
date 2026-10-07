@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, ArrowLeft, ChevronRight, MessageSquare, Share, Facebook, Twitter, Linkedin, Copy } from "lucide-react";
 import { blogPosts } from "../data/blogPosts";
@@ -7,14 +7,12 @@ import HeadContent from "@/components/HeadContent";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { toast } from "sonner";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import BlogCallToAction from "@/components/blog/BlogCallToAction";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const post = blogPosts.find((p) => p.slug === slug);
-  const [isOpen, setIsOpen] = useState(false);
-  const [currentTime, setCurrentTime] = useState(new Date());
 
   const handleWhatsAppClick = () => {
     window.open("https://wa.me/918600892884?text=Hello%2C%20I%20read%20your%20article%20about%20" + encodeURIComponent(post?.title || "") + "%20and%20I'd%20like%20to%20book%20an%20appointment%20at%20Dental%20Solutions%20Palghar.%20Please%20let%20me%20know%20the%20available%20slots.%20Thank%20you!", "_blank");
@@ -57,56 +55,10 @@ const BlogPost = () => {
     }
   };
 
+  // Re-run on slug change too, so opening a related post starts at the top
   useEffect(() => {
-    window.scrollTo(0, 0);
-    
-    const timeInterval = setInterval(() => {
-      const now = new Date();
-      setCurrentTime(now);
-      
-      const day = now.getDay();
-      const hours = now.getHours();
-      const minutes = now.getMinutes();
-      const currentTimeInMinutes = hours * 60 + minutes;
-      
-      if (day === 0) {
-        setIsOpen(false);
-        return;
-      }
-      
-      const morningStart = 9 * 60 + 30;
-      const morningEnd = 14 * 60;
-      const eveningStart = 17 * 60;
-      const eveningEnd = 21 * 60;
-      
-      setIsOpen(
-        (currentTimeInMinutes >= morningStart && currentTimeInMinutes < morningEnd) ||
-        (currentTimeInMinutes >= eveningStart && currentTimeInMinutes < eveningEnd)
-      );
-    }, 60000);
-    
-    const now = new Date();
-    const day = now.getDay();
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
-    const currentTimeInMinutes = hours * 60 + minutes;
-    
-    if (day === 0) {
-      setIsOpen(false);
-    } else {
-      const morningStart = 9 * 60 + 30;
-      const morningEnd = 14 * 60;
-      const eveningStart = 17 * 60;
-      const eveningEnd = 21 * 60;
-      
-      setIsOpen(
-        (currentTimeInMinutes >= morningStart && currentTimeInMinutes < morningEnd) ||
-        (currentTimeInMinutes >= eveningStart && currentTimeInMinutes < eveningEnd)
-      );
-    }
-    
-    return () => clearInterval(timeInterval);
-  }, []);
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [slug]);
 
   if (!post) {
     return (
@@ -160,7 +112,6 @@ const BlogPost = () => {
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-4">
               <Avatar className="h-12 w-12">
-                <AvatarImage src="/doctor-avatar.jpg" alt="Dr. Anirudh Bhaidkar" />
                 <AvatarFallback>AB</AvatarFallback>
               </Avatar>
               <div>

@@ -144,6 +144,7 @@ const FAQsSection = () => {
                 value={searchTerm}
                 onChange={handleSearch}
                 placeholder="Search for questions..."
+                aria-label="Search FAQs"
                 className="w-full py-4 pl-12 pr-12 bg-card rounded-2xl border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all duration-300 shadow-soft"
               />
               <AnimatePresence>
@@ -153,6 +154,7 @@ const FAQsSection = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8 }}
                     onClick={handleClearSearch}
+                    aria-label="Clear search"
                     className="absolute inset-y-0 right-0 flex items-center pr-4 text-muted-foreground hover:text-foreground transition-colors"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -167,10 +169,10 @@ const FAQsSection = () => {
             <div className="card-elevated p-6 md:p-8">
               {filteredFAQs.length > 0 ? (
                 <Accordion type="multiple" value={expandedItems} onValueChange={handleAccordionValueChange} className="w-full space-y-2">
-                  {filteredFAQs.map((faq, index) => (
-                    <AccordionItem 
-                      key={index} 
-                      value={`item-${index}`} 
+                  {filteredFAQs.map((faq) => (
+                    <AccordionItem
+                      key={faq.question}
+                      value={faq.question}
                       className="border border-border/50 rounded-xl overflow-hidden data-[state=open]:bg-primary/5 data-[state=open]:border-primary/20 transition-all duration-300"
                     >
                       <AccordionTrigger className="text-base md:text-lg font-medium py-4 px-5 hover:no-underline hover:bg-muted/30 text-left">

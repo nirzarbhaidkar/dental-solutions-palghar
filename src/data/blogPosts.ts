@@ -126,7 +126,7 @@ export const blogPosts = [
     readTime: "5 min read",
     slug: "dental-emergencies-what-to-do",
     category: "Emergency Dental Care",
-    image: "https://images.unsplash.com/photo-1559686045-6da5f6c5ec4b?auto=format&fit=crop&q=80",
+    image: "/services/emergency-dental.jpg",
     tags: ["Dental Emergency", "Emergency Care", "Dental Trauma"]
   },
   {
@@ -138,7 +138,7 @@ export const blogPosts = [
     readTime: "6 min read",
     slug: "latest-advancements-cosmetic-dentistry",
     category: "Cosmetic Dentistry",
-    image: "https://images.unsplash.com/photo-1606811842268-c22e6e1b54a8?auto=format&fit=crop&q=80",
+    image: "/services/cosmetic-dentistry.jpg",
     tags: ["Cosmetic Dentistry", "Smile Design", "Dental Technology"]
   },
   {
@@ -162,7 +162,7 @@ export const blogPosts = [
     readTime: "6 min read",
     slug: "invisalign-vs-traditional-braces",
     category: "Orthodontics",
-    image: "https://images.unsplash.com/photo-1611766343313-49f13b0f6932?auto=format&fit=crop&q=80",
+    image: "/services/orthodontics.jpg",
     tags: ["Invisalign", "Braces", "Orthodontics"]
   },
   {
@@ -222,7 +222,7 @@ export const blogPosts = [
     readTime: "8 min read",
     slug: "braces-vs-clear-aligners",
     category: "Orthodontics",
-    image: "https://images.unsplash.com/photo-1611766343313-49f13b0f6932?auto=format&fit=crop&q=80",
+    image: "/services/orthodontics.jpg",
     tags: ["Braces", "Clear Aligners", "Invisalign", "Orthodontics", "Palghar"]
   },
   {
@@ -282,7 +282,7 @@ export const blogPosts = [
     readTime: "6 min read",
     slug: "zirconia-vs-pfm-crowns-palghar",
     category: "Restorative Dentistry",
-    image: "https://images.unsplash.com/photo-1606811842268-c22e6e1b54a8?auto=format&fit=crop&q=80",
+    image: "/services/cosmetic-dentistry.jpg",
     tags: ["Crowns", "Zirconia", "PFM", "Prosthodontics", "Palghar"]
   },
   {
@@ -294,7 +294,7 @@ export const blogPosts = [
     readTime: "6 min read",
     slug: "wisdom-tooth-removal-cost-palghar",
     category: "Oral Surgery",
-    image: "https://images.unsplash.com/photo-1559686045-6da5f6c5ec4b?auto=format&fit=crop&q=80",
+    image: "/services/general-dentistry.jpg",
     tags: ["Wisdom Tooth", "Extraction", "Oral Surgery", "Palghar"]
   },
   {
